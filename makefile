@@ -27,7 +27,7 @@ thesis: tex
 	# bibtex paper2
 	bibtex paper3
 	# bibtex paper4
-	# bibtex paper5
+	bibtex paper5
 	# bibtex paper6
 	pdflatex thesis
 	pdflatex thesis

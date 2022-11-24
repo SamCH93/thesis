@@ -138,7 +138,7 @@ sample uncertainty''
 }{%
    \textit{BMC Medical Research Methodology}, 2022, 22(149).
   \url{https://doi.org/10.1002/jrsm.1538}.}
-
+\include{paper5}
 
 % Paper VI
 % ------------------------------------------------------------------------------
