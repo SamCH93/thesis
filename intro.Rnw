@@ -1,0 +1,1133 @@
+<< "main-setup", include = FALSE >>=
+## knitr options
+library(knitr)
+opts_chunk$set(fig.height = 4,
+               echo = FALSE,
+               warning = FALSE,
+               message = FALSE,
+               cache = FALSE,
+               eval = TRUE)
+
+## should sessionInfo be printed at the end?
+Reproducibility <- FALSE
+
+## Packages
+library(ggplot2) # plotting
+library(xtable) # table
+library(ReplicationSuccess) # replication study stuff
+library(dplyr) # data manipulation
+library(UpSetR) # upset plot
+@
+
+% Aus der Promotionsordnung MNF §13 (2):
+% "Eine kumulative Dissertation besteht aus einer inhaltlich zusammenhängenden
+% und durch eine übergeordnete Fragestellung verbundenen Sammlung von
+% Manuskripten und/oder Publikationen, denen ein einführendes Kapitel
+% vorangestellt wird, das die Beiträge in eine übergeordnete Fragestellung
+% einbettet, deren wissenschaftlichen Zusammenhang sowie den Mehrwert der
+% Zusammenstellung gegenüber den einzelnen Teilen darlegt."
+
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+% \hfill
+% \begin{tabular}{p{0.7\textwidth}}
+%   We can make judgments of initial probabilities and infer
+%   final ones, or we can equally make judgments of final ones and infer
+%   initial ones by \emph{Bayes's theorem in reverse}. \\
+%   \hfill I.J. \citet[p. 29]{Good1983}
+% \end{tabular}
+
+
+
+\begin{wrapfigure}{r}{0.34\textwidth}
+  \centering
+  \includegraphics[height = 8.9cm]{images/xkcd.png}
+  \caption*{Replication studies as illustrated by Randall Munroe
+    (\url{https://xkcd.com/242/}).}
+\end{wrapfigure}
+
+\section{Replication studies}
+
+How can we know if a finding from a study is really true? For example, how can
+we know if the protective effect of a vaccine found in a study is real? The
+answer to this question is of highest importance to scientists and decision
+makers, but typically we can never know for sure as any study result comes with
+uncertainty.
+
+% the sad truth is that we can never know for sure.
+
+One way to come a little closer to the truth, however, is to repeat that
+original study with new subjects. Such a \emph{replication study} may then yield
+similar results which would make us more confident about the original finding,
+or it may yield conflicting results which would lower our confidence.
+Replication studies are thus an essential part of the scientific process as they
+provide a means for substantiating genuine research findings and refuting
+research findings which occurred merely by chance. For this reason,
+``successful'' replication is often a requirement, for example, for acceptance
+of newly proposed scientific theories (\eg{} a new physical model) or the
+implementation of policies based on scientific knowledge (\eg{} market approval
+of a drug). The results from replication studies may thus have real world
+consequences, such as deciding whether we should get vaccinated (a consequence
+that anyone who experienced the COVID-19 pandemic is very aware of).
+
+
+Despite their tremendous importance, the traditional academic system has made it
+unattractive for researchers to conduct replication studies; the currencies of
+science --publications, citations, and grant money-- are typically easier to
+acquire by conducting novel research. This is because until relatively recently,
+top journals in many fields refused to publish replication studies as they were
+considered not ``innovative'' enough. To build a successful career, researchers
+thus often had no other choice than to concentrate their efforts on producing
+novel and eye-catching research results.
+
+The perceived value of replication studies, however, has changed over the past
+decade. Earlier criticisms of low research standards \citep{Altman1994,
+  Ioannidis2005} were backed up by empirical evidence. For instance,
+pharmaceutical companies reported surprisingly low replication rates from
+pre-clinical research \citep{Begley2012} followed by later studies estimating
+that %\$28 billion
+billions are wasted each year on flawed and non-replicable research in medicine
+and the life sciences \citep{Chalmers2014, Freedman2015, Glasziou2018}.
+Similarly, reports of fraud \citep{Wicherts2011} and questionable research
+practices \citep{Wagenmakers2011, Simmons2011, John2012} sparked intense
+discussion about the need for higher research standards in psychology and the
+social sciences. These discussions eventually culminated in large-scale
+replication projects conducted by huge researcher consortia in fields such as
+psychology \citep{Opensc2015, Klein2014, Klein2018, Protzko2020}, economics
+\citep{Camerer2016}, the social sciences \citep{Camerer2018}, experimental
+philosophy \citep{Cova2018}, or cancer biology \citep{Errington2021}.
+
+Most of these large-scale replication projects confirmed what many researchers
+had feared; carefully conducted replication studies often show less impressive
+results than their original counterparts, and the replicability of research
+findings is surprisingly low on average. This realization led many to declare
+science as being in a ``replication crisis''. Debates arose about whether or not
+the crisis really existed, and who or what was to blame \citep{Gilbert2016,
+  Amrhein2019}. Even the popular press became interested
+\citep[\eg{}][]{Carey2015, Kovic2016, Achenbach2017, Devlin2018}, so that also
+in the eyes of the public the credibility of science became seriously
+threatened.
+
+\begin{figure}[!htb]
+<< "google-scholar-graph", fig.height = 2.5 >>=
+## Data gathered on October 18 2022
+searchTerm <- "Replication Study"
+searchDate <- as.Date(x = "2022-10-18", format = "%Y-%m-%d", tz = "GMT")
+searchDateFormat <- format(searchDate, format = "%B %d %Y")
+resultsAnytime <- 114000
+scholarDF <- data.frame(year = seq(2022, 1990, -1),
+                        results = c(4530, 11400, 13600, 12200, 11300, 10700,
+                                    9880, 9220, 8660, 8200, 7500, 6700, 6040,
+                                    5370, 4680, 3890, 3380, 3070, 2790, 2520,
+                                    2310, 2190, 2120, 2020, 1920, 1840, 1730,
+                                    1490, 1270, 1230, 1140, 1070, 970))
+
+## plot data
+ggplot(data = filter(scholarDF, year < 2022),
+       aes(x = year, y = results)) +
+    geom_segment(aes(xend = year, yend = 0), alpha = 0.2, size = 0.4) +
+    geom_point() +
+    scale_y_continuous(breaks = seq(0, 15000, 2500)) +
+    scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+    ## scale_y_log10() +
+    labs(x = "Year", y = paste0('Results for "', searchTerm, '"')) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank()## ,
+          ## panel.grid.major.y = element_line(colour = "grey", linetype = "dashed")
+          )
+@
+\caption{Number of results per year for search term ``\Sexpr{searchTerm}'' on
+  Google Scholar. The search was conducted on 18 October 2022.}
+\label{fig:scholar}
+\end{figure}
+
+In the midst of this doomsday, % , particularly from the hard-hit
+% field of psychology,
+various reforms were implemented to safe the reputation of science and to
+prevent a second crisis from happening \citep[for an overview see
+\eg{}][]{Munafo2017}. For instance, many journals adopted the ``registered
+report'' format \citep{Chambers2021} in which a study proposal is peer reviewed
+\emph{before} the study is conducted, and which, if accepted, gives provisional
+publication acceptance regardless of the study outcome. Similarly, digital
+infrastructure platforms, such as zenodo (\url{https://zenodo.org/}) or the open
+science framework (\url{https://osf.io/}), were created to facilitate
+preregistration, preprints, code, and data sharing, all of which have
+substantially increased over the last decade \citep{Kidwell2016, Nosek2018,
+  Rawlinson2019}. The practice of conducting replication studies has also gained
+popularity, and several journals and funders are now explicitly promoting and
+funding replication research \citep{NWO2016, NSL2018, Nature2022}.
+Figure~\ref{fig:scholar} illustrates this trend via the yearly number of results
+for ``\Sexpr{searchTerm}'' on Google Scholar over the last three decades. We see
+that the numbers have been rapidly growing, especially after the mid 2000s (with
+a minor drop in 2021, perhaps because of research slowing down due to the
+COVID-19 pandemic).
+
+
+
+
+\subsection{The statistics of replication studies}
+Despite the increased interest in replication studies, the research community
+has not yet agreed on one important question: When is a replication study
+successful? For this reason, replication researchers typically report the
+results from different methods for assessing replication success. For example,
+\citet{Opensc2015} state ``[t]here is no single standard for evaluating
+replication success. We evaluated [replicability] using significance and P
+values, effect sizes, subjective assessments of replication teams, and
+meta-analyses of effect sizes'' (p. 11). In the following, I will give an
+overview about these and other methods which have been used in practice.
+
+
+\begin{table}[!htb]
+  \centering
+  \caption{Study level summary statistics for original and replication study.
+    The cumulative distribution function of the standard normal distribution is
+    denoted by $\Phi(\cdot)$, and the $1 - \alpha$ quantile of the standard
+    normal distribution is denoted by $\Phi^{-1}(1 - \alpha) = \z{\alpha}$.
+    Confidence intervals and $p$-values are based on a normal approximation.}
+  \label{tab:meta}
+  \begin{tabular}{lcc}
+    \toprule
+    & Original study & Replication study \\
+    \midrule
+    effect estimate & $\that_o$ & $\that_{r}$ \\
+    standard error & $\sigma_{o}$ & $\sigma_{r}$ \\
+    $(1 - \alpha)$ confidence interval &
+    $[\that_{o} \pm \z{\alpha/2} \sigma_{o}]$ &
+    $[\that_{r} \pm \z{\alpha/2} \sigma_{r}]$ \\
+    % $[\that_{o} - \z{\alpha/2} \sigma_{o}, \that_{o} + \z{\alpha/2} \sigma_{o}]$ &
+    % $[\that_{r} - \z{\alpha/2} \sigma_{r}, \that_{r} + \z{\alpha/2} \sigma_{r}]$ \\
+    $z$-value & $z_{o} = \that_{o}/\sigma_{o}$ & $z_{r} = \that_{r}/\sigma_{r}$ \\
+    $p$-value (two-sided) & $p_{o} = 2\{1 - \Phi(|z_{o}|)\}$ & $p_{r} = 2\{1 - \Phi(|z_{r}|)\}$ \\
+    % One-sided $p$-value & $p_{o} = 1 - \Phi(|z_{o}|)$ & $p_{r} = 2\{1 - \Phi(|z_{r}|)\}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Most methods for analyzing replication studies can be formulated in terms of
+study level summary statistics as shown in Table~\ref{tab:meta}. % Effect
+% estimates, standard error, confidence intervals, and $p$-values
+All of these are routinely reported in researcher articles, and if one of them
+is missing they typically can, under some assumptions, be back-calculated from
+the others. Using summary statistics is also often the only possible way for
+conducting the analysis as the raw data from the original study may not be
+available to the replicators. The most important statistic is the effect
+estimate $\that$. It provides an estimate of the underlying effect size $\theta$
+which quantifies the effect or association of an intervention/exposure with an
+outcome variable. Typical effect sizes are mean differences and correlations
+(for continuous outcomes), odds ratios (for binary outcomes), or hazard ratios
+(for time to event outcomes). Depending on the effect size type, a
+transformation might be required so that the assumption of approximately
+normally distributed effect estimates around the unknown effect size $\theta$
+(for large enough sample sizes) is justifiable. This could be, for instance, the
+Fisher $z$-transformation for correlations, or the log-transformation for
+odds/hazard ratios \citep[chapter 11]{Cooper2019}. The associated standard error
+$\sigma$ represents the statistical uncertainty of the estimate. Under the
+assumption of (asymptotic) normality, confidence intervals for $\theta$ and
+$p$-values for testing the null hypothesis $H_{0} \colon \theta = 0$ can be
+computed as shown in Table~\ref{tab:meta}.
+
+
+\begin{table}[!htb]
+  \centering
+  \caption{Statistical criteria for assessing replication success which have
+    been used in practice \citep{Opensc2015, Camerer2016, Camerer2018, Cova2018,
+      Errington2021}.}
+  \label{tab:rsdef}
+  \begin{tabular}{p{0.21\textwidth}p{0.7\textwidth}}
+    \toprule
+    Criterion type & Description \\
+    \midrule
+    Significance & The original and replication $p$-values are smaller than
+                   a threshold $\alpha$ and their effect estimates show
+                   the same direction
+                   ($p_{o} < \alpha$, $p_{r} < \alpha$, and
+                   $\sign(\that_{o}) = \sign(\that_{r})$). Usually $\alpha = 5\%$.
+    \\
+                   & \\
+    Meta-analytic significance & The meta-analytic $p$-value is smaller than a threshold
+                                 $\alpha$ ($p_{m} = 2(1 - \Phi(|\that_{m}|/\sigma_{m})) < \alpha$)
+                                 where $\that_{m} =
+                                 (\that_{o}/\sigma_{o}^{2} + \that_{r}/\sigma^{2}_{r})\sigma^{2}_{m}$
+                                 is the  pooled effect estimate with standard error
+                                 $\sigma_{m} = (1/\sigma^{2}_{o} + 1/\sigma^{2}_{r})^{-1/2}$.
+                                 Usually $\alpha = 5\%$. \\
+                   & \\
+    Relative effect size & The effect estimate of the replication study goes in the same
+                           direction and is at least as large as $d_{\text{min}}$ times
+                           the original one ($d = \that_{r}/\that_{o} \geq d_{\text{min}}$).
+                           Usually $d_{\text{min}} = 1$. \\
+                   & \\
+    Confidence interval & The replication effect estimate is contained in the
+                          $(1 - \alpha)$ original confidence interval
+                          ($\that_{r} \in [\that_{o} \pm z_{\alpha/2}\sigma_{o}]$).
+                          Sometimes, also defined as the original effect estimate is
+                          contained in the $(1 - \alpha)$ replication confidence interval
+                          ($\that_{o} \in [\that_{r} \pm z_{\alpha/2}\sigma_{r}]$).
+                          Usually $\alpha = 5\%$. \\
+                   & \\
+    Prediction interval ($Q$-test) & The replication effect estimate is contained with its
+                                     $(1 - \alpha)$ prediction interval
+                                     ($\that_{r} \in [\that_{o} \pm z_{\alpha/2}\sqrt{\sigma_{o}^{2}
+                                     + \sigma_{r}^{2}}]$). Usually $\alpha = 5\%$.
+                                     This criterion is equivalent to $p_{Q} \geq \alpha$ where
+                                     $p_{Q}$ is the $p$-value from the meta-analytic $Q$-test\footnotemark.\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\footnotetext{The $p$-value from the $Q$-test is
+  $p_{Q} = 2\{1 - \Phi(\surd Q)\}$ where
+  $Q = \sum_{i \in \{o, r\}} (\that_{i} - \that_{m})^{2}\sigma_{i}^{-2} = (\that_{o}- \that_{r})^{2}(\sigma^{2}_{o} + \sigma^{2}_{r})^{-1}$
+  is the $Q$-statistic and $\that_{m}$ is the fixed-effects pooled estimate as
+  defined in Table~\ref{tab:rsdef}.}
+
+Table~\ref{tab:rsdef} lists commonly used criteria for replication success in
+terms of the summary statistics from Table~\ref{tab:meta}. The most popular
+criterion defines replication success by simultaneous statistical significance
+of original and replication study along with their effect estimates showing the
+same direction. This approach is also called the ``two-trials rule''
+\citep{Senn2008} in drug regulation or ``vote-counting'' in meta-analysis
+\citep{Cooper2019}. The criterion can similarly be defined through one-sided
+$p$-values, so that the original and replication effect estimate are not
+required to show the same direction as this is taken into account by the
+$p$-values. Some replication projects \citep{Opensc2015, Errington2021} also
+defined replication success via simultaneous non-significance of original and
+replication study ($p_{o} > \alpha$ and $p_{r} > \alpha$). However, with this
+definition ``replication success'' can almost always be achieved by conducting
+original and replication study with just very few samples so that the $p$-values
+are large. The approach is also logically questionable as it could be seen as an
+instance of the ``absence of evidence fallacy'' \citep{Altman1995} meaning that
+the failure to find evidence against the null hypothesis is erroneously
+interpreted as evidence for the null hypothesis. Meta-analytic extensions of the
+significance approach define replication success by significance of a combined
+effect estimate\footnote{The meta-analytic approach can also be given a Bayesian
+  interpretation: A flat prior distribution for the underlying effect size
+  $\theta$ is updated by the data from original and replication study.
+  Replication success defined by a meta-analytic $p$-value being smaller than
+  $\alpha$ is then equivalent to replication success via a Bayesian posterior
+  probability $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$,
+  respectively, $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$
+  depending on the direction of combined estimate.}. Typically, the assumption
+of a common underlying effect size is seen as reasonable so that fixed-effects
+meta-analysis is used for pooling. Random-effects meta-analysis has mostly been
+used if more than one replication study of the same original study are conducted
+since in this case replicators are often interested in also understanding
+between-replication heterogeneity \citep[\eg{} in][]{Klein2018}.
+
+The remaining criteria in Table~\ref{tab:rsdef} put more emphasis on
+compatibility in effect size between original and replication study. For
+example, the relative effect estimate $d = \that_{r}/\that_{o}$ quantifies how
+much the replication effect estimate changed compared to the original one, and
+the smaller $d$ the smaller the degree of replication success. Some projects
+also report a confidence interval for $d$ \citep{Camerer2016, Camerer2018},
+while others ignore its uncertainty and make a binary cut at one to define
+replication success \citep{Errington2021}.
+
+In contrast, the criteria based on confidence and prediction intervals define
+effect size compatibility on an absolute scale. However, the criterion based on
+the original confidence interval ignores the uncertainty from the replication,
+whereas the criterion based on the replication confidence interval ignores the
+uncertainty from the original study. The prediction interval criterion, on the
+other hand, takes into account both sources of uncertainty \citep{Patil2016}.
+Yet, also declaring ``replication success'' based on the prediction interval may
+be logically questionable due to its connection to the meta-analytic $Q$-test.
+% as it may also be seen as an instance of the ``absence of evidence fallacy''
+% \citep{Altman1995};
+That is, if the $p$-value from the $Q$-test is larger than $\alpha$ this is equivalent
+to the replication effect estimate $\that_{r}$ being contained in its
+$(1- \alpha)$ prediction interval. The null hypothesis of this test is defined
+that the underlying effect sizes of original and replication study are the same
+($H_{0} \colon \theta_{o} = \theta_{r}$), so a rejection of this null hypothesis
+corresponds to demonstrating replication failure and not replication success.
+Interpreting a failure to reject the null hypothesis as evidence for it is again
+an instance of the absence of evidence fallacy
+\citep{Hedges2019}. % To establish replication success a
+% test based on the null hypothesis $H_{0} \colon \theta_{o} \neq \theta_{r}$
+% would be required \citep{Hedges2019}.
+As in the case of defining replication success by simultaneous non-significance
+of original and replication study, the mismatch of the null hypothesis of the
+prediction interval criterion results in the undesirable property that
+``replication success'' can almost always be achieved if the sample size of the
+studies is small enough as the prediction interval becomes wider with larger
+standard errors.
+
+% The rapidly increasing conduct of replication studies has
+% outpaced the development of methodology for their analysis which is perhaps the
+% reason why many of these criteria have some logical flaws. For instance, the
+% confidence interval criterion does only take into account the statistical
+% variability of one of the two studies. As a result,
+
+\subsubsection{Example: Reproducibility Project Cancer Biology}
+I will now illustrate the assessment of replicability on data from the
+Reproducibility Project: Cancer Biology \citep{Errington2021}. This large-scale
+project attempted to replicate 53 landmark studies from the field of cancer
+biology. However, due to various difficulties (\eg{} missing information from
+the original studies or problems in conducting the experiments) only 23 of the
+53 studies could be repeated. \citet{Errington2021} report that these
+experiments led to data on 158 quantitative effects. However, from the data
+which they provide only 132 quantitative effects come with original and
+replication standardized mean difference effect estimates along with standard
+errors, and only these data will be used in the subsequent analyses.
+
+\begin{figure}[!htb]
+<< "RPCB-graph", fig.height = 3.25 >>=
+ciFormat. <- function(lower, upper) {
+    paste0("[", format(round(lower, 2), nsmall = 2),
+           ", ", format(round(upper, 2), nsmall = 2), "]")
+}
+ciFormat <- Vectorize(FUN = ciFormat.)
+pFormat. <- function(p) {
+    if (is.na(p)) {
+        return(NA)
+    } else if (p > 0.0001) {
+        return(as.character(signif(p, 2)))
+    } else {
+        return("< 0.0001")
+    }
+}
+pFormat <- Vectorize(FUN = pFormat.)
+za <- qnorm(p = 0.975)
+rpcb <- read.csv("data/rpcb.csv") |>
+    mutate(zo = smdo/so,
+           zr = smdr/sr,
+           c = so^2/sr^2,
+           d = smdr/smdo,
+           po2 = 2*(1 - pnorm(q = abs(zo))),
+           pr2 = 2*(1 - pnorm(q = abs(zr))),
+           sm = 1/sqrt(1/so^2 + 1/sr^2),
+           smdm = (smdo/so^2 + smdr/sr^2)*sm^2,
+           pm2 = 2*(1 - pnorm(q = abs(smdm/sm))),
+           Q = (smdo - smdr)^2/(so^2 + sr^2),
+           pQ = pchisq(q = Q, df = 1, lower.tail = FALSE),
+           dFormat = ifelse(d > 1,
+                            paste0("\\textcolor{nicegreen}{", round(d, 2),
+                                   "}"),
+                            paste0("\\textcolor{red}{", round(d, 2), "}")),
+           cioL = smdo - za*so,
+           cioU = smdo + za*so,
+           cirL = smdr - za*sr,
+           cirU = smdr + za*sr,
+           cimL = smdm - za*sm,
+           cimU = smdm + za*sm,
+           id = paste0("(", paper, ", ", experiment, ", ", effect, ")"),
+           po2Format = ifelse(po2 < 0.05,
+                              paste0("\\textcolor{nicegreen}{", pFormat(po2),
+                                     "}"),
+                              paste0("\\textcolor{red}{", pFormat(po2), "}")),
+           pr2Format = ifelse(pr2 < 0.05,
+                              paste0("\\textcolor{nicegreen}{", pFormat(pr2),
+                                     "}"),
+                              paste0("\\textcolor{red}{", pFormat(pr2), "}")),
+           pm2Format = ifelse(pm2 < 0.05,
+                              paste0("\\textcolor{nicegreen}{", pFormat(pm2),
+                                     "}"),
+                              paste0("\\textcolor{red}{", pFormat(pm2), "}")),
+           pQFormat = ifelse(pQ > 0.05, paste0("\\textcolor{nicegreen}{", pFormat(pQ),
+                                               "}"),
+                             paste0("\\textcolor{red}{", pFormat(pQ), "}")),
+           smdoFormat = paste(format(round(smdo, 2), nsmall = 2),
+                              ciFormat(lower = cioL, upper = cioU)),
+           smdrFormat = paste(format(round(smdr, 2), nsmall = 2),
+                              ciFormat(lower = cirL, upper = cirU)),
+           smdmFormat = paste(format(round(smdm, 2), nsmall = 2),
+                              ciFormat(lower = cimL, upper = cimU)),
+           rsig = factor(pr2 <= 0.05, levels = c(FALSE, TRUE),
+                         labels = c("italic(p[r]) > 0.05",
+                                    "italic(p[r]) <= 0.05")))
+## compute sceptical p-value (TODO fix problems with NA)
+ind <- !is.na(rpcb$zo) & !is.na(rpcb$zr) & !is.na(rpcb$c)
+rpcb$ps2 <- NA
+rpcb$ps2[ind] <- pSceptical(zo = rpcb$zo[ind], zr = rpcb$zr[ind], c = rpcb$c[ind],
+                            alternative = "two.sided", type = "nominal")
+rpcb$ps2Format <- NA
+rpcb$ps2Format[ind] <- ifelse(rpcb$ps2[ind] < 0.05, paste0("\\textcolor{nicegreen}{",
+                                                           pFormat(rpcb$ps2[ind]),
+                                                           "}"),
+                              paste0("\\textcolor{red}{", pFormat(rpcb$ps2[ind]), "}"))
+
+zoom <- c(-2, 12)
+alphazoom <- 0.6
+ltyzoom <- 3
+rpcbWithoutNA <- na.omit(rpcb)
+plotA <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
+    annotate(geom = "segment", x = zoom[1], xend = zoom[2],
+             y = zoom[1], yend = zoom[1], alpha = alphazoom,
+             lty = ltyzoom) +
+    annotate(geom = "segment", x = zoom[1], xend = zoom[2],
+             y = zoom[2], yend = zoom[2], alpha = alphazoom,
+             lty = ltyzoom) +
+    annotate(geom = "segment", x = zoom[1], xend = zoom[1],
+             y = zoom[1], yend = zoom[2], alpha = alphazoom,
+             lty = ltyzoom) +
+    annotate(geom = "segment", x = zoom[2], xend = zoom[2],
+             y = zoom[1], yend = zoom[2], alpha = alphazoom,
+             lty = ltyzoom) +
+    geom_abline(intercept = 0, slope = 1, alpha = 0.3) +
+    geom_hline(yintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
+    geom_vline(xintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
+    geom_point(aes(fill = rsig), shape = 21, alpha = 0.8) +
+    geom_rug(aes(color = rsig), size = 0.3, show.legend = FALSE) +
+    labs(x = "Original effect estimate (SMD)",
+         y = "Replication effect estimate (SMD)",
+         fill = "") +
+    coord_fixed(xlim = c(-5, 30), ylim = c(-5, 30)) +
+    scale_fill_discrete(labels = scales::parse_format()) +
+    theme_bw() +
+    theme(panel.grid = element_blank(),
+          legend.position = c(0.5, 0.835))
+
+plotB <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
+    geom_abline(intercept = 0, slope = 1, alpha = 0.3) +
+    geom_hline(yintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
+    geom_vline(xintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
+    geom_point(aes(fill = rsig), shape = 21, alpha = 0.8,
+               show.legend = FALSE) +
+    geom_rug(aes(color = rsig), size = 0.3, show.legend = FALSE) +
+    labs(x = "Original effect estimate (SMD)",
+         y = "",
+         fill = "") +
+    coord_fixed(xlim = zoom, ylim = zoom) +
+    theme_bw() +
+    theme(panel.grid = element_blank())
+ggpubr::ggarrange(plotA, plotB, ncol = 2, align = "v")
+@
+\caption{Results for 132 effects from the Reproducibility Project: Cancer
+  Biology \citep{Errington2021} for which effect estimates and standard errors
+  are available on standardized mean difference scale. The right plot shows a
+  zoomed-in view of the dotted area in the left plot. The \textit{p}-values are
+  recomputed using a normal approximation. Two study pairs with original effect
+  estimate larger than 80 are not shown.}
+\label{fig:rpcb}
+\end{figure}
+
+Figure~\ref{fig:rpcb} shows the original versus the replication effect estimate
+(on standardized mean difference scale) with the color indicating whether the
+replication study was statistically significant at the 5\% level (two-sided). As
+in most other replication projects, the majority of the replications show
+smaller effect estimates compared to their original counterparts (mean relative
+effect estimate $\bar{d} = \Sexpr{round(mean(rpcbWithoutNA[,"d"]), 2)}$). Many
+of the replications also fail to achieve statistical significance at the 5\%
+level. Specifically, from the
+\Sexpr{sum(rpcbWithoutNA$po2 < 0.05)} effects which were significant in the original study only \Sexpr{ sum(rpcbWithoutNA$po2 < 0.05
+  & rpcbWithoutNA$pr2 < 0.05 & rpcbWithoutNA$d > 0)} were also significant in
+the replication study (in the same direction).
+
+\begin{figure}[!htb]
+<< "RPCB-table1", results = "asis", fig.height = 4.8 >>=
+## show number of successes
+alpha <- 0.05
+dmin <- 1
+rpcbUpset<- rpcb |>
+    filter(!is.na(po2), !is.na(pr2), !is.na(smdo), !is.na(smdr),
+           !is.na(so), !is.na(sr)) |>
+    mutate("Significance" = as.numeric(po2 < alpha & pr2 < alpha & sign(smdo) == sign(smdr)),
+           "Meta analytic \nsignificance" = as.numeric(pm2 < alpha),
+           "Relative \neffect size" = as.numeric(d >= dmin),
+           "Prediction \ninterval" = as.numeric(pQ > alpha))
+nsig <- sum(rpcbUpset[,"Significance"], na.rm = TRUE)
+nma <- sum(rpcbUpset[,"Meta analytic \nsignificance"], na.rm = TRUE)
+nres <- sum(rpcbUpset[,"Relative \neffect size"], na.rm = TRUE)
+npi <- sum(rpcbUpset[,"Prediction \ninterval"], na.rm = TRUE)
+
+upset(rpcbUpset, sets = c("Significance", "Meta analytic \nsignificance",
+                          "Relative \neffect size", "Prediction \ninterval"),
+      order.by = "freq", mainbar.y.label = "Successful replications (combined criteria)",
+      sets.x.label = "Successful replications \n(single criterion)") #, empty.intersections = "on")
+@
+\caption{Upset plot for data on 132 effects from the Reproducibility Project:
+  Cancer Biology \citep{Errington2021} for which effect estimates and standard
+  errors are available on standardized mean difference scale. Shown are the
+  number of replication successes according to the different criteria from
+  Table~\ref{tab:rsdef} and their combinations. A level
+  $\alpha = \Sexpr{round(100*alpha, 2)}\%$ and a relative effect size threshold
+  $d_{\text{min}} = \Sexpr{dmin}$ are used.}
+\label{fig:upset}
+\end{figure}
+
+Figure~\ref{fig:upset} shows how many of the replications are successful
+according to the criteria from Table~\ref{tab:rsdef}, and their combinations.
+For the total 132 replications, most successes occur for the meta-analytic
+significance (\Sexpr{nma}) and the prediction interval criteria (\Sexpr{npi}),
+followed by significance (\Sexpr{nsig}), and relative effect size (\Sexpr{nres}).
+Looking at the combinations of the criteria, only in two replications are all of
+them satisfied simultaneously.
+
+A detailed view for a subset of the data from the project is given in
+Table~\ref{tab:RPCB}. For no single study pair in the table are all commonly
+used criteria satisfied simultaneously. For instance, the two pairs (48, 2, 1)
+and (16, 3, 3) at the top of the table satisfy the significance criterion
+($p_{o} < 0.05$ and $p_{r} < 0.05$), meta analytic significance ($p_{m} < 0.05$)
+and the $Q$-test/prediction interval criterion ($p_{Q} > 0.05$), yet the
+replication effect estimate is smaller than the original one ($d < 1$).
+Similarly, there is no single study pair for which all criteria indicate
+replication failure. For example, the pair (5, 1, 3) at the bottom of the table
+is a clear failure with respect to the relative effect estimate ($d < 1$) and
+the significance criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test
+does not indicate evidence for inconsistency of the two effect estimates
+($p_{Q} > 0.05$).
+
+Taken together, this analysis demonstrates that conclusions based on commonly
+used replication success criteria often differ. It is not always clear cut
+whether or not a replication is successful. Reducing replicability to a single
+criterion without mentioning these difficulties, as often done by the popular
+press \citep[\eg{} ``more than half of the findings did not hold up when
+retested'' in][]{Carey2015}, is a clear simplification of the matter.
+% that may harm the credibility of science.
+
+\begin{landscape}
+\begin{table}
+  \centering
+  \caption{Subset of results from the Reproducibility Project: Cancer Biology
+    \citep{Errington2021}. (P, X, E) denotes effect E from experiment X, from
+    original paper P. Shown are original $\that_{o}$, replication $\that_{r}$,
+    and pooled effect estimate $\that_{m}$ with 95\% confidence intervals,
+    variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$, relative effect estimate
+    $d = \that_{r}/\that_{o}$, original $p$-value $p_{o}$, replication $p$-value
+    $p_{r}$, meta-analytic $p$-value $p_{m}$, $Q$-test $p$-value $p_{Q}$, and
+    sceptical $p$-value $p_{\mathrm{S}}$. A level $\alpha = 5\%$ is used as
+    threshold for replication success via $p$-values, and a threshold
+    $d_{\text{min}} = 1$ for the relative effect estimate.}
+  \label{tab:RPCB}
+% \resizebox{1\textwidth}{!}{%
+<< "RPCB-table2", results = "asis" >>=
+## select a subset with one effect per paper
+set.seed(7)
+rpcbTable <- rpcb |>
+    na.omit() |>
+    filter(smdo < 80, smdr < 80) |>
+    group_by(paper) |>
+    sample_n(size = 1) |>
+    ungroup() |>
+    arrange(pr2) |>
+    select(id, smdoFormat, ## so,
+           smdrFormat, smdmFormat,
+           c, dFormat, ## sr,
+           po2Format, pr2Format, pm2Format, pQFormat, ps2Format
+           )
+
+rpcbXtable <- xtable(rpcbTable)
+colnames(rpcbXtable) <- c("(P, X, E)",
+                          "$\\that_o$ [95\\% CI]",
+                          ## "$\\sigma_o$",
+                          "$\\that_r$ [95\\% CI]",
+                          "$\\that_m$ [95\\% CI]",
+                          "$c$", #"$\\sigma^2_o/\\sigma^2_r$",
+                          "$d$", #"$\\that_r/\\that_o$",
+                          ## "$\\sigma_r$",
+                          "$p_o$",
+                          "$p_r$",
+                          "$p_m$",
+                          "$p_Q$",
+                          "$p_{\\text{S}}$"
+                          )
+print(rpcbXtable, booktabs = TRUE, floating = FALSE, include.rownames = FALSE,
+      sanitize.text.function = function(x) {x},
+      size = "small")
+@
+% %
+% }
+\end{table}
+
+\end{landscape}
+
+\subsection{Reverse-Bayes assessment of replication studies}
+In response to the lack of a standard criterion for replication success, various
+methods have been proposed \citep[among others]{Verhagen2014, Simonsohn2015,
+  Anderson2016, Patil2016, Johnson2016, Etz2016, vanAert2017, Ly2018, Harms2019,
+  Hedges2019, Mathur2020, Held2020, Pawel2020, Bonett2020}. The focus of this
+thesis is to refine and extended the proposal from \citet{Held2020} which
+combines \emph{reverse-Bayes inference} and \emph{Bayesian model criticism} in a
+method for assessing replication success. In the following, I will summarize its
+main ideas and technical underpinnings.
+
+\subsubsection{Reverse-Bayes inference}
+
+Bayesian inference is an approach to statistical inference where Bayes' theorem
+is used to make probability statements about unknown parameters based on the
+observed data. The central quantity for doing so is the distribution of the
+parameters conditional on the data, called the \emph{posterior distribution}. It
+can be obtained from Bayes' theorem
+\begin{align*}
+  f(\theta \given \text{data})
+  = f(\theta) \times \frac{f(\text{data} \given \theta)}{f(\text{data})}
+\end{align*}
+meaning that the \emph{prior distribution} for the parameter $\theta$ with
+density/probability mass function $f(\theta)$ is multiplied by the (normalized)
+likelihood of the data, also know as \emph{Bayesian updating}. Parameter values
+which increase the likelihood of the data become more likely \emph{a
+  posteriori}, however, they are also weighted by their plausibility \emph{a
+  priori} through the prior. As such, Bayesian inference provides a formal way
+for combining information from the data at hand with external knowledge encoded
+in the prior.
+
+However, many also consider the prior to be the weak point of Bayesian
+inference, as it is unclear how it should be specified in the absence of
+external knowledge. The \emph{reverse-Bayes} approach, first proposed by
+\citet{Good1950}, is one way of dealing with this issue. The idea is to flip
+Bayes' theorem around
+\begin{align*}
+  f(\theta) = f(\theta \given \text{data}) \times
+  \frac{f(\text{data})}{f(\text{data} \given \theta)}
+\end{align*}
+and instead ``downdate'' a posterior with the observed data. So, in contrast to
+the conventional ``forward-Bayes'' approach where we start with a prior, update
+it with the data, and end up with a posterior, the reverse-Bayes approach starts
+with the posterior and ends up with the prior. Reverse-Bayes inference then
+revolves around the question whether the resulting prior is plausible in light
+of external knowledge, and if so, this could be seen as support for the
+specified posterior.
+
+To illustrate reverse-Bayes inference, let us return to the replication setting.
+Assume we want to conduct inference about the unknown effect size $\theta$ based
+on the effect estimate from the original study $\that_{o}$ and its standard
+error $\sigma_{o}$. We will assume that $\that_{o}$ is normally distributed
+around the unknown effect size $\theta$ with (known) variance equal to its
+squared standard error $\sigma^{2}_{o}$, here and henceforth denoted by
+$\that_{o} \given \theta \sim \Nor(\theta, \sigma^{2}_{o})$. Furthermore, we
+specify a zero-mean normal prior with variance $\tau^{2}$ for the effect size
+$\theta$, representing the position of a sceptic who does not believe in the
+presence of a non-zero effect. The ``stubbornness'' of the sceptic is determined
+by how large the variance $\tau^{2}$ is chosen. Combining the sceptical prior
+with the likelihood produces then a posterior which is again normal
+$\theta \given \that_{o}, \sigma_{o} \sim \Nor(\mu_{\text{post}}, \sigma^{2}_{\text{post}})$
+with mean and variance
+\begin{align*}
+  &\mu_{\text{post}} = \frac{\that_{o}}{1 + \sigma^{2}_{o}/\tau^{2}}&
+  &\text{and}&
+  &\sigma^{2}_{\text{post}} = \frac{1}{1/\sigma^{2}_{o} + 1/\tau^{2}}.&
+\end{align*}
+The associated $(1- \alpha)$ highest posterior density credible interval is
+given by
+\begin{align}
+  \left[\mu_{\text{post}} \pm z_{\alpha/2} \, \sigma_{\text{post}}\right]
+  \label{eq:postCI}
+\end{align}
+and if this credible interval excludes parameter values smaller/larger than zero
+(depending on the orientation of the effect size) this may be interpreted as
+evidence\footnote{For readers who do not agree with this notion of evidence, do
+  not panic. In this thesis we will extend this reverse-Bayes procedure to use
+  alternative measures of evidence, such as Bayes factors.} for a genuine effect
+found in the original study.
+
+Depending on how large the prior variance $\tau^{2}$ is chosen, the posterior
+credible interval~\eqref{eq:postCI} will either include or exclude zero.
+Different data analysts may have different degrees of scepticism and may thus
+choose different prior variances $\tau^{2}$. As a default choice,
+\citet{Held2020} proposed to use the reverse-Bayes approach from
+\citet{Matthews2001b}, that is, to determine the \emph{sufficiently sceptical
+  prior variance} $\tau^{2}_{\alpha}$ so that the appropriate limit of the
+$(1 - \alpha)$ credible interval is just fixed to zero. The resulting prior then
+represent the beliefs of a sceptic who is just stubborn enough to not find the
+original study convincing at level $\alpha$.
+
+\begin{figure}[!htb]
+<< "RBexample", fig.height = 3 >>=
+## show reverse-Bayes for replications for a study and its three replications
+exDat <- rpcb |>
+    filter(id == "(9, 2, 5)")
+to <- unique(exDat$smdo)
+so <- unique(exDat$so)
+zo <- to/so
+tr <- exDat$smdr
+sr <- exDat$sr
+
+## do reverse-Bayes calculations
+alpha <- 0.05
+za <- qnorm(p = 1 - alpha/2)
+sprior <- sqrt(so^2/(zo^2/za^2 - 1))
+sposterior <- sqrt(1/(1/sprior^2 + 1/so^2))
+mposterior <- sposterior^2*to/so^2
+plotDF <- data.frame(t = c(to, tr, 0, mposterior),
+                     s = c(so, sr, sprior, sposterior),
+                     type = c("Original", rep("Replication", 3), "Prior",
+                              "Posterior"))
+plotDF$type <- factor(plotDF$type, levels = c("Original", "Posterior", "Prior",
+                                              "Replication"))
+
+## compute prior density
+xprior <- seq(-3*sprior, 3*sprior, length.out = 200)
+dprior <- dnorm(x = xprior, mean = 0, sd = sprior)
+dpriorScaled <- 0.75*dprior#*max(dprior)
+
+## compute posterior density
+xpost <- seq(mposterior - 3*sposterior, mposterior + 3*sposterior,
+             length.out = 200)
+dpost <- dnorm(x = xpost, mean = mposterior, sd = sposterior)
+dpostScaled <- 0.75*dpost#*max(dpost)
+
+## prior data conflict assessment
+pbox <- pchisq(q = tr^2/(sr^2 + sprior^2), df = 1, lower.tail = FALSE)
+pboxFormat <- pFormat(p = pbox)
+pboxLabel <- paste("italic(p)['Box'] == ", pboxFormat)
+plotDF$Label <- c(NA, pboxLabel, NA, NA)
+dodgewidth <- 0.5
+
+ggplot(data = plotDF, aes(x = type, y = t)) +
+    geom_hline(yintercept = 0, lty = 2, alpha = 0.3) +
+    geom_pointrange(aes(ymin = t - za*s, ymax = t + za*s, col = type),
+                    fatten = 3,
+                    position = position_dodge2(width = dodgewidth),
+                    show.legend = FALSE) +
+    annotate("segment", x = 1.85, y = -0.5, xend = 1.98, yend = -0.05,
+             alpha = 0.6,
+             arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+    annotate("text", x = 1.85, y = -0.6, size = 3, alpha = 0.6,
+             label = paste0(round(100*alpha/2, 2), "% quantile fixed at zero")) +
+    annotate("segment", x = 1.6, y = 2.25, xend = 2.7, yend = 2.25,
+             alpha = 0.6,
+             arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+    annotate("text", x = 2.1, y = 2.45, size = 3, alpha = 0.6,
+             label = "reverse-Bayes analysis") +
+    annotate("segment", x = 3, y = 2.25, xend = 4, yend = 2.25,
+             alpha = 0.6,
+             arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+    annotate("text", x = 3.45, y = 2.45, size = 3, alpha = 0.6,
+             label = "assess prior-data conflict") +
+    annotate("path", x = 3 + dpriorScaled, y = xprior, color = 2, alpha = 0.5) +
+    annotate("path", x = 2 + dpostScaled, y = xpost, color = 4, alpha = 0.5) +
+    geom_text(aes(label = Label, y = t - za*s*0.9),
+              position = position_dodge2(width = dodgewidth),
+              parse = TRUE, size = 2.75, alpha = 0.8, hjust = -0.08) +
+    labs(x = NULL, y = "Effect size") +
+    scale_color_manual(values = c("Original" = 1, "Replication" = 1,
+                                  "Posterior" = 4, "Prior" = 2)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank(),
+          axis.text.x = element_text(size = 11))
+@
+\caption{Illustration of reverse-Bayes assessment of replication success using
+  data from the original study (Paper 9, Experiment 2, Effect 5) and its three
+  replication studies from the Reproducibility Project: Cancer Biology
+  \citep{Errington2021}. Shown are effect estimates and prior/posterior means
+  with \Sexpr{100*(1-alpha)}\% confidence/credible interval. The original finding is
+  challenged with a ``sceptical'' prior, sufficiently concentrated around zero so
+  that the resulting posterior is no longer convincing at level
+  $\alpha = \Sexpr{100*(alpha)}\%$.}
+\label{fig:RBillustration}
+\end{figure}
+
+Figure~\ref{fig:RBillustration} illustrates the derivation of the sufficiently
+sceptical prior variance for an original study included in the Reproducibility
+Project: Cancer Biology with standardized mean difference effect estimate
+$\that_{o} = \Sexpr{round(to, 2)}$ and standard error
+$\sigma_{o} = \Sexpr{round(so, 2)}$. We see that a sufficiently sceptical prior
+with variance $\tau_{\alpha}^{2} = \Sexpr{round(sprior, 2)}^{2}$ is required to
+render the resulting posterior no longer convincing at level
+$\alpha = \Sexpr{round(100*alpha, 2)}$\%.
+
+\citet{Held2019a} showed that the sufficiently sceptical prior variance
+$\tau^{2}_{\alpha}$ for a level $\alpha$ is available in closed-form
+\begin{align}
+  \tau^{2}_{\alpha} =
+  \begin{cases}
+    \dfrac{\sigma^{2}_{o}}{\left(z_{o}^{2}/z_{\alpha/2}^{2}\right) - 1}
+    & \text{if} ~ z_{o}^{2} > z_{\alpha/2}^{2} \\
+    \text{undefined} & \text{else.}
+  \end{cases}
+  \label{eq:tau2alpha}
+\end{align}
+From~\eqref{eq:tau2alpha} we see that convincing original studies (those with
+large absolute $z$-values $|z_{o}|$) require smaller sufficiently sceptical
+prior variances to render the posterior no longer convincing for the same level
+$\alpha$. Conversely, if the original study is not convincing enough (if
+$|z_{o}| \leq z_{\alpha/2}$) the sufficiently sceptical prior variance is
+undefined meaning that the data provide so little evidence on their own that no
+scepticism is required to make them unconvincing.
+
+This shows that the reverse-Bayes approach based on sceptical priors can be used
+to formally ``challenge'' the finding of an original study. However, once this
+sceptical prior is determined, the question becomes whether it is plausible in
+light of external data. A natural candidate for answering the question are data
+from a replication study. In the following, I will show how Bayesian model
+criticism can be used for doing so.
+
+
+% \begin{figure}[!htb]
+%   \centering
+%   \begin{tikzpicture}[node distance = 5em, thick]
+%     % nodes %
+%     \node[text width=5em, text centered] (data) {Likelihood $f(\text{data} \,|\, \theta)$};
+%     \node[text width=3em, text centered] (prior) [left=6.5em of data] {Prior $f(\theta)$};
+%     \node[text width=5em, text centered] (post) [right=5em of data] {Posterior $f(\theta \,|\, \text{data})$};
+%     \node[text width=10em, text centered] (RBinference) [below of=prior] {Reverse-Bayes inference};
+%     \node[text width=10em, text centered] (FBinference) [below of=post] {Forward-Bayes inference};
+
+%     % edges %
+%     \draw [->, dotted] (prior) to [out=45, in=135, looseness=0.3] node[above]{Bayesian updating} (post);
+%     \draw [->, dashed] (post) to [out=225, in=315, looseness=0.3] node[below]{Bayesian downdating} (prior);
+%     \draw [->, dashed] (prior) to [out=270, in=90, looseness=0] (RBinference);
+%     \draw [->, dotted] (post) to [out=270, in=90, looseness=0] (FBinference);
+%   \end{tikzpicture}
+%   \caption{Schematic illustration of forward-Bayes and reverse-Bayes inference
+%     for an unknown parameter $\theta$.}
+%   \label{fig:illustrationRB}
+% \end{figure}
+
+\subsubsection{Bayesian model criticism}
+Model criticism describes the assessment of compatibility between observed data
+and their assumed statistical model. If incompatibility is diagnosed, this
+alarms the data analyst that inferences based on the model may be invalid and
+modifications may be required. A formal framework for Bayesian model criticism
+was first introduced by \citet{Box1980}. To understand whether a Bayesian model
+M consisting of a joint distribution for parameter $\theta$ and data is
+adequate, Box gave the following fundamental decomposition of the joint
+distribution
+\begin{align*}
+  f(\theta, \text{data} \given \text{M})
+  % &= f(\theta \given \text{M}) \times f(\text{data} \given \theta, \text{M})
+  % \label{eq:decomp1} \\
+  &= f(\theta \given \text{data}, \text{M}) \times f(\text{data} \given \text{M}).
+    % \label{eq:decomp2}.
+\end{align*}
+% He noted from the first decomposition~\eqref{eq:decomp1} that the model M may
+% only be regarded as adequate if current belief about
+He reasoned that inferences based on the left factor, the posterior distribution
+$f(\theta \given \text{data}, \text{M})$, should only be trusted if the right
+factor, the prior predictive distribution
+\begin{align*}
+  f(\text{data} \given \text{M})
+  = \int f(\text{data} \given \theta, \text{M}) \,
+  f(\theta \given \text{M}) \, \text{d}\theta
+\end{align*}
+is compatible with the observed data. If the model M was indeed adequate, the
+empirical distribution of the observed data should be close to their predictive
+distribution under the model M. On the other hand, if the empirical distribution
+differed from the predictive distribution, this would imply that model M is
+inadequate due to misspecification of the likelihood
+$f(\text{data} \given \theta, \text{M})$ and/or misspecification of the prior
+$f(\theta \given \text{M})$.
+
+
+Based on these observations, Box proposed two general approaches for conducting
+Bayesian model criticism. First, the predictive density of the observed data (or
+the value of a ``checking function'' applied to the observed data) can be
+compared to its reference distribution via a \emph{prior predictive $p$-value}
+\begin{align}
+  p_{\text{Box}}
+  = \Pr\left\{f(\text{data} \given \text{M}) <
+  f(\text{observed data} \given \text{M})\right\},
+  \label{eq:pppval}
+\end{align}
+that is, the probability of obtaining data with lower predictive density (``more
+surprising'' data) than the observed data. The lower the $p$-value
+$p_{\text{Box}}$, the more incompatibility between the observed data and the
+assumed model M. This approach was used by \citet{Held2020}, and it will soon
+be explained in more detail.
+% The literature on Bayesian model criticism following \citet{Box1980} also
+% mostly focused on prior predictive $p$-values. However, what has been mostly
+% ignored is that Box also mentioned an alternative approach.
+However, Box also mentioned a second approach which has mostly been forgotten.
+If a second ``benchmarking'' model $\text{M}_{2}$ alternative to the model under
+investigation $\text{M}_{1}$ is available, Box proposed that the \emph{prior
+  predictive ratio}
+\begin{align*}
+  \text{PR}_{\text{Box}}
+  = \frac{f(\text{observed data} \given \text{M}_{1})}{f(\text{observed data} \given \text{M}_{2})},
+\end{align*}
+the ratio of predictive densities from the observed data under both models,
+could be used to judge the relative adequacy of model $\text{M}_{1}$. Again, the
+lower the predictive ratio $\text{PR}_{\text{Box}}$, the less compatible the
+observed data with the model $\text{M}_{1}$. Bayesian model criticism approaches
+based on predictive ratios will be used in later parts of this
+thesis\footnote{Some readers may have noted that the predictive ratio is also
+  the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
+  $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
+  approach is therefore particularly useful in combination with reverse-Bayes
+  procedures based on Bayes factors, as will be demonstrated in this thesis.}.
+
+% In general,
+% a distinction can be made between checking for \emph{likelihood-data conflict}
+% and checking for \emph{prior-data conflict}. In the following, we will assume
+% that the likelihood is adequate and focus on the
+
+
+
+We now return to the replication setting. Having obtained a sceptical prior
+$\theta \sim \Nor(0, \tau^{2}_{\alpha})$ with sufficiently sceptical prior
+variance $\tau^{2}_{\alpha}$ from~\eqref{eq:tau2alpha}, the aim is now to assess
+its adequacy in light of the data from a replication study. If we are able to
+show that the prior is inadequate, this would demonstrate that scepticim
+regarding the original finding is unjustified and that the original study
+therefore provided evidence for a genuine effect. Under the assumption of a
+normal likelihood for the replication effect estimate, \ie{}
+$\that_{r} \given \theta \sim \Nor(\theta, \sigma^{2}_{r})$, the prior
+predictive distribution is given by
+$\that_{r} \given \theta \sim \Nor(0, \sigma^{2}_{r} + \tau^{2}_{\alpha})$. As
+the prior predictive distribution is symmetric around zero, the prior predictive
+$p$-value~\eqref{eq:pppval} is
+% the probability of observing replication effects larger in absolute value than
+% the observed one $\that_{r}$ under
+\begin{align}
+  p_{\text{Box}}
+  = 2\left\{1 - \Phi\left(\frac{|\that_{r}|}{\sqrt{\sigma^{2}_{r} +
+  \tau^{2}_{\alpha}}}\right)\right\}.
+  \label{eq:pboxNorm}
+\end{align}
+
+<< "example2" >>=
+## do reverse-Bayes calculations
+alpha2 <- 0.1
+za2 <- qnorm(p = 1 - alpha2/2)
+sprior2 <- sqrt(so^2/(zo^2/za2^2 - 1))
+
+## prior data conflict assessment
+pbox2 <- pchisq(q = tr^2/(sr^2 + sprior2^2), df = 1, lower.tail = FALSE)
+pboxFormat2 <- pFormat(p = pbox2)
+@
+
+Figure~\ref{fig:RBillustration} shows the prior predictive $p$-values
+from~\eqref{eq:pboxNorm} computed for three example replication studies from the
+Replication Project: Cancer Biology. We see that larger effect estimates show
+prior predictive $p$-values $p_{\text{Box}}$, indicating more prior-data
+conflict. This is because the standard errors from all three replications are
+roughly the same size, so that mostly the distance between zero and the
+replication effect estimate matters. The $p$-values suggest that there is hardly
+any conflict between the sceptical prior and the first two replications (those
+with $p_{\text{Box}} = \Sexpr{pboxFormat[1]}$ and
+$p_{\text{Box}} = \Sexpr{pboxFormat[2]}$), while the conflict seems larger for
+the third one (the one with $p_{\text{Box}} = \Sexpr{pboxFormat[3]}$).
+
+% However, it is not clear how numerical values of $p_{\text{Box}}$ should be
+% interpreted and below which value a replication should be declared
+% ``successful''.
+\citet{Held2020} then defined replication success at level $\alpha$ by
+\begin{align*}
+  p_{\text{Box}} \leq \alpha,
+\end{align*}
+that is, replication success is established if there is more conflict between
+the sceptical prior and the replication data than there was evidence against the
+null hypothesis in the original study. For the examples in
+Figure~\ref{fig:RBillustration}, all prior predictive $p$-values are larger than
+the level $\alpha = 5\%$ used for computing the sufficiently sceptical prior
+variance ($\tau^{2}_{\alpha} = \Sexpr{round(sprior, 2)}^{2}$), so neither of
+them achieves replication success at level $\alpha = 5\%$. However, at a larger
+level, \eg{} $\alpha = \Sexpr{round(alpha2*100, 2)}\%$, the corresponding
+sufficiently sceptical prior variance would be smaller
+($\tau^{2}_{\alpha} = \Sexpr{round(sprior2, 2)}^{2}$). Consequently, there would
+be more conflict between the prior and the replication data,
+% (in the same order as in Figure~\ref{fig:RBillustration}:
+% $p_{\text{Box}} = \Sexpr{pboxFormat2[1]}$,
+% $p_{\text{Box}} = \Sexpr{pboxFormat2[2]}$, and
+% $p_{\text{Box}} = \Sexpr{pboxFormat2[3]}$),
+so that the third replication would be successful (since the prior predictive
+$p$-value would be
+$p_{\text{Box}} = \Sexpr{pboxFormat2[3]} < \Sexpr{round(alpha2*100, 2)}\%$).
+
+<< "example3" >>=
+## do reverse-Bayes calculations
+alpha2 <- 0.1
+za2 <- qnorm(p = 1 - alpha2/2)
+sprior2 <- sqrt(so^2/(zo^2/za2^2 - 1))
+
+## prior data conflict assessment
+pbox2 <- pchisq(q = tr^2/(sr^2 + sprior2^2), df = 1, lower.tail = FALSE)
+pboxFormat2 <- pFormat(p = pbox2)
+
+zr <- tr/sr
+c <- so^2/sr^2
+ps <- pSceptical(zo = zo, zr = zr, c = c, alternative = "two.sided", type = "nominal")
+psFormat <- pFormat(p = ps)
+@
+\subsubsection{The sceptical \textit{p}-value}
+To remove the dependence on the level $\alpha$, \citet{Held2020} proposed to
+determine the smallest level at which replication success can be established. He
+called this level the \emph{sceptical $p$-value} $p_{\text{S}}$, and showed that
+it is available in closed-form
+\begin{align*}
+  p_{\text{S}}
+  % = \inf_{\alpha \in (0, 1)} \left\{\alpha : p_{\text{Box}} \leq \alpha \right\}.
+  = 2\left\{1 - \Phi(|z_{\text{S}}|)\right\}
+\end{align*}
+where
+\begin{align*}
+  z_{\text{S}}^{2}
+  = \begin{cases}
+    z^{2}_{\text{H}}/2 & \text{for} ~ c = 1 \\
+    \left\{\surd\left[z_{\text{A}}^{2}\left\{z_{\text{A}}^{2} +
+          z_{\text{H}}^{2}(c - 1)\right\}\right]
+      - z_{\text{A}}^{2}\right\}/(c - 1)
+    & \text{for} ~ c \neq 1
+  \end{cases}
+\end{align*}
+with arithmetic mean $z_{\text{A}}^{2} = (z^{2}_{o} + z^{2}_{r})/2$ and harmonic
+mean $z_{\text{H}}^{2} = 2/(1/z^{2}_{o} + 1/z^{2}_{r})$ of the squared
+$z$-statistics, and variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$.
+Replication success at level $\alpha$ is then equivalent to
+$p_{\text{S}} \leq \alpha$. For instance, the sceptical $p$-values of the three
+replication studies in Figure~\ref{fig:RBillustration} are
+$p_{\text{S}} = \Sexpr{psFormat[1]}$, $p_{\text{S}} = \Sexpr{psFormat[2]}$, and
+$p_{\text{S}} = \Sexpr{psFormat[3]}$ (from left to right), so we can see that
+the third replication is unsuccessful at level $\alpha = 5\%$ but successful at
+level $\alpha = 10\%$. However, the sceptical $p$-value does not necessarily
+have to be dichotomized but can also be interpreted as a quantitative measure of
+replication success, the smaller $p_{\text{S}}$ the higher the degree of
+replication success.
+
+The sceptical $p$-value has several interesting properties \citep[section
+3]{Held2020}: First, it is always larger than the maximum of the original and
+replication $p$-values ($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that
+both $p$-values have to be smaller than $\alpha$ so that replication success
+based on $p_{\text{S}} \leq \alpha$ is possible. Second, if the $p$-values
+$p_{o}$ and $p_{r}$ remain fixed but the relative effect estimate
+$d = \that_{r}/\that_{o}$ decreases, the sceptical $p$-value increases, meaning
+that shrinkage of the replication effect estimate is penalized. The sceptical
+$p$-value hence requires \emph{both} studies to be sufficiently convincing on
+their own (in terms of their $p$-values), similarly to the significance
+criterion for replication success. Unlike the significance criterion, however,
+if the $p$-values remain fixed but the replication effect estimate $\that_{r}$
+becomes smaller than the original estimate $\that_{o}$, the sceptical $p$-value
+indicates less replication success. This property seems desirable in the
+replication setting as a smaller replication effect estimate $\that_{r}$ may not
+be practically relevant anymore, despite its statistical significance.
+
+The results from the Reproducibility Project: Cancer Biology in
+Table~\ref{tab:RPCB} illustrate these two properties. The third study from above
+(19, 1, 2) fails to achieve replication success at level $\alpha = 5\%$ with the
+sceptical $p$-value, even though the replication study was highly convincing
+--the effect estimate was almost five times as large as in the original study.
+Yet, as the approach requires both studies to be convincing on their own --and
+the original study was not significant at the 5\% level-- replication success at
+this level is impossible with the sceptical $p$-value. The second property is
+illustrated by the fifth study from above (1, 3, 5). Here the original study was
+convincing and also the replication study achieved significance. However, the
+effect estimate from the replication was roughly 60\% smaller than the one from
+the original study, and significance is merely achieved because the standard
+error was much smaller (\ie{} around $1/\surd c \approx 1/2.8$ times). The
+sceptical $p$-value is therefore only $p_{\text{S}} = 0.25$, indicating hardly
+any replication success.
+
+This concludes the introduction to replication studies and the summary of the
+reverse-Bayes assessment of replication success. The interested reader is
+referred to the original article by \citet{Held2020} for additional properties
+(\eg{} the null distribution of the sceptical $p$-value) and extensions of the
+procedure (\eg{} a one-sided version of the sceptical $p$-value, power and
+sample size calculations). However, this introduction should have prepared the
+reader well enough to understand the remaining parts of this thesis.
+
+
+\subsubsection{Software and data}
+Code and data to reproduce the analyses and recompile the thesis are available
+at \url{https://doi.org/10.5281/zenodo.XXXXXXX}. All analyses were conducted in
+the R programming language version \Sexpr{paste(version$major, version$minor,
+  sep = ".")} \citep{R}. The packages \texttt{dplyr} \citep{Wickham2022},
+\texttt{ggplot2} \citep{Wickham2016}, \texttt{knitr} \citep{Xie2022},
+\texttt{ReplicationSuccess} \citep{Held2020}, \texttt{UpSetR}
+\citep{Gehlenborg2019}, and \texttt{xtable} \citep{Dahl2019} were used. The
+CC-By 4.0 licensed data from the Reproducibility Project: Cancer Biology
+\citep{Errington2021} were downloaded from
+\url{https://doi.org/10.17605/osf.io/e5nvr}. The relevant variables were then
+extracted from the file ``\texttt{RP\_CB Final Analysis - Effect level
+  data.csv}''.
+
+
+<< "sessionInfo1", eval = Reproducibility, results = "asis" >>=
+## print R sessionInfo to see system information and package versions
+## used to compile the manuscript (set Reproducibility = FALSE, to not do that)
+cat("\\newpage \\section*{Computational details}")
+@
+<< "sessionInfo2", echo = Reproducibility, results = Reproducibility >>=
+sessionInfo()
+@

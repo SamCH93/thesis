@@ -1,0 +1,122 @@
+% % Aus der Promotionsverordnung MNF §11 (4):
+% % "Dem wissenschaftlichen Teil der Dissertation ist eine allgemein
+% % verständliche kurze Zusammenfassung voranzustellen."
+
+% \cleardoublepage
+% \pdfbookmark{Zusammenfassung}{abstract_DE}
+
+% { % need this extra grouping to avoid carry-over effects
+% \begin{otherlanguage}{ngerman}
+% \enlargethispage{4\baselineskip}
+% \begin{center}\abstractnamefont
+%   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+%   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+%   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+%   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+%   eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+%   in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor
+%   sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+%   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+%   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+%   aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+%   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+%   culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+%   amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+%   et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+%   ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+%   in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+%   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+%   officia deserunt mollit anim id est laborum.
+
+% \end{center}
+% \end{otherlanguage}
+% }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\pdfbookmark{Abstract}{abstract_EN}
+
+\enlargethispage{4\baselineskip}
+\begin{center}\abstractnamefont
+  \textbf{Abstract}
+\end{center}
+
+The fact that a scientific finding can be replicated in an independent
+replication study is central for its credibility. However, various large-scale
+replication failures have shown that the replicability of scientific findings is
+often lower than expected. This ``replication crisis'' has led to several
+methodological reforms in the past decade, an increased conduct of replication
+studies being one of them. Yet despite this rise of replication research, there
+is no consensus on which statistical methods should be used for the design and
+analysis of replication studies; Various methods already exist and various new
+ones have been proposed in response to the crisis. This thesis centres around
+the proposal from \citet{Held2020}, which is based on a reverse-Bayes approach.
+The key idea is to reverse the traditional ``forward'' use of Bayes' theorem
+(``prior + likelihood $\rightarrow$ posterior''), starting instead with a
+pre-specified posterior and deducing the corresponding prior (``posterior +
+likelihood $\rightarrow$
+prior''). % As such, the reverse-Bayes approach naturally fits to the replication
+% setting as it enables the mathematical formalization of scepticism regarding the
+% finding from the original study.
+This allows to challenge the original finding by determining a sceptical prior
+for the underlying effect size such that the resulting posterior is no longer
+convincing. This prior then represents the position of a sceptic who remains
+unconvinced by the original study. Whether or not the sceptics' position is
+justified can then be assessed in light of the new data from the replication
+study. The larger the conflict between the replication data and the sceptic, the
+larger the degree of replication success. This procedure can be summarized in a
+single quantitative measure of replication success, termed the sceptical
+$p$-value.
+
+The first and largest part of the thesis consists of extending this procedure. A
+first extension replaces tail probabilities by Bayes factors as measures of
+evidence. The sceptical prior is now determined such that the original finding
+is no longer convincing in terms of a Bayes factor. In contrast to tail
+probabilities, Bayes factors have a more natural interpretation and allow for
+direct quantification of evidence for one hypothesis versus another. Similarly
+as with the sceptical $p$-value, the procedure leads to a single measure
+quantifying the degree of replication success called the sceptical Bayes factor.
+A second extensions recalibrates the original procedure to produce more
+appropriate inferences in terms of effect size. % from the relative effect size
+% perspective
+The recalibration is chosen such that for borderline significant original
+studies, replication success can only be achieved if the replication effect
+estimate is larger than the original one. The third extension provides a
+framework for Bayesian design of replication studies. The framework allows
+combining the data from the original study with external knowledge, which leads
+to potentially more efficient designs compared to classical approaches.
+
+The second part of the thesis is concerned with reverse-Bayes approaches in
+general. The reverse-Bayes idea was first proposed in the 1950s, but it has
+mostly been forgotten. To increase awareness and show potential use cases,
+reverse-Bayes history and methods are summarized in a comprehensive review.
+Furthermore, a short commentary on a recently proposed reverse-Bayes method
+draws connections to other reverse-Bayes methods.
+
+The last part of the thesis revolves around research integrity issues in
+methodological research. Questionable research practices, such as selective
+reporting of results, are often seen as main cause for the low replicability in
+applied research. These practices can similarly harm methodological research,
+but this is often not recognized. To raise awareness, an illustrative simulation
+study is conducted in which it is shown how a novel method can easily be
+presented as superior over established competitor methods if questionable
+research practices are employed.
+
+
+\textbf{Key words}: Bayesian inference, meta-science, replication studies
+
+
+\newpage ~
+
+\newpage
+
+
+
+\begin{center}
+  \vspace*{5cm}
+
+  \textit{Dedicated to my mother Christa. \\
+    You are deeply missed.}
+\end{center}

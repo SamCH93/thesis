@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Settings for the thesis (to \input{} in the header of the master document)
+%%%
+%%% Copyright (C) 2015-2016  Sebastian Meyer
+%%% (heavily) modified by Samuel Pawel 2022, thanks Sebastian!
+%%%
+%%% This template can be redistributed and/or modified under the terms
+%%% of the GNU General Public License, version 2 or later.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc} % character encoding of LaTeX source files
+\usepackage[T1]{fontenc} % make hyphenation work with umlauts
+\usepackage[UKenglish]{babel} % languages used in the manuscript
+
+%%% Colors
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,0.5} % URL color
+\definecolor{nicegreen}{HTML}{008000} % nice green for table
+
+%%% Bibliography
+\usepackage{natbib}
+\usepackage{chapterbib} % bibliographies per chapter
+\usepackage{doi} % clickable doi in citation
+% redefine bibliography command to use less space
+\renewcommand\bibsection{%
+   \section*{Bibliography}%
+   % \markboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
+}%
+
+
+
+%%% margins
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=25mm,
+  right=25mm,
+  top=30mm,
+  bottom=40mm,
+}
+
+%%% Figures
+\usepackage{graphicx}
+\usepackage{wrapfig} % wrap figures with text
+\usepackage{pdflscape} % pdf rotates in landscape mode
+
+%%% tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+%%% Typesetting
+\usepackage{ellipsis} % correct white space around \dots
+\usepackage[sc]{mathpazo} % Palatino (replaces Computer Modern font)
+\linespread{1.05} % Palatino font needs slightly more space
+% \usepackage[scaled=.95]{helvet} % use Helvetica as sans serif font
+\usepackage{sourcesanspro} % use source sans pro as sans serif font
+\usepackage[shortlabels]{enumitem} % supersedes the enumerate package
+
+%%% Math packages
+\usepackage{amsmath} % improved math environments
+\usepackage{amsfonts,amssymb} % bold math and extended symbol collection
+\usepackage{calligra}
+\newcommand{\setfont}[2]{{\fontfamily{#1}\fontsize{15pt}{18pt}\selectfont
+    #2}}%for the name in preface
+
+%%% Packages for figures and tables
+\usepackage{booktabs} % make tables look nicer
+\usepackage{dcolumn} % align table columns at decimal point
+\usepackage{multirow} % combine rows in tabular
+\usepackage{longtable} % long tables with pagebreak
+
+%% Appendix
+\usepackage[toc, page]{appendix}
+\usepackage{nameref}
+
+%%% Links in included pdfs (see also makefile)
+% \usepackage{pax} % include links from external pdfs
+
+%%% Caption style
+\usepackage{caption}
+\setkomafont{caption}{\small\sffamily}
+\addtokomafont{captionlabel}{\bfseries}
+
+%%% Font to use for the abstract and outline headings
+\newcommand{\abstractnamefont}{\normalfont\sffamily\bfseries\Large}
+
+%%% Only include chapters in the TOC and change its title
+\setcounter{tocdepth}{0}
+\addto{\captionsUKenglish}{\renewcommand{\contentsname}{Thesis outline}}
+
+%%% command to add paper details to the TOC via \addtocontents
+\newcommand{\addPaperToTOC}[3]{%
+  \addtocontents{toc}{\protect\formatPaperForTOC{#1}{#2}{#3}}
+
+}
+\newcommand{\formatPaperForTOC}[3]{%
+  \begingroup%
+  \nopagebreak%
+  \noindent%
+  \setlength\leftskip{2cm}%
+  \setlength\rightskip{2em}%
+  \setlength\parfillskip{-2em}%
+  {\bfseries\textsf{\textbf{#1}}}\smallskip\newline%
+  \textit{#2}\smallskip\newline%
+  #3\newline\vspace{-\baselineskip}%
+  \par%
+  \endgroup%
+}
+
+%%% Omit chapter number in section/figure/table/equation numbering
+\renewcommand*{\thesection}{\arabic{section}}
+\renewcommand*{\thefigure}{\arabic{figure}}
+\renewcommand*{\thetable}{\arabic{table}}
+\renewcommand*{\theequation}{\arabic{equation}}
+
+
+%%% Create a new subsection for a paper summary
+\newcommand{\startPaperSummary}[3]{
+  % \begingroup
+  % \renewcommand{\thesubsection}{\hspace{-1ex}}
+  \subsection*{\autoref{#1}: #2\nopagebreak\\{\normalfont by #3}}
+  % \endgroup
+}
+
+
+%%% Fancy front page for individual papers (chapters)
+\usepackage{pdfpages} % to include external pdf documents
+\addto{\captionsUKenglish}{\renewcommand{\chaptername}{Paper}}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\usepackage[Sonny]{fncychap}
+\ChNameVar{\LARGE\normalfont} \ChNumVar{\Huge}
+\ChRuleWidth{2pt}
+\ChTitleVar{\LARGE\normalfont}
+
+%% command to start a new chapter for a paper
+\newcommand{\paperchapter}[3]{% title, author, publication status
+    \chapter[\chaptername~\thechapter]{
+   {\bfseries\textsf{#1}}\\[0.5cm]%
+   {\large\textit{#2}}\\[0.7cm]%
+   {\large #3}%
+  }
+  \label{\chaptername\thechapter}
+  \addPaperToTOC{#1}{#2}{#3}
+  \cleardoublepage
+}
+
+
+%%% Page headings
+\usepackage{scrlayer-scrpage}
+\pagestyle{scrheadings}
+% \ofoot[]{- \pagemark{} -}
+\ofoot[]{\pagemark{}}
+% \setfootsepline{1pt}
+\KOMAoptions{footsepline=:\textwidth,clines}
+% \setheadsepline{1pt}
+\KOMAoptions{headsepline=:\textwidth,clines}
+
+\setkomafont{pagefoot}{\normalfont\sffamily\bfseries}
+\setkomafont{pagenumber}{\normalfont\rmfamily\slshape}
