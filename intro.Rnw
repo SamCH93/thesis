@@ -1,33 +1,3 @@
-<< "main-setup", include = FALSE >>=
-## knitr options
-library(knitr)
-opts_chunk$set(fig.height = 4,
-               echo = FALSE,
-               warning = FALSE,
-               message = FALSE,
-               cache = TRUE,
-               eval = TRUE)
-
-## should sessionInfo be printed at the end?
-Reproducibility <- FALSE
-
-## Packages
-library(ggplot2) # plotting
-library(xtable) # table
-library(ReplicationSuccess) # replication study stuff
-library(dplyr) # data manipulation
-library(UpSetR) # upset plot
-@
-
-% Aus der Promotionsordnung MNF §13 (2):
-% "Eine kumulative Dissertation besteht aus einer inhaltlich zusammenhängenden
-% und durch eine übergeordnete Fragestellung verbundenen Sammlung von
-% Manuskripten und/oder Publikationen, denen ein einführendes Kapitel
-% vorangestellt wird, das die Beiträge in eine übergeordnete Fragestellung
-% einbettet, deren wissenschaftlichen Zusammenhang sowie den Mehrwert der
-% Zusammenstellung gegenüber den einzelnen Teilen darlegt."
-
-
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
@@ -1131,3 +1101,225 @@ cat("\\newpage \\section*{Computational details}")
 << "sessionInfo2", echo = Reproducibility, results = Reproducibility >>=
 sessionInfo()
 @
+
+\newpage
+\section{Thesis summary}
+\label{sec:summary}
+\raggedbottom
+
+This thesis consists of six papers. Paper I and II (and to a lesser extent III)
+focus on extending the reverse-Bayes assessment of replication success from
+\citet{Held2020}. Paper III presents a general Bayesian framework for
+replication study design. Paper IV is a review paper about reverse-Bayes
+methodology. Paper V is a short comment on another article which proposed a
+reverse-Bayes method. Paper VI lists and illustrates questionable research
+practices in simulation studies.
+
+
+\startPaperSummary{PaperI}{%
+  The sceptical Bayes factor for the assessment of replication success}{%
+  Samuel Pawel, Leonhard Held \\
+  \textit{Journal of the Royal Statistical Society: Series B (Statistical
+    Methodology)}, 2022, 84(3), 879--911.
+  \url{https://doi.org/10.1111/rssb.12491}.}
+
+The reverse-Bayes approach from \citet{Held2020} is based on challenging the
+original study with a sceptical prior so that there is no longer evidence for an
+effect. Evidence is quantified in terms of credible intervals, respectively,
+tail-probabilities. However, there exist also other measures of evidence, and it
+has been a matter of long debates which is the most appropriate \citep[see
+\eg{}][]{Berger1987, Casella1987, Royall1997, Berger2003, Benjamin2017,
+  Lakens2018, Amrhein2019b}. In this paper, we therefore extend the
+reverse-Bayes assessment of replication studies to use Bayes factors
+\citep{Good1958, Jeffreys1961} for quantifying evidence and prior-data
+conflict. % Bayes factors are also
+% used for prior-data conflict assessment as suggested by \citep{Box1980}.
+Similarly to the sceptical $p$-value, the procedure leads to a single measure
+for quantifying the degree of replication success, \emph{the sceptical Bayes
+  factor}. Systematic comparisons show that the sceptical Bayes factor shares
+most properties with the sceptical $p$-value due to the reverse-Bayes approach
+underlying both methods, yet in some situations conclusions may also differ
+because of their different ways of quantifying evidence. Specifically, it is
+shown that the sceptical $p$-values suffers from a certain type of ``shrinkage
+paradox'', which is avoided by the sceptical Bayes factor; when the $p$-value
+from the original study goes to zero, replication success based on the sceptical
+$p$-value can be achieved with any arbitrarily small replication effect
+estimate, whereas replication success based on the sceptical Bayes factor poses
+a finite limit on how much shrinkage is allowed. Technically, the procedure is
+more involved and closed-form solutions for the sceptical Bayes factor are only
+available in special situations. % and in terms of the
+% ``Lambert W function'' \citep{Corless1996}.
+The method is illustrated on data from the Social Sciences Replication Project
+\citep{Camerer2018}, and implemented in an R package.
+
+The idea to use Bayes factors instead of tail probabilities was suggested by
+\citet{Consonni2019} and \citet{Pericchi2020} independently in response to
+original article by \citet{Held2020}. L. Held then implemented a first version
+of the procedure for the grant application of this research project
+\citep{Heldproposal2019}. I then worked out the technical and implementation
+details, including closed-form solution for the sceptical Bayes factors,
+asymptotic properties, type-I and type-II error rates, and non-normal extensions
+of the procedure. I wrote the initial draft of the manuscript and the R package.
+Throughout, L. Held gave high-level feedback. I presented initial results at the
+GMDS and CEN-IBS conference in 2020 (online), L. Held presented the final
+results at the ISBA world meeting 2021 (online).
+
+\startPaperSummary{PaperII}{%
+  The assessment of replication success based on relative effect size}{%
+  Leonhard Held, Charlotte Micheloud, Samuel Pawel \\
+  \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
+  \url{https://doi.org/10.1214/21-AOAS1502}.}
+
+It is not clear how to numerically interpret the sceptical $p$-value, as it is
+not an ordinary $p$-value (which has a uniform distribution under the
+corresponding null hypothesis). Similarly, it is unclear which threshold should
+be used in case the sceptical $p$-value needs to be dichotomized into
+replication success/failure. In this article, we therefore look closer at the
+``success region'' of the sceptical $p$-value in terms of the relative effect
+estimate $d = \that_{r}/\that_{o}$. This perspective leads to the proposal of a
+new default level for thresholding the sceptical $p$-value called the
+\emph{golden level} $\alpha_{G}$ (because the golden ration appears in its
+derivation). The golden level is defined through the property that for an
+original study which was just borderline significant ($p_{o} = \alpha$),
+replication success based on $p_{\text{S}} \leq \alpha_{G}$ is only possible if
+the replication effect estimate is at least as large as the original one
+($d \geq 1$). The behavior of the golden level seems to align with common sense;
+For original studies which were already convincing (in terms of their $p$-value)
+the effect estimate in the replication study is allowed to shrink, to some
+extent, whereas for less convincing original studies (those with $p$-values
+around the significance level) shrinkage is more strongly penalized. We find
+that in typical situations, replication success based on the golden level also
+has similar or improved frequentist properties (type-I error rate and project
+power) compared to the standard significance criterion. Case studies from four
+large-scale replication projects illustrate the properties of the method.
+
+L. Held had the idea to apply the sceptical $p$-value method to the data from
+the four replication projects, which I collected for my master thesis. C.
+Micheloud and L. Held came up with the golden level. L. Held wrote an initial
+draft of the manuscript. C. Micheloud, L. Held, and I then iteratively worked on
+the manuscript.
+
+\startPaperSummary{PaperIII}{%
+  Bayesian approaches to designing replication studies}{%
+  Samuel Pawel, Guido Consonni, Leonhard Held \\
+  2022. arXiv preprint.
+  \url{https://doi.org/10.48550/arXiv.2211.02552}.}
+
+An important aspect in the design of replication studies is determining their
+sample size. How exactly the sample size should be determined depends on the
+method which will be used for analyzing the replication data. Various approaches
+have been proposed for doing so which are specifically tailored to certain
+analysis methods. In this article, we provide a general Bayesian framework which
+applies to any analysis method (including the sceptical $p$-value and the
+sceptical Bayes factor). We show how the data from the original study and
+external knowledge can be combined in a \emph{design prior} for the underlying
+model parameters. Based on a design prior, predictions about the replication
+data can then be computed, and the replication sample size can be chosen such
+the probability of replication success becomes as high as desired. We illustrate
+Bayesian design of replication studies in the normal-normal hierarchical model
+which provides sufficient flexibility for specification of design priors. Data
+from a cross-laboratory replication project are used for illustrating our
+methods, which are also available in an R package.
+
+L. Held specified in the grant application of this research project
+\citep{Heldproposal2019} that we will investigate power and sample size
+calculations for the sceptical $p$-value and the sceptical Bayes factor. For the
+first paper I already derived the power function of the sceptical Bayes factor
+in closed-form for two types of design priors. After its completion, I
+generalized the result to any design prior in the normal-normal hierarchical
+model, and started working on this manuscript. I presented a first draft to L.
+Held and G. Consonni in the beginning of 2021. G. Consonni then helped
+developing the methodology for multisite replication study design. I continued
+working on the manuscript in 2022 and also wrote the accompanying R package.
+Throughout, L. Held and G. Consonni gave high-level feedback.
+
+
+\startPaperSummary{PaperIV}{%
+  Reverse-Bayes methods for evidence assessment and research synthesis}{%
+  Leonhard Held, Robert Matthews, Manuela Ott, Samuel Pawel \\
+  \textit{Research Synthesis Methods}, 2022, 13(3), 295--314.
+  \url{https://doi.org/10.1002/jrsm.1538}.}
+
+While the popularity of Bayesian methods has been rapidly increasing since the
+advent of modern computational methods in the 1990s, reverse-Bayes methods % , such
+% as the reverse-Bayes assessment of replication studies,
+have remained largely unknown to statisticians and users of statistics alike. In
+this article, we review reverse-Bayes history and methods to increase awareness
+about the approach. Specifically, we summarize the work on reverse-Bayes by I.
+J. Good \citep{Good1950}, who first proposed the idea. We then review methods
+such as the \emph{Analysis of Credibility} from \citet{Matthews2001b,
+  Matthews2018}, its extension to Bayes factors, and the \emph{False Positive
+  Risk} from \citet{Colquhoun2017}. To illustrate these method, we use data from
+a meta-analysis on the effect of corticosteroids on COVID-19 mortality.
+
+L. Held and M. Ott started working on this article several years ago when M. Ott
+was still a PhD student (around 2017). When I discovered the connection between
+the Analysis of Credibility and the fail-safe N method, L. Held suggested that
+it would fit nicely into this manuscript, and that I should start to overhaul
+it. I rewrote and expanded his initial draft, adding also a new section on
+reverse-Bayes approaches with Bayes factors, largely based on the work from
+paper I. We then managed to recruit R. Matthews to also contribute. From that
+point on the three of us iteratively worked on the manuscript and M. Ott gave
+high-level feedback.
+
+\startPaperSummary{PaperV}{%
+  Comment on ``Bayesian additional evidence for decision making under small
+sample uncertainty''}{%
+   Samuel Pawel, Leonhard Held, Robert Matthews \\
+  \textit{BMC Medical Research Methodology}, 2022, 22(149).
+  \url{https://doi.org/10.1186/s12874-022-01635-4}.}
+
+Shortly after the acceptance of paper III, the article by \citet{Sondhi2021}
+appeared. It proposed a novel reverse-Bayes method called \emph{Bayesian
+  Additional Evidence}, and we noted some flaws in the article. This prompted us
+to write a commentary. We show that --contrary to the statement by
+\citet{Sondhi2021}-- there is a closed form solution for the key quantity in
+their approach termed ``Bayesian Additional Evidence tipping point''.
+% The Bayesian Additional Evidence method provides an answer to the question
+% ``What prior do I have to choose so that that my unconvincing data become
+% convincing?''.
+The method is also closely related the Analysis of Credibility by
+\citet{Matthews2018}. We investigate differences and similarities of the two
+methods, showing that the priors determined through the Bayesian Additional
+Evidence method are not always helpful.
+
+R. Matthews attended us about the article from \citet{Sondhi2021}. After reading
+it, I realized that their statement about closed-form solutions was incorrect
+and derived a solution. L. Held suggested to write a commentary. I wrote an
+initial draft of the manuscript, which R. Matthews substantially improved. The
+two of us iteratively worked on the manuscript, while L. Held gave mostly
+high-level feedback.
+
+\startPaperSummary{PaperVI}{%
+  Pitfalls and Potentials in Simulation Studies}{%
+  Samuel Pawel, Lucas Kook, Kelly Reeve \\
+  2022. arXiv preprint.
+  \url{https://doi.org/10.48550/arXiv.2203.13076}.}
+
+Simulation studies are frequently used for evaluating statistical methods.
+However, several studies showed that the reporting standards in simulation
+studies have remained low over the years \citep{Hoaglin1975, Burton2006,
+  Morris2019}. Moreover, some authors have recently argued that also
+methodological research is suffering from reproducibility issues, publication
+bias, and a ``replication crisis'' due to researchers engaging in questionable
+research practices, such as selective reporting \citep{Boulesteix2020}. In this
+article, we raise awareness about these issues. We summarize possible
+questionable research practices in simulation studies, and show how easy it is
+make a method seem superior if various questionable research practices are
+employed. We also give recommendations which could help to alleviate these
+issues, most importantly we recommend researchers to write and pre-register
+simulation protocols.
+
+The manuscript is co-first authored by myself and L. Kook. I had the idea to
+invent a ``mock-method'' and use questionable research practices that make it
+seem superior, to draw attention to the low standards in methodological
+research. I then wrote a first draft of the manuscript and proposed the idea to
+L. Kook and K. Reeve. L. Kook and myself then came up with the method ``AINET''
+and started writing the simulation protocol. L. Kook took lead in developing the
+R package and simulation study code. K. Reeve provided feedback on the
+simulation protocol and helped polishing the manuscript. Recently, I was invited
+to present the results from this project at the CEN conference 2023 in Basel.
+
+% Bibliography
+\bibliographystyle{apalikedoiurl}
+\bibliography{bibliography}

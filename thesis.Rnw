@@ -58,21 +58,36 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
 \pagestyle{scrheadings}
 
 % ==============================================================================
-% INTRODUCTION
+% INTRODUCTION + SUMMARY
 % ==============================================================================
 \cleardoublepage
 \pagenumbering{arabic}
-% \begin{bibunit}
-<< "introduction", child = "intro.Rnw" >>=
+
+<< "main-setup", include = FALSE, echo = FALSE, warning = FALSE, message = FALSE >>=
+## knitr options
+library(knitr)
+opts_chunk$set(fig.height = 4,
+               echo = FALSE,
+               warning = FALSE,
+               message = FALSE,
+               cache = TRUE,
+               eval = TRUE)
+
+## should sessionInfo be printed at the end?
+Reproducibility <- FALSE
+
+## Packages
+library(ggplot2) # plotting
+library(xtable) # table
+library(ReplicationSuccess) # replication study stuff
+library(dplyr) # data manipulation
+library(UpSetR) # upset plot
+
+## knit introduction first to tex so that by-chapter reference works (since chapter natbib requires "include" command)
+knitr::knit(input = "intro.Rnw")
 @
 
-
-\input{summary}
-% \clearpage
-% \putbib
-% \end{bibunit}
-\bibliographystyle{apalikedoiurl}
-\bibliography{bibliography}
+\include{intro}
 
 \addtocontents{toc}{\bigskip}
 
