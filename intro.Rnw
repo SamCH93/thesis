@@ -5,7 +5,7 @@ opts_chunk$set(fig.height = 4,
                echo = FALSE,
                warning = FALSE,
                message = FALSE,
-               cache = FALSE,
+               cache = TRUE,
                eval = TRUE)
 
 ## should sessionInfo be printed at the end?

@@ -16,6 +16,7 @@
 \usepackage{color}
 \definecolor{Blue}{rgb}{0,0,0.5} % URL color
 \definecolor{nicegreen}{HTML}{008000} % nice green for table
+\definecolor{lightlightgray}{RGB}{211,211,211} % for tikz diagram
 
 %%% Bibliography
 \usepackage{natbib}
@@ -47,7 +48,9 @@
 
 %%% tikz
 \usepackage{tikz}
-\usetikzlibrary{positioning}
+\usetikzlibrary{positioning,shapes,fit}
+ % set default tikz font to sans serif
+\tikzset{every picture/.style={/utils/exec={\sffamily}}}
 
 %%% Typesetting
 \usepackage{ellipsis} % correct white space around \dots

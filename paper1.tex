@@ -189,9 +189,9 @@ of this process.
 %% first attempt
 \begin{tikzpicture}[node distance = 5em, thick]
   % nodes %
-  \node[font = \large] (data) {$f(\mathrm{data} \,|\, \theta)$};
+  \node[font = \large] (data) {$f(\text{data} \,|\, \theta)$};
   \node[font = \large] (prior) [left=7em of data] {$f(\theta)$};
-  \node[font = \large] (post) [right=7em of data] {$f(\theta \,|\, \mathrm{data})$};
+  \node[font = \large] (post) [right=7em of data] {$f(\theta \,|\, \text{data})$};
   \node[text width=10em,text centered] (RBinference) [below of=prior] {Reverse-Bayes inference};
   \node[text width=10em, text centered] (FBinference) [below of=post] {Forward-Bayes inference};
 

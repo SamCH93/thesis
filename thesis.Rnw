@@ -95,8 +95,6 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
  }
 \include{paper1}
 
-% \includepdf[pagecommand={}, pages=-, width=1.15\textwidth, offset=0cm 0cm
-% ]{pdf/2022-Pawel_Held.pdf}
 
 
 
@@ -109,8 +107,7 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
 }{%
    \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
   \url{https://doi.org/10.1214/21-AOAS1502}.}
-% \includepdf[pagecommand={}, pages=-, width=1.05\textwidth, offset=0cm 0cm
-% ]{pdf/2022-Held_etal.pdf}
+
 
 % Paper III
 % ------------------------------------------------------------------------------
@@ -118,8 +115,7 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
   Bayesian approaches to designing replication studies}{%
   Samuel Pawel, Guido Consonni, Leonhard Held}{%
   2022. arXiv preprint. \url{https://doi.org/10.48550/arXiv.2211.02552}.}
-% \includepdf[pagecommand={}, pages=-, width=1.1\textwidth, offset=-0.5cm 0.4cm
-% ]{pdf/2022-Pawel_etal.pdf}
+\include{paper3}
 
 % Paper IV
 % ------------------------------------------------------------------------------
@@ -130,8 +126,7 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
 }{%
    \textit{Research Synthesis Methods}, 2022, 13(3), 295--314.
   \url{https://doi.org/10.1186/s12874-022-01635-4}.}
-% \includepdf[pagecommand={}, pages=-, width=1.15\textwidth, offset=0cm 0cm
-% ]{pdf/2021-Held_etal.pdf}
+
 
 % Paper V
 % ------------------------------------------------------------------------------
@@ -143,8 +138,7 @@ sample uncertainty''
 }{%
    \textit{BMC Medical Research Methodology}, 2022, 22(149).
   \url{https://doi.org/10.1002/jrsm.1538}.}
-% \includepdf[pagecommand={}, pages=-, width=1.2\textwidth, offset=0cm 0cm
-% ]{pdf/2022-Pawel_etal.pdf}
+
 
 % Paper VI
 % ------------------------------------------------------------------------------
@@ -154,8 +148,7 @@ sample uncertainty''
   Samuel Pawel, Lucas Kook, Kelly Reeve
 }{%
   2022. arXiv preprint. \url{https://doi.org/10.48550/arXiv.2203.13076}.}
-% \includepdf[pagecommand={}, pages=-, width=1.1\textwidth, offset=0cm 0cm
-% ]{pdf/2022-Pawel_etalb.pdf}
+
 
 
 

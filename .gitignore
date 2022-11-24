@@ -46,3 +46,6 @@ old/
 cache/
 figure/
 misc/
+
+# output tex file
+thesis.tex
