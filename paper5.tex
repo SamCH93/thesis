@@ -53,7 +53,7 @@ and the prior mean, and that the posterior variance is half the data variance
   &\mu_{p} = \frac{\hat{\theta} + \mu}{2}&
   &\text{and}&
   &\tau^{2}_{p} = \frac{\sigma^{2}}{2}&
-  \label{eq:varconstraints}
+  \label{eq5:varconstraints}
 \end{align}
 
 The BAE ``tipping point'' is then defined as the least extreme prior mean that
@@ -63,20 +63,20 @@ $\log(\mbox{HR}) > 0$) the BAE is the prior mean which leads to the lower limit
 $L_{p}$ of the $100(1 - \alpha)$\% posterior credible interval being zero
 \begin{align}
   L_{p} = \mu_{p} - z_{\scriptscriptstyle \alpha/2} \, \tau_{p} = 0
-  \label{eq:postcredL}
+  \label{eq5:postcredL}
 \end{align}
 while for negative effect estimates the upper limit $U_{p}$ is fixed to zero
 \begin{align}
   U_{p} = \mu_{p} + z_{\scriptscriptstyle \alpha/2} \, \tau_{p} = 0
-  \label{eq:postcredU}
+  \label{eq5:postcredU}
 \end{align}
 with $z_{\scriptscriptstyle \alpha/2}$ the $1 - \alpha/2$ quantile of the
-standard normal distribution. Combining Eq.~\eqref{eq:varconstraints} with
-Eq.~\eqref{eq:postcredL}, respectively Eq.~\eqref{eq:postcredU}, leads to
+standard normal distribution. Combining Eq.~\eqref{eq5:varconstraints} with
+Eq.~\eqref{eq5:postcredL}, respectively Eq.~\eqref{eq5:postcredU}, leads to
 \begin{align}
   \text{BAE}
   & =  \sign(\hat{\theta}) \sqrt{2} \, z_{\scriptscriptstyle \alpha/2} \, \sigma - \hat{\theta}
-    \label{eq:bae}
+    \label{eq5:bae}
 \end{align}
 where $\sign(\hat{\theta}) = 1$ when $\hat{\theta} > 0$ and
 $\sign(\hat{\theta}) = -1$ otherwise. Re-written in terms of the upper and lower
@@ -84,14 +84,14 @@ $100(1 - \alpha)$\% confidence interval (CI) limits $U$ and $L$ of the effect
 estimate $\hat{\theta}$ we obtain
 \begin{align}
   \text{BAE} = \frac{\text{sign}(\hat{\theta}) \sqrt{2} (U - L) - (U + L)}{2}
-  \label{eq:baeneg}
+  \label{eq5:baeneg}
 \end{align}
-We see from Eq.~\eqref{eq:bae} that Sondhi et al.'s proposal has the intuitive
+We see from Eq.~\eqref{eq5:bae} that Sondhi et al.'s proposal has the intuitive
 property that as the study becomes more convincing (through larger effect sizes
 $|\hat{\theta}|$ and/or smaller standard errors $\sigma$), the BAE will decrease
 (increase) for positive (negative) $\hat{\theta}$, indicating that less
 additional evidence is needed to push a non-significant study towards
-credibility. Eq.~\eqref{eq:bae} and Eq.~\eqref{eq:baeneg} also hold for
+credibility. Eq.~\eqref{eq5:bae} and Eq.~\eqref{eq5:baeneg} also hold for
 significant studies but the BAE then represents the mean of a ``sceptical''
 prior which renders the study non-significant.
 
@@ -106,9 +106,9 @@ to overall credibility. The trial estimated the hazard ratio of the
 bevacizumab+chemo patients compared to the cetuximab+chemo patients as
 $\mbox{HR} = 0.42$ (95\% CI: 0.14 to 1.23), a non-significant finding with $p = 0.11$. Expressed as log(HR), we
 have $L = -1.97$ and
-$U = 0.21$. We use Eq.~\eqref{eq:baeneg} and find that
+$U = 0.21$. We use Eq.~\eqref{eq5:baeneg} and find that
 on log hazard ratio scale $\mbox{BAE} = -0.66$ equivalent to an
-HR of $0.52$. Figure~\ref{fig:illustration} shows the
+HR of $0.52$. Figure~\ref{fig5:illustration} shows the
 corresponding prior mean with 95\% prior
 credible interval.
 
@@ -132,7 +132,7 @@ BAE, and renders the original study credible.
 \caption{Comparison of BAE, AnCred, and fixed mean 95\% prior and posterior
   credible intervals for the data from \citet{Sondhi2021}. Additional data from
   \citet{Innocenti2019} are also shown.}
-\label{fig:illustration}
+\label{fig5:illustration}
 \end{figure}
 
 
@@ -147,7 +147,7 @@ BAE, and renders the original study credible.
   posterior credibility (at $\alpha = 5\%$). The
   colored lines indicate the parameters which fulfil the side-constraints of the
   respective method.}
-\label{fig:priospace}
+\label{fig5:priospace}
 \end{figure}
 
 \section{Alternatives approaches}
@@ -166,11 +166,11 @@ identical effect estimate but different precision compared to the observed one.
 As the observed study becomes more convincing (with larger effect estimates
 $|\hat{\theta}|$ and/or smaller standard errors $\sigma$), the prior will become
 more diffuse, so less additional evidence is needed to render the finding
-credible. We see in Figure~\ref{fig:illustration} that prior and posterior are
+credible. We see in Figure~\ref{fig5:illustration} that prior and posterior are
 similar to BAE for the clinical trial data from Sondhi et al.
 
 
-Figure~\ref{fig:illustration} also illustrates that the BAE and the fixed mean
+Figure~\ref{fig5:illustration} also illustrates that the BAE and the fixed mean
 approach can lead to priors which support effect sizes opposing that of the
 original finding. This is not possible with the AnCred advocacy prior whose
 prior credible interval is fixed to the null value so that the prior adheres to
@@ -188,7 +188,7 @@ diffuse for increasingly convincing studies. However, at the same time the prior
 mean also increases (decreases) for positive (negative) effect estimates, so
 that only effect sizes in the correct direction are supported.
 
-Figure~\ref{fig:illustration} shows that the AnCred advocacy prior credible
+Figure~\ref{fig5:illustration} shows that the AnCred advocacy prior credible
 interval is far wider compared to the other approaches. Perhaps this observation
 led Sondhi et al. to state that AnCred is harder to interpret than BAE, and that
 it can lead to prior intervals ``wide enough to effectively contain any effect
@@ -220,16 +220,16 @@ data variances differ, there is again a closed form solution for the BAE
   \text{BAE}(g)
   & =  \sign(\hat{\theta}) \sqrt{g \, (1 + g)} \, z_{\scriptscriptstyle \alpha/2} \, \sigma
     - g \, \hat{\theta}
-    \label{eq:bae2}
+    \label{eq5:bae2}
 \end{align}
 with relative prior variance $g = \tau^{2}/\sigma^{2}$. We see from
-Figure~\ref{fig:priospace} that Eq.~\eqref{eq:bae2} substantially depends on the
+Figure~\ref{fig5:priospace} that Eq.~\eqref{eq5:bae2} substantially depends on the
 chosen prior variance and that the BAE based on $g = 1$ only captures a limited
 range of priors which lead to posterior credibility. Unfortunately, Sondhi et
 al. do not give a clear rationale for the default choice of $g = 1$. It may
 therefore be more helpful for decision makers to base their decision on the more
 principled AnCred advocacy prior or on a visualisation of the prior parameter
-space as in Figure~\ref{fig:priospace}.
+space as in Figure~\ref{fig5:priospace}.
 
 \section{Conclusion}
 In summary, we welcome BAE as an interesting application of reverse-Bayes

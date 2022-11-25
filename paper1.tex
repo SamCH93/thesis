@@ -25,14 +25,14 @@ sceptical $p$-value
 As a consequence of the so-called replication crisis, the scientific community
 increasingly recognises the value of replication studies, and several attempts
 have been made to assess replicability on a large scale \citep{Errington2014,
-Klein2014, Opensc2015, Camerer2016, Camerer2018, Cova2018}. Despite most
+  Klein2014, Opensc2015, Camerer2016, Camerer2018, Cova2018}. Despite most
 researchers agreeing on the importance of replication, there is currently no
 agreement on a statistical criterion for replication success. Instead, a variety
 of statistical methods, frequentist \citep{Simonsohn2015, Patil2016, Hedges2019,
-Mathur2020}, Bayesian \citep{Bayarri2002b, Bayarri2002, Verhagen2014,
-Johnson2016, Etz2016, vanAert2017, Ly2018, Harms2019}, and combinations thereof
-\citep{Held2020, Pawel2020, Held2021} have been proposed to quantify replication
-success.
+  Mathur2020}, Bayesian \citep{Bayarri2002b, Bayarri2002, Verhagen2014,
+  Johnson2016, Etz2016, vanAert2017, Ly2018, Harms2019}, and combinations
+thereof \citep{Held2020, Pawel2020, Held2021} have been proposed to quantify
+replication success.
 
 Due to this lack of an established method, replication projects typically report
 the results of several methods and it is not uncommon for these to contradict
@@ -104,13 +104,13 @@ original study). This direct assessment of compatibility allows for stronger
 statements about the degree of replication success, and it may also lead to
 different conclusions in certain situations.
 
-This paper is structured as follows: Section \ref{sec:methods} presents the
+This paper is structured as follows: Section \ref{sec1:methods} presents the
 derivation of the sceptical Bayes factor. Its asymptotic and finite sample
 properties are then compared with other measures of replication success in
-Section \ref{sec:comparison}. An extension to non-normal models is presented in
-Section \ref{sec:tdist}. Section \ref{sec:applications} illustrates how the
+Section \ref{sec1:comparison}. An extension to non-normal models is presented in
+Section \ref{sec1:tdist}. Section \ref{sec1:applications} illustrates how the
 method works in practice using case studies from the \emph{Social Sciences
-  Replication Project} \citep{Camerer2018}. Section \ref{sec:discussion}
+  Replication Project} \citep{Camerer2018}. Section \ref{sec1:discussion}
 provides concluding remarks about strengths, limitations and extensions of the
 method.
 
@@ -158,13 +158,13 @@ details about transformations of effect sizes \citep[\eg][Chapter
 11.6]{Cooper2019}. The normal model in combination with conjugate priors enables
 derivation of closed-form expressions in many cases, which allows us to easily
 study limiting behaviour and facilitates interpretability. In Section
-\ref{sec:tdist}, we will present relaxations of the normality assumption, which
+\ref{sec1:tdist}, we will present relaxations of the normality assumption, which
 can lead to more accurate inferences when studies have small sample sizes and/or
 show extreme results.
 
 
 \section{Reverse-Bayes assessment of replication success with Bayes factors}
-\label{sec:methods}
+\label{sec1:methods}
 % ``judgements are made concerning the values that the final
 % probabilities would have after some imaginary results are obtained; then Bayes'
 % theorem is used backwards to estimate what the consistent initial probabilities
@@ -181,7 +181,7 @@ derived priors, which combined with the observed data, would lead to posterior
 inferences that were specified beforehand (\eg the data favour one hypothesis
 over another). His reverse-Bayes inference then centred around the question
 whether the resulting prior is plausible, and if so, this would legitimise the
-posterior inference. See Figure~\ref{fig:RBschmema} for a graphical illustration
+posterior inference. See Figure~\ref{fig1:RBschmema} for a graphical illustration
 of this process.
 
 \begin{figure}[!htb]
@@ -206,7 +206,7 @@ of this process.
 \end{tikzpicture}
 \caption{Schematic illustration of reverse-Bayes and forward-Bayes inference
   for an unknown parameter $\theta$.}
-\label{fig:RBschmema}
+\label{fig1:RBschmema}
 \end{figure}
 
 Good argued that philosophically there is nothing wrong with inferences
@@ -303,17 +303,17 @@ original estimate $g = \sigma^2_s/\sigma^2_o$), resembling the $g$-prior known
 from the regression literature \citep{Zellner1986, Liang2008}. The explicit form
 of the Bayes factor is then given by
 \begin{align}
-  \label{eq:BFo}
+  \label{eq1:BFo}
   \BFcol{0}{\mathrm{S}}(\hat{\theta}_o; g)
   = \sqrt{1 + g} \cdot
   \exp\left\{-\frac{1}{2} \cdot \frac{g}{1 + g} \cdot z^2_o\right\}.
 \end{align}
 
-The Bayes factor from equation ~\eqref{eq:BFo} is shown in Figure ~\ref{fig:bfo}
+The Bayes factor from equation ~\eqref{eq1:BFo} is shown in Figure ~\ref{fig1:bfo}
 as a function of $g$ and for different original $z$-values $z_o$. For fixed
 $z_o$, it is well known that this Bayes factor is bounded from below by
 \begin{align}
-  \label{eq:minBFo}
+  \label{eq1:minBFo}
   \minBF_{o} =
   \begin{cases}
     |z_o| \cdot  \exp(-z_o^2/2) \cdot \sqrt{e} & \text{for} ~ |z_o| > 1 \\
@@ -322,7 +322,7 @@ $z_o$, it is well known that this Bayes factor is bounded from below by
 \end{align}
 which is reached at $\gminBFo = \max\{0, z^2_o - 1\}$ \citep{Edwards1963}.
 Further increasing the relative sceptical prior variance increases
-\eqref{eq:BFo} indefinitely because of the Jeffreys-Lindley paradox, \ie
+\eqref{eq1:BFo} indefinitely because of the Jeffreys-Lindley paradox, \ie
 $\BFcol{0}{\mathrm{S}}(\hat{\theta}_o; g) \to \infty$ for $g \to \infty$
 \citep[][Section 6.1.4]{Bernardo2000}. Hence, for a relative sceptical prior
 variance $g \in [0, \gminBFo]$, the resulting Bayes factor will be
@@ -339,7 +339,7 @@ $|z_o| = |\that_o|/\sigma_o$. Minimum Bayes factors $\minBF_{o}$ are indicated
 by dots. Dashed vertical lines indicate sufficiently sceptical relative prior
 variance $g_{\scriptscriptstyle \gamma}$ at level $\gamma = 1/10$, if they
 exist.}
-\label{fig:bfo}
+\label{fig1:bfo}
 \end{figure}
 
 We now apply the reverse-Bayes idea and challenge the original finding. To do
@@ -373,7 +373,7 @@ priors obtained by updating an initial uniform prior with the data from an
 imaginary study, which was $1/\gy$ times the size of the original study, and
 which resulted in an effect estimate of exactly zero \citep{Held2021b}.
 
-From Figure \ref{fig:bfo} we can see that the more compelling the original data
+From Figure \ref{fig1:bfo} we can see that the more compelling the original data
 (\ie the larger $|z_o|$), the smaller the sufficiently sceptical relative prior
 variance $\gy$ needs to be in order to make the result no longer convincing at
 level $\gamma$. In the most extreme case, when $|z_{o}| \to \infty$ and $\gamma$
@@ -403,7 +403,7 @@ branch, but this will not be of interest to us.
 
 
 \subsection{Data from the replication study}
-\label{sec:bfr}
+\label{sec1:bfr}
 In order to assess whether the original finding can be replicated in an
 independent study, a replication study is conducted, leading to a new effect
 estimate $\hat{\theta}_r$. In light of the new data, the sceptic is now
@@ -416,7 +416,7 @@ the view of an advocate is represented by $\HA$ since this is the posterior of
 $\theta$ given the original estimate and a uniform prior (also the reference
 prior for this model). The Bayes factor is given by
 \begin{align}
-  \label{eq:BFr}
+  \label{eq1:BFr}
   \BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r; g)
 %%   &= \sqrt{\frac{1/c + 1}{1/c + g}} \cdot
 %%   \exp\left\{-\frac{1}{2}\left(\frac{z_r^2}{1/c + g} -
@@ -430,14 +430,14 @@ variance $g$, the relative effect estimate $d = \that_r/\that_o$, and the
 relative variance $c = \sigma^2_o/\sigma^2_r$.
 
 Our goal is now to define a condition for \emph{replication success} in terms of
-\eqref{eq:BFr}. It is natural to consider a replication successful if the
+\eqref{eq1:BFr}. It is natural to consider a replication successful if the
 replication data favour the advocate over the sceptic to a higher degree than
 the sceptic's initial objection to the original study. More formally, we say
-that if the Bayes factor from \eqref{eq:BFr} evaluated at the sufficiently
+that if the Bayes factor from \eqref{eq1:BFr} evaluated at the sufficiently
 sceptical relative prior variance $\gy$ is not larger than the corresponding
 level $\gamma$ used to define the sufficiently sceptical prior:
 \begin{align}
-  \label{eq:success}
+  \label{eq1:success}
   \BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r; \gy)
   \leq \BFcol{0}{\mathrm{S}}(\hat{\theta}_o; \gy) =\gamma,
 \end{align}
@@ -451,7 +451,7 @@ $\gy = 1.6$. If a replication is conducted with the
 same precision ($c = 1$) and we observe $z_r = 2.5$ (equivalent to
 minimum Bayes factor $\minBF_{r} = 1/5.5$ and relative effect
 estimate $d = z_{r}/(z_{o}\sqrt{c}) = 0.83$), using equation
-\eqref{eq:BFr} this would lead to $\BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r;
+\eqref{eq1:BFr} this would lead to $\BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r;
 1.6) = 1/3.5$, which means
 that the replication was not successful at level $\gamma = 1/10$.
 However, if we had chosen a less stringent level, \eg$\gamma =
@@ -466,7 +466,7 @@ automated way to assess replication success. One way to remove this dependence
 is to find the smallest level $\gamma$ where replication success can be
 established. We thus call this level the \emph{the sceptical Bayes factor}
 \begin{align}
-  \label{eq:bfs}
+  \label{eq1:bfs}
   \BFs
   =
   %% \inf_{\gy \in [0, \gminBFo]}
@@ -477,7 +477,7 @@ established. We thus call this level the \emph{the sceptical Bayes factor}
 \end{align}
 and replication success at level $\gamma$ is equivalent with $\BFs \leq \gamma$.
 
-Figure \ref{fig:bfs} shows $\BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r; \gy)$ and
+Figure \ref{fig1:bfs} shows $\BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r; \gy)$ and
 $\BFcol{0}{\mathrm{S}}(\hat{\theta}_o; \gy)$ as a function of $\gy$ for several
 values of $z_o$ and $d$ along with the corresponding $\BFs$. Typically, $\BFs$
 is given by the height of the intersection between
@@ -503,7 +503,7 @@ $\BFcol{0}{\mathrm{S}}(\hat{\theta}_o; g)$ as a function of the sufficiently
 sceptical relative prior variance $\gy$. In all examples
 $c = \sigma^2_o/\sigma^2_r = 1$. Minimum Bayes factors $\minBF_o$ are indicated
 by dots, sceptical Bayes factors $\BFs$ are indicated by crosses where existent.}
-\label{fig:bfs}
+\label{fig1:bfs}
 \end{figure}
 
 
@@ -514,7 +514,7 @@ $\BFcol{\mathrm{S}}{\mathrm{A}}(\hat{\theta}_r; g)$ and
 $\BFcol{0}{\mathrm{S}}(\hat{\theta}_o; g)$ in $g$, there is an explicit expression
 for $\BFs$
 \begin{align}
-  \label{eq:BFsc1}
+  \label{eq1:BFsc1}
   \BFs =
   \sqrt{-\frac{z^2_{o}}{k} \cdot \frac{1 + d^{2}}{2}} \cdot
   \exp\left\{-\left(\frac{z_o^2}{2} + \frac{k}{1 + d^2}\right)\right\}
@@ -526,7 +526,7 @@ d)^2}{2}\right]\right\}\right),$$ see Appendix \ref{appendix:bfs} for details.
 
 
 \section{Properties}
-\label{sec:comparison}
+\label{sec1:comparison}
 To study properties of the sceptical Bayes factor and facilitate comparison with
 other methods we will look at the requirements for replication success based on
 the relative effect estimate $d = \that_{r}/\that_{o}$, the variance ratio
@@ -537,17 +537,17 @@ compatibility of the effect estimates ($d$), evidence from the original study
 ($\minBF_{o}$), and the change in sample size of the replication compared to the
 original study ($c$).
 
-The condition for replication success at level $\gamma$ from \eqref{eq:success}
+The condition for replication success at level $\gamma$ from \eqref{eq1:success}
 is equivalent to
 \begin{align}
-  \label{eq:RSCond-d}
+  \label{eq1:RSCond-d}
   \log \left\{ \frac{1/c + 1}{(1/c + \gy)(1 + \gy)}\right\} +
   \frac{z_o^2}{1 + 1/\gy} &\leq z_o^2 \left(\frac{d^2}{1/c +
     \gy} - \frac{\left(d - 1\right)^2}{1/c + 1} \right).
 \end{align}
-On the right-hand side of~\eqref{eq:RSCond-d} the $Q$-statistic
+On the right-hand side of~\eqref{eq1:RSCond-d} the $Q$-statistic
 \begin{align}
-  \label{eq:Qstat}
+  \label{eq1:Qstat}
   Q
   = \frac{(\hat{\theta}_o - \hat{\theta}_r)^2}{\sigma^2_o + \sigma^2_r}
   %% = \frac{(z_r - z_o\sqrt{c})^2}{1 + c}
@@ -557,16 +557,16 @@ appears. The $Q$-statistic was proposed as a measure of incompatibility among
 original and replication effect estimates since its distribution is known for
 standard meta-analytic models of effect sizes \citep{Hedges2019}. The connection
 to the sceptical Bayes factor is such that $Q$ acts as a penalty term
-in~\eqref{eq:RSCond-d} and a larger value will lower the degree of replication
+in~\eqref{eq1:RSCond-d} and a larger value will lower the degree of replication
 success possible. However, as we will see, the sceptical Bayes factor goes
 beyond assessing effect estimate compatibility as there is also a trade-off with
 the amount of evidence that the replication study provides against the null.
 
-Applying some algebraic manipulations to \eqref{eq:RSCond-d}, one can show that
+Applying some algebraic manipulations to \eqref{eq1:RSCond-d}, one can show that
 replication success at level $\gamma$ is achieved if and only if the relative
 effect estimate $d$ falls within a success region given by
 \begin{align}
-  \label{eq:dsuccess}
+  \label{eq1:dsuccess}
   \begin{cases}
     d \not\in [M - \sqrt{A/B}, M + \sqrt{A/B}] & \text{if} ~ \gy < 1 \\
     d \geq [1 + (1 + 1/c)\{1/2 - \log(2)/z_o^2\}]/2
@@ -582,15 +582,15 @@ where
   B &= \frac{1 - \gy}{(1/c + \gy)(1/c + 1)}.
 \end{align*}
 
-The top-left plot in Figure~\ref{fig:dcomparison} shows the conditions on $d$
-from~\eqref{eq:dsuccess} to achieve replication success at level $\gamma = 1/3$
+The top-left plot in Figure~\ref{fig1:dcomparison} shows the conditions on $d$
+from~\eqref{eq1:dsuccess} to achieve replication success at level $\gamma = 1/3$
 as a function of the original minimum Bayes factor $\minBF_{o}$ and for
 different values of the relative variance $c$. It is important to note that
 $\gamma = 1/3$ is an arbitrary choice and in practice one should interpret the
 sceptical Bayes factor as a quantitative measure of replication success. Only
 the success regions for positive $d$ are shown as replication success in the
 opposite direction is usually not of interest (see
-Section~\ref{sec:replicationParadox} for a discussion of this issue). We see
+Section~\ref{sec1:replicationParadox} for a discussion of this issue). We see
 that with increased precision of the replication study (larger $c$), the success
 regions shift closer to zero. This means that the method allows for more
 shrinkage of the replication effect estimate when the replication provides more
@@ -619,22 +619,22 @@ $\abs{z_{r}} \to \infty$ as $c \to \infty$).
   $c = \sigma^{2}_{o}/\sigma^{2}_{r}$. Shading indicates regions where
   replication success is possible. Only positive relative effect estimates $d$
   are shown.}
-\label{fig:dcomparison}
+\label{fig1:dcomparison}
 \end{figure}
 
 By definition the sceptical Bayes factor can never be smaller than $\minBF_{o}$,
 so replication success at level $\gamma$ is impossible for original studies with
 $\minBF_{o} > \gamma$. This property is visible in the top-left plot in
-Figure~\ref{fig:dcomparison} by the cut-off at $\minBF_{o} = \gamma = 1/3$. In
+Figure~\ref{fig1:dcomparison} by the cut-off at $\minBF_{o} = \gamma = 1/3$. In
 contrast, for more convincing original studies with $\minBF_{o} < 1/3$
 replication success is possible and two cases can be distinguished in terms of
 the success region: When $1/4.5 < \minBF_{o} \leq 1/3$ the
 sufficiently sceptical relative prior variance is $\gy > 1$ and thus by
-condition~\eqref{eq:dsuccess} the success region consists of an interval
+condition~\eqref{eq1:dsuccess} the success region consists of an interval
 $(\dmin, \dmax)$. Hence, in this case the method also penalises too large
 replication effect estimates. For original studies with
 $\minBF_{o} < 1/4.5$, the sufficiently sceptical relative prior
-variance is $\gy \leq 1$, so due to~\eqref{eq:dsuccess} the success region for
+variance is $\gy \leq 1$, so due to~\eqref{eq1:dsuccess} the success region for
 positive $d$ is given by $(\dmin, \dmax = \infty)$. This means that for more
 convincing original studies there are no upper restrictions for the relative
 effect estimate, whereas shrinkage of the replication estimate is still
@@ -648,7 +648,7 @@ from][]{Verhagen2014} and a reverse-Bayes method \citep[the sceptical $p$-value
 from][]{Held2020}. These methods provide a useful benchmark as they all are
 based on hypothesis testing, have unique properties, and can be directly
 compared in terms of their replication success regions as shown in
-Figure~\ref{fig:dcomparison}.
+Figure~\ref{fig1:dcomparison}.
 
 
 \subsubsection{The two-trials rule}
@@ -660,7 +660,7 @@ projects report $p$-values associated with the effect estimates as measures of
 evidence against the null, but also default Bayes factors have been used
 \citep[see \eg the Bayesian supplement of][]{Camerer2018}. To compare the
 two-trials rule with methods based on Bayes factors we will study the two-trials
-rule based on the minimum Bayes factor from~\eqref{eq:minBFo}, \ie replication
+rule based on the minimum Bayes factor from~\eqref{eq1:minBFo}, \ie replication
 success at level $\gamma$ is established when both
 $\minBF_{k} % = \abs{z_{k}}\exp(-z_{k}^{2}/2)\sqrt{e}
 \leq \gamma$ for $k \in \{o, r\}$, as well as
@@ -687,13 +687,13 @@ was uncompelling. Assuming now that $\minBF_{o} < \gamma$, replication success
 with the two-trials rule at level $\gamma$ is achieved if and only if the
 relative effect estimate is
 \begin{align}
-  \label{eq:2TR}
+  \label{eq1:2TR}
   d \geq \frac{z_{\gamma}}{z_{o} \sqrt{c}}
 \end{align}
 with $z_{\gamma} > 1$ corresponding to
 $\minBF = z_{\gamma}\exp(-z_{\gamma}^{2}/2)\sqrt{e} = \gamma$. The success
-region from~\eqref{eq:2TR} is displayed in the top-right plot of
-Figure~\ref{fig:dcomparison}. We see that the success regions shift closer to
+region from~\eqref{eq1:2TR} is displayed in the top-right plot of
+Figure~\ref{fig1:dcomparison}. We see that the success regions shift closer to
 zero as the relative variance $c$ increases. Also there is a cut-off at
 $\minBF_{o} = \gamma = 1/3$ similarly as with the sceptical Bayes factor. In
 contrast to the sceptical Bayes factor, however, the two-trials can be fulfilled
@@ -712,7 +712,7 @@ reference prior was chosen, this alternative is also the advocacy prior
 $\HA \colon \theta \sim \Nor(\that_o, \sigma^2_o)$ and therefore the replication
 Bayes factor is given by
 \begin{align}
-  \label{eq:BFrep}
+  \label{eq1:BFrep}
   \BFr
   = \BFcol{\mathrm{0}}{\mathrm{A}}(\hat{\theta}_r)
   %% = \sqrt{1 + c} \cdot
@@ -724,7 +724,7 @@ Bayes factor is given by
 \end{align}
 
 Similarly, as with the sceptical Bayes factor, the $Q$-statistic
-from~\eqref{eq:Qstat} appears in~\eqref{eq:BFrep} and acts as a penalty term,
+from~\eqref{eq1:Qstat} appears in~\eqref{eq1:BFrep} and acts as a penalty term,
 \ie larger values of $Q$ lower the degree of replication success. However, in
 contrast to the sceptical Bayes factor, the replication Bayes factor is not
 limited by the evidence from the original study because $\BFr \downarrow 0$ as
@@ -743,7 +743,7 @@ We can also determine conditions on the relative effect estimate in terms of
 replication success based on $\BFr \leq \gamma$. The replication success region
 is given by
 \begin{align}
-  \label{eq:BFRsuccess}
+  \label{eq1:BFRsuccess}
   d \not\in [-\sqrt{J} - H, \sqrt{J} - H]
 \end{align}
 with
@@ -752,11 +752,11 @@ with
   \frac{1/c + 1}{c} \\
   H &= \frac{1/c + 1}{1 + c}.
 \end{align*}
-The condition \eqref{eq:BFRsuccess} implies that replication success can also be
+The condition \eqref{eq1:BFRsuccess} implies that replication success can also be
 achieved for negative relative effect estimates $d$ (see
-Section~\ref{sec:replicationParadox} for a discussion of this issue). The
-bottom-left plot in Figure~\ref{fig:dcomparison} shows the conditions
-from~\eqref{eq:BFRsuccess} for positive relative effect estimates. As with the
+Section~\ref{sec1:replicationParadox} for a discussion of this issue). The
+bottom-left plot in Figure~\ref{fig1:dcomparison} shows the conditions
+from~\eqref{eq1:BFRsuccess} for positive relative effect estimates. As with the
 two-trials rule, the success region of the replication Bayes factor can be
 pushed arbitrarily close to zero by increasing the relative variance $c$. In
 contrast to the two-trials rule, however, replication success can also be
@@ -784,7 +784,7 @@ $\ps = 1 - \Phi(z_{\mathrm{S}})$ with
     z^2_H/2 & \text{for}~c=1 \\ \frac{1}{c - 1}\left\{\sqrt{z^2_A\left[z^2_A +
           (c - 1)z^2_H\right]} - z^2_A\right\} & \text{for}~c \neq 1
   \end{cases}
-  \label{eq:z2s}
+  \label{eq1:z2s}
 \end{equation*}
 where $z^2_H = 2/(1/z_o^2 + 1/z_r^2)$ the harmonic mean,
 $z^2_A = (z_o^2 + z_r^2)/2$ the arithmetic mean of the squared $z$-statistics,
@@ -803,7 +803,7 @@ since it monotonically increases with decreasing relative effect estimate $d$
 \citet{Held2021} showed that replication success based on
 $\ps \leq \alpha_{\mathrm{S}}$ is achieved when
 \begin{align}
-  \label{eq:psSuccessd}
+  \label{eq1:psSuccessd}
   d \geq \sqrt{\frac{1/c + 1/(K - 1)}{K}}
 \end{align}
 with $K = z_{o}^{2}/z_{\alpha_{\mathrm{S}}}^{2}$ where
@@ -813,7 +813,7 @@ traditional $p$-values leads to a very stringent criterion for replication
 success. For example, when $z_{o} = 2$, $\alpha = 0.025$, and
 $c = 2$, the replication effect estimate needs to be
 $d = 4.87$ times larger than the original one. Therefore,
-\citet{Held2021} used~\eqref{eq:psSuccessd} to determine the \emph{golden level}
+\citet{Held2021} used~\eqref{eq1:psSuccessd} to determine the \emph{golden level}
 $\alpha_{\mathrm{S}} = 1 - \Phi(z_\alpha/\sqrt{\varphi})$ with
 $\varphi = (1 + \sqrt{5})/2$ the golden ratio. The golden level ensures that
 borderline significant original studies ($\abs{z_{o}} = z_{\alpha}$) can still
@@ -824,7 +824,7 @@ compute a recalibrated sceptical $p$-value
 $\tilde{p}_{\mathrm{S}} = 1 - \Phi(z_{\mathrm{S}} \sqrt{\varphi})$ and compare it to
 the ordinary significance level ($\tilde{p}_{\mathrm{S}} < \alpha$).
 
-The bottom-right plot in Figure~\ref{fig:dcomparison} shows the success region
+The bottom-right plot in Figure~\ref{fig1:dcomparison} shows the success region
 for the recalibrated sceptical $p$-value. We see that increasing the precision
 of the replication study lowers the required minimum relative effect estimate
 $\dmin$ as for all other methods. Similarly, as with the sceptical Bayes factor,
@@ -836,7 +836,7 @@ $\minBF_{o} > 1/5.6$ it is the other way around. So for more
 convincing original studies the sceptical $p$-value is less stringent than the
 sceptical Bayes factor. Due to the recalibration, the sceptical $p$-value also
 allows replication success when the $\minBF_{o} > \gamma$. This is visible in
-the bottom-right plot of Figure~\ref{fig:dcomparison} where the success region
+the bottom-right plot of Figure~\ref{fig1:dcomparison} where the success region
 has no cut-off at $\minBF_{o} = \gamma = 1/3$, unlike the two-trials rule and
 the sceptical Bayes factor.
 
@@ -845,7 +845,7 @@ The replication setting is different from the classical setting where data from
 only one study are analysed. As a result, several unique paradoxes may occur.
 
 \subsubsection{The replication paradox}
-\label{sec:replicationParadox}
+\label{sec1:replicationParadox}
 The \emph{replication-paradox} \citep{Ly2018} occurs when original and
 replication effect estimates go in opposite directions
 ($\sign(\that_{o}) \neq \sign(\that_{r})$) but a method flags replication
@@ -855,7 +855,7 @@ scientific theories and research questions.
 The two-trials rule and the sceptical $p$-value both avoid the replication
 paradox by using one-sided test-statistics. In contrast, the sceptical Bayes
 factor and the replication Bayes factor may suffer from the paradox as their
-success regions from~\eqref{eq:dsuccess} and~\eqref{eq:BFRsuccess},
+success regions from~\eqref{eq1:dsuccess} and~\eqref{eq1:BFRsuccess},
 respectively, include negative relative effect estimates $d < 0$. This is
 related to the fact that Bayes factors are quantifying relative evidence: When
 the replication estimate goes in the opposite direction, it will be poorly
@@ -887,25 +887,25 @@ factor contrasting $\HS$ to $\HAp$ turns out to be
   \frac{\Phi(\abs{z_o})}{\Phi\left\{\mathrm{sign}(z_o)
     %     \frac{z_o + z_r\sqrt{c}}{\sqrt{1 + c}} \right\}}
     \frac{z_o(1 + dc)}{\sqrt{1 + c}} \right\}}
-   \label{eq:BFrtrunc}
+   \label{eq1:BFrtrunc}
 \end{align}
 where $\Phi(\cdot)$ is the cumulative distribution function of the standard
-normal distribution (see Appendix \ref{app:BFtrunc}). Hence, \eqref{eq:BFrtrunc}
+normal distribution (see Appendix \ref{app:BFtrunc}). Hence, \eqref{eq1:BFrtrunc}
 is the Bayes factor under the standard advocacy prior multiplied by a correction
 term. Determining the smallest level of replication success
-with~\eqref{eq:BFrtrunc} leads to a corrected sceptical Bayes factor, while
-setting $g = 0$ in~\eqref{eq:BFrtrunc} leads to a corrected replication Bayes
+with~\eqref{eq1:BFrtrunc} leads to a corrected sceptical Bayes factor, while
+setting $g = 0$ in~\eqref{eq1:BFrtrunc} leads to a corrected replication Bayes
 factor. The correction term goes to one when the replication estimate goes in
 the same direction as the original one and the replication sample size increases
 ($d > 0$ and $c \to \infty$), but it penalises when the replication estimate
 goes in the opposite direction ($d < 0$ and $c \to \infty$).
 
 This modification guarantees that the replication paradox is avoided and we
-recommend to compute the sceptical Bayes factor using~\eqref{eq:BFrtrunc} in
+recommend to compute the sceptical Bayes factor using~\eqref{eq1:BFrtrunc} in
 cases where the replication paradox is likely to appear. However, truncated
 priors are unnatural and hard to interpret. Also the non-truncated advocacy
 prior penalises effect estimate incompatibility and the
-modification~\eqref{eq:BFrtrunc} will only make a difference in extreme
+modification~\eqref{eq1:BFrtrunc} will only make a difference in extreme
 situations. Due to its easier mathematical treatment we will focus on the
 standard version of the procedure in the remaining part of the paper.
 
@@ -992,10 +992,10 @@ simply $\text{T1E} = 2\{1 - \Phi(z_{\gamma})\}^{2}$.
   ($\tilde{p}_{\mathrm{S}} \leq 1 - \Phi\{z_{\gamma}\}$) as a function of the
   relative variance $c = \sigma^{2}_{o}/\sigma^{2}_{r}$ for different levels of
   replication success $\gamma$.}
-\label{fig:t1ec}
+\label{fig1:t1ec}
 \end{figure}
 
-Figure~\ref{fig:t1ec} compares the type I error rates of the four methods for
+Figure~\ref{fig1:t1ec} compares the type I error rates of the four methods for
 different levels $\gamma$. The conventional nominal
 $\text{T1E} = 0.05 \times 0.025$ (two independent experiments with two-sided
 testing in the first and one-sided testing in the second) along with the
@@ -1048,10 +1048,10 @@ simply lower the power curves of all methods.
 1/3$) as a function of the relative variance $c
 = \sigma^2_o/\sigma^2_r$ for different original $z$-values $z_o =
 \that_o/\sigma_o$ (respectively corresponding minimum Bayes factor $\minBF_o$).}
-\label{fig:condpower}
+\label{fig1:condpower}
 \end{figure}
 
-Figure~\ref{fig:condpower} shows conditional and predictive power as a function
+Figure~\ref{fig1:condpower} shows conditional and predictive power as a function
 of the relative variance $c$ and for several values of of the original $z$-value
 $z_o$ (respectively original minimum Bayes factor $\minBF_{o}$). In general,
 uncertainty about replication success is higher for predictive power, leading it
@@ -1071,7 +1071,7 @@ effect estimate. For $z_{o} = 3$, the power differences between the methods
 mostly disappear.
 
 \subsection{Information consistency}
-\label{sec:informationcons}
+\label{sec1:informationcons}
 Bayesian hypothesis testing procedures are desired to fulfil certain asymptotic
 properties \citep{Bayarri2012}. Most notably, they should be \emph{information
 consistent} in the sense that if data provide overwhelming support for a
@@ -1092,7 +1092,7 @@ instances of the \emph{information paradox} \citep{Liang2008}
 % ($\that_{r} \to \infty$ implying that also the relative effect estimate
 % $d \to \infty$ when $\that > 0$), replication success can at most be established for a
 % sufficiently sceptical relative prior variance $\gy \leq 1$ due to the
-% success conditions~\eqref{eq:dsuccess}. This implies that the sceptical Bayes factor
+% success conditions~\eqref{eq1:dsuccess}. This implies that the sceptical Bayes factor
 % $\BFs \to \BFcol{0}{\mathrm{S}}(\hat{\theta}_o; g = 1)$, provided $\abs{z_o} \geq
 % \sqrt{2}$ so that $g_{\minBF_{o}} \geq 1$. Hence, the sceptical Bayes factor is
 % also bounded away from zero and this could be considered an
@@ -1111,23 +1111,23 @@ decreasing variances the estimates will
 converge to the true effect size ($\that_{i} \to \theta_{*}$), the relative
 effect estimate will converge to one ($d \to 1$), and the $z$-values will go to
 infinity ($\abs{z_{i}} \to \infty$). Since $c = 1$, the sceptical Bayes factor
-is given by equation~\eqref{eq:BFsc1}. Moreover, we are allowed to use of the
+is given by equation~\eqref{eq1:BFsc1}. Moreover, we are allowed to use of the
 approximation $\lw{-1}(x) \approx \log(-x) - \log(-\log(-x))$ as the argument of
 the Lambert function is close to zero due to $\abs{z_{o}} \to \infty$ \citep[p.
 350]{Corless1996}. Taken together, we have
 \begin{align}
-  \label{eq:BFsc1lim2}
+  \label{eq1:BFsc1lim2}
   \BFs =
   \sqrt{\frac{1 + d^{2}}{1 + (1 - d)^{2}/2 -
 \mathcal{O}\left\{\log(z_{o}^{2})/z_{o}^{2}\right\}}} \cdot
   \exp\left\{-\frac{z_o^2\left(d^{2} + 2d - 1 \right)}{4(1 + d^{2})}
 - \mathcal{O}\left(\log z_{o}^{2}\right)\right\}
 \end{align}
-Plugging $d = 1$ into~\eqref{eq:BFsc1lim2}, we see that $\BFs \downarrow 0$ as
+Plugging $d = 1$ into~\eqref{eq1:BFsc1lim2}, we see that $\BFs \downarrow 0$ as
 $\abs{z_{o}} \to \infty$, so the sceptical Bayes factor is information
 consistent.
 
-The expression for the sceptical Bayes factor~\eqref{eq:BFsc1lim2} is also valid
+The expression for the sceptical Bayes factor~\eqref{eq1:BFsc1lim2} is also valid
 for other relative effect sizes $d$. Solving for $d$ such that the
 multiplicative term of $z_{o}^{2}$ in the exponent changes the sign, we see that
 the sceptical Bayes factor goes to zero when the underlying true effect size of
@@ -1141,7 +1141,7 @@ original and replication are not exactly the same, the sceptical Bayes factor is
 still consistent when there is not more than 60\% shrinkage of the replication
 effect size.
 
-\section{Extension to non-normal models} \label{sec:tdist}
+\section{Extension to non-normal models} \label{sec1:tdist}
 So far, we have always assumed approximate normality of the effect estimates
 $\that_o$ and $\that_r$, as well as known variances $\sigma^2_o$ and
 $\sigma^2_r$. This may be a problem for studies with small sample size and/or
@@ -1168,16 +1168,16 @@ data. It is given by a non-central $t$-distribution with degrees of freedom
 $\nu_i = n_{1i} + n_{2i} - 2$ and non-centrality parameter $\theta \sqrt{n^*_i}$
 with $n^*_i = (n_{1i}n_{2i})/(n_{1i} + n_{2i})$ \citep{Bayarri2002}
 \begin{align}
-  \label{eq:nct}
+  \label{eq1:nct}
   T_i \given \theta \sim \text{NCT}_{\nu_i} \left(\theta \sqrt{n^*_i}\right).
 \end{align}
 The same framework is also applicable to test-statistics $t_{i}$ from paired
 $t$-tests based on $n_{i}$ paired measurements. The SMD $\theta$ represents then
 the standardised mean difference score and $\nu_{i} = n_{i} - 1$ and
-$n_{i}^{*} = n_{i}$ need to be used in~\eqref{eq:nct}.
+$n_{i}^{*} = n_{i}$ need to be used in~\eqref{eq1:nct}.
 
 
-There is no conjugate prior for the SMD $\theta$ under model~\eqref{eq:nct}, so
+There is no conjugate prior for the SMD $\theta$ under model~\eqref{eq1:nct}, so
 it is not obvious which prior should be chosen to represent scepticism about it.
 We will use a zero-mean normal prior $\theta \given \HS \sim \Nor(0, \tau^{2})$
 so that the exact procedure is equivalent with the normal approximation as the
@@ -1234,7 +1234,7 @@ principled choice is the translation invariant Jeffreys prior,
 $\pi_1, \pi_2 \sim \Be(1/2, 1/2)$. The exact marginal likelihood for the data
 from study $i$ is then given by
 \begin{align}
-  \label{eq:binexact}
+  \label{eq1:binexact}
   f(x_{1i}, x_{2i} \given \theta)
   &= \int_0^1 \Bin\left(x_{1i}; n_{1i}, \left\{1 + \exp\left[-\theta - \log
     \frac{\pi_2}{1 - \pi_2}\right]\right\}^{-1}\right) \Bin(x_{2i}; n_{2i}, \pi_2)
@@ -1246,7 +1246,7 @@ distribution with $n$ trials and probability $\pi$ evaluated at $x$, and
 likewise $\Be(y; a, b)$ denotes the density function of the beta distribution
 with parameters $a$ and $b$ evaluated at $y$.
 
-There is no conjugate prior for the logOR under model~\eqref{eq:binexact}, but a
+There is no conjugate prior for the logOR under model~\eqref{eq1:binexact}, but a
 pragmatic choice is to specify a zero-mean normal prior
 $\theta \given \HS \sim \Nor(0, \tau^{2})$ for the sceptic, to match with the
 normal approximation as the sample size increases. For the advocacy prior, we
@@ -1295,7 +1295,7 @@ integration needs to be used.
 
 
 \section{Application}
-\label{sec:applications}
+\label{sec1:applications}
 The following section will illustrate application of the sceptical Bayes factor
 using data from the \emph{Social Sciences Replication Project}
 \citep{Camerer2018}, provided in Table \ref{tab:ssrp}. Effect estimates were
@@ -1307,7 +1307,7 @@ $c$ is roughly the ratio of the replication to the original study sample size
 $c \approx n_{r}/n_{o}$.
 
 For all studies except \citet{Janssen2010} and \citet{Derex2013}, the exact
-approach for either SMD or logOR effect sizes from Section~\ref{sec:tdist} is
+approach for either SMD or logOR effect sizes from Section~\ref{sec1:tdist} is
 applicable. In the studies with binary data
 % \citep{Balafoutas2012, Gneezy2014, Hauser2014},
 computing the exact posterior using the hypergeometric function led to numerical
@@ -1447,7 +1447,7 @@ compelling replication result.
 
 
 \section{Discussion}
-\label{sec:discussion}
+\label{sec1:discussion}
 We proposed a novel method for the statistical assessment of replicability
 combining reverse-Bayes analysis with Bayesian hypothesis testing. Compared to
 other methods, the sceptical Bayes factor poses more stringent requirements but
@@ -1583,7 +1583,7 @@ then~\eqref{sspv2} becomes
 The solution for $q$ (and consequently for $\gy$) can be explicitly computed
 with
 \begin{align}
-\label{eq:solutionvss}
+\label{eq1:solutionvss}
   q &= \lw{-1}\left(-\frac{z_o^2}{\gamma^2} \cdot \exp\left\{-z_o^2\right\}\right)
   \nonumber \\
   \gy &=
@@ -1597,7 +1597,7 @@ $W(y) \leq -1$ for $y \in [-e^{-1}, 0)$, ensuring that $\gy \leq \gminBFo$. See
 Appendix~\ref{appendix:lambertW} for details about the Lambert $W$ function. For
 some $z_o$, equation \eqref{sspv2} can also be satisfied for negative $\gy$,
 which is why we need to add the condition $-z_o^2/q \geq 1$ in equation
-\eqref{eq:solutionvss}, such that $\gy$ is a valid relative variance.
+\eqref{eq1:solutionvss}, such that $\gy$ is a valid relative variance.
 
 As $z_{o}^{2}$ becomes larger, the argument to the Lambert function
 $x = -z_{o}^{2}\exp(-z_{o}^{2})/\gamma^{2}$ will approach zero, so the
@@ -1622,14 +1622,14 @@ plugged in the exponential function and then multiplied by itself produces $y$.
 For real $y$, $W(y)$ is only defined for $y \geq - e^{-1}$ and for
 $y \in [-e^{-1}, 0)$ the function has two branches that are commonly denoted by
 $\lw{0}(\cdot)$, the branch with $W(y) \geq -1$, and $\lw{-1}(\cdot)$, the
-branch with $W(y) \leq -1$ (see Figure \ref{fig:lambertW} for an illustration).
+branch with $W(y) \leq -1$ (see Figure \ref{fig1:lambertW} for an illustration).
 \begin{figure}[!htb]
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{images/paper1/plot-Lambert-1}
 \end{knitrout}
 \caption{Lambert $W$ function for real argument $y$.}
-\label{fig:lambertW}
+\label{fig1:lambertW}
 \end{figure}
 
 
@@ -1677,22 +1677,22 @@ which is equivalent to
   \frac{1}{1 + g_*} + \frac{d^{2}}{1/c + g_*}\right)\right\} \nonumber \\
   = \sqrt{\frac{1}{1/c + 1}}\cdot\exp\left\{-\frac{z_{o}^{2}}{2}\left(
   1 + \frac{(1 - d)^{2}}{1/c + 1}\right)\right\}.
-  \label{eq:bfsroot}
+  \label{eq1:bfsroot}
 \end{align}
 This is a transcendental equation that has no closed-form solution for $g_*$ in
 terms of elementary functions, but root-finding algorithms can be used to
-compute it. However, when $c = 1$, equation~\eqref{eq:bfsroot} simplifies
+compute it. However, when $c = 1$, equation~\eqref{eq1:bfsroot} simplifies
 \begin{align}
-  \label{eq:bfsroot2}
+  \label{eq1:bfsroot2}
   \frac{1}{1 + g_*}\cdot\exp\left\{-\frac{z_{o}^{2}}{2} \cdot
   \frac{1 + d^{2}}{1 + g_*}\right\}
   &= \frac{1}{\sqrt{2}}\cdot\exp\left\{-\frac{z_{o}^{2}}{2}\left(
   1 + \frac{(1 - d)^{2}}{2}\right)\right\}.
 \end{align}
-Multiplying~\eqref{eq:bfsroot2} by $-z_{o}^{2}(1 + d^{2})/2$ and applying the
+Multiplying~\eqref{eq1:bfsroot2} by $-z_{o}^{2}(1 + d^{2})/2$ and applying the
 Lambert $W$ function leads to
 \begin{align}
-  \label{eq:gintersect}
+  \label{eq1:gintersect}
   % q &= W\left(-\frac{z_A^2}{\sqrt{2}} \cdot
   % \exp\left\{-\frac{z_o^2}{2} \left(1 + \frac{(1 - d)^2}{2}\right)\right\}\right) \\
   % g_* &=
@@ -1718,12 +1718,12 @@ can fulfil the equation (assuming the argument is not smaller than $-e^{-1}$
 which would mean that there are no intersections). It must also hold that
 $g_{*} \leq g_{\minBF_{o}} = \max\{z_{o}^{2} - 1, 0\}$ for $g_{*}$ to be a valid
 sufficiently sceptical prior variance. Hence, when $|d| \leq 1$, the $g_{*}$
-from~\eqref{eq:gintersect} can only be computed with the $\lw{-1}(\cdot)$
+from~\eqref{eq1:gintersect} can only be computed with the $\lw{-1}(\cdot)$
 branch, whereas for $|d| > 1$ and when $-k \geq (1 + d^{2})/2$ the solution
 $g_{*}$ is computed from the $\lw{0}(\cdot)$ branch. Plugging the relative prior
-variance $g_{*}$ from~\eqref{eq:gintersect} into the Bayes factor
-from~\eqref{eq:BFo}, we obtain the expression for the sceptical Bayes factor
-in~\eqref{eq:BFsc1}.
+variance $g_{*}$ from~\eqref{eq1:gintersect} into the Bayes factor
+from~\eqref{eq1:BFo}, we obtain the expression for the sceptical Bayes factor
+in~\eqref{eq1:BFsc1}.
 
 
 \section{Bayes factor with truncated advocacy prior}
@@ -1757,10 +1757,10 @@ is
      % \right\}  \frac{\Phi\left(\frac{z_o + z_r\sqrt{c}}{\sqrt{1 + c}}\right)}{
      \right\}  \frac{\Phi\left(\frac{z_o(1 + dc)}{\sqrt{1 + c}}\right)}{
      \Phi(z_o)}.
-   \label{eq:truncmarg}
+   \label{eq1:truncmarg}
 \end{align}
 With a similar argument one can show that this result holds for any $\that_o$ if
-the last factor in \eqref{eq:truncmarg} is changed to
+the last factor in \eqref{eq1:truncmarg} is changed to
 \begin{align*}
   % \frac{\Phi\left\{\text{sign}(z_o) \frac{z_o + z_r\sqrt{c}}{\sqrt{1 + c}}
   \frac{\Phi\left\{\text{sign}(z_o) \frac{z_o(1 + dc)}{\sqrt{1 + c}}
@@ -1768,7 +1768,7 @@ the last factor in \eqref{eq:truncmarg} is changed to
 \end{align*}
 By dividing the marginal likelihood of the replication data under the
 sceptical prior by the marginal likelihood under the truncated advocacy prior,
-the Bayes factor in \eqref{eq:BFrtrunc} is obtained.
+the Bayes factor in \eqref{eq1:BFrtrunc} is obtained.
 
 
 \section{The shrinkage paradox}
@@ -1778,7 +1778,7 @@ relative variance $c$ and the squared original $z$-value $z_{o}^{2}$ (a monotone
 transformation of the original minimum Bayes factor $\minBF_{o}$) become larger.
 Ignoring the success regions on the wrong side of zero (due to the replication
 paradox), the minimum relative effect estimates $\dmin$ as shown in
-Section~\ref{sec:comparison} are given by
+Section~\ref{sec1:comparison} are given by
 
 \begin{align*}
     &\dmin^{\scriptscriptstyle \BFs} =
@@ -1841,7 +1841,7 @@ at replication.
 \section{Probability of replication success with the sceptical Bayes factor}
 \label{app:powerBFs}
 Conditional on the original study, the probability for replication success at
-level $\gamma$ is given by the probability of \eqref{eq:RSCond-d}. This event
+level $\gamma$ is given by the probability of \eqref{eq1:RSCond-d}. This event
 involves $z_r = dz_o \sqrt{c}$ as the only random quantity if the original study
 has been completed. Assuming a normal distribution
 \begin{align*}
@@ -1857,10 +1857,10 @@ is obtained by using the predictive distribution based on the advocacy prior
 ($\HA \colon \theta \sim \Nor(\that_o, \sigma^2_o)$) and thus
 $\mu_{z_r} = z_o \sqrt{c}$ and $\sigma^2_{z_r} = 1 + c$.
 
-Applying some algebraic manipulations to \eqref{eq:RSCond-d}, the
+Applying some algebraic manipulations to \eqref{eq1:RSCond-d}, the
 probability for replication success at level $\gamma$ can be computed by
 \begin{align}
-  \label{eq:powerBFs}
+  \label{eq1:powerBFs}
   \Pr\left(\BFs \leq \gamma \given z_o, c\right) =
   \begin{cases}
     \Pr(\chi^2_{1,\lambda} \geq  A/[B \sigma^2_{z_r}])
@@ -1888,11 +1888,11 @@ computed for level $\gamma$ with \eqref{ggamma}.
 \label{app:powerBFr}
 The probability of $\BFr \leq \gamma$ is equivalent to the probability of
 \begin{align}
-  \label{eq:BFrsuccess}
+  \label{eq1:BFrsuccess}
   \log(1 + c) - z_{r}^{2} + \frac{(z_{r} - z_{o}\sqrt{c})^{2}}{1 + c}
   \leq  2 \log \gamma
 \end{align}
-Applying some algebraic manipulations to \eqref{eq:BFrsuccess} and assuming a
+Applying some algebraic manipulations to \eqref{eq1:BFrsuccess} and assuming a
 normal distribution for $z_{r}$ as in Appendix~\ref{app:powerBFs} leads to
 \begin{align*}
   \Pr\left(\BFr \leq \gamma \given z_o, c\right) =
