@@ -244,7 +244,7 @@ computed as shown in Table~\ref{tab:meta}.
                                      ($\that_{r} \in [\that_{o} \pm z_{\alpha/2}\sqrt{\sigma_{o}^{2}
                                      + \sigma_{r}^{2}}]$). Usually $\alpha = 5\%$.
                                      This criterion is equivalent to $p_{Q} \geq \alpha$ where
-                                     $p_{Q}$ is the $p$-value from the meta-analytic $Q$-test\footnotemark.\\
+                                     $p_{Q}$ is the $p$-value from the meta-analytic $Q$-test.\footnotemark\\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -273,15 +273,15 @@ instance of the ``absence of evidence fallacy'' \citep{Altman1995} meaning that
 the failure to find evidence against the null hypothesis is erroneously
 interpreted as evidence for the null hypothesis. Meta-analytic extensions of the
 significance approach define replication success by significance of a combined
-effect estimate\footnote{The meta-analytic approach can also be given a Bayesian
-  interpretation: A flat prior distribution for the underlying effect size
-  $\theta$ is updated by the data from original and replication study.
+effect estimate.\footnote{The meta-analytic approach can also be given a
+  Bayesian interpretation: A flat prior distribution for the underlying effect
+  size $\theta$ is updated by the data from original and replication study.
   Replication success defined by a meta-analytic $p$-value being smaller than
   $\alpha$ is then equivalent to replication success via a Bayesian posterior
   probability $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$,
   respectively, $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$
-  depending on the direction of combined estimate.}. Typically, the assumption
-of a common underlying effect size is seen as reasonable so that fixed-effects
+  depending on the direction of combined estimate.} Typically, the assumption of
+a common underlying effect size is seen as reasonable so that fixed-effects
 meta-analysis is used for pooling. Random-effects meta-analysis has mostly been
 used if more than one replication study of the same original study are conducted
 since in this case replicators are often interested in also understanding
@@ -903,11 +903,11 @@ could be used to judge the relative adequacy of model $\text{M}_{1}$. Again, the
 lower the predictive ratio $\text{PR}_{\text{Box}}$, the less compatible the
 observed data with the model $\text{M}_{1}$. Bayesian model criticism approaches
 based on predictive ratios will be used in later parts of this
-thesis\footnote{Some readers may have noted that the predictive ratio is also
+thesis.\footnote{Some readers may have noted that the predictive ratio is also
   the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
   $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
   approach is therefore particularly useful in combination with reverse-Bayes
-  procedures based on Bayes factors, as will be demonstrated in this thesis.}.
+  procedures based on Bayes factors, as will be demonstrated in this thesis.}
 
 % In general,
 % a distinction can be made between checking for \emph{likelihood-data conflict}
