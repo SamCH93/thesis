@@ -74,8 +74,10 @@
 \usepackage{longtable} % long tables with pagebreak
 
 %% Appendix
-\usepackage[toc, page]{appendix}
+\usepackage[page]{appendix}
 \usepackage{nameref}
+
+
 
 %%% Links in included pdfs (see also makefile)
 % \usepackage{pax} % include links from external pdfs
@@ -122,7 +124,7 @@
 \newcommand{\startPaperSummary}[3]{
   % \begingroup
   % \renewcommand{\thesubsection}{\hspace{-1ex}}
-  \subsection*{\autoref{#1}: #2\nopagebreak\\{\normalfont by #3}}
+  \subsection*{Paper \ref{#1}: #2\nopagebreak\\{\normalfont by #3}}
   % \endgroup
 }
 

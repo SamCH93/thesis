@@ -24,7 +24,7 @@ thesis: tex
 	-pdflatex thesis
 	bibtex intro # continue with error with by using - at the start
 	bibtex paper1
-	# bibtex paper2
+	bibtex paper2
 	bibtex paper3
 	# bibtex paper4
 	bibtex paper5

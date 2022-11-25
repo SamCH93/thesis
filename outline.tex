@@ -12,11 +12,10 @@
 
 {
   %% locally disable all sectioning numbers
-  \renewcommand*{\numberline}[0]{}
+  \renewcommand*{\numberline}[1]{}
   %% we do not want a chapter heading for the table of contents
   %% so we replace \tableofcontents by
   \makeatletter
-  
   \@starttoc{toc}
   \makeatother
 }

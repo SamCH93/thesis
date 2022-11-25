@@ -8,7 +8,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, pagesize, twoside, open=right, cleardoublepage=empty,
-headinclude=false, footinclude=false, headsepline, footsepline, parskip=half,
+headinclude=false, footinclude=false, % headsepline, footsepline,
+parskip=half,
 numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
 
 %% input header with specifications and custom definitions
@@ -91,7 +92,6 @@ knitr::knit(input = "intro.Rnw")
 
 \addtocontents{toc}{\bigskip}
 
-
 % ==============================================================================
 % PAPERS
 % ==============================================================================
@@ -122,7 +122,7 @@ knitr::knit(input = "intro.Rnw")
 }{%
    \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
   \url{https://doi.org/10.1214/21-AOAS1502}.}
-
+\include{paper2}
 
 % Paper III
 % ------------------------------------------------------------------------------
