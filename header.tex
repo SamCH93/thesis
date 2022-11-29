@@ -24,7 +24,9 @@
 \usepackage{doi} % clickable doi in citation
 % redefine bibliography command to use less space
 \renewcommand\bibsection{%
-   \section*{Bibliography}%
+  \phantomsection
+  \addcontentsline{toc}{section}{Bibliography}
+  \section*{Bibliography}%
    % \markboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
 }%
 
@@ -92,8 +94,14 @@
 \newcommand{\abstractnamefont}{\normalfont\sffamily\bfseries\Large}
 
 %%% Only include chapters in the TOC and change its title
-\setcounter{tocdepth}{0}
+\setcounter{tocdepth}{1}
 \addto{\captionsUKenglish}{\renewcommand{\contentsname}{Thesis outline}}
+
+%%% to change toc depth mid document
+\newcommand{\changelocaltocdepth}[1]{%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{#1}}%
+  \setcounter{tocdepth}{#1}%
+}
 
 %%% command to add paper details to the TOC via \addtocontents
 \newcommand{\addPaperToTOC}[3]{%
@@ -106,7 +114,7 @@
   \noindent%
   \setlength\leftskip{2cm}%
   \setlength\rightskip{2em}%
-  \setlength\parfillskip{-2em}%
+  % \setlength\parfillskip{-2em}%
   {\bfseries\textsf{\textbf{#1}}}\smallskip\newline%
   \textit{#2}\smallskip\newline%
   #3\newline\vspace{-\baselineskip}%
@@ -125,7 +133,7 @@
 \newcommand{\startPaperSummary}[3]{
   % \begingroup
   % \renewcommand{\thesubsection}{\hspace{-1ex}}
-  \subsection*{Paper \ref{#1}: #2\nopagebreak\\{\normalfont by #3}}
+  \subsubsection*{Paper \ref{#1}: #2\nopagebreak\\{\normalfont by #3}}
   % \endgroup
 }
 
@@ -145,11 +153,20 @@
    {\bfseries\textsf{#1}}\\[0.5cm]%
    {\large\textit{#2}}\\[0.7cm]%
    {\large #3}%
-  }
+ }
   \label{\chaptername\thechapter}
   \addPaperToTOC{#1}{#2}{#3}
   \cleardoublepage
 }
+
+\usepackage{titletoc}
+\titlecontents{chapter}
+[0em]
+{\bfseries \sffamily}
+{}
+{\contentsmargin{0pt}}
+{\hfill~ \hspace{5em} ~\contentspage}
+[]
 
 
 %%% Page headings

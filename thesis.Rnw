@@ -90,6 +90,8 @@ knitr::knit(input = "intro.Rnw")
 
 \include{intro}
 
+\changelocaltocdepth{0}
+
 \addtocontents{toc}{\bigskip}
 
 % ==============================================================================
@@ -97,6 +99,13 @@ knitr::knit(input = "intro.Rnw")
 % ==============================================================================
 \cleardoublepage
 \cfoot[]{\chapapp $\:$ \thechapter}
+
+
+\addtocontents{toc}{%
+  \protect\vspace{2ex}
+  \textbf{\textsf{Design and analysis of replication studies}\protect\texorpdfstring{ \protect\dotfill}{}}
+  \par}
+
 
 % Paper I
 % ------------------------------------------------------------------------------
@@ -109,9 +118,6 @@ knitr::knit(input = "intro.Rnw")
    \url{https://doi.org/10.1111/rssb.12491}.
  }
 \include{paper1}
-
-
-
 
 % Paper II
 % ------------------------------------------------------------------------------
@@ -132,6 +138,12 @@ knitr::knit(input = "intro.Rnw")
   2022. arXiv preprint. \url{https://doi.org/10.48550/arXiv.2211.02552}.}
 \include{paper3}
 
+\addtocontents{toc}{\bigskip}
+\addtocontents{toc}{%
+  \protect\vspace{2ex}
+  \textbf{\textsf{Reverse-Bayes methodology}\protect\texorpdfstring{ \protect\dotfill}{}}
+  \par}
+
 % Paper IV
 % ------------------------------------------------------------------------------
 \paperchapter{%
@@ -141,7 +153,9 @@ knitr::knit(input = "intro.Rnw")
 }{%
    \textit{Research Synthesis Methods}, 2022, 13(3), 295--314.
   \url{https://doi.org/10.1186/s12874-022-01635-4}.}
+\include{paper4}
 
+\addtocontents{toc}{\protect\newpage}
 
 % Paper V
 % ------------------------------------------------------------------------------
@@ -154,6 +168,12 @@ sample uncertainty''
    \textit{BMC Medical Research Methodology}, 2022, 22(149).
   \url{https://doi.org/10.1002/jrsm.1538}.}
 \include{paper5}
+
+
+\addtocontents{toc}{%
+  \protect\vspace{2ex}
+  \textbf{\textsf{Integrity in methodological research}\protect\texorpdfstring{ \protect\dotfill}{}}
+  \par}
 
 % Paper VI
 % ------------------------------------------------------------------------------

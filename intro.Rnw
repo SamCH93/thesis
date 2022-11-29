@@ -23,7 +23,7 @@
 
 How can we know if a finding from a scientific study is really true? For
 example, how can we know if the protective effect of a vaccine found in a study
-is real? The answer to this question is of highest importance to scientists and
+is real? The answer to such questions is of highest importance to scientists and
 decision makers, but typically we can never know for sure as any study result
 comes with uncertainty.
 
@@ -131,8 +131,8 @@ prevent an escalation of the situation \citep[for an overview see
 report'' format \citep{Chambers2021} in which a study proposal is peer reviewed
 \emph{before} the study is conducted, and which, if accepted, gives provisional
 publication acceptance regardless of the study outcome. Similarly, digital
-infrastructure platforms, such as zenodo (\url{https://zenodo.org/}) or the open
-science framework (\url{https://osf.io/}), were created to facilitate
+infrastructure platforms, such as Zenodo (\url{https://zenodo.org/}) or the Open
+Science Framework (\url{https://osf.io/}), were created to facilitate
 preregistration, preprints, and code and data sharing, all of which have
 substantially increased over the last decade \citep{Kidwell2016, Nosek2018,
   Rawlinson2019}. The practice of conducting replication studies has also gained
@@ -161,7 +161,7 @@ overview about these and other methods which have been used in practice.
 
 \begin{table}[!htb]
   \centering
-  \caption{Study level summary statistics for an original and a replication
+  \caption{Study-level summary statistics for an original and a replication
     study. The cumulative distribution function of the standard normal
     distribution is denoted by $\Phi(\cdot)$, and the $1 - \alpha$ quantile of
     the standard normal distribution is denoted by
@@ -187,27 +187,27 @@ overview about these and other methods which have been used in practice.
 \end{table}
 
 Most methods for analyzing replication studies can be formulated in terms of
-study level summary statistics as shown in Table~\ref{tab:meta}. % Effect
+study-level summary statistics as shown in Table~\ref{tab:meta}. % Effect
 % estimates, standard error, confidence intervals, and $p$-values
 All of these are routinely reported in researcher articles, and if one of them
 is missing they typically can, under some assumptions, be calculated from the
 others. Using summary statistics is also often the only possible way for
-conducting the analysis as the raw data from the original study may not be
-available to the replicators. The most important statistic is the effect
-estimate $\that$. It provides an estimate of the underlying effect size $\theta$
-which quantifies the effect or association of an intervention/exposure with an
-outcome variable. Typical effect sizes are mean differences and correlations
-(for continuous outcomes), odds ratios (for binary outcomes), or hazard ratios
-(for time to event outcomes). Depending on the type of effect size, a
-transformation might be required so that the assumption of approximately
-normally distributed effect estimates around the unknown effect size $\theta$
-(for large enough sample sizes) is justified. This could be, for instance, the
-Fisher $z$-transformation for correlations, or the log-transformation for
-odds/hazard ratios \citep[chapter 11]{Cooper2019}. The associated standard error
-$\sigma$ represents the statistical uncertainty of the estimate. Under the
-assumption of (asymptotic) normality, confidence intervals for $\theta$ and
-$p$-values for testing the null hypothesis $H_{0} \colon \theta = 0$ can be
-computed as shown in Table~\ref{tab:meta}.
+conducting the replication success analysis as the raw data from the original
+study may not be available to the replicators. The most important statistic is
+the effect estimate $\that$. It provides an estimate of the underlying effect
+size $\theta$ which quantifies the effect or association of an
+intervention/exposure with an outcome variable. Typical effect sizes are mean
+differences and correlations (for continuous outcomes), odds ratios (for binary
+outcomes), or hazard ratios (for time to event outcomes). Depending on the type
+of effect size, a transformation might be required so that the assumption of
+approximately normally distributed effect estimates around the unknown effect
+size $\theta$ (for large enough sample sizes) is justified. This could be, for
+instance, the Fisher $z$-transformation for correlations, or the
+log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
+associated standard error $\sigma$ represents the statistical uncertainty of the
+estimate. Under the assumption of (asymptotic) normality, confidence intervals
+for $\theta$ and $p$-values for testing the null hypothesis
+$H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
@@ -299,15 +299,15 @@ much the replication effect estimate changed compared to the original, and the
 smaller $d$ is the smaller the degree of replication success. Some projects also
 report a confidence interval for $d$ \citep{Camerer2016, Camerer2018}, while
 others ignore its uncertainty and make a binary cut at $d_{\text{min}} = 1$ to
-define replication success \citep{Errington2021}. In contrast, the criteria
-based on confidence and prediction intervals define effect size compatibility on
-an absolute scale. However, the criterion based on the original confidence
-interval ignores the uncertainty from the replication, whereas the criterion
-based on the replication confidence interval ignores the uncertainty from the
-original study. The prediction interval criterion, on the other hand, takes into
-account both sources of uncertainty \citep{Patil2016}. Yet, declaring
-``replication success'' based on the prediction interval may be logically
-questionable due to its connection to the meta-analytic $Q$-test.
+define replication success \citep{Errington2021}. The criteria based on
+confidence and prediction intervals define effect size compatibility on an
+absolute scale. However, the criterion based on the original confidence interval
+ignores the uncertainty from the replication, whereas the criterion based on the
+replication confidence interval ignores the uncertainty from the original study.
+The prediction interval criterion takes into account both sources of uncertainty
+\citep{Patil2016}. Yet, declaring ``replication success'' based on the
+prediction interval may be logically questionable due to its connection to the
+meta-analytic $Q$-test.
 % as it may also be seen as an instance of the ``absence of evidence fallacy''
 % \citep{Altman1995};
 That is, if the $p$-value from the $Q$-test is larger than $\alpha$ this is
@@ -561,15 +561,16 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
 \begin{table}
   \centering
   \caption{Subset of results from the Reproducibility Project: Cancer Biology
-    \citep{Errington2021}. (P, X, E) denotes effect E from experiment X, from
-    original paper P. Shown are original $\that_{o}$, replication $\that_{r}$,
-    and pooled effect estimate $\that_{m}$ with 95\% confidence intervals,
-    variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$, relative effect estimate
-    $d = \that_{r}/\that_{o}$, original $p$-value $p_{o}$, replication $p$-value
-    $p_{r}$, meta-analytic $p$-value $p_{m}$, $Q$-test $p$-value $p_{Q}$, and
-    sceptical $p$-value $p_{\mathrm{S}}$. A level $\alpha = 5\%$ is used as
-    threshold for replication success via $p$-values, and a threshold
-    $d_{\text{min}} = 1$ for the relative effect estimate.}
+    \citep{Errington2021}. (P, X, E) denotes effect number E from experiment
+    number X, from original paper number P. Shown are original $\that_{o}$,
+    replication $\that_{r}$, and pooled effect estimate $\that_{m}$ with 95\%
+    confidence intervals, variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$,
+    relative effect estimate $d = \that_{r}/\that_{o}$, original $p$-value
+    $p_{o}$, replication $p$-value $p_{r}$, meta-analytic $p$-value $p_{m}$,
+    $Q$-test $p$-value $p_{Q}$, and sceptical $p$-value $p_{\mathrm{S}}$. A
+    level $\alpha = 5\%$ is used as threshold for replication success via
+    $p$-values, and a threshold $d_{\text{min}} = 1$ for the relative effect
+    estimate.}
   \label{tab:RPCB}
 % \resizebox{1\textwidth}{!}{%
 << "RPCB-table2", results = "asis" >>=
@@ -618,10 +619,10 @@ In response to the lack of a standard criterion for replication success, various
 methods have been proposed \citep[among others]{Verhagen2014, Simonsohn2015,
   Anderson2016, Patil2016, Johnson2016, Etz2016, vanAert2017, Ly2018, Harms2019,
   Hedges2019, Mathur2020, Held2020, Pawel2020, Bonett2020}. The focus of this
-thesis is to refine and extended the proposal from \citet{Held2020} which
-combines \emph{reverse-Bayes inference} and \emph{Bayesian model criticism} in a
-method for assessing replication success. In the following, I will summarize its
-main ideas and technical underpinnings.
+thesis is to refine and extend the proposal from \citet{Held2020} which combines
+\emph{reverse-Bayes inference} and \emph{Bayesian model criticism} in a method
+for assessing replication success. In the following, I will summarize its main
+ideas and technical underpinnings.
 
 \subsubsection{Reverse-Bayes inference}
 
@@ -637,17 +638,15 @@ can be obtained from Bayes' theorem
 meaning that the \emph{prior distribution} for the parameter $\theta$ with
 density/probability mass function $f(\theta)$ is multiplied by the (normalized)
 likelihood of the data, also know as \emph{Bayesian updating}. Parameter values
-which increase the likelihood of the data become more likely \emph{a
-  posteriori}, however, they are also weighted by their plausibility \emph{a
-  priori} through the prior. As such, Bayesian inference provides a formal way
-for combining information from the data at hand with external knowledge encoded
-in the prior.
+which increase the likelihood of the data become more likely \emph{a posteriori}
+but they are also weighted by their \emph{a priori} plausibility through the
+prior. As such, Bayesian inference provides a formal way for combining
+information from the data at hand with external knowledge encoded in the prior.
 
-However, many also consider the prior to be the weak point of Bayesian
-inference, as it is unclear how it should be specified in the absence of
-external knowledge. The \emph{reverse-Bayes} approach, first proposed by
-\citet{Good1950}, is one way of dealing with this issue. The idea is to reverse
-Bayes' theorem
+Many consider the prior to be also the weak point of Bayesian inference since it
+is unclear how it should be specified in the absence of external knowledge. The
+\emph{reverse-Bayes} approach, first proposed by \citet{Good1950}, is one way of
+dealing with this issue. The idea is to reverse Bayes' theorem
 \begin{align*}
   f(\theta) = f(\theta \given \text{data}) \times
   \frac{f(\text{data})}{f(\text{data} \given \theta)}
@@ -906,16 +905,16 @@ If a second ``benchmarking'' model $\text{M}_{2}$ alternative to the model under
 investigation $\text{M}_{1}$ is available, Box proposed that the \emph{prior
   predictive ratio}
 \begin{align*}
-  \text{PR}_{\text{Box}}
+  \text{PPR}_{\text{Box}}
   = \frac{f(\text{observed data} \given \text{M}_{1})}{f(\text{observed data} \given \text{M}_{2})},
 \end{align*}
 the ratio of predictive densities from the observed data under both models,
 could be used to judge the relative adequacy of model $\text{M}_{1}$. Again, the
-lower the predictive ratio $\text{PR}_{\text{Box}}$, the less compatible the
-observed data with the model $\text{M}_{1}$. Bayesian model criticism approaches
-based on predictive ratios will be used in later parts of this
-thesis.\footnote{Some readers may have noted that the predictive ratio is also
-  the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
+lower the prior predictive ratio $\text{PPR}_{\text{Box}}$, the less compatible
+the observed data with the model $\text{M}_{1}$. Bayesian model criticism
+approaches based on prior predictive ratios will be used in later parts of this
+thesis.\footnote{Some readers may have noted that the prior predictive ratio is
+  also the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
   $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
   approach is therefore particularly useful in combination with reverse-Bayes
   procedures based on Bayes factors, as will be demonstrated in later parts of
@@ -1087,47 +1086,26 @@ reverse-Bayes assessment of replication success. Some additional properties
 (\eg{} the null distribution of the sceptical $p$-value) and extensions (\eg{} a
 one-sided version of the sceptical $p$-value, power and sample size
 calculations) can be found in the original article by \citet{Held2020}. However,
-the parts of the procedure that are relevant for this thesis have been
-presented.
+the relevant parts of the procedure have been presented. In the following, I
+will discuss open questions and how they are addressed in this thesis.
 
 
-\subsubsection{Data and software}
-The CC-By 4.0 licensed data from the Reproducibility Project: Cancer Biology
-\citep{Errington2021} were downloaded from
-\url{https://doi.org/10.17605/osf.io/e5nvr}. The relevant variables were then
-extracted from the file ``\texttt{RP\_CB Final Analysis - Effect level
-  data.csv}''. Code and data to reproduce the analyses and recompile the thesis
-are available at \url{https://doi.org/10.5281/zenodo.XXXXXXX}. All analyses were
-conducted in the R programming language version
-\Sexpr{paste(version$major, version$minor, sep = ".")} \citep{R}. The packages
-\texttt{dplyr} \citep{Wickham2022}, \texttt{ggplot2} \citep{Wickham2016},
-\texttt{knitr} \citep{Xie2022}, \texttt{ReplicationSuccess} \citep{Held2020},
-\texttt{UpSetR} \citep{Gehlenborg2019}, and \texttt{xtable} \citep{Dahl2019}
-were used.
-
-
-<< "sessionInfo1", eval = Reproducibility, results = "asis" >>=
-## print R sessionInfo to see system information and package versions
-## used to compile the manuscript (set Reproducibility = FALSE, to not do that)
-cat("\\newpage \\section*{Computational details}")
-@
-<< "sessionInfo2", echo = Reproducibility, results = Reproducibility >>=
-sessionInfo()
-@
-
-\newpage
 \section{Open questions and thesis contributions}
 \label{sec:summary}
 \raggedbottom
 
-This thesis consists of six papers. Paper I and II (and to a lesser extent III)
-focus on extending the reverse-Bayes assessment of replication success from
-\citet{Held2020}. Paper III presents a general Bayesian framework for
-replication study design. Paper IV is a review paper about reverse-Bayes
-methodology. Paper V is a short comment on another article which proposed a
-reverse-Bayes method. Paper VI lists and illustrates questionable research
-practices in simulation studies.
+This thesis consists of six papers divided into three parts. The first part
+(Paper I, II, and III) focuses on methodology for design and analysis of
+replication studies. The second part (Paper IV and V) revolves around
+reverse-Bayes methodology in general. Paper IV is a review paper about
+reverse-Bayes methodology and Paper V is a short comment on another article
+which proposed a reverse-Bayes method. The last part (Paper VI) is about
+integrity issues methodological research with simulations
+studies. % The article lists and illustrates questionable
+% research practices in simulation studies, and gives recommendations how to avoid
+% them.
 
+\subsection{Design and analysis of replication studies}
 
 \startPaperSummary{PaperI}{%
   The sceptical Bayes factor for the assessment of replication success}{%
@@ -1253,6 +1231,7 @@ methodology for multisite replication study design. I continued working on the
 manuscript in 2022 and also wrote the accompanying R package. Throughout, L.
 Held and G. Consonni gave high-level feedback.
 
+\subsection{Reverse-Bayes methodology}
 
 \startPaperSummary{PaperIV}{%
   Reverse-Bayes methods for evidence assessment and research synthesis}{%
@@ -1310,6 +1289,8 @@ improved by expanding it with some logical flaws of the method. The two of us
 iteratively worked on the manuscript, while L. Held gave mostly high-level
 feedback.
 
+\subsection{Integrity in methodological research}
+
 \startPaperSummary{PaperVI}{%
   Pitfalls and Potentials in Simulation Studies}{%
   Samuel Pawel, Lucas Kook, Kelly Reeve \\
@@ -1337,11 +1318,39 @@ research. I then wrote a first draft of the manuscript and proposed the idea to
 L. Kook and K. Reeve. L. Kook and myself then came up with the method ``AINET''
 and started writing the simulation protocol. L. Kook took lead in developing the
 R package \texttt{ainet} (\url{https://github.com/LucasKook/ainet}) and
-simulation study code. K. Reeve provided feedback on the simulation protocol and
-helped polishing the manuscript. Recently, I was invited to present the results
-from this project at the CEN (Central European Network) conference 2023 in
-Basel.
+simulation study code. Myself, L. Kook, and K. Reeve then designed the final
+simulation study and wrote the manuscript together. Recently, I was invited to
+present the results from this project at the CEN (Central European Network)
+conference 2023 in Basel.
+
+
+\phantomsection
+\addcontentsline{toc}{section}{Data and software}
+\section*{Data and software}
+The CC-By 4.0 licensed data from the Reproducibility Project: Cancer Biology
+\citep{Errington2021} were downloaded from
+\url{https://doi.org/10.17605/osf.io/e5nvr}. The relevant variables were then
+extracted from the file ``\texttt{RP\_CB Final Analysis - Effect level
+  data.csv}''. All analyses from this chapter were conducted in the R
+programming language version \Sexpr{paste(version$major, version$minor, sep =
+  ".")} \citep{R}. The packages \texttt{dplyr} \citep{Wickham2022},
+\texttt{ggplot2} \citep{Wickham2016}, \texttt{knitr} \citep{Xie2022},
+\texttt{ReplicationSuccess} \citep{Held2020}, \texttt{UpSetR}
+\citep{Gehlenborg2019}, and \texttt{xtable} \citep{Dahl2019} were used. Code and
+data to reproduce this thesis are available at
+\url{https://doi.org/10.5281/zenodo.XXXXXXX}.
+
+
+<< "sessionInfo1", eval = Reproducibility, results = "asis" >>=
+## print R sessionInfo to see system information and package versions
+## used to compile the manuscript (set Reproducibility = FALSE, to not do that)
+cat("\\newpage \\section*{Computational details}")
+@
+<< "sessionInfo2", echo = Reproducibility, results = Reproducibility >>=
+sessionInfo()
+@
 
 % Bibliography
+\nocite{Pawel2020b, Held2021, Pawel2022c,Held2021b, Pawel2022d, Pawel2022e}
 \bibliographystyle{apalikedoiurl}
 \bibliography{bibliography}
