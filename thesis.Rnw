@@ -103,8 +103,10 @@ knitr::knit(input = "intro.Rnw")
 
 \addtocontents{toc}{%
   \protect\vspace{2ex}
-  \textbf{\textsf{Design and analysis of replication studies}\protect\texorpdfstring{ \protect\dotfill}{}}
-  \par}
+  \textbf{\textsf{Design and analysis of replication studies}}\par}
+\addtocontents{toc}{%
+  \protect\vspace{-2ex}
+  \par\noindent\rule{\textwidth}{0.4pt}\par}
 
 
 % Paper I
@@ -141,8 +143,10 @@ knitr::knit(input = "intro.Rnw")
 \addtocontents{toc}{\bigskip}
 \addtocontents{toc}{%
   \protect\vspace{2ex}
-  \textbf{\textsf{Reverse-Bayes methodology}\protect\texorpdfstring{ \protect\dotfill}{}}
-  \par}
+  \textbf{\textsf{Reverse-Bayes methodology}}\par}
+\addtocontents{toc}{%
+  \protect\vspace{-2ex}
+  \par\noindent\rule{\textwidth}{0.4pt}\par}
 
 % Paper IV
 % ------------------------------------------------------------------------------
@@ -169,11 +173,13 @@ sample uncertainty''
   \url{https://doi.org/10.1002/jrsm.1538}.}
 \include{paper5}
 
-
+\addtocontents{toc}{\bigskip}
 \addtocontents{toc}{%
   \protect\vspace{2ex}
-  \textbf{\textsf{Integrity in methodological research}\protect\texorpdfstring{ \protect\dotfill}{}}
-  \par}
+  \textbf{\textsf{Integrity in methodological research}}\par}
+\addtocontents{toc}{%
+  \protect\vspace{-2ex}
+  \par\noindent\rule{\textwidth}{0.4pt}\par}
 
 % Paper VI
 % ------------------------------------------------------------------------------

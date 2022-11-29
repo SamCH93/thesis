@@ -112,9 +112,9 @@
   \begingroup%
   \nopagebreak%
   \noindent%
-  \setlength\leftskip{2cm}%
-  \setlength\rightskip{2em}%
-  % \setlength\parfillskip{-2em}%
+  \setlength\leftskip{0.5em}%
+  \setlength\rightskip{6em}%
+  \setlength\parfillskip{-2em}%
   {\bfseries\textsf{\textbf{#1}}}\smallskip\newline%
   \textit{#2}\smallskip\newline%
   #3\newline\vspace{-\baselineskip}%
@@ -161,12 +161,18 @@
 
 \usepackage{titletoc}
 \titlecontents{chapter}
-[0em]
-{\bfseries \sffamily}
-{}
-{\contentsmargin{0pt}}
-{\hfill~ \hspace{5em} ~\contentspage}
-[]
+    [0.5em]
+    {\addvspace{0.5em}\bfseries \sffamily}
+    {}
+    {\hspace*{-1.3em}}
+    {\titlerule*[.5pc]{}\contentspage}
+
+\titlecontents{section}
+    [2em]
+    {\sffamily}
+    {\contentslabel{1.3em}}
+    {\hspace*{-1.3em}}
+    {\dotfill{}\contentspage}
 
 
 %%% Page headings
