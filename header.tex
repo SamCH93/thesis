@@ -112,12 +112,13 @@
   \begingroup%
   \nopagebreak%
   \noindent%
+  \vspace{-1pt}%
   \setlength\leftskip{0.5em}%
   \setlength\rightskip{6em}%
   \setlength\parfillskip{-2em}%
-  {\bfseries\textsf{\textbf{#1}}}\smallskip\newline%
-  \textit{#2}\smallskip\newline%
-  #3\newline\vspace{-\baselineskip}%
+  {\vspace{-1pt}\bfseries\textsf{\textbf{#1}}}\smallskip\newline\vspace{-1pt}%
+  \textit{#2}\smallskip\newline\vspace{-1pt}%
+  #3\newline%
   \par%
   \endgroup%
 }
@@ -168,7 +169,7 @@
     {\titlerule*[.5pc]{}\contentspage}
 
 \titlecontents{section}
-    [2em]
+    [2.5em]
     {\sffamily}
     {\contentslabel{1.3em}}
     {\hspace*{-1.3em}}

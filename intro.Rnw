@@ -1,6 +1,6 @@
 \chapter*{Introduction}
 \phantomsection
-\addcontentsline{toc}{chapter}{Introduction}
+\addcontentsline{toc}{chapter}{\texorpdfstring{\phantom{IV}Introduction}{Introduction}}
 
 % \hfill
 % \begin{tabular}{p{0.7\textwidth}}
