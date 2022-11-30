@@ -71,7 +71,7 @@ $p_o=1-\Phi(z_o)$ and $p_r=1-\Phi(z_r)$, respectively, where $\Phi(\cdot)$
 denotes the standard normal cumulative distribution function. Let
 $c = \sigma_o^2/\sigma_r^2$ denote the variance ratio of the squared standard
 errors of the original and replication effect estimates. The squared standard
-errors are usually inversely proportional to the sample size of each study, \ie
+errors are usually inversely proportional to the sample size of each study, \ie{}
 $\sigma_o^2 = \kappa^2/n_o$ and $\sigma_r^2 = \kappa^2/n_r$ for some unit
 variance $\kappa^2$. The variance ratio $c$ can then be identified as the
 relative sample size $c=n_r/n_o$. The relative effect size
@@ -85,7 +85,7 @@ the replication effect estimate will be denoted as $s=1-d$.
 Suppose the original study achieved statistical significance at one-sided level
 $\alpha$, so $p_o \leq \alpha$. The standard approach to assess replication
 success is based on significance of the replication effect estimate at the same
-level $\alpha$, \ie the replication is considered successful if also
+level $\alpha$, \ie{} the replication is considered successful if also
 $p_r \leq \alpha$. This approach is known in drug development as the two-trials
 rule \citep{Senn2008}, usually conducted at $\alpha=0.025$. Let
 $z_\alpha = \Phi^{-1}(1-{\alpha})>0$ denote the $z$-value corresponding to the
@@ -241,7 +241,7 @@ condition on the relative effect size \eqref{eq2:d}:
 To achieve replication success, the relative effect size must be at least as
 large as the right hand-side of \eqref{eq2:res}, the minimum relative effect size
 $\dmin$, a function of $K$ and the relative sample size $c$. If the relative
-sample size becomes very large, \ie $c \rightarrow \infty$, we have
+sample size becomes very large, \ie{} $c \rightarrow \infty$, we have
 $\dmin \downarrow \dinfty$ where
 \begin{equation}\label{eq2:smallestpossible}
   \dinfty = 1/\sqrt{K (K-1)}
@@ -307,7 +307,7 @@ For example, for $\alpha = 0.025$ and $\dinfty = 0.8$ we obtain $\alpha'=0.033$.
 \subsection{Recalibration of the sceptical \textit{p}-value}\label{sec2:recalib}
 
 The condition $p_S \leq \alpha_S$ for replication success at the golden level is
-equivalent to $z_S \geq z_\alpha / \sqrt{\varphi}$, \ie
+equivalent to $z_S \geq z_\alpha / \sqrt{\varphi}$, \ie{}
 $z_S \sqrt{\varphi} \geq z_\alpha$. In practice it may be preferable to
 recalibrate the sceptical $p$-value $p_{S} = 1 - \Phi(z_S)$ to
 $ \tilde{p}_S = 1 - \Phi(z_S \sqrt{\varphi})$, which then needs to be compared
@@ -333,7 +333,7 @@ one-sided level $\alpha=0.025$. {It is worth noting that in practice the two
 The main difference between the replication success and the two-trials
 rule approach concerns how shrinkage of the replication effect
 estimate is handled. Figure~\ref{fig2:fig2} illustrates that
-shrinkage is penalized in the assessment of replication success, \ie
+shrinkage is penalized in the assessment of replication success, \ie{}
 the original $p$-value needs to be quite small to achieve replication
 success for a relative effect size $d<1$. In contrast, significance of
 the replication study can be achieved even if there is substantial
@@ -469,7 +469,7 @@ for $c \to \infty$. This further highlights the stringency of the nominal level.
 The approach described so far takes the original study at face-value since it
 assumes that $\hat \theta_o$ is equal to the unknown effect size $\theta$. In
 practice, however, there are often good reasons to believe that original effect
-estimates have a tendency to be inflated (\eg due to publication bias). One way
+estimates have a tendency to be inflated (\eg{} due to publication bias). One way
 to address this issue is to base power calculations on a shrunken version of the
 original effect estimate, where the amount of shrinkage is guided by domain
 knowledge and a risk of bias assessment of the original study. For illustration,
@@ -648,7 +648,7 @@ and is bounded to the interval between minus one and one. Moreover, the Fisher
 $z$-transformation $\hat{\theta} = \text{tanh}^{-1}(r)$ can be applied to the
 correlation coefficients, resulting in the transformed estimates being
 asymptotically normal with variance which is only a function of the study sample
-size $n$, \ie $\Var(\hat{\theta}) = 1/(n - 3)$ \citep{Fisher1921}.
+size $n$, \ie{} $\Var(\hat{\theta}) = 1/(n - 3)$ \citep{Fisher1921}.
 
 
 
@@ -878,11 +878,11 @@ analysis and design of replication studies, yet certain limitations and
 opportunities for future research remain: First, assuming normality of the
 effect estimates may be questionable, especially for small sample sizes, and
 more robust distributional assumptions could be considered. Second, in some
-types of analyses (\eg regression or ANOVA) the effect estimate is a vector and
+types of analyses (\eg{} regression or ANOVA) the effect estimate is a vector and
 the approach would need suitable adaptations. Third, there is a recent trend to
 not only conduct one but several replications for one original study
-\citep[\eg][]{Klein2014, Ebersole2016, Klein2018}. Also for this situation, the
-method would need to be adapted, \eg the replication estimates could be first
+\citep[\eg{}][]{Klein2014, Ebersole2016, Klein2018}. Also for this situation, the
+method would need to be adapted, \eg{} the replication estimates could be first
 synthesized and an analysis of replication success could be performed
 subsequently.
 

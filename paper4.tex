@@ -143,7 +143,7 @@ Bayes' theorem can be written in more compact form as
   \frac{\Pr(H_{1} \given \data)}{\Pr(H_{0} \given \data)} =
   \frac{\Pr(\data \given H_{1})}{\Pr(\data \given H_{0})} \,  \frac{\Pr(H_{1})}{\Pr(H_{0})},
 \end{equation}
-\ie the posterior odds are the likelihood ratio times the prior odds. The
+\ie{} the posterior odds are the likelihood ratio times the prior odds. The
 standard 'forward-Bayes' approach thus fixes the prior odds (or one of the
 underlying probabilities), determines the likelihood ratio for the available
 data, and takes the product to compute the posterior odds. Of course, the latter
@@ -253,7 +253,7 @@ inverts these equations, which leads to the following:
 \delta &= \delta' - \kappa,  \\
 \mu &= \frac{\mu'\delta' - x \kappa}{\delta}, \label{eq4:prior-mean}
 \end{align}
-provided $\delta' > \kappa$, \ie the posterior precision must be larger than the
+provided $\delta' > \kappa$, \ie{} the posterior precision must be larger than the
 observational precision.
 
 We will illustrate the application of \eqref{eq4:prior-precision} and
@@ -448,7 +448,7 @@ study).
 
 \subsubsection{Challenging statistically non-significant findings}
 \label{sec4:nonSigAnCred}
-It is also possible to challenge ``non-significant'' findings (\ie those for
+It is also possible to challenge ``non-significant'' findings (\ie{} those for
 which the CI now includes zero, so $z^2 < z_{\alpha/2}^2$) using a prior that
 pushes the posterior towards being credible in the Bayesian sense, with
 posterior credible interval no longer including zero, corresponding to no
@@ -520,7 +520,7 @@ estimate showing efficacy, the relatively large uncertainty rendered the overall
 finding non-significant at the 5\% level ($\hat{\theta} = -0.34$ [95\% CI
 $-0.96$ to $0.29$]). Such an outcome is frequently (and wrongly) taken to imply
 no effect. The use of AnCred leads to a more nuanced conclusion. The advocacy
-limit AL on the log odds ratio scale for REMAP-CAP is $-1.89$, \ie $0.15$ on the
+limit AL on the log odds ratio scale for REMAP-CAP is $-1.89$, \ie{} $0.15$ on the
 odds ratio scale, see also the right plot in Figure \ref{fig4:anCredEx}. Thus
 advocates of the effectiveness of corticosteroids can regard the trial as
 providing credible evidence of effectiveness despite its non-significance if
@@ -677,7 +677,7 @@ then
   \tau^{2} = \frac{2}{m} + \frac{K + 1}{n}
 \end{align*}
 where $n$ is the number of non-events in the arm used to support the null
-hypothesis (\eg the control arm in an RCT). With the control arm event rate
+hypothesis (\eg{} the control arm in an RCT). With the control arm event rate
 $R = m/(m + n)$ constrained to match that of the actual study, we find
 \begin{eqnarray*}
   m = \frac{2 - R(1 - K)}{\tau^{2}(1 - R)} & \mbox{ and }
@@ -757,7 +757,7 @@ finding is sufficient to put it in conflict with the sceptical prior rendering
 it non-credible. In the AnCred framework, this implies a finding possesses
 intrinsic credibility at level $\alpha$ if the estimate $\hat{\theta}$ is
 outside the corresponding sceptical prior interval $[-\SL, \SL]$ extracted using
-Reverse-Bayes from the finding itself, \ie $\hat{\theta}^2 > \SL^2$ with $\SL$
+Reverse-Bayes from the finding itself, \ie{} $\hat{\theta}^2 > \SL^2$ with $\SL$
 given in \eqref{eq4:S}. Matthews showed this implies an unprecedented finding is
 intrinsically credible at level $\alpha=0.05$ if its $p$-value does not exceed
 0.013.
@@ -819,7 +819,7 @@ extreme case $\prep=0.5$ if $\hat \theta=0$.
 
 As an example, the $p$-value for intrinsic credibility for the RECOVERY trial
 finding (with $p$-value $p=0.0002$) cited earlier is $\pIC = 0.01$ and thus the
-probability of the replication effect going in the same direction (\ie reduced
+probability of the replication effect going in the same direction (\ie{} reduced
 mortality in this case) is $0.995$. In contrast, the finding from the smaller
 REMAP-CAP trial (with $p=0.29$) leads to $\pIC = 0.46$, and the probability of
 effect direction replication is hence only $0.77$.
@@ -998,7 +998,7 @@ claim at face value. This leads to the second Bayes factor being
 Analogously to the tail probability approach from Section~\ref{sec4:IC},
 intrinsic credibility is established if the data support the optimistic over the
 sceptical prior at a higher level than they support the sceptical prior over the
-null hypothesis, \ie if
+null hypothesis, \ie{} if
 \begin{align*}
   \BF_{12} \leq \BF_{01}
 \end{align*}
@@ -1121,7 +1121,7 @@ Section~\ref{sec4:prior-data-translation}, the prior can be translated to a
 trial with 69 events in both arms, but 206 non-events in the treatment and 182
 non-events in the control arm (such that the mortality rate in the control arm
 is the same as in the CAPE-COVID trial). Note that the advocacy prior may not be
-unique, \eg for the CAPE COVID finding the prior with relative mean
+unique, \eg{} for the CAPE COVID finding the prior with relative mean
 $f^\prime = 1.26$ and standard deviation $\tau^\prime = 0.67$ also renders the
 data as just compelling at $\gamma = 1/3$. We recommend to choose the prior with
 $f$ closer to zero, as it is the more conservative choice.
@@ -1137,7 +1137,7 @@ He proposes to quantify evidence with the \emph{false positive risk}, ``if only
 because that is what most users still think, mistakenly, that that is what the
 $p$-value tells them''. More specifically, \citet{Colquhoun2019} defines the
 \FPR{} as the posterior probability that the point null hypothesis $H_0$ of no
-effect is true given the observed $p$-value $p$, \ie $\FPR = \Pr(H_0 \given p)$.
+effect is true given the observed $p$-value $p$, \ie{} $\FPR = \Pr(H_0 \given p)$.
 As before, $H_0$ corresponds to the point null hypothesis $H_0\colon$
 $\theta = 0$. Note also that we take the exact (two-sided) $p$-value $p$ as the
 observed ``data'', regardless of whether or not it is significant at some
