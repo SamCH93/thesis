@@ -70,54 +70,57 @@ question: How should replication success be defined statistically?
 % single quantitative measure of replication success, termed the sceptical
 % $p$-value.
 
-The first and largest part of this thesis consists of three extensions of a
+The first and largest part of this thesis consists of three extensions to a
 recently proposed reverse-Bayes method for quantifying replication success. The
 key idea of the method is to challenge the data from the original study with a
 sceptical prior so that the resulting posterior no longer provides evidence for
-the finding from the study. The first extension recalibrates the proposed method
-to produce more appropriate inferences in terms of effect size.
-% from the relative effect size perspective
-The recalibration is chosen such that for original studies which were borderline
-significant, replication success can only be achieved if the effect estimate
-from the replication study is larger than the estimate from the original study.
-The recalibrated method has good frequentist properties comparable to standard
-methods used in practice. The second extension replaces tail probabilities with
-Bayes factors as measures of evidence.
+the finding from the study. Replication success is then achieved if there is
+conflict between the sceptical prior and the replication data. The first
+extension recalibrates the method to produce more appropriate inferences in
+terms of effect size. The recalibration is chosen such that for original studies
+which were borderline significant, replication success can only be achieved if
+the effect estimate from the replication study is larger than the estimate from
+the original study. The recalibrated method has good frequentist properties
+comparable to standard methods used in practice. The second extension replaces
+tail probabilities with Bayes factors as measures of evidence.
 % The sceptical prior is now determined such that the original finding is no
 % longer convincing in terms of a Bayes factor. In contrast to tail
 % probabilities,
-We find that the extended method combines two notions of replicability: It
-requires that original and replication study independently provide evidence for
-an effect and ensures that their effect estimates are compatible. The extended
-method also avoids a statistical paradox which the initial method suffered from.
+% We find that the extended method combines two notions of replicability: It
+% requires that original and replication study independently provide evidence for
+% an effect and ensures that their effect estimates are compatible.
+The extended method has similar properties as the initial method but avoids a
+statistical paradox which the initial method suffers from -- in some situations
+it may flag success replication success even though the effect estimate from the
+replication is arbitrarily smaller than to the original one.
 % Bayes factors have a more
 % natural interpretation and allow for direct quantification of evidence for one
 % hypothesis versus another. As with the sceptical $p$-value, the procedure leads
 % to a single measure quantifying the degree of replication success called the
 % sceptical Bayes factor.
-The third and last extension provides a framework for Bayesian design of
-replication studies which allows for combining data from the original study with
-external knowledge. External knowledge, such as data from other studies, is
-ubiquitous in the replication setting and taking it into account can potentially
-lead to more efficient designs compared to classical approaches.
+The third extension provides a framework for Bayesian design of replication
+studies which allows for combining data from the original study with external
+knowledge. External knowledge, such as data from other studies, is ubiquitous in
+the replication setting and taking it into account can lead to potentially more
+efficient designs compared to classical approaches.
 
-The second part of the thesis is also concerned with reverse-Bayes methodology
-but with a wider ranger of applications than only replication studies. The
-reverse-Bayes idea was first proposed in the 1950s, but it has mostly been
-forgotten. To increase awareness and show potential use cases, reverse-Bayes
-history and methods are summarized in a comprehensive review. The review
-includes also some new results on connections between revere-Bayes methods and
-meta-analysis. Finally, a commentary paper on a recently proposed reverse-Bayes
-method draws connections to other reverse-Bayes methods.
+The second part of the thesis also deals with reverse-Bayes methods, but with a
+broader scope of applications than replication studies. The reverse-Bayes idea
+was first proposed in the 1950s, but it has mostly been forgotten. To increase
+awareness and show potential use cases, reverse-Bayes history and methods are
+summarized in a comprehensive review. The review includes also some new results
+on connections between revere-Bayes methods and meta-analysis. %  Finally, a
+% commentary paper on a recently proposed reverse-Bayes method draws connections
+% to other reverse-Bayes methods.
 
 The last part of the thesis revolves around research integrity issues in
 methodological research. Questionable research practices, such as selective
-reporting of results, are often seen as main cause for the low replicability in
-applied research. These practices can similarly harm methodological research,
-but are often not recognized. To raise awareness, an illustrative simulation
-study is conducted in which it is shown how a novel method can easily be
-presented as superior over established competitor methods if questionable
-research practices are employed.
+reporting of results, are often seen as main cause for replicability issues in
+the medical and social sciences. These practices can similarly harm
+methodological research, but are often not recognized. To raise awareness, an
+illustrative simulation study is conducted in which it is shown how a novel
+method can easily be presented as superior over established competitor methods
+if questionable research practices are employed.
 
 
 \textbf{Key words}: Bayesian inference, meta-science, replication studies
