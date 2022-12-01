@@ -2,30 +2,45 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{\texorpdfstring{\phantom{IV}Introduction}{Introduction}}
 
-% \hfill
-% \begin{tabular}{p{0.7\textwidth}}
-%   We can make judgments of initial probabilities and infer
-%   final ones, or we can equally make judgments of final ones and infer
-%   initial ones by \emph{Bayes's theorem in reverse}. \\
-%   \hfill I.J. \citet[p. 29]{Good1983}
-% \end{tabular}
+\hfill
+\begin{tabular}{p{0.7\textwidth}}
+  ``\emph{Confirmation comes from repetition}. Any attempt to avoid this statement leads
+  to failure and more probably to destruction.'' \\
+  \hfill \citet[p. 84]{Tukey1969}
+\end{tabular}
 
+% \begin{center}
+% \begin{minipage}{12cm}
+%   { { { ``We can make judgments of initial probabilities and infer final ones,
+%         or we can equally make judgments of final ones and infer initial ones by
+%         \emph{Bayes's theorem in reverse}.'' }}}
+% \end{minipage}
+% \end{center}
+% \begin{flushright}
+%    \citet[p. 29]{Good1983}
+% \end{flushright}
 
-
-\begin{wrapfigure}{r}{0.34\textwidth}
-  \centering
-  \includegraphics[height = 9cm]{images/xkcd.png}
-  \caption*{Replication studies as illustrated by Randall Munroe
-    (\url{https://xkcd.com/242/}).}
-\end{wrapfigure}
 
 \section{Replication studies}
 
-How can we know if a finding from a scientific study is really true? For
-example, how can we know if the protective effect of a vaccine found in a study
-is real? The answer to such questions is of high importance to scientists,
-decision makers, and the general population. However, because any study result
-comes with uncertainty we can never know for sure.
+\begin{wrapfigure}{r}{0.34\textwidth}
+  \centering
+  \includegraphics[height = 7.3cm]{images/xkcd.png}
+  \caption*{Replication studies as \mbox{illustrated} by Randall Munroe
+    \mbox{(\url{https://xkcd.com/242})}.}
+\end{wrapfigure}
+
+% How can we know if a finding from a scientific study is really true? For
+% example, how can we know if the protective effect of a vaccine found in a study
+% is real? The answer to such questions is of high importance to scientists,
+% decision makers, and the general population. However, because any study result
+% comes with uncertainty we can never know for sure.
+How can we know whether we can trust a finding from a scientific finding? For
+example, how can we know whether the protective effect of a vaccine found in a
+study is a genuine effect or just a spurious finding? The answer to such
+questions is of high importance to scientists, decision makers, and the general
+population. However, because any study result comes with uncertainty we can
+never know for sure.
 
 One way to come a little closer to the truth is to repeat the original study
 with new subjects. Such a \emph{replication study} may yield similar results
@@ -46,10 +61,11 @@ Despite their tremendous importance, the traditional academic system has made it
 unattractive for researchers to conduct replication studies; the currencies of
 science -- publications, citations, and grant money -- are typically easier to
 acquire by conducting novel research. This is because until relatively recently,
-top journals in many fields refused to publish replication studies as they were
-not considered ``innovative'' enough. To build a successful career, researchers
-thus often had no other choice than to concentrate their efforts on producing
-novel and eye-catching research results \citep{Martin2017}.
+many scientific journals put most emphasis on ``innovation'' thereby lowering
+the chance of publication for replication studies \citep{Makel2012, Martin2017,
+  Coiera2021}. To build a successful career, researchers thus often had no other
+choice than to concentrate their efforts on producing novel and eye-catching
+research results.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
@@ -70,13 +86,13 @@ philosophy \citep{Cova2018}, and cancer biology \citep{Errington2021}.
 Most of these large-scale replication projects confirmed what many researchers
 had feared; carefully conducted replication studies often show less impressive
 results than their original counterparts, and the replicability of research
-findings is surprisingly low on average. This realization led many to declare
-science as being in a ``replication crisis''. Debates arose about whether or not
-the crisis really existed and who or what was to blame \citep{Gilbert2016,
-  Amrhein2019}. Even the popular press became interested
-\citep[\eg{}][]{Carey2015, Kovic2016, Achenbach2017, Devlin2018}, so that also
-in the eyes of the public the credibility of science became seriously
-threatened.
+findings is surprisingly low (whatever replicability means will soon be
+discussed in more detail). This realization led many to declare science as being
+in a ``replication crisis''. Debates arose about whether or not the crisis
+really existed and who or what was to blame \citep{Gilbert2016, Amrhein2019}.
+Even the popular press became interested \citep[\eg{}][]{Carey2015, Kovic2016,
+  Achenbach2017, Devlin2018}, so that also in the eyes of the public the
+credibility of science became seriously threatened.
 
 \begin{figure}[!htb]
 << "google-scholar-graph", fig.height = 2.5 >>=
@@ -107,7 +123,7 @@ ggplot(data = filter(scholarDF, year < 2022),
     ## scale_y_continuous(breaks = seq(0, 15000, 2500)) +
     scale_x_continuous(breaks = seq(1990, 2020, 5)) +
     ## scale_y_log10() +
-    labs(x = "Year", y = paste0('Results for "', searchTerm, '"')) +
+    labs(x = "Year", y = paste0('Number of results \nfor "', searchTerm, '"')) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major.x = element_blank()## ,
@@ -119,28 +135,26 @@ ggplot(data = filter(scholarDF, year < 2022),
 \label{fig:scholar}
 \end{figure}
 
-In the midst of this doomsday, % , particularly from the hard-hit
+In the midst of this crisis, % , particularly from the hard-hit
 % field of psychology,
-various reforms were implemented to prevent an escalation of the situation and
-save the reputation of science \citep[for an overview see \eg{}][]{Munafo2017}.
-For instance, many journals adopted the ``registered report'' format
-\citep{Chambers2021} in which a study proposal is peer reviewed \emph{before}
-the study is conducted, and which, if accepted, gives provisional publication
-acceptance regardless of the study outcome. Similarly, digital infrastructure
-platforms, such as Zenodo (\url{https://zenodo.org/}) or the Open Science
-Framework (\url{https://osf.io/}), were created to facilitate preregistration,
-preprints, code and data sharing, all of which have substantially increased over
-the last decade \citep{Kidwell2016, Nosek2018, Rawlinson2019}. The practice of
-conducting replication studies has also gained popularity. Several academic
-journals and funders are now explicitly promoting replication research
-\citep{NWO2016, NSL2018, Nature2022}. Figure~\ref{fig:scholar} illustrates this
-trend via the yearly number of results for the search term
-``\Sexpr{searchTerm}'' on Google Scholar over the last three decades. We see
-that the numbers have been rapidly growing, especially after the mid 2000s, with
-a minor drop in 2021 (perhaps because of research slowing down due to the
-COVID-19 pandemic).
-
-
+various reforms were implemented to prevent an escalation of the situation % and
+% save the reputation of science
+\citep[for an overview see \eg{}][]{Munafo2017}. For instance, many journals
+adopted the ``registered report'' format \citep{Chambers2021} in which a study
+proposal is peer reviewed \emph{before} the study is conducted, and which, if
+accepted, gives provisional publication acceptance regardless of the study
+outcome. Similarly, digital infrastructure platforms, such as Zenodo
+(\url{https://zenodo.org}) or the Open Science Framework
+(\url{https://osf.io}), were created to facilitate preregistration, preprints,
+code and data sharing, all of which have substantially increased over the last
+decade \citep{Kidwell2016, Nosek2018, Rawlinson2019}. The practice of conducting
+replication studies has also gained popularity. Several academic journals and
+funders are now explicitly promoting replication research \citep{NWO2016,
+  NSL2018, Nature2022}. Figure~\ref{fig:scholar} illustrates this trend via the
+yearly number of results for the search term ``\Sexpr{searchTerm}'' on Google
+Scholar over the last three decades. We see that the numbers have been rapidly
+growing, especially after the mid 2000s, with a minor drop in 2021 (perhaps
+because of research slowing down due to the COVID-19 pandemic).
 
 
 \subsection{Statistical aspects of replication studies}
@@ -148,10 +162,10 @@ Despite the increased interest in replication studies, the research community
 has not yet agreed on one important question: When is a replication study
 considered successful? For this reason, replication researchers typically report
 the results from different methods for assessing replication success. For
-example, the \citet{Opensc2015} states ``[t]here is no single standard for
-evaluating replication success. We evaluated [replicability] using significance
-and P values, effect sizes, subjective assessments of replication teams, and
-meta-analyses of effect sizes'' (p. 11). In the following, I will give an
+example, the \citet[p. 11]{Opensc2015} states ``[t]here is no single standard
+for evaluating replication success. We evaluated [replicability] using
+significance and P values, effect sizes, subjective assessments of replication
+teams, and meta-analyses of effect sizes''. In the following, I will give an
 overview about these and other methods which have been used in practice.
 
 
@@ -189,21 +203,21 @@ All of these are routinely reported in research articles, and if one of them is
 missing they typically can be calculated from the others. Using summary
 statistics is also often the only possible way for conducting the replication
 success analysis as the raw data from the original study may not be available to
-the replicators. The most important statistic is the effect estimate $\that$. It
-provides an estimate of the underlying effect size $\theta$ which quantifies the
-true effect or association of an intervention/exposure with an outcome variable.
-Typical effect sizes are mean differences and correlations (for continuous
-outcomes), odds ratios (for binary outcomes), or hazard ratios (for time to
-event outcomes). Depending on the type of effect size, a transformation might be
-required so that the assumption of approximately normally distributed effect
-estimates around the unknown effect size $\theta$ (for large enough sample
-sizes) is justified. This could be, for instance, the Fisher $z$-transformation
-for correlations or the log-transformation for odds/hazard ratios \citep[chapter
-11]{Cooper2019}. The associated standard error $\sigma$ represents the
-statistical uncertainty of the estimate. Under the assumption of (asymptotic)
-normality, confidence intervals for $\theta$ and $p$-values for testing the null
-hypothesis $H_{0} \colon \theta = 0$ can be computed as shown in
-Table~\ref{tab:meta}.
+the researchers conducting the replication study. The most important statistic
+is the effect estimate $\that$. It provides an estimate of the underlying effect
+size $\theta$ which quantifies the true effect or association of an
+intervention/exposure with an outcome variable. Typical effect sizes are mean
+differences and correlations (for continuous outcomes), odds ratios (for binary
+outcomes), or hazard ratios (for time to event outcomes). Depending on the type
+of effect size, a transformation might be required so that the assumption of
+approximately normally distributed effect estimates around the unknown effect
+size $\theta$ (for large enough sample sizes) is justified. This could be, for
+instance, the Fisher $z$-transformation for correlations or the
+log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
+associated standard error $\sigma$ represents the statistical uncertainty of the
+estimate. Under the assumption of (asymptotic) normality, confidence intervals
+for $\theta$ and $p$-values for testing the null hypothesis
+$H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
@@ -1186,15 +1200,16 @@ quantifying the degree of replication success, \emph{the sceptical Bayes
   factor}. Systematic comparisons show that the sceptical Bayes factor has
 similar properties as the sceptical $p$-value due to the reverse-Bayes approach
 underlying both methods (\eg{} it penalizes shrinkage of the replication effect
-estimate and requires compelling evidence from both studies). However, it is
-also shown that the sceptical $p$-value suffers from a certain type of
-``shrinkage paradox'', which is avoided by the sceptical Bayes factor; when the
-$p$-value from the original study goes to zero, replication success based on the
-sceptical $p$-value can be achieved with any arbitrarily small replication
-effect estimate, whereas replication success based on the sceptical Bayes factor
-poses a finite limit on how much shrinkage is allowed. Technically, the
-procedure is more involved and closed-form solutions for the sceptical Bayes
-factor are only available in special situations. % and in terms of the
+estimate and requires compelling evidence from both studies in terms of
+$p$-values and Bayes factors, respectively). However, it is also shown that the
+sceptical $p$-value suffers from a certain type of ``shrinkage paradox'', which
+is avoided by the sceptical Bayes factor; when the $p$-value from the original
+study goes to zero, replication success based on the sceptical $p$-value can be
+achieved with any arbitrarily small replication effect estimate, whereas
+replication success based on the sceptical Bayes factor poses a finite limit on
+how much shrinkage is allowed. Technically, the procedure is more involved and
+closed-form solutions for the sceptical Bayes factor are only available in
+special situations. % and in terms of the
 % ``Lambert W function'' \citep{Corless1996}.
 The method is illustrated on data from the Social Sciences Replication Project
 \citep{Camerer2018}, and implemented in the R package \texttt{BayesRep}
@@ -1305,8 +1320,7 @@ it, I realized that their statement about closed-form solutions was incorrect
 and derived a solution. \mbox{L. Held} suggested to write a commentary. I wrote
 an initial draft of the manuscript, which \mbox{R. Matthews} substantially
 improved by expanding it with some logical flaws of the method. The two of us
-iteratively worked on the manuscript, while L. Held gave mostly high-level
-feedback.
+iteratively worked on the manuscript, while L. Held gave high-level feedback.
 
 \subsection{Integrity in methodological research}
 
@@ -1323,7 +1337,7 @@ studies have remained low over the years \citep{Hoaglin1975, Burton2006,
 research is suffering from reproducibility issues, publication bias, and a
 ``replication crisis'' due to researchers engaging in questionable research
 practices, such as selective reporting \citep{Boulesteix2020}. In this article,
-we raise awareness of these issues. We summarize possible questionable research
+draw attention to these issues. We summarize possible questionable research
 practices in simulation studies, and show how easy it is to make a method seem
 superior if various questionable research practices are employed. We also give
 recommendations to alleviate these issues. Most importantly, we recommend
@@ -1333,13 +1347,14 @@ The first authorship of this manuscript is shared with L. Kook. I had the idea
 to invent a ``mock-method'' and use questionable research practices that make it
 seem superior, to draw attention to the low standards in methodological
 research. I then wrote a first draft of the manuscript and proposed the idea to
-L. Kook and K. Reeve. L. Kook and myself then came up with the method ``AINET''
-and started writing the simulation protocol. L. Kook took lead in developing the
-R package \texttt{ainet} (\url{https://github.com/LucasKook/ainet}) and
-simulation study code. Myself, L. Kook, and K. Reeve then designed the final
-simulation study and wrote the manuscript together. Recently, I was invited to
-present the results from this project at the CEN (Central European Network)
-conference 2023 in Basel.
+L. Kook and K. Reeve. L. Kook and myself then came up with the penalized
+regression method ``AINET'' and started writing the simulation protocol. L. Kook
+took lead in developing the R package \texttt{ainet}
+(\url{https://github.com/LucasKook/ainet}) and simulation study code. Myself, L.
+Kook, and K. Reeve then designed the final simulation study and continued
+working on the manuscript together. Recently, I was invited to present the
+results from this project at the CEN (Central European Network) conference 2023
+in Basel.
 
 
 \phantomsection

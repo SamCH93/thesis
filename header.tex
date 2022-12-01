@@ -30,8 +30,6 @@
    % \markboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
 }%
 
-
-
 %%% margins
 \usepackage{geometry}
 \geometry{
@@ -47,6 +45,11 @@
 \usepackage{graphicx}
 \usepackage{wrapfig} % wrap figures with text
 \usepackage{pdflscape} % pdf rotates in landscape mode
+
+
+%%% allow urls to break when hyphen
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
 
 %%% tikz
 \usepackage{tikz}
@@ -79,7 +82,6 @@
 %% Appendix
 \usepackage[page]{appendix}
 \usepackage{nameref}
-
 
 
 %%% Links in included pdfs (see also makefile)

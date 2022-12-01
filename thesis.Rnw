@@ -22,6 +22,7 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
   bookmarksdepth = 2,  % otherwise same depth as TOC (only chapters)
   colorlinks = {true},
   linkcolor = {black},
+  breaklinks = {true},
   citecolor = {Blue},
   urlcolor = {Blue},
   pdftitle = {Reverse-Bayes Methods for Replication Studies and Beyond},
