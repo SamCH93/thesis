@@ -23,9 +23,9 @@
 
 How can we know if a finding from a scientific study is really true? For
 example, how can we know if the protective effect of a vaccine found in a study
-is real? The answer to such questions is of high importance to scientists and
-decision makers. However, because any study result comes with uncertainty we can
-never know for sure.
+is real? The answer to such questions is of high importance to scientists,
+decision makers, and the general population. However, because any study result
+comes with uncertainty we can never know for sure.
 
 One way to come a little closer to the truth is to repeat the original study
 with new subjects. Such a \emph{replication study} may yield similar results
@@ -49,7 +49,7 @@ acquire by conducting novel research. This is because until relatively recently,
 top journals in many fields refused to publish replication studies as they were
 not considered ``innovative'' enough. To build a successful career, researchers
 thus often had no other choice than to concentrate their efforts on producing
-novel and eye-catching research results.
+novel and eye-catching research results \citep{Martin2017}.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
@@ -143,7 +143,7 @@ COVID-19 pandemic).
 
 
 
-\subsection{The statistics of replication studies}
+\subsection{Statistical aspects of replication studies}
 Despite the increased interest in replication studies, the research community
 has not yet agreed on one important question: When is a replication study
 considered successful? For this reason, replication researchers typically report
@@ -191,7 +191,7 @@ others. Using summary statistics is also often the only possible way for
 conducting the replication success analysis as the raw data from the original
 study may not be available to the replicators. The most important statistic is
 the effect estimate $\that$. It provides an estimate of the underlying effect
-size $\theta$ which quantifies the effect or association of an
+size $\theta$ which quantifies the true effect or association of an
 intervention/exposure with an outcome variable. Typical effect sizes are mean
 differences and correlations (for continuous outcomes), odds ratios (for binary
 outcomes), or hazard ratios (for time to event outcomes). Depending on the type
@@ -282,7 +282,7 @@ effect estimate.\footnote{The meta-analytic approach can also be given a
   probability $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$,
   respectively, $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$
   depending on the direction of combined estimate.} Typically, the assumption of
-a common underlying effect size is seen as reasonable so that fixed-effects
+a common underlying effect size is seen as reasonable so that fixed-effect
 meta-analysis is used for pooling. Random-effects meta-analysis has primarily
 been used if more than one replication study of the same original study are
 conducted since replicators are often interested in understanding
@@ -291,19 +291,19 @@ between-replication heterogeneity \citep[\eg{} in][]{Klein2018}.
 The remaining criteria in Table~\ref{tab:rsdef} put more emphasis on
 compatibility in effect size between the original and the replication study. For
 example, the relative effect estimate $d = \that_{r}/\that_{o}$ quantifies how
-much the replication effect estimate changed compared to the original, and the
-smaller $d$ is the smaller the degree of replication success. Some projects also
-report a confidence interval for $d$ \citep{Camerer2016, Camerer2018}, while
-others ignore its uncertainty and make a binary cut at $d_{\text{min}} = 1$ to
-define replication success \citep{Errington2021}. The criteria based on
-confidence and prediction intervals define effect size compatibility on an
-absolute scale. However, the criterion based on the original confidence interval
-ignores the uncertainty from the replication, whereas the criterion based on the
-replication confidence interval ignores the uncertainty from the original study.
-The prediction interval criterion takes into account both sources of uncertainty
-\citep{Patil2016}. Yet, declaring ``replication success'' based on the
-prediction interval may be logically questionable due to its connection to the
-meta-analytic $Q$-test.
+much the magnitude of the replication effect estimate changed compared to the
+original, and the smaller $d$ is the smaller the degree of replication success.
+Some projects also report a confidence interval for $d$ \citep{Camerer2016,
+  Camerer2018}, while others ignore its uncertainty and make a binary cut at
+$d_{\text{min}} = 1$ to define replication success \citep{Errington2021}. The
+criteria based on confidence and prediction intervals define effect size
+compatibility on an absolute scale. However, the criterion based on the original
+confidence interval ignores the uncertainty from the replication, whereas the
+criterion based on the replication confidence interval ignores the uncertainty
+from the original study. The prediction interval criterion takes into account
+both sources of uncertainty \citep{Patil2016}. Yet, declaring ``replication
+success'' based on the prediction interval may be logically questionable due to
+its connection to the meta-analytic $Q$-test.
 % as it may also be seen as an instance of the ``absence of evidence fallacy''
 % \citep{Altman1995};
 That is, if the $p$-value from the $Q$-test is larger than $\alpha$ this is
@@ -334,13 +334,13 @@ standard errors.
 I will now illustrate the assessment of replicability on data from the
 Reproducibility Project: Cancer Biology \citep{Errington2021}. This large-scale
 project attempted to replicate 53 landmark studies from the field of cancer
-biology. However, due to various difficulties (\eg{} missing information from
-the original studies or problems in conducting the experiments) only 23 of the
-53 studies could be repeated. \citet{Errington2021} report that these
-experiments led to data on 158 quantitative effects. However, from the data
-which they provide only 132 quantitative effects are provided with original and
-replication standardized mean difference effect estimates along with standard
-errors, and only they will be used in the subsequent analyses.
+biology but due to various difficulties (\eg{} missing information from the
+original studies or problems in conducting the experiments) only 23 of the 53
+studies could be repeated. \citet{Errington2021} report that these experiments
+led to data on 158 quantitative effects. However, from the data which they
+provide only 132 quantitative effects are provided with original and replication
+standardized mean difference effect estimates along with standard errors, and
+only they will be used in the subsequent analyses.
 
 \begin{figure}[!htb]
 << "RPCB-graph", fig.height = 3.25 >>=
@@ -373,9 +373,9 @@ rpcb <- read.csv("data/rpcb.csv") |>
            Q = (smdo - smdr)^2/(so^2 + sr^2),
            pQ = pchisq(q = Q, df = 1, lower.tail = FALSE),
            dFormat = ifelse(d > 1,
-                            paste0("\\textcolor{nicegreen}{", round(d, 2),
-                                   "}"),
-                            paste0("\\textcolor{red}{", round(d, 2), "}")),
+                            paste0("\\textcolor{nicegreen}{$", round(d, 2),
+                                   "$}"),
+                            paste0("\\textcolor{red}{$", round(d, 2), "$}")),
            cioL = smdo - za*so,
            cioU = smdo + za*so,
            cirL = smdr - za*sr,
@@ -398,12 +398,12 @@ rpcb <- read.csv("data/rpcb.csv") |>
            pQFormat = ifelse(pQ > 0.05, paste0("\\textcolor{nicegreen}{", pFormat(pQ),
                                                "}"),
                              paste0("\\textcolor{red}{", pFormat(pQ), "}")),
-           smdoFormat = paste(format(round(smdo, 2), nsmall = 2),
-                              ciFormat(lower = cioL, upper = cioU)),
-           smdrFormat = paste(format(round(smdr, 2), nsmall = 2),
-                              ciFormat(lower = cirL, upper = cirU)),
-           smdmFormat = paste(format(round(smdm, 2), nsmall = 2),
-                              ciFormat(lower = cimL, upper = cimU)),
+           smdoFormat = paste("$", format(round(smdo, 2), nsmall = 2),
+                              ciFormat(lower = cioL, upper = cioU), "$"),
+           smdrFormat = paste("$", format(round(smdr, 2), nsmall = 2),
+                              ciFormat(lower = cirL, upper = cirU), "$"),
+           smdmFormat = paste("$", format(round(smdm, 2), nsmall = 2),
+                              ciFormat(lower = cimL, upper = cimU), "$"),
            rsig = factor(pr2 <= 0.05, levels = c(FALSE, TRUE),
                          labels = c("italic(p[r]) > 0.05",
                                     "italic(p[r]) <= 0.05")))
@@ -533,18 +533,18 @@ meta-analytic significance (\Sexpr{nma}) and the prediction interval criteria
 two replications are all criteria satisfied simultaneously (green).
 
 A detailed view for a subset of the data from the project is given in
-Table~\ref{tab:RPCB}. For no single study pair in the table are all commonly
-used criteria satisfied simultaneously. For instance, the two pairs (48, 2, 1)
-and (16, 3, 3) at the top of the table satisfy the significance criterion
+Table~\ref{tab:RPCB}. The subset is chosen such that from every original study
+one effect and one replication of that effect is included. For no single study
+pair in the table are all commonly used criteria satisfied simultaneously. For
+instance, the first two replications satisfy the significance criterion
 ($p_{o} < 0.05$ and $p_{r} < 0.05$), meta analytic significance ($p_{m} < 0.05$)
 and the $Q$-test/prediction interval criterion ($p_{Q} > 0.05$), yet the
 replication effect estimate is smaller than the original one ($d < 1$).
 Similarly, there is no single study pair for which all criteria indicate
-replication failure. For example, the pair (5, 1, 3) at the bottom of the table
-is a clear failure with respect to the relative effect estimate ($d < 1$) and
-the significance criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test
-does not indicate evidence for inconsistency of the two effect estimates
-($p_{Q} > 0.05$).
+replication failure. For example, the last replication (\#20) is a clear failure
+with respect to the relative effect estimate ($d < 1$) and the significance
+criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test does not indicate
+evidence for inconsistency of the two effect estimates ($p_{Q} > 0.05$).
 
 Taken together, this analysis demonstrates that conclusions based on commonly
 used replication success criteria often differ. It is not always clear cut
@@ -575,12 +575,13 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
 set.seed(7)
 rpcbTable <- rpcb |>
     na.omit() |>
-    filter(smdo < 80, smdr < 80) |>
+    ## filter(smdo < 80, smdr < 80) |>
     group_by(paper) |>
     sample_n(size = 1) |>
     ungroup() |>
     arrange(pr2) |>
-    select(id, smdoFormat, ## so,
+    select(id,
+           smdoFormat, ## so,
            smdrFormat, smdmFormat,
            c, dFormat, ## sr,
            po2Format, pr2Format, pm2Format, pQFormat, ps2Format
@@ -601,7 +602,7 @@ colnames(rpcbXtable) <- c("(P, X, E)",
                           "$p_Q$",
                           "$p_{\\text{S}}$"
                           )
-print(rpcbXtable, booktabs = TRUE, floating = FALSE, include.rownames = FALSE,
+print(rpcbXtable, booktabs = TRUE, floating = FALSE, include.rownames = TRUE,
       sanitize.text.function = function(x) {x},
       size = "small")
 @
@@ -685,7 +686,7 @@ given by
 and if this credible interval excludes parameter values smaller/larger than zero
 (depending on the orientation of the effect size) this may be interpreted as
 evidence\footnote{For readers who do not agree with this notion of evidence, do
-  not panic. In this thesis (Paper I and IV) we extend this reverse-Bayes
+  not panic. In this thesis (Paper II and IV) we extend this reverse-Bayes
   procedure to use alternative measures of evidence, such as Bayes factors.} for
 a genuine effect found in the original study.
 
@@ -748,11 +749,16 @@ ggplot(data = plotDF, aes(x = type, y = t)) +
                     fatten = 3,
                     position = position_dodge2(width = dodgewidth),
                     show.legend = FALSE) +
-    annotate("segment", x = 1.85, y = -0.5, xend = 1.98, yend = -0.05,
+    annotate("segment", x = 1.81, y = -0.5, xend = 1.97, yend = -0.05,
              alpha = 0.6,
              arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
     annotate("text", x = 1.85, y = -0.6, size = 3, alpha = 0.6,
              label = paste0(round(100*alpha/2, 2), "% quantile fixed at zero")) +
+    annotate("segment", x = 2.8, y = -0.5, xend = 2.96, yend = -0.05,
+             alpha = 0.6,
+             arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+    annotate("text", x = 2.75, y = -0.6, size = 3, alpha = 0.6,
+             label = "fixed at zero") +
     annotate("segment", x = 1.6, y = 2.25, xend = 2.7, yend = 2.25,
              alpha = 0.6,
              arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
@@ -915,8 +921,8 @@ thesis.\footnote{Some readers may have noted that the prior predictive ratio is
   also the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
   $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
   approach is therefore particularly useful in combination with reverse-Bayes
-  procedures based on Bayes factors, as will be demonstrated later (Paper I and
-  III).}
+  procedures based on Bayes factors, as will be demonstrated later (Paper II and
+  IV).}
 
 % In general,
 % a distinction can be made between checking for \emph{likelihood-data conflict}
@@ -1050,47 +1056,49 @@ The sceptical $p$-value has several interesting properties \citep[section
 3]{Held2020}: First, it is always larger than the maximum of the original and
 replication $p$-values ($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that
 both $p$-values have to be smaller than $\alpha$ such that replication success
-based on $p_{\text{S}} \leq \alpha$ is possible. Second, if the $p$-values
-$p_{o}$ and $p_{r}$ remain fixed but the relative effect estimate
-$d = \that_{r}/\that_{o}$ decreases, the sceptical $p$-value increases, meaning
-that shrinkage of the replication effect estimate is penalized
-($p_{\text{S}} \uparrow 1$ as $d \downarrow 0$ for fixed $p_{o}$ and $p_{r}$).
-Because of the first property, the sceptical $p$-value requires \emph{both}
-studies to be sufficiently convincing on their own (in terms of their
-$p$-values), similar to the significance criterion for replication success.
-However, unlike the significance criterion, if the $p$-values remain fixed but
-the replication effect estimate $\that_{r}$ becomes smaller than the original
-estimate $\that_{o}$, the sceptical $p$-value becomes larger so indicates less
-replication success due to the second property. This is desirable in the
-replication setting as a smaller replication effect estimate $\that_{r}$ may not
-be practically relevant anymore, despite its statistical significance.
+at level $\alpha$ is possible. The sceptical $p$-value hence requires
+\emph{both} studies to be sufficiently convincing on their own (in terms of
+their $p$-values), similar to the significance criterion for replication
+success. Second, if the $p$-values $p_{o}$ and $p_{r}$ remain fixed but the
+relative effect estimate $d = \that_{r}/\that_{o}$ decreases, the sceptical
+$p$-value increases, meaning that shrinkage of the replication effect estimate
+is penalized ($p_{\text{S}} \uparrow 1$ as $d \downarrow 0$ for fixed $p_{o}$
+and $p_{r}$). The sceptical $p$-value thus takes effect shrinkage into account,
+unlike the significance criterion which can be achieved with any non-zero
+replication effect estimate $\that_{r}$ provided the standard error $\sigma_{r}$
+is small enough. This property is desirable in the replication setting as a
+smaller replication effect estimate $\that_{r}$ may not be practically relevant
+anymore, despite its statistical significance.
 
 The results from the Reproducibility Project: Cancer Biology in
-Table~\ref{tab:RPCB} illustrate these two properties. The third study from above
-(19, 1, 2) fails to achieve replication success at level $\alpha = 5\%$ with the
-sceptical $p$-value, even though the replication study was highly convincing
-(the effect estimate was almost five times as large as in the original study).
-Yet, as the approach requires both studies to be convincing on their own -- and
-the original study was not significant at the 5\% level -- replication success
-at this level is impossible with the sceptical $p$-value. The second property is
-illustrated by the fifth study from above (1, 3, 5). Here the original study was
-convincing and the replication study also achieved significance. However, the
-effect estimate from the replication was roughly 60\% smaller than the one from
-the original study, and significance is merely achieved because the standard
-error was much smaller (\ie{} around $1/\surd c \approx 1/2.8$ times smaller).
-The sceptical $p$-value is therefore only $p_{\text{S}} = 0.25$, indicating
-hardly any replication success.
+Table~\ref{tab:RPCB} illustrate these two properties. The third study fails to
+achieve replication success at level $\alpha = 5\%$ with the sceptical
+$p$-value, even though the replication study was highly convincing (the effect
+estimate was almost five times as large as in the original study). Yet, as the
+approach requires both studies to be convincing on their own -- and the original
+study was not significant at the 5\% level -- replication success at this level
+is impossible with the sceptical $p$-value. The second property is illustrated
+by the fifth study. Here the original study was convincing and the replication
+study also achieved significance. However, the effect estimate from the
+replication was roughly 60\% smaller than the one from the original study, and
+significance is merely achieved because the standard error was much smaller
+(\ie{} around $1/\surd c \approx 1/2.8$ times smaller). The sceptical $p$-value
+is therefore only $p_{\text{S}} = 0.25$, indicating hardly any replication
+success.
 
 This concludes the introduction to replication studies and the summary of the
 reverse-Bayes assessment of replication success. Some additional properties
 (\eg{} the null distribution of the sceptical $p$-value) and extensions (\eg{} a
 one-sided version of the sceptical $p$-value, power and sample size
-calculations) can be found in the original article by \citet{Held2020}. However,
-the relevant parts of the procedure have been presented. In the following, I
-will discuss open questions and how they are addressed in this thesis.
+calculations) can be found in the original article by \citet{Held2020}.
+Furthermore, the sceptical $p$-value and related methods are implemented in the
+R package \texttt{ReplicationSuccess} available on CRAN
+(\url{https://cran.r-project.org/package=ReplicationSuccess}). However, the
+relevant parts of the procedure have been presented. In the following, I will
+discuss open questions and how they are addressed in this thesis.
 
 
-\section{Open questions and thesis contributions}
+\section{Thesis contributions}
 \label{sec:summary}
 \raggedbottom
 
@@ -1109,6 +1117,50 @@ with simulations studies. % The article lists and illustrates questionable
 % The research from this parts extends
 
 \startPaperSummary{PaperI}{%
+  The assessment of replication success based on relative effect size}{%
+  Leonhard Held, Charlotte Micheloud, Samuel Pawel \\
+  \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
+  \url{https://doi.org/10.1214/21-AOAS1502}.}
+
+It is not clear how to interpret the sceptical $p$-value as it is not an
+ordinary $p$-value (which has a uniform distribution under the corresponding
+null hypothesis). Moreover, when the same level $\alpha$ as for the significance
+criterion is used for dichotomizing the sceptical $p$-value, this leads to a
+much more stringent criterion for replication studies than the significance
+criterion, and many studies which intuitively seem successful will not satisfy
+it.
+
+In this article, we therefore look closer at the ``success region'' of the
+sceptical $p$-value in terms of the relative effect estimate
+$d = \that_{r}/\that_{o}$. This perspective leads to the proposal of a new
+default level for thresholding the sceptical $p$-value called the \emph{golden
+  level} $\alpha_{G}$ (named ``golden'' because the golden ratio appears in its
+derivation). The golden level is defined through the property that for an
+original study which was borderline significant ($p_{o} = \alpha$), replication
+success based on $p_{\text{S}} \leq \alpha_{G}$ is only possible if the
+replication effect estimate is at least as large as the original one
+($d \geq 1$). For instance, for the significance level $\alpha = 5\%$, the
+corresponding golden level is $\alpha_{G} = 12.3\%$. The behavior of the golden
+level seems to align with common sense: for original studies which were already
+convincing (in terms of their $p$-value) the effect estimate in the replication
+study is allowed to shrink, to some extent, whereas for less convincing original
+studies (those with $p$-values around the significance level) shrinkage is more
+strongly penalized. We find that for replication studies with equal or larger
+sample size than the original study, replication success based on the golden
+level also has similar or improved frequentist properties (type-I error rate and
+project power) compared to the standard significance criterion. Case studies
+from four large-scale replication projects \citep{Opensc2015, Camerer2016,
+  Camerer2018, Cova2018} illustrate the properties of the method. This extension
+is now implemented as the default option in the R package
+\texttt{ReplicationSuccess}.
+
+L. Held had the idea to apply the sceptical $p$-value method to the data from
+the four replication projects, which I collected for my master thesis. C.
+Micheloud and L. Held came up with the golden level. L. Held wrote an initial
+draft of the manuscript. C. Micheloud, L. Held, and I then iteratively worked on
+the manuscript.
+
+\startPaperSummary{PaperII}{%
   The sceptical Bayes factor for the assessment of replication success}{%
   Samuel Pawel, Leonhard Held \\
   \textit{Journal of the Royal Statistical Society: Series B (Statistical
@@ -1159,45 +1211,6 @@ Informatics, Biometry and Epidemiology and the Central European Network of the
 International Biometric Society) in 2020. L. Held presented the final results at
 the ISBA (International Society for Bayesian Analysis) world meeting 2021.
 
-\startPaperSummary{PaperII}{%
-  The assessment of replication success based on relative effect size}{%
-  Leonhard Held, Charlotte Micheloud, Samuel Pawel \\
-  \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
-  \url{https://doi.org/10.1214/21-AOAS1502}.}
-
-It is not clear how to numerically interpret the sceptical $p$-value, as it is
-not an ordinary $p$-value (which has a uniform distribution under the
-corresponding null hypothesis). Similarly, it is unclear which threshold should
-be used in case the sceptical $p$-value needs to be dichotomized into
-replication success or failure. In this article, we therefore look closer at the
-``success region'' of the sceptical $p$-value in terms of the relative effect
-estimate $d = \that_{r}/\that_{o}$. This perspective leads to the proposal of a
-new default level for thresholding the sceptical $p$-value called the
-\emph{golden level} $\alpha_{G}$ (named ``golden'' because the golden ratio
-appears in its derivation). The golden level is defined through the property
-that for an original study which was borderline significant ($p_{o} = \alpha$),
-replication success based on $p_{\text{S}} \leq \alpha_{G}$ is only possible if
-the replication effect estimate is at least as large as the original one
-($d \geq 1$). The behavior of the golden level seems to align with common sense:
-for original studies which were already convincing (in terms of their $p$-value)
-the effect estimate in the replication study is allowed to shrink, to some
-extent, whereas for less convincing original studies (those with $p$-values
-around the significance level) shrinkage is more strongly penalized. We find
-that for replication studies with equal or larger sample size than the original
-study, replication success based on the golden level also has similar or
-improved frequentist properties (type-I error rate and project power) compared
-to the standard significance criterion. Case studies from four large-scale
-replication projects \citep{Opensc2015, Camerer2016, Camerer2018, Cova2018}
-illustrate the properties of the method. This extension is now implemented as
-the default option in the R package \texttt{ReplicationSuccess} available on
-CRAN (\url{https://cran.r-project.org/package=ReplicationSuccess}).
-
-L. Held had the idea to apply the sceptical $p$-value method to the data from
-the four replication projects, which I collected for my master thesis. C.
-Micheloud and L. Held came up with the golden level. L. Held wrote an initial
-draft of the manuscript. C. Micheloud, L. Held, and I then iteratively worked on
-the manuscript.
-
 \startPaperSummary{PaperIII}{%
   Bayesian approaches to designing replication studies}{%
   Samuel Pawel, Guido Consonni, Leonhard Held \\
@@ -1224,7 +1237,7 @@ illustrating our methods, which are also available in the R package
 L. Held specified in the grant application of this research project
 \citep{Heldproposal2019} that we will investigate power and sample size
 calculations for the sceptical $p$-value and the sceptical Bayes factor. In
-Paper I, I already derived the power function of the sceptical Bayes factor in
+Paper II, I already derived the power function of the sceptical Bayes factor in
 closed-form for two types of design priors. After its completion, I generalized
 the result to any design prior in the normal-normal hierarchical model, and
 started working on this manuscript. I presented a first draft to L. Held and G.
@@ -1255,12 +1268,13 @@ a meta-analysis on the effect of corticosteroids on COVID-19 mortality.
 
 L. Held and M. Ott started working on this article several years ago. When I
 discovered the connection between the Analysis of Credibility and the fail-safe
-$N$ method, L. Held suggested that it would fit nicely into this manuscript, and
-that I should start to overhaul it. I rewrote and expanded his initial draft,
-adding also a new section on reverse-Bayes approaches with Bayes factors,
-largely based on the work from Paper I. We then managed to recruit R. Matthews
-to also contribute. From that point on the three of us iteratively worked on the
-manuscript and M. Ott gave high-level feedback.
+$N$ method \citep{Rosenthal1979,Rosenberg2005}, L. Held suggested that it would
+fit nicely into this manuscript, and that I should start to overhaul it. I
+rewrote and expanded his initial draft, adding also a new section on
+reverse-Bayes approaches with Bayes factors, largely based on the work from
+Paper II. We then managed to recruit R. Matthews to also contribute. From that
+point on the three of us iteratively worked on the manuscript and M. Ott gave
+high-level feedback.
 
 \startPaperSummary{PaperV}{%
   Comment on ``Bayesian additional evidence for decision making under small

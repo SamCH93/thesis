@@ -112,6 +112,18 @@ knitr::knit(input = "intro.Rnw")
 % Paper I
 % ------------------------------------------------------------------------------
 \paperchapter{%
+ The assessment of replication success based on relative effect size
+}{%
+  Leonhard Held, Charlotte Micheloud, Samuel Pawel
+}{%
+   \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
+  \url{https://doi.org/10.1214/21-AOAS1502}.}
+\include{paper2}
+
+
+% Paper II
+% ------------------------------------------------------------------------------
+\paperchapter{%
  The sceptical Bayes factor for the assessment of replication success
 }{%
   Samuel Pawel, Leonhard Held
@@ -120,17 +132,6 @@ knitr::knit(input = "intro.Rnw")
    \url{https://doi.org/10.1111/rssb.12491}.
  }
 \include{paper1}
-
-% Paper II
-% ------------------------------------------------------------------------------
-\paperchapter{%
- The assessment of replication success based on relative effect size
-}{%
-  Leonhard Held, Charlotte Micheloud, Samuel Pawel
-}{%
-   \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
-  \url{https://doi.org/10.1214/21-AOAS1502}.}
-\include{paper2}
 
 % Paper III
 % ------------------------------------------------------------------------------

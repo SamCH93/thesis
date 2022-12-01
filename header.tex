@@ -113,7 +113,7 @@
   \nopagebreak%
   \noindent%
   \vspace{-1pt}%
-  \setlength\leftskip{0.5em}%
+  \setlength\leftskip{1.6em}%
   \setlength\rightskip{6em}%
   \setlength\parfillskip{-2em}%
   {\vspace{-1pt}\bfseries\textsf{\textbf{#1}}}\smallskip\newline\vspace{-1pt}%
@@ -150,7 +150,7 @@
 
 %% command to start a new chapter for a paper
 \newcommand{\paperchapter}[3]{% title, author, publication status
-    \chapter[\chaptername~\thechapter]{
+    \chapter[\hspace{-0.5em}\chaptername~\thechapter]{
    {\bfseries\textsf{#1}}\\[0.5cm]%
    {\large\textit{#2}}\\[0.7cm]%
    {\large #3}%
@@ -169,7 +169,7 @@
     {\titlerule*[.5pc]{}\contentspage}
 
 \titlecontents{section}
-    [2.5em]
+    [3em]
     {\sffamily}
     {\contentslabel{1.3em}}
     {\hspace*{-1.3em}}
