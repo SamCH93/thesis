@@ -5,7 +5,7 @@
 \hfill
 \begin{tabular}{p{0.6\textwidth}}
   ``\emph{Confirmation comes from repetition}. Any attempt to avoid this statement leads at least to failure and more probably to destruction.'' \\
-  \hfill \citet[p. 84]{Tukey1969}
+  \hfill J.W. \citet[p. 84]{Tukey1969}
 \end{tabular}
 
 % \begin{center}

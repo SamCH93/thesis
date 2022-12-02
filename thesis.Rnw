@@ -119,7 +119,7 @@ knitr::knit(input = "intro.Rnw")
 }{%
    \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
   \href{https://doi.org/10.1214/21-AOAS1502}{doi:10.1214/21-AOAS1502}}
-\include{paper2}
+\include{paper1}
 
 
 % Paper II
@@ -132,7 +132,7 @@ knitr::knit(input = "intro.Rnw")
    \textit{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}, 2022, 84(3), 879--911.
    \href{https://doi.org/10.1111/rssb.12491}{doi:10.1111/rssb.12491}
  }
-\include{paper1}
+\include{paper2}
 
 % Paper III
 % ------------------------------------------------------------------------------

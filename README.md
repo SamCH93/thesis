@@ -1,18 +1,20 @@
 # Reverse-Bayes Methods for Replication Studies and Beyond
 
 This repository contains all files for reproducing the PhD thesis from Samuel
-Pawel.
+Pawel. A heavily modified version of the LaTeX thesis template from Sebastian
+Meyer (GPL2 license) is used. My template contains some ugly hacks, so use at
+your own risk!
 
 ## Reproducing the individual papers
 The thesis contains six papers, `.tex` and figure output files for each of them
 are already included in the repository. Code and data to reproduce them
 individually can be found at
 
-1) The sceptical Bayes factor for the assessment of replication success:
-<https://gitlab.uzh.ch/samuel.pawel/BFScode>
-
-2) The assessment of replication success based on relative effect size:
+1) The assessment of replication success based on relative effect size:
 <https://github.com/SamCH93/RSgolden/>
+
+2) The sceptical Bayes factor for the assessment of replication success:
+<https://gitlab.uzh.ch/samuel.pawel/BFScode>
 
 3) Bayesian approaches to designing replication studies: 
 <https://github.com/SamCH93/BAtDRS> 
