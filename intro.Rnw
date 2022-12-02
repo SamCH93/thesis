@@ -3,9 +3,8 @@
 \addcontentsline{toc}{chapter}{\texorpdfstring{\phantom{IV}Introduction}{Introduction}}
 
 \hfill
-\begin{tabular}{p{0.7\textwidth}}
-  ``\emph{Confirmation comes from repetition}. Any attempt to avoid this statement leads
-  to failure and more probably to destruction.'' \\
+\begin{tabular}{p{0.6\textwidth}}
+  ``\emph{Confirmation comes from repetition}. Any attempt to avoid this statement leads at least to failure and more probably to destruction.'' \\
   \hfill \citet[p. 84]{Tukey1969}
 \end{tabular}
 
@@ -23,9 +22,9 @@
 
 \section{Replication studies}
 
-\begin{wrapfigure}{r}{0.34\textwidth}
+\begin{wrapfigure}{r}{0.29\textwidth}
   \centering
-  \includegraphics[height = 7.3cm]{images/xkcd.png}
+  \includegraphics[height = 6.9cm]{images/xkcdCrop.png}
   \caption*{Replication studies as \mbox{illustrated} by Randall Munroe
     \mbox{(\url{https://xkcd.com/242})}.}
 \end{wrapfigure}
@@ -35,7 +34,7 @@
 % is real? The answer to such questions is of high importance to scientists,
 % decision makers, and the general population. However, because any study result
 % comes with uncertainty we can never know for sure.
-How can we know whether we can trust a finding from a scientific finding? For
+How can we know whether we can trust a finding from a scientific study? For
 example, how can we know whether the protective effect of a vaccine found in a
 study is a genuine effect or just a spurious finding? The answer to such
 questions is of high importance to scientists, decision makers, and the general
