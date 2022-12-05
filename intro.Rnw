@@ -38,8 +38,8 @@ How can we know whether we can trust a finding from a scientific study? For
 example, how can we know whether the protective effect of a vaccine found in a
 study is a genuine effect or just a spurious finding? The answer to such
 questions is of high importance to scientists, decision makers, and the general
-population. However, because any study result comes with uncertainty we can
-never know for sure.
+population. However, because every study result is subject to uncertainty, we
+can never know for sure.
 
 One way to come a little closer to the truth is to repeat the original study
 with new subjects. Such a \emph{replication study} may yield similar results
@@ -48,8 +48,8 @@ conflicting results which would lower our confidence. Replication studies are
 thus an essential part of the scientific process as they provide a means for
 substantiating genuine research findings and refuting research findings which
 occurred merely by chance. For this reason, ``successful'' replication is often
-a requirement, for example, for acceptance of newly proposed scientific theories
-(\eg{} a new physical model) or the implementation of policies based on
+a requirement, for instance, for acceptance of newly proposed scientific
+theories (\eg{} a new physical model) or the implementation of policies based on
 scientific knowledge (\eg{} market approval of a drug). The results from
 replication studies may thus have real world consequences, such as deciding
 whether we receive the recommendation to get vaccinated (a consequence that
@@ -59,12 +59,12 @@ anyone who experienced the COVID-19 pandemic is very aware of).
 Despite their tremendous importance, the traditional academic system has made it
 unattractive for researchers to conduct replication studies; the currencies of
 science -- publications, citations, and grant money -- are typically easier to
-acquire by conducting novel research. This is because until relatively recently,
-many scientific journals put most emphasis on ``innovation'' thereby lowering
-the chance of publication for replication studies \citep{Makel2012, Martin2017,
+acquire by conducting novel research. This is because until recently, most
+scientific journals hardly published any replication studies as the emphasis was
+on ``innovation'' rather than on ``repetition'' \citep{Makel2012, Martin2017,
   Coiera2021}. To build a successful career, researchers thus often had no other
 choice than to concentrate their efforts on producing novel and eye-catching
-research results.
+research results \citep{Binswanger2014, Moher2018}.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
@@ -85,52 +85,92 @@ philosophy \citep{Cova2018}, and cancer biology \citep{Errington2021}.
 Most of these large-scale replication projects confirmed what many researchers
 had feared; carefully conducted replication studies often show less impressive
 results than their original counterparts, and the replicability of research
-findings is surprisingly low (whatever replicability means will soon be
-discussed in more detail). This realization led many to declare science as being
-in a ``replication crisis''. Debates arose about whether or not the crisis
+findings is surprisingly low (how precisely replicability is defined will soon
+be discussed in more detail). This realization led many to declare science as
+being in a ``replication crisis''. Debates arose about whether or not the crisis
 really existed and who or what was to blame \citep{Gilbert2016, Amrhein2019}.
 Even the popular press became interested \citep[\eg{}][]{Carey2015, Kovic2016,
   Achenbach2017, Devlin2018}, so that also in the eyes of the public the
 credibility of science became seriously threatened.
 
 \begin{figure}[!htb]
-<< "google-scholar-graph", fig.height = 2.5 >>=
-## Data gathered on October 18 2022
-searchTerm <- "Replication Study"
-searchDate <- as.Date(x = "2022-10-18", format = "%Y-%m-%d", tz = "GMT")
-searchDateFormat <- format(searchDate, format = "%B %d %Y")
-resultsAnytime <- 114000
-scholarDF <- data.frame(year = seq(2022, 1990, -1),
-                        results = c(4530, 11400, 13600, 12200, 11300, 10700,
-                                    9880, 9220, 8660, 8200, 7500, 6700, 6040,
-                                    5370, 4680, 3890, 3380, 3070, 2790, 2520,
-                                    2310, 2190, 2120, 2020, 1920, 1840, 1730,
-                                    1490, 1270, 1230, 1140, 1070, 970),
-                        study = c(156000, 487000, 1820000, 959000, 2360000,
-                                  675000, 3000000, 688000, 3150000, 512000,
-                                  3630000, 451000, 3650000, 396000, 3680000,
-                                  389000, 3890000, 375000, 3950000, 336000,
-                                  4160000, 364000, 4240000, 385000, 3470000,
-                                  377000, 3120000, 335000, 2620000, 376000,
-                                  2440000, 317000, 2220000))
+<< "google-scholar-graph", fig.height = 3.5 >>=
+## ## Data gathered on October 18 2022
+## searchTerm <- "Replication Study"
+## searchDate <- as.Date(x = "2022-10-18", format = "%Y-%m-%d", tz = "GMT")
+## searchDateFormat <- format(searchDate, format = "%B %d %Y")
+## resultsAnytime <- 114000
+## scholarDF <- data.frame(year = seq(2022, 1990, -1),
+##                         results = c(4530, 11400, 13600, 12200, 11300, 10700,
+##                                     9880, 9220, 8660, 8200, 7500, 6700, 6040,
+##                                     5370, 4680, 3890, 3380, 3070, 2790, 2520,
+##                                     2310, 2190, 2120, 2020, 1920, 1840, 1730,
+##                                     1490, 1270, 1230, 1140, 1070, 970),
+##                         study = c(347000, 459000, 1710000, 938000, 2360000,
+##                                   675000, 3000000, 688000, 3150000, 512000,
+##                                   3630000, 451000, 3650000, 396000, 3680000,
+##                                   389000, 3890000, 375000, 3950000, 336000,
+##                                   4160000, 364000, 4240000, 385000, 3470000,
+##                                   377000, 3120000, 335000, 2620000, 376000,
+##                                   2440000, 317000, 2220000))
+## ## plot data
+## ggplot(data = filter(scholarDF, year < 2022),
+##        aes(x = year, y = results)) +
+##     geom_segment(aes(xend = year, yend = 0), alpha = 0.2, size = 0.4) +
+##     geom_point() +
+##     ## scale_y_continuous(breaks = seq(0, 15000, 2500)) +
+##     scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+##     ## scale_y_log10() +
+##     labs(x = "Year", y = paste0('Number of results \nfor "', searchTerm, '"')) +
+##     theme_bw() +
+##     theme(panel.grid.minor = element_blank(),
+##           panel.grid.major.x = element_blank()## ,
+##           ## panel.grid.major.y = element_line(colour = "grey", linetype = "dashed")
+##           )
+
+WebofScienceDF <- data.frame(year = seq(2022, 1990, -1),
+                             results = c(139, 144, 121, 137, 111, 80,
+                                         89, 63, 68, 92, 63, 60, 39,
+                                         39, 41, 30, 21, 20, 19, 25,
+                                         15, 9, 13, 20, 19, 16, 14,
+                                         8, 17, 13, 21, 5, 12),
+                             study = c(235996, 272173, 245994, 230009, 207625,
+                                       195012, 174800, 164635, 158745,
+                                       184473, 138785, 128779, 116890, 111229,
+                                       102231, 95143, 86691, 83132, 94432,
+                                       79807, 70388, 53983, 54893, 53480,
+                                       51744, 51898, 50070, 46826, 44591,
+                                       43097, 42816, 43277, 43277)) %>%
+    mutate(proportion = results/study,
+           se = sqrt(proportion*(1 - proportion)/study))
 
 ## plot data
-ggplot(data = filter(scholarDF, year < 2022),
-       aes(x = year, y = results)) +
-    geom_segment(aes(xend = year, yend = 0), alpha = 0.2, size = 0.4) +
-    geom_point() +
-    ## scale_y_continuous(breaks = seq(0, 15000, 2500)) +
+plotA <- ggplot(data = WebofScienceDF, aes(x = year, y = results)) +
+    geom_segment(aes(xend = year, yend = 0), alpha = 0.2, linewidth = 0.5) +
+    geom_point(size = 0.7) +
     scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-    ## scale_y_log10() +
-    labs(x = "Year", y = paste0('Number of results \nfor "', searchTerm, '"')) +
+    lims(y = c(0, 160)) +
+    labs(x = "Year", y = 'Number of results for "replication study"') +
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
-          panel.grid.major.x = element_blank()## ,
-          ## panel.grid.major.y = element_line(colour = "grey", linetype = "dashed")
-          )
+          panel.grid.major.x = element_blank())
+plotB <- ggplot(data = WebofScienceDF, aes(x = year, y = proportion)) +
+    geom_segment(aes(y = proportion - 2*se, yend = proportion + 2*se, xend = year),
+                 size = 0.5, alpha = 0.4) +
+    geom_point(size = 0.7) +
+    scale_x_continuous(breaks = seq(1990, 2020, 5), name = "Year") +
+    scale_y_continuous(labels = scales::percent,
+                       name = bquote("Proportion (" %+-% "2SE)")) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank())
+
+ggarrange(plotA, plotB, ncol = 2)
 @
-\caption{Number of results per year for search term ``\Sexpr{searchTerm}'' on
-  Google Scholar. The search was conducted on 18 October 2022.}
+\caption{Yearly number of results for search term ``replication study'' on Web
+  of Science (left), and number of results normalized by the number of results
+  for the search term ``study'' (right). The search was conducted on 2 December
+  2022.}
 \label{fig:scholar}
 \end{figure}
 
@@ -143,17 +183,19 @@ adopted the ``registered report'' format \citep{Chambers2021} in which a study
 proposal is peer reviewed \emph{before} the study is conducted, and which, if
 accepted, gives provisional publication acceptance regardless of the study
 outcome. Similarly, digital infrastructure platforms, such as Zenodo
-(\url{https://zenodo.org}) or the Open Science Framework
-(\url{https://osf.io}), were created to facilitate preregistration, preprints,
-code and data sharing, all of which have substantially increased over the last
-decade \citep{Kidwell2016, Nosek2018, Rawlinson2019}. The practice of conducting
+(\url{https://zenodo.org}) or the Open Science Framework (\url{https://osf.io}),
+were created to facilitate preregistration, preprints, code and data sharing,
+all of which have substantially increased over the last decade
+\citep{Kidwell2016, Nosek2018, Rawlinson2019}. The practice of conducting
 replication studies has also gained popularity. Several academic journals and
 funders are now explicitly promoting replication research \citep{NWO2016,
-  NSL2018, Nature2022}. Figure~\ref{fig:scholar} illustrates this trend via the
-yearly number of results for the search term ``\Sexpr{searchTerm}'' on Google
-Scholar over the last three decades. We see that the numbers have been rapidly
-growing, especially after the mid 2000s, with a minor drop in 2021 (perhaps
-because of research slowing down due to the COVID-19 pandemic).
+  NSL2018, Nature2022}. Figure~\ref{fig:scholar} (left) illustrates this trend
+by the yearly number of results for the search term ``replication study''
+obtained from the search engine Web of Science. The numbers have been rapidly
+growing, especially since the mid-2000s. This trend could possibly be explained
+by the fact that more research results are published each year but also when the
+numbers are normalized by the number of results for the search term ``study'',
+the increasing trend is still visible.
 
 
 \subsection{Statistical aspects of replication studies}
@@ -175,7 +217,9 @@ overview about these and other methods which have been used in practice.
     distribution is denoted by $\Phi(\cdot)$, and the $1 - \alpha$ quantile of
     the standard normal distribution is denoted by
     $\Phi^{-1}(1 - \alpha) = \z{\alpha}$. Confidence intervals and
-    \textit{p}-values are based on the normality assumption.}
+    \textit{p}-values are based on the assumption that the effect estimate
+    $\that$ is normally distributed around the unknown effect size $\theta$ with
+    (known) variance equal to the squared standard error $\sigma^{2}$.}
   \label{tab:meta}
   \begin{tabular}{lcc}
     \toprule
@@ -214,9 +258,14 @@ size $\theta$ (for large enough sample sizes) is justified. This could be, for
 instance, the Fisher $z$-transformation for correlations or the
 log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
 associated standard error $\sigma$ represents the statistical uncertainty of the
-estimate. Under the assumption of (asymptotic) normality, confidence intervals
-for $\theta$ and $p$-values for testing the null hypothesis
-$H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
+estimate.\footnote{Typically, the available standard error $\sigma$ is only an
+  estimate of the true standard error. However, in most parts of this thesis it
+  will be assumed that $\sigma$ corresponds to the true standard error. This is
+  the same assumption as in ordinary fixed-effects/random-effects meta-analysis,
+  and reasonable if the sample size of the studies is not too small.} Under the
+assumption of (asymptotic) normality, confidence intervals for $\theta$ and
+$p$-values for testing the null hypothesis $H_{0} \colon \theta = 0$ can be
+computed as shown in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
@@ -256,7 +305,7 @@ $H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
                           ($\that_{o} \in [\that_{r} \pm z_{\alpha/2}\sigma_{r}]$).
                           Usually $\alpha = 5\%$. \\
                    & \\
-    Prediction interval ($Q$-test) & The replication effect estimate is contained with its
+    Prediction interval ($Q$-test) & The replication effect estimate is contained in its
                                      $(1 - \alpha)$ prediction interval
                                      ($\that_{r} \in [\that_{o} \pm z_{\alpha/2}\surd(\sigma_{o}^{2}
                                      + \sigma_{r}^{2})]$). Usually $\alpha = 5\%$.
@@ -277,29 +326,30 @@ effect estimates showing the same direction. This approach is also called the
 meta-analysis \citep{Cooper2019}. The criterion can similarly be defined through
 one-sided $p$-values, so that the original and replication effect estimate are
 not required to show the same direction as this is taken into account by the
-$p$-values. Some replication projects \citep{Opensc2015, Errington2021} also
-defined replication success via simultaneous non-significance of original and
-replication study ($p_{o} > \alpha$ and $p_{r} > \alpha$). However, with this
-definition ``replication success'' can almost always be achieved by conducting
-original and replication study with very few samples so that the $p$-values are
-large. The approach is also logically questionable as it could be seen as an
-instance of the ``absence of evidence fallacy'' \citep{Altman1995} meaning the
-failure to find evidence against the null hypothesis is erroneously interpreted
-as evidence for the null hypothesis. Meta-analytic extensions of the
-significance approach define replication success by significance of a combined
-effect estimate.\footnote{The meta-analytic approach can also be given a
-  Bayesian interpretation: A flat prior distribution for the underlying effect
-  size $\theta$ is updated by the data from original and replication study.
-  Replication success defined by a meta-analytic $p$-value being smaller than
-  $\alpha$ is then equivalent to replication success via a Bayesian posterior
-  probability $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$,
-  respectively, $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$
-  depending on the direction of the combined estimate.} Typically, the
-assumption of a common underlying effect size is seen as reasonable so that
-fixed-effect meta-analysis is used for pooling. Random-effects meta-analysis has
-primarily been used if more than one replication study of the same original
-study are conducted since replicators are often interested in understanding
-between-replication heterogeneity \citep[\eg{} in][]{Klein2018}.
+one-sided $p$-values. Some replication projects \citep{Opensc2015,
+  Errington2021} also defined replication success via simultaneous
+non-significance of original and replication study ($p_{o} > \alpha$ and
+$p_{r} > \alpha$). However, with this definition ``replication success'' can
+almost always be achieved by conducting original and replication study with very
+few samples so that the $p$-values are large. The approach is also logically
+questionable as it could be seen as an instance of the ``absence of evidence
+fallacy'' \citep{Altman1995} meaning the failure to find evidence against the
+null hypothesis is erroneously interpreted as evidence for the null hypothesis.
+Meta-analytic extensions of the significance approach define replication success
+by significance of a combined effect estimate.\footnote{The meta-analytic
+  approach can also be given a Bayesian interpretation: A flat prior
+  distribution for the underlying effect size $\theta$ is updated by the data
+  from original and replication study. Replication success defined by a
+  meta-analytic $p$-value being smaller than $\alpha$ is then equivalent to
+  replication success via a Bayesian posterior probability
+  $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$, respectively,
+  $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$, depending on the
+  direction of the combined estimate.} Typically, the assumption of a common
+underlying effect size is seen as reasonable so that fixed-effect meta-analysis
+is used for pooling. Random-effects meta-analysis has primarily been used if
+more than one replication study of the same original study are conducted since
+replicators are often interested in understanding between-replication
+heterogeneity \citep[\eg{} in][]{Klein2018}.
 
 The remaining criteria in Table~\ref{tab:rsdef} put more emphasis on
 compatibility in effect size between the original and the replication study. For
@@ -344,10 +394,10 @@ standard errors.
 % variability of one of the two studies. As a result,
 
 \subsubsection{Example ``Reproducibility Project: Cancer Biology''}
-I will now illustrate the assessment of replicability on data from the
-Reproducibility Project: Cancer Biology \citep{Errington2021}. This large-scale
-project attempted to replicate 53 landmark studies from the field of cancer
-biology \citep[and would perhaps therefore better be named ``Replication
+I will now illustrate the assessment of replication success on data from the
+``Reproducibility Project: Cancer Biology'' \citep{Errington2021}. This
+large-scale project attempted to replicate 53 landmark studies from the field of
+cancer biology \citep[and would perhaps therefore better be named ``Replication
 Project'', see][]{Goodman2016}. In the end, only 23 of the 53 studies could be
 repeated due to various difficulties, such as, missing information from the
 original studies or problems in conducting the experiments.
@@ -358,22 +408,65 @@ mean difference effect estimates along with standard errors, and only they will
 be used in the subsequent analyses.
 
 \begin{figure}[!htb]
-<< "RPCB-graph", fig.height = 3.25 >>=
+<< "RPCB-graph", fig.height = 3.5 >>=
+
+## function to format CI
 ciFormat. <- function(lower, upper) {
-    paste0("[", format(round(lower, 2), nsmall = 2),
-           ", ", format(round(upper, 2), nsmall = 2), "]")
+    paste0("[", format(signif(lower, 2), nsmall = 2),
+           ", ", format(signif(upper, 2), nsmall = 2), "]")
 }
 ciFormat <- Vectorize(FUN = ciFormat.)
-pFormat. <- function(p) {
+
+## function to format p-value
+pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE) {
     if (is.na(p)) {
-        return(NA)
-    } else if (p > 0.0001) {
-        return(as.character(signif(p, 2)))
+        out <- NA
     } else {
-        return("< 0.0001")
+        if (p > 0.0001) {
+            out <- as.character(signif(p, digits = digits))
+            if (phantom) out <- paste0("\\phantom{<~}", out)
+        } else {
+            out <- "< 0.0001"
+        }
+        if (dollar) {
+            out <- paste0("$", out, "$")
+        }
     }
+    return(out)
 }
 pFormat <- Vectorize(FUN = pFormat.)
+
+## function to format (relative) effect estimate
+dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
+    if (is.na(x)) {
+        out <- NA
+    } else {
+        out <- as.character(signif(x, digits = digits))
+        if (phantom && (x >= 0)) {
+           out <- paste0("\\phantom{-}", out)
+        }
+        if (dollar) out <- paste0("$", out, "$")
+    }
+    return(out)
+}
+dFormat <- Vectorize(FUN = dFormat.)
+
+## function to color code numerical value in LaTeX table based on threshold
+tableFormat. <- function(x, outFun = pFormat, threshold = 0.05, col1 = "nicegreen",
+                         col2 = "red") {
+    if (is.na(x)) {
+        out <- NA
+    } else {
+        if (x < threshold) col <- col1
+        else col <- col2
+        out <- paste0("\\textcolor{", col, "}{",
+                      outFun(x, dollar = TRUE, phantom = TRUE), "}")
+    }
+    return(out)
+}
+tableFormat <- Vectorize(FUN = tableFormat., vectorize.args = "x")
+
+
 za <- qnorm(p = 0.975)
 rpcb <- read.csv("data/rpcb.csv") |>
     mutate(zo = smdo/so,
@@ -387,10 +480,8 @@ rpcb <- read.csv("data/rpcb.csv") |>
            pm2 = 2*(1 - pnorm(q = abs(smdm/sm))),
            Q = (smdo - smdr)^2/(so^2 + sr^2),
            pQ = pchisq(q = Q, df = 1, lower.tail = FALSE),
-           dFormat = ifelse(d > 1,
-                            paste0("\\textcolor{nicegreen}{$", round(d, 2),
-                                   "$}"),
-                            paste0("\\textcolor{red}{$", round(d, 2), "$}")),
+           dFormat = tableFormat(x = d, outFun = dFormat,
+                                 threshold = 1, col1 = "red", col2 = "nicegreen"),
            cioL = smdo - za*so,
            cioU = smdo + za*so,
            cirL = smdr - za*sr,
@@ -398,26 +489,15 @@ rpcb <- read.csv("data/rpcb.csv") |>
            cimL = smdm - za*sm,
            cimU = smdm + za*sm,
            id = paste0("(", paper, ", ", experiment, ", ", effect, ")"),
-           po2Format = ifelse(po2 < 0.05,
-                              paste0("\\textcolor{nicegreen}{", pFormat(po2),
-                                     "}"),
-                              paste0("\\textcolor{red}{", pFormat(po2), "}")),
-           pr2Format = ifelse(pr2 < 0.05,
-                              paste0("\\textcolor{nicegreen}{", pFormat(pr2),
-                                     "}"),
-                              paste0("\\textcolor{red}{", pFormat(pr2), "}")),
-           pm2Format = ifelse(pm2 < 0.05,
-                              paste0("\\textcolor{nicegreen}{", pFormat(pm2),
-                                     "}"),
-                              paste0("\\textcolor{red}{", pFormat(pm2), "}")),
-           pQFormat = ifelse(pQ > 0.05, paste0("\\textcolor{nicegreen}{", pFormat(pQ),
-                                               "}"),
-                             paste0("\\textcolor{red}{", pFormat(pQ), "}")),
-           smdoFormat = paste("$", format(round(smdo, 2), nsmall = 2),
+           po2Format = tableFormat(x = po2),
+           pr2Format = tableFormat(x = pr2),
+           pm2Format = tableFormat(x = pm2),
+           pQFormat = tableFormat(x = pQ),
+           smdoFormat = paste("$", dFormat(smdo), "~",
                               ciFormat(lower = cioL, upper = cioU), "$"),
-           smdrFormat = paste("$", format(round(smdr, 2), nsmall = 2),
+           smdrFormat = paste("$", dFormat(smdr), "~",
                               ciFormat(lower = cirL, upper = cirU), "$"),
-           smdmFormat = paste("$", format(round(smdm, 2), nsmall = 2),
+           smdmFormat = paste("$", dFormat(smdm), "~",
                               ciFormat(lower = cimL, upper = cimU), "$"),
            rsig = factor(pr2 <= 0.05, levels = c(FALSE, TRUE),
                          labels = c("italic(p[r]) > 0.05",
@@ -428,10 +508,7 @@ rpcb$ps2 <- NA
 rpcb$ps2[ind] <- pSceptical(zo = rpcb$zo[ind], zr = rpcb$zr[ind], c = rpcb$c[ind],
                             alternative = "two.sided", type = "nominal")
 rpcb$ps2Format <- NA
-rpcb$ps2Format[ind] <- ifelse(rpcb$ps2[ind] < 0.05, paste0("\\textcolor{nicegreen}{",
-                                                           pFormat(rpcb$ps2[ind]),
-                                                           "}"),
-                              paste0("\\textcolor{red}{", pFormat(rpcb$ps2[ind]), "}"))
+rpcb$ps2Format <- tableFormat(x = rpcb$ps2)
 
 zoom <- c(-2, 12)
 alphazoom <- 0.6
@@ -496,12 +573,12 @@ smaller effect estimates compared to their original counterparts (mean relative
 effect estimate $\bar{d} = \Sexpr{round(mean(rpcbWithoutNA[,"d"]), 2)}$). Many
 of the replications also fail to achieve statistical significance at the 5\%
 level. Specifically, from the
-\Sexpr{sum(rpcbWithoutNA$po2 < 0.05)} effects which were significant in the original study only \Sexpr{ sum(rpcbWithoutNA$po2 < 0.05
-  & rpcbWithoutNA$pr2 < 0.05 & rpcbWithoutNA$d > 0)} were also significant in
-the replication study (in the same direction).
+\Sexpr{sum(rpcbWithoutNA$po2 < 0.05)} effects which were significant in the original study only \Sexpr{ sum(rpcbWithoutNA$po2
+  < 0.05 & rpcbWithoutNA$pr2 < 0.05 & rpcbWithoutNA$d > 0)} were also
+significant in the replication study (in the same direction).
 
 \begin{figure}[!htb]
-<< "RPCB-table1", results = "asis", fig.height = 4.8 >>=
+<< "RPCB-table1", results = "asis", fig.height = 5.5 >>=
 ## show number of successes
 alpha <- 0.05
 dmin <- 1
@@ -534,7 +611,7 @@ upset(rpcbUpset, sets = c("Significance", "Meta analytic \nsignificance",
   number of replication successes according to the different criteria from
   Table~\ref{tab:rsdef} and their combinations. A threshold of
   $\alpha = \Sexpr{round(100*alpha, 2)}\%$ and a relative effect size threshold
-  of $d_{\text{min}} = \Sexpr{dmin}$ are used for replication success (green).}
+  of $d_{\text{min}} = \Sexpr{dmin}$ are used for replication success.}
 \label{fig:upset}
 \end{figure}
 
@@ -583,7 +660,7 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
     (green) threshold of $\alpha = 5\%$ is used for the \textit{p}-values and
     $d_{\text{min}} = 1$ for the relative effect estimate.}
   \label{tab:RPCB}
-% \resizebox{1\textwidth}{!}{%
+\resizebox{1\linewidth}{!}{%
 << "RPCB-table2", results = "asis" >>=
 ## select a subset with one effect per paper
 set.seed(7)
@@ -604,24 +681,23 @@ rpcbTable <- rpcb |>
 rpcbXtable <- xtable(rpcbTable)
 colnames(rpcbXtable) <- c("(P, X, E)",
                           "$\\that_o$ [95\\% CI]",
-                          ## "$\\sigma_o$",
                           "$\\that_r$ [95\\% CI]",
                           "$\\that_m$ [95\\% CI]",
                           "$c$", #"$\\sigma^2_o/\\sigma^2_r$",
                           "$d$", #"$\\that_r/\\that_o$",
-                          ## "$\\sigma_r$",
                           "$p_o$",
                           "$p_r$",
                           "$p_m$",
                           "$p_Q$",
                           "$p_{\\text{S}}$"
                           )
+colnames(rpcbXtable) <- paste0("\\multicolumn{1}{c}{", colnames(rpcbXtable), "}")
 print(rpcbXtable, booktabs = TRUE, floating = FALSE, include.rownames = TRUE,
-      sanitize.text.function = function(x) {x},
+      sanitize.text.function = function(x){x},
       size = "small")
 @
-% %
-% }
+%
+}
 \end{table}
 
 \end{landscape}
@@ -641,8 +717,8 @@ ideas and technical underpinnings.
 Bayesian inference is an approach to statistical inference where Bayes' theorem
 is used to make probability statements about unknown parameters based on the
 observed data. The central quantity for doing so is the distribution of the
-parameters conditional on the data, called the \emph{posterior distribution}. It
-can be obtained from Bayes' theorem,
+parameters conditional on the observed data, called the \emph{posterior
+  distribution}. It can be obtained from Bayes' theorem,
 \begin{align*}
   f(\theta \given \text{data})
   = f(\theta) \times \frac{f(\text{data} \given \theta)}{f(\text{data})},
@@ -810,8 +886,8 @@ ggplot(data = plotDF, aes(x = type, y = t)) +
 \end{figure}
 
 Figure~\ref{fig:RBillustration} illustrates the derivation of the sufficiently
-sceptical prior variance for an original study included in the Reproducibility
-Project: Cancer Biology with standardized mean difference effect estimate
+sceptical prior variance for an original study included in the ``Reproducibility
+Project: Cancer Biology'' with standardized mean difference effect estimate
 $\that_{o} = \Sexpr{round(to, 2)}$ and standard error
 $\sigma_{o} = \Sexpr{round(so, 2)}$. We see that the sufficiently sceptical
 prior with variance $\tau_{\alpha}^{2} = \Sexpr{round(sprior, 2)}^{2}$ produces
@@ -909,7 +985,7 @@ compared to its reference distribution via a \emph{prior predictive $p$-value}
 \begin{align}
   p_{\text{Box}}
   = \Pr\left\{f(\text{data} \given \text{M}) <
-  f(\text{observed data} \given \text{M})\right\}.
+  f(\text{data} = \text{observed data} \given \text{M}) \given \text{M}\right\}.
   \label{eq:pppval}
 \end{align}
 The $p$-value $p_{\text{Box}}$ is the probability of obtaining data with lower
@@ -925,7 +1001,8 @@ investigation $\text{M}_{1}$ is available, Box proposed that the \emph{prior
   predictive ratio}
 \begin{align*}
   \text{PPR}_{\text{Box}}
-  = \frac{f(\text{observed data} \given \text{M}_{1})}{f(\text{observed data} \given \text{M}_{2})},
+  = \frac{f(\text{data} = \text{observed data} \given \text{M}_{1})}{
+  f(\text{data} = \text{observed data} \given \text{M}_{2})},
 \end{align*}
 the ratio of predictive densities from the observed data under both models,
 could be used to judge the relative adequacy of model $\text{M}_{1}$. Again, the
@@ -1013,7 +1090,8 @@ be more conflict between the prior and the replication data,
 % $p_{\text{Box}} = \Sexpr{pboxFormat2[1]}$,
 % $p_{\text{Box}} = \Sexpr{pboxFormat2[2]}$, and
 % $p_{\text{Box}} = \Sexpr{pboxFormat2[3]}$),
-so that the third replication would be successful (since the prior predictive
+so that the third replication would be successful at the less convincing level
+\mbox{$\alpha = \Sexpr{round(alpha2*100, 2)}\%$} (since the prior predictive
 $p$-value would be
 $p_{\text{Box}} = \Sexpr{pboxFormat2[3]} < \Sexpr{round(alpha2*100, 2)}\%$).
 
@@ -1085,7 +1163,7 @@ is small enough. This property is desirable in the replication setting as a
 smaller replication effect estimate $\that_{r}$ may not be practically relevant
 anymore, despite its statistical significance.
 
-The results from the Reproducibility Project: Cancer Biology in
+The results from the ``Reproducibility Project: Cancer Biology'' in
 Table~\ref{tab:RPCB} illustrate these two properties. The third study fails to
 achieve replication success at level $\alpha = 5\%$ with the sceptical
 $p$-value, even though the replication study was highly convincing (the effect
@@ -1098,16 +1176,16 @@ study also achieved significance. However, the effect estimate from the
 replication was roughly 60\% smaller than the one from the original study, and
 significance is merely achieved because the standard error was much smaller
 (\ie{} around $1/\surd c \approx 1/2.8$ times smaller). The sceptical $p$-value
-is therefore only $p_{\text{S}} = 0.25$, indicating hardly any replication
-success.
+is therefore only $p_{\text{S}} = 0.25$, indicating hardly any evidence for
+replication success.
 
 This concludes the introduction to replication studies and reverse-Bayes methods
 for their analysis. Some additional properties (\eg{} the null distribution of
 the sceptical $p$-value) and extensions (\eg{} a one-sided version of the
 sceptical $p$-value, power and sample size calculations) can be found in the
-original article by \citet{Held2020}. Furthermore, the sceptical $p$-value and
-related methods are implemented in the R package \texttt{ReplicationSuccess}
-available on CRAN
+original article by \citet{Held2020}. The sceptical $p$-value and related
+methods are implemented in the R package \texttt{ReplicationSuccess} available
+on CRAN
 (\url{https://cran.r-project.org/package=ReplicationSuccess}). % However, the
 % relevant parts of the procedure have been presented.
 In the following, I will discuss open questions and how they are addressed in
@@ -1121,7 +1199,8 @@ this thesis.
 This thesis consists of six papers divided into three parts. The first part
 (Paper I, II, and III) focuses on methodology for design and analysis of
 replication studies. The second part (Paper IV and V) revolves around
-reverse-Bayes methodology in general. % Paper IV is a review paper about
+reverse-Bayes methodology with a broader scope of applications than replication
+studies. % Paper IV is a review paper about
 % reverse-Bayes methodology and Paper V is a short comment on another article
 % which proposed a reverse-Bayes method.
 The last part (Paper VI) is about integrity issues in methodological research
@@ -1136,7 +1215,7 @@ with simulations studies. % The article lists and illustrates questionable
   The assessment of replication success based on relative effect size}{%
   Leonhard Held, Charlotte Micheloud, Samuel Pawel \\
   \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
-  \href{https://doi.org/10.1214/21-AOAS1502}{doi:~10.1214/21-AOAS1502}.}
+  doi:\href{https://doi.org/10.1214/21-AOAS1502}{10.1214/21-AOAS1502}.}
 
 It is not clear how to interpret the sceptical $p$-value as it is not an
 ordinary $p$-value (which has a uniform distribution under the corresponding
@@ -1181,7 +1260,7 @@ the manuscript.
   Samuel Pawel, Leonhard Held \\
   \textit{Journal of the Royal Statistical Society: Series B (Statistical
     Methodology)}, 2022, 84(3), 879--911.
-  \href{https://doi.org/10.1111/rssb.12491}{doi:~10.1111/rssb.12491}.}
+  doi:\href{https://doi.org/10.1111/rssb.12491}{10.1111/rssb.12491}.}
 
 The reverse-Bayes approach from \citet{Held2020} is based on challenging the
 original study with a sceptical prior so there is no longer evidence for an
@@ -1210,9 +1289,9 @@ how much shrinkage is allowed. Technically, the procedure is more involved and
 closed-form solutions for the sceptical Bayes factor are only available in
 special situations. % and in terms of the
 % ``Lambert W function'' \citep{Corless1996}.
-The method is illustrated on data from the Social Sciences Replication Project
-\citep{Camerer2018}, and implemented in the R package \texttt{BayesRep}
-(\url{https://gitlab.uzh.ch/samuel.pawel/BayesRep}).
+The method is illustrated on data from the ``Social Sciences Replication
+Project'' \citep{Camerer2018}, and implemented in the R package
+\texttt{BayesRep} (\url{https://gitlab.uzh.ch/samuel.pawel/BayesRep}).
 
 The idea to use Bayes factors instead of tail probabilities was suggested by
 \citet{Consonni2019} and \citet{Pericchi2020} independently in response to the
@@ -1232,12 +1311,12 @@ the ISBA (International Society for Bayesian Analysis) world meeting 2021.
   Bayesian approaches to designing replication studies}{%
   Samuel Pawel, Guido Consonni, Leonhard Held \\
   2022. arXiv preprint.
-  \href{https://doi.org/10.48550/arXiv.2211.02552}{doi:~10.48550/arXiv.2211.02552}.}
+  doi:\href{https://doi.org/10.48550/arXiv.2211.02552}{10.48550/arXiv.2211.02552}.}
 
 An important aspect in the design of replication studies is determining their
-sample size. How exactly the sample size should be determined depends on the
-method used for analyzing the replication data. Various approaches have been
-proposed for doing so which are specifically tailored to certain analysis
+sample size. How exactly the sample size should be determined depends on which
+method is used for the analysis of the replication data. Various approaches have
+been proposed for doing so which are specifically tailored to certain analysis
 methods. In this article, we provide a general Bayesian framework which applies
 to any analysis method (including the sceptical $p$-value and the sceptical
 Bayes factor). We show how the data from the original study and external
@@ -1269,7 +1348,7 @@ Held and G. Consonni gave high-level feedback.
   Reverse-Bayes methods for evidence assessment and research synthesis}{%
   Leonhard Held, Robert Matthews, Manuela Ott, Samuel Pawel \\
   \textit{Research Synthesis Methods}, 2022, 13(3), 295--314.
-   \href{https://doi.org/10.1002/jrsm.1538}{doi:~10.1002/jrsm.1538}.}
+   doi:\href{https://doi.org/10.1002/jrsm.1538}{10.1002/jrsm.1538}.}
 
 While the popularity of Bayesian methods has been rapidly increasing since the
 advent of modern computational methods in the 1990s, reverse-Bayes methods % , such
@@ -1298,7 +1377,7 @@ high-level feedback.
 sample uncertainty''}{%
    Samuel Pawel, Leonhard Held, Robert Matthews \\
   \textit{BMC Medical Research Methodology}, 2022, 22(149).
-  \href{https://doi.org/10.1186/s12874-022-01635-4}{doi:~10.1186/s12874-022-01635-4}.}
+  doi:\href{https://doi.org/10.1186/s12874-022-01635-4}{10.1186/s12874-022-01635-4}.}
 
 Shortly after the acceptance of Paper III, the article by \citet{Sondhi2021}
 appeared. It proposed a novel reverse-Bayes method called \emph{Bayesian
@@ -1327,7 +1406,7 @@ iteratively worked on the manuscript, while L. Held gave high-level feedback.
   Pitfalls and Potentials in Simulation Studies}{%
   Samuel Pawel, Lucas Kook, Kelly Reeve \\
   2022. arXiv preprint.
-  \href{https://doi.org/10.48550/arXiv.2203.13076}{doi:~10.48550/arXiv.2203.13076}.}
+  doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}.}
 
 Simulation studies are frequently used for evaluating statistical methods.
 However, several studies showed that the reporting standards in simulation
@@ -1343,12 +1422,12 @@ recommendations to alleviate these issues. Most importantly, we recommend
 researchers to write and pre-register simulation protocols.
 
 The first authorship of this manuscript is shared with L. Kook. I had the idea
-to invent a ``mock-method'' and use questionable research practices that make it
+to invent a novel method and use questionable research practices that make it
 seem superior, to draw attention to the low standards in methodological
 research. I then wrote a first draft of the manuscript and proposed the idea to
-L. Kook and K. Reeve. L. Kook and myself then came up with the penalized
-regression method ``AINET'' and started writing the simulation protocol. L. Kook
-took lead in developing the R package \texttt{ainet}
+L. Kook and K. Reeve. L. Kook and myself then came up with the novel regression
+method ``AINET'' and started writing the simulation protocol. L. Kook took lead
+in developing the R package \texttt{ainet}
 (\url{https://github.com/LucasKook/ainet}) and simulation study code. Myself, L.
 Kook, and K. Reeve then designed the final simulation study and continued
 working on the manuscript together. Recently, I was invited to present the
@@ -1359,7 +1438,7 @@ in Basel.
 \phantomsection
 \addcontentsline{toc}{section}{Data and software}
 \section*{Data and software}
-The CC-By 4.0 licensed data from the Reproducibility Project: Cancer Biology
+The CC-By 4.0 licensed data from the ``Reproducibility Project: Cancer Biology''
 \citep{Errington2021} were downloaded from
 \url{https://doi.org/10.17605/osf.io/e5nvr}. The relevant variables were then
 extracted from the file ``\texttt{RP\_CB Final Analysis - Effect level
