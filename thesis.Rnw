@@ -142,7 +142,8 @@ knitr::knit(input = "intro.Rnw")
 \paperchapter{%
   Bayesian approaches to designing replication studies}{%
   Samuel Pawel, Guido Consonni, Leonhard Held}{%
-  2022. arXiv preprint. doi:\href{https://doi.org/10.48550/arXiv.2211.02552}{10.48550/arXiv.2211.02552}
+  \textit{arXiv preprint}, 2022.
+  doi:\href{https://doi.org/10.48550/arXiv.2211.02552}{10.48550/arXiv.2211.02552}
 }
 \include{paper3}
 
@@ -196,7 +197,7 @@ sample uncertainty''
 \paperchapter{%
   Pitfalls and Potentials in Simulation Studies }{%
   Samuel Pawel, Lucas Kook, Kelly Reeve }{%
-  2022. arXiv preprint.
+  \textit{arXiv preprint}, 2022.
   doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}
 }
 

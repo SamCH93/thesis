@@ -5,36 +5,14 @@ Pawel. A heavily modified version of the LaTeX thesis template from Sebastian
 Meyer (GPL2 license) is used. My template contains some ugly hacks, so use at
 your own risk!
 
-## Reproducing the individual papers
-The thesis contains six papers, `.tex` and figure output files for each of them
-are already included in the repository. Code and data to reproduce them
-individually can be found at
-
-1) The assessment of replication success based on relative effect size:
-<https://github.com/SamCH93/RSgolden/>
-
-2) The sceptical Bayes factor for the assessment of replication success:
-<https://gitlab.uzh.ch/samuel.pawel/BFScode>
-
-3) Bayesian approaches to designing replication studies: 
-<https://github.com/SamCH93/BAtDRS> 
-
-4) Reverse-Bayes methods for evidence assessment and research synthesis
-<https://gitlab.uzh.ch/samuel.pawel/Reverse-Bayes-Code>
-
-5) Comment on "Bayesian additional evidence for decision making under small
-sample uncertainty": <https://github.com/SamCH93/BAEcomment>
-
-6) Pitfalls and Potentials in Simulation Studies:
-<https://github.com/SamCH93/SimPaper>
-
 
 ## 1. Reproducing the thesis locally
 Make sure that LaTeX (e.g., texlive-full on Ubuntu), R, and the following R
 packages are installed
 
 ```r
-pkgs <- c("knitr", "ggplot2", "xtable", "ReplicationSuccess", "dplyr", "UpSetR")
+pkgs <- c("knitr", "ggplot2", "xtable", "ReplicationSuccess", "dplyr", "UpSetR",
+          "ggpubr", "scales")
 install.packages(pkgs)
 ```
 
@@ -45,7 +23,7 @@ make
 ```
 
 this should produce `thesis.pdf`. The following R and R package versions were
-used when last successfully tested
+used when last compiled
 
 ```r
 sessionInfo()
@@ -87,3 +65,27 @@ sessionInfo()
 ## 2. Reproducing the thesis within a Docker container
 
 TODO: implement Docker support
+
+
+## Reproducing the individual papers
+The thesis contains six papers, `.tex` and figure output files for each of them
+are already included in the repository. Code and data to reproduce them
+individually can be found at
+
+1) The assessment of replication success based on relative effect size:
+<https://github.com/SamCH93/RSgolden/>
+
+2) The sceptical Bayes factor for the assessment of replication success:
+<https://gitlab.uzh.ch/samuel.pawel/BFScode>
+
+3) Bayesian approaches to designing replication studies: 
+<https://github.com/SamCH93/BAtDRS> 
+
+4) Reverse-Bayes methods for evidence assessment and research synthesis
+<https://gitlab.uzh.ch/samuel.pawel/Reverse-Bayes-Code>
+
+5) Comment on "Bayesian additional evidence for decision making under small
+sample uncertainty": <https://github.com/SamCH93/BAEcomment>
+
+6) Pitfalls and Potentials in Simulation Studies:
+<https://github.com/SamCH93/SimPaper>

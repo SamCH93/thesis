@@ -44,11 +44,11 @@ can never know for sure.
 One way to come a little closer to the truth is to repeat the original study
 with new subjects. Such a \emph{replication study} may yield similar results
 which would make us more confident about the original finding, or may yield
-conflicting results which would lower our confidence. Replication studies are
-thus an essential part of the scientific process as they provide a means for
-substantiating genuine research findings and refuting research findings which
-occurred merely by chance. For this reason, ``successful'' replication is often
-a requirement, for instance, for acceptance of newly proposed scientific
+conflicting results which would lower our confidence. As such, replication
+studies are an essential part of the scientific process as they provide a means
+for substantiating genuine research findings and refuting research findings
+which occurred merely by chance. For this reason, ``successful'' replication is
+often a requirement, for instance, for acceptance of newly proposed scientific
 theories (\eg{} a new physical model) or the implementation of policies based on
 scientific knowledge (\eg{} market approval of a drug). The results from
 replication studies may thus have real world consequences, such as deciding
@@ -85,13 +85,14 @@ philosophy \citep{Cova2018}, and cancer biology \citep{Errington2021}.
 Most of these large-scale replication projects confirmed what many researchers
 had feared; carefully conducted replication studies often show less impressive
 results than their original counterparts, and the replicability of research
-findings is surprisingly low (how precisely replicability is defined will soon
-be discussed in more detail). This realization led many to declare science as
-being in a ``replication crisis''. Debates arose about whether or not the crisis
-really existed and who or what was to blame \citep{Gilbert2016, Amrhein2019}.
-Even the popular press became interested \citep[\eg{}][]{Carey2015, Kovic2016,
-  Achenbach2017, Devlin2018}, so that also in the eyes of the public the
-credibility of science became seriously threatened.
+findings is surprisingly low (how replicability can be defined precisely will
+soon be discussed in more detail). This realization led many to declare science
+as being in a ``replication crisis''. Debates arose about whether or not the
+crisis really existed and who or what was to blame \citep{Gilbert2016,
+  Amrhein2019}. Even the popular press became interested
+\citep[\eg{}][]{Carey2015, Kovic2016, Achenbach2017, Devlin2018}, so that also
+in the eyes of the public the credibility of science became seriously
+threatened.
 
 \begin{figure}[!htb]
 << "google-scholar-graph", fig.height = 3.5 >>=
@@ -261,11 +262,11 @@ associated standard error $\sigma$ represents the statistical uncertainty of the
 estimate.\footnote{Typically, the available standard error $\sigma$ is only an
   estimate of the true standard error. However, in most parts of this thesis it
   will be assumed that $\sigma$ corresponds to the true standard error. This is
-  the same assumption as in ordinary fixed-effects/random-effects meta-analysis,
-  and reasonable if the sample size of the studies is not too small.} Under the
-assumption of (asymptotic) normality, confidence intervals for $\theta$ and
-$p$-values for testing the null hypothesis $H_{0} \colon \theta = 0$ can be
-computed as shown in Table~\ref{tab:meta}.
+  the same assumption as in ordinary fixed-effect/random-effects meta-analysis,
+  and typically reasonable if the sample size of the studies is not too small.}
+Under the assumption of (asymptotic) normality, confidence intervals for
+$\theta$ and $p$-values for testing the null hypothesis
+$H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
@@ -357,7 +358,7 @@ example, the relative effect estimate $d = \that_{r}/\that_{o}$ quantifies how
 much the magnitude of the replication effect estimate changed compared to the
 original, and the smaller $d$ is the smaller the degree of replication success.
 Some projects also report a confidence interval for $d$ \citep{Camerer2016,
-  Camerer2018}, while others ignore its uncertainty and make a binary cut at
+  Camerer2018}, whereas others ignore its uncertainty and make a binary cut at
 $d_{\text{min}} = 1$ to define replication success \citep{Errington2021}. The
 criteria based on confidence and prediction intervals define effect size
 compatibility on an absolute scale. However, the criterion based on the original
@@ -398,8 +399,9 @@ I will now illustrate the assessment of replication success on data from the
 ``Reproducibility Project: Cancer Biology'' \citep{Errington2021}. This
 large-scale project attempted to replicate 53 landmark studies from the field of
 cancer biology \citep[and would perhaps therefore better be named ``Replication
-Project'', see][]{Goodman2016}. In the end, only 23 of the 53 studies could be
-repeated due to various difficulties, such as, missing information from the
+Project'', see][for the distinction between ``replicabality'' and
+``reproducibility'']{Goodman2016}. In the end, only 23 of the 53 studies could
+be repeated due to various difficulties, such as, missing information from the
 original studies or problems in conducting the experiments.
 \citet{Errington2021} report that these experiments led to data on 158
 quantitative effects. However, from the data which they provide only 132
@@ -452,8 +454,8 @@ dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
 dFormat <- Vectorize(FUN = dFormat.)
 
 ## function to color code numerical value in LaTeX table based on threshold
-tableFormat. <- function(x, outFun = pFormat, threshold = 0.05, col1 = "nicegreen",
-                         col2 = "red") {
+tableFormat. <- function(x, outFun = pFormat, threshold = 0.05, col1 = "dark2green",
+                         col2 = "dark2orange") {
     if (is.na(x)) {
         out <- NA
     } else {
@@ -481,7 +483,7 @@ rpcb <- read.csv("data/rpcb.csv") |>
            Q = (smdo - smdr)^2/(so^2 + sr^2),
            pQ = pchisq(q = Q, df = 1, lower.tail = FALSE),
            dFormat = tableFormat(x = d, outFun = dFormat,
-                                 threshold = 1, col1 = "red", col2 = "nicegreen"),
+                                 threshold = 1, col1 = "dark2orange", col2 = "dark2green"),
            cioL = smdo - za*so,
            cioU = smdo + za*so,
            cirL = smdr - za*sr,
@@ -493,11 +495,11 @@ rpcb <- read.csv("data/rpcb.csv") |>
            pr2Format = tableFormat(x = pr2),
            pm2Format = tableFormat(x = pm2),
            pQFormat = tableFormat(x = pQ),
-           smdoFormat = paste("$", dFormat(smdo), "~",
+           smdoFormat = paste("$", dFormat(smdo, phantom = TRUE), "~",
                               ciFormat(lower = cioL, upper = cioU), "$"),
-           smdrFormat = paste("$", dFormat(smdr), "~",
+           smdrFormat = paste("$", dFormat(smdr, phantom = TRUE), "~",
                               ciFormat(lower = cirL, upper = cirU), "$"),
-           smdmFormat = paste("$", dFormat(smdm), "~",
+           smdmFormat = paste("$", dFormat(smdm, phantom = TRUE), "~",
                               ciFormat(lower = cimL, upper = cimU), "$"),
            rsig = factor(pr2 <= 0.05, levels = c(FALSE, TRUE),
                          labels = c("italic(p[r]) > 0.05",
@@ -717,8 +719,8 @@ ideas and technical underpinnings.
 Bayesian inference is an approach to statistical inference where Bayes' theorem
 is used to make probability statements about unknown parameters based on the
 observed data. The central quantity for doing so is the distribution of the
-parameters conditional on the observed data, called the \emph{posterior
-  distribution}. It can be obtained from Bayes' theorem,
+parameters conditional on the data, called the \emph{posterior distribution}. It
+can be obtained from Bayes' theorem,
 \begin{align*}
   f(\theta \given \text{data})
   = f(\theta) \times \frac{f(\text{data} \given \theta)}{f(\text{data})},
@@ -746,7 +748,7 @@ with the posterior and ends up with the prior. For example, the posterior may be
 specified to indicate evidence for/against a particular hypothesis under
 investigation. Reverse-Bayes inference then revolves around the question of
 whether the resulting prior is plausible in light of external knowledge, and if
-so, this could be seen as support for the specified posterior.
+so, this indicates support for the specified posterior.
 
 To illustrate reverse-Bayes inference, let us return to the replication setting.
 Assume we want to conduct inference about the unknown effect size $\theta$ based
@@ -1310,7 +1312,7 @@ the ISBA (International Society for Bayesian Analysis) world meeting 2021.
 \startPaperSummary{PaperIII}{%
   Bayesian approaches to designing replication studies}{%
   Samuel Pawel, Guido Consonni, Leonhard Held \\
-  2022. arXiv preprint.
+  \textit{arXiv preprint}, 2022.
   doi:\href{https://doi.org/10.48550/arXiv.2211.02552}{10.48550/arXiv.2211.02552}.}
 
 An important aspect in the design of replication studies is determining their
@@ -1405,7 +1407,7 @@ iteratively worked on the manuscript, while L. Held gave high-level feedback.
 \startPaperSummary{PaperVI}{%
   Pitfalls and Potentials in Simulation Studies}{%
   Samuel Pawel, Lucas Kook, Kelly Reeve \\
-  2022. arXiv preprint.
+  \textit{arXiv preprint}, 2022.
   doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}.}
 
 Simulation studies are frequently used for evaluating statistical methods.
@@ -1449,7 +1451,8 @@ programming language version \Sexpr{paste(version$major, version$minor, sep =
 \texttt{ReplicationSuccess} \citep{Held2020}, \texttt{UpSetR}
 \citep{Gehlenborg2019}, and \texttt{xtable} \citep{Dahl2019} were used. Code and
 data to reproduce this thesis are available at
-\url{https://doi.org/10.5281/zenodo.XXXXXXX}.
+\url{https://github.com/SamCH93/thesis}. A snapshot of the git repository is
+archived \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
 
 
 << "sessionInfo1", eval = Reproducibility, results = "asis" >>=

@@ -16,6 +16,8 @@
 \usepackage{color}
 \definecolor{Blue}{rgb}{0,0,0.5} % URL color
 \definecolor{nicegreen}{HTML}{008000} % nice green for table
+\definecolor{dark2green}{RGB}{27,158,119} % nice green for table
+\definecolor{dark2orange}{RGB}{217,95,2} % nice orange for table
 \definecolor{lightlightgray}{RGB}{211,211,211} % for tikz diagram
 
 %%% Bibliography
@@ -119,8 +121,8 @@
   \setlength\rightskip{4.3em}%
   \setlength\parfillskip{-2em}%
   {\vspace{-1pt}\bfseries\textsf{\textbf{#1}}}\smallskip\newline\vspace{-1pt}%
-  \textit{#2}\smallskip\newline\vspace{-1pt}%
-  #3\newline%
+  \textsf{#2}\smallskip\newline\vspace{-1pt}%
+  \textsf{#3}\newline%
   \par%
   \endgroup%
 }
@@ -136,7 +138,7 @@
 \newcommand{\startPaperSummary}[3]{
   % \begingroup
   % \renewcommand{\thesubsection}{\hspace{-1ex}}
-  \subsubsection*{Paper \ref{#1}: #2\nopagebreak\\{\normalfont by #3}}
+  \subsubsection*{Paper \ref{#1}: #2\nopagebreak\\{\normalfont #3}}
   % \endgroup
 }
 
@@ -154,7 +156,7 @@
 \newcommand{\paperchapter}[3]{% title, author, publication status
     \chapter[\hspace{-0.5em}\chaptername~\thechapter]{
    {\bfseries\textsf{#1}}\\[0.5cm]%
-   {\large\textit{#2}}\\[0.7cm]%
+   {\large{#2}}\\[0.7cm]%
    {\large #3}%
  }
   \label{\chaptername\thechapter}
