@@ -38,22 +38,23 @@ How can we know whether we can trust a finding from a scientific study? For
 example, how can we know whether the protective effect of a vaccine found in a
 study is a genuine effect or just a spurious finding? The answer to such
 questions is of high importance to scientists, decision makers, and the general
-population. However, because every study result is subject to uncertainty, we
-can never know for sure.
+population, and one way to obtain it is through \emph{replication studies}.
 
-One way to come a little closer to the truth is to repeat the original study
-with new subjects. Such a \emph{replication study} may yield similar results
-which would make us more confident about the original finding, or may yield
+A replication study consists of repeating the original study as close as
+possible but with new subjects. Such a study may yield similar results which
+would make us more confident about the original finding, or may yield
 conflicting results which would lower our confidence. As such, replication
-studies are an essential part of the scientific process as they provide a means
+studies are an essential part of the scientific method as they provide a means
 for substantiating genuine research findings and refuting research findings
 which occurred merely by chance. For this reason, ``successful'' replication is
 often a requirement, for instance, for acceptance of newly proposed scientific
 theories (\eg{} a new physical model) or the implementation of policies based on
 scientific knowledge (\eg{} market approval of a drug). The results from
-replication studies may thus have real world consequences, such as deciding
-whether we receive the recommendation to get vaccinated (a consequence that
-anyone who experienced the COVID-19 pandemic is very aware of).
+replication studies may thus have real world consequences, % , such as deciding
+% whether we receive the recommendation to get vaccinated (a consequence that
+% anyone who experienced the COVID-19 pandemic is very aware of)
+and it is therefore important that methodological aspects of replication
+studies, such as their statistical design and analysis, are well understood.
 
 
 Despite their tremendous importance, the traditional academic system has made it
@@ -179,7 +180,7 @@ In the midst of this crisis, % , particularly from the hard-hit
 % field of psychology,
 various reforms were implemented to prevent an escalation of the situation % and
 % save the reputation of science
-\citep[for an overview see \eg{}][]{Munafo2017}. For instance, many journals
+\citep[for an overview see \eg{}][]{Munafo2017}. For instance, some journals
 adopted the ``registered report'' format \citep{Chambers2021} in which a study
 proposal is peer reviewed \emph{before} the study is conducted, and which, if
 accepted, gives provisional publication acceptance regardless of the study
@@ -229,10 +230,10 @@ overview about these and other methods which have been used in practice.
     effect estimate & $\that_o$ & $\that_{r}$ \\
     standard error & $\sigma_{o}$ & $\sigma_{r}$ \\
     $(1 - \alpha)$ confidence interval &
-    $[\that_{o} \pm \z{\alpha/2} \sigma_{o}]$ &
-    $[\that_{r} \pm \z{\alpha/2} \sigma_{r}]$ \\
-    % $[\that_{o} - \z{\alpha/2} \sigma_{o}, \that_{o} + \z{\alpha/2} \sigma_{o}]$ &
-    % $[\that_{r} - \z{\alpha/2} \sigma_{r}, \that_{r} + \z{\alpha/2} \sigma_{r}]$ \\
+    % $[\that_{o} \pm \z{\alpha/2} \sigma_{o}]$ &
+    % $[\that_{r} \pm \z{\alpha/2} \sigma_{r}]$ \\
+    $[\that_{o} - \z{\alpha/2} \sigma_{o}, \that_{o} + \z{\alpha/2} \sigma_{o}]$ &
+    $[\that_{r} - \z{\alpha/2} \sigma_{r}, \that_{r} + \z{\alpha/2} \sigma_{r}]$ \\
     $z$-value & $z_{o} = \that_{o}/\sigma_{o}$ & $z_{r} = \that_{r}/\sigma_{r}$ \\
     $p$-value (two-sided) & $p_{o} = 2\{1 - \Phi(|z_{o}|)\}$ & $p_{r} = 2\{1 - \Phi(|z_{r}|)\}$ \\
     % One-sided $p$-value & $p_{o} = 1 - \Phi(|z_{o}|)$ & $p_{r} = 2\{1 - \Phi(|z_{r}|)\}$ \\
@@ -252,21 +253,21 @@ is the effect estimate $\that$. It provides an estimate of the underlying effect
 size $\theta$ which quantifies the true effect or association of an
 intervention/exposure with an outcome variable. Typical effect sizes are mean
 differences and correlations (for continuous outcomes), odds ratios (for binary
-outcomes), or hazard ratios (for time to event outcomes). Depending on the type
+outcomes), or hazard ratios (for time-to-event outcomes). Depending on the type
 of effect size, a transformation might be required so that the assumption of
 approximately normally distributed effect estimates around the unknown effect
 size $\theta$ (for large enough sample sizes) is justified. This could be, for
 instance, the Fisher $z$-transformation for correlations or the
 log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
 associated standard error $\sigma$ represents the statistical uncertainty of the
-estimate.\footnote{Typically, the available standard error $\sigma$ is only an
-  estimate of the true standard error. However, in most parts of this thesis it
-  will be assumed that $\sigma$ corresponds to the true standard error. This is
-  the same assumption as in ordinary fixed-effect/random-effects meta-analysis,
-  and typically reasonable if the sample size of the studies is not too small.}
-Under the assumption of (asymptotic) normality, confidence intervals for
-$\theta$ and $p$-values for testing the null hypothesis
-$H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
+estimate. Typically, the available standard error $\sigma$ is only an estimate
+of the true standard error. However, in most parts of this thesis it will be
+assumed that $\sigma$ corresponds to the true standard error. This is the same
+assumption as in ordinary fixed-effect/random-effects meta-analysis, and
+typically reasonable if the sample size of the studies is not too small. Under
+the assumption of (asymptotic) normality, confidence intervals for $\theta$ and
+$p$-values for testing the null hypothesis $H_{0} \colon \theta = 0$ can be
+computed as shown in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
@@ -326,31 +327,33 @@ effect estimates showing the same direction. This approach is also called the
 ``two-trials rule'' \citep{Senn2008} in drug regulation or ``vote-counting'' in
 meta-analysis \citep{Cooper2019}. The criterion can similarly be defined through
 one-sided $p$-values, so that the original and replication effect estimate are
-not required to show the same direction as this is taken into account by the
-one-sided $p$-values. Some replication projects \citep{Opensc2015,
-  Errington2021} also defined replication success via simultaneous
-non-significance of original and replication study ($p_{o} > \alpha$ and
-$p_{r} > \alpha$). However, with this definition ``replication success'' can
-almost always be achieved by conducting original and replication study with very
-few samples so that the $p$-values are large. The approach is also logically
-questionable as it could be seen as an instance of the ``absence of evidence
-fallacy'' \citep{Altman1995} meaning the failure to find evidence against the
-null hypothesis is erroneously interpreted as evidence for the null hypothesis.
-Meta-analytic extensions of the significance approach define replication success
-by significance of a combined effect estimate.\footnote{The meta-analytic
-  approach can also be given a Bayesian interpretation: A flat prior
-  distribution for the underlying effect size $\theta$ is updated by the data
-  from original and replication study. Replication success defined by a
-  meta-analytic $p$-value being smaller than $\alpha$ is then equivalent to
-  replication success via a Bayesian posterior probability
-  $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$, respectively,
-  $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$, depending on the
-  direction of the combined estimate.} Typically, the assumption of a common
-underlying effect size is seen as reasonable so that fixed-effect meta-analysis
-is used for pooling. Random-effects meta-analysis has primarily been used if
-more than one replication study of the same original study are conducted since
-replicators are often interested in understanding between-replication
-heterogeneity \citep[\eg{} in][]{Klein2018}.
+not explicitly required to show the same direction as this is already taken into
+account by the one-sided $p$-values. Some replication projects
+\citep{Opensc2015, Errington2021} also defined replication success via
+simultaneous non-significance of original and replication study
+($p_{o} > \alpha$ and $p_{r} > \alpha$). However, with this definition
+``replication success'' can almost always be achieved by conducting original and
+replication study with very few samples so that the $p$-values are large. The
+approach is also logically questionable as it could be seen as an instance of
+the ``absence of evidence fallacy'' \citep{Altman1995} meaning the failure to
+find evidence against the null hypothesis is erroneously interpreted as evidence
+for the null hypothesis. Meta-analytic extensions of the significance approach
+define replication success by significance of a combined effect
+estimate.
+% \footnote{The meta-analytic approach can also be given a Bayesian
+% interpretation: A flat prior distribution for the underlying effect size
+% $\theta$ is updated by the data from original and replication study.
+% Replication success defined by a meta-analytic $p$-value being smaller than
+% $\alpha$ is then equivalent to replication success via a Bayesian posterior
+% probability $\Pr(\theta > 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$,
+% respectively, $\Pr(\theta < 0 \given \that_{o}, \that_{r}) > 1 - \alpha/2$,
+% depending on the direction of the combined estimate.}
+Typically, the assumption of a common underlying effect size is seen as
+reasonable so that fixed-effect meta-analysis is used for pooling.
+Random-effects meta-analysis has primarily been used if more than one
+replication study of the same original study are conducted since replicators are
+often interested in understanding between-replication heterogeneity \citep[\eg{}
+in][]{Klein2018}.
 
 The remaining criteria in Table~\ref{tab:rsdef} put more emphasis on
 compatibility in effect size between the original and the replication study. For
@@ -411,67 +414,10 @@ be used in the subsequent analyses.
 
 \begin{figure}[!htb]
 << "RPCB-graph", fig.height = 3.5 >>=
-
-## function to format CI
-ciFormat. <- function(lower, upper) {
-    paste0("[", format(signif(lower, 2), nsmall = 2),
-           ", ", format(signif(upper, 2), nsmall = 2), "]")
-}
-ciFormat <- Vectorize(FUN = ciFormat.)
-
-## function to format p-value
-pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE) {
-    if (is.na(p)) {
-        out <- NA
-    } else {
-        if (p > 0.0001) {
-            out <- as.character(signif(p, digits = digits))
-            if (phantom) out <- paste0("\\phantom{<~}", out)
-        } else {
-            out <- "< 0.0001"
-        }
-        if (dollar) {
-            out <- paste0("$", out, "$")
-        }
-    }
-    return(out)
-}
-pFormat <- Vectorize(FUN = pFormat.)
-
-## function to format (relative) effect estimate
-dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
-    if (is.na(x)) {
-        out <- NA
-    } else {
-        out <- as.character(signif(x, digits = digits))
-        if (phantom && (x >= 0)) {
-           out <- paste0("\\phantom{-}", out)
-        }
-        if (dollar) out <- paste0("$", out, "$")
-    }
-    return(out)
-}
-dFormat <- Vectorize(FUN = dFormat.)
-
-## function to color code numerical value in LaTeX table based on threshold
-tableFormat. <- function(x, outFun = pFormat, threshold = 0.05, col1 = "dark2green",
-                         col2 = "dark2orange") {
-    if (is.na(x)) {
-        out <- NA
-    } else {
-        if (x < threshold) col <- col1
-        else col <- col2
-        out <- paste0("\\textcolor{", col, "}{",
-                      outFun(x, dollar = TRUE, phantom = TRUE), "}")
-    }
-    return(out)
-}
-tableFormat <- Vectorize(FUN = tableFormat., vectorize.args = "x")
-
-
 za <- qnorm(p = 0.975)
 rpcb <- read.csv("data/rpcb.csv") |>
-    mutate(zo = smdo/so,
+    mutate(id = paste0("(", paper, ", ", experiment, ", ", effect, ")"),
+           zo = smdo/so,
            zr = smdr/sr,
            c = so^2/sr^2,
            d = smdr/smdo,
@@ -482,25 +428,6 @@ rpcb <- read.csv("data/rpcb.csv") |>
            pm2 = 2*(1 - pnorm(q = abs(smdm/sm))),
            Q = (smdo - smdr)^2/(so^2 + sr^2),
            pQ = pchisq(q = Q, df = 1, lower.tail = FALSE),
-           dFormat = tableFormat(x = d, outFun = dFormat,
-                                 threshold = 1, col1 = "dark2orange", col2 = "dark2green"),
-           cioL = smdo - za*so,
-           cioU = smdo + za*so,
-           cirL = smdr - za*sr,
-           cirU = smdr + za*sr,
-           cimL = smdm - za*sm,
-           cimU = smdm + za*sm,
-           id = paste0("(", paper, ", ", experiment, ", ", effect, ")"),
-           po2Format = tableFormat(x = po2),
-           pr2Format = tableFormat(x = pr2),
-           pm2Format = tableFormat(x = pm2),
-           pQFormat = tableFormat(x = pQ),
-           smdoFormat = paste("$", dFormat(smdo, phantom = TRUE), "~",
-                              ciFormat(lower = cioL, upper = cioU), "$"),
-           smdrFormat = paste("$", dFormat(smdr, phantom = TRUE), "~",
-                              ciFormat(lower = cirL, upper = cirU), "$"),
-           smdmFormat = paste("$", dFormat(smdm, phantom = TRUE), "~",
-                              ciFormat(lower = cimL, upper = cimU), "$"),
            rsig = factor(pr2 <= 0.05, levels = c(FALSE, TRUE),
                          labels = c("italic(p[r]) > 0.05",
                                     "italic(p[r]) <= 0.05")))
@@ -509,8 +436,6 @@ ind <- !is.na(rpcb$zo) & !is.na(rpcb$zr) & !is.na(rpcb$c)
 rpcb$ps2 <- NA
 rpcb$ps2[ind] <- pSceptical(zo = rpcb$zo[ind], zr = rpcb$zr[ind], c = rpcb$c[ind],
                             alternative = "two.sided", type = "nominal")
-rpcb$ps2Format <- NA
-rpcb$ps2Format <- tableFormat(x = rpcb$ps2)
 
 zoom <- c(-2, 12)
 alphazoom <- 0.6
@@ -609,7 +534,7 @@ upset(rpcbUpset, sets = c("Significance", "Meta analytic \nsignificance",
 @
 \caption{UpSet plot for data on 132 effects from the Reproducibility Project:
   Cancer Biology \citep{Errington2021} for which effect estimates and standard
-  errors are available on standardized mean difference scale. Shown are the
+  errors are available on the standardized mean difference scale. Shown are the
   number of replication successes according to the different criteria from
   Table~\ref{tab:rsdef} and their combinations. A threshold of
   $\alpha = \Sexpr{round(100*alpha, 2)}\%$ and a relative effect size threshold
@@ -641,7 +566,7 @@ criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test does not indicate
 evidence for inconsistency of the two effect estimates ($p_{Q} > 0.05$).
 
 Taken together, this analysis demonstrates that conclusions based on commonly
-used replication success criteria often differ. It is not always clear cut
+used replication success criteria often differ. It is not always clear-cut
 whether or not a replication is successful. Reducing replicability to a single
 criterion without mentioning these difficulties, as often done by the popular
 press \citep[\eg{} ``more than half of the findings did not hold up when
@@ -662,40 +587,122 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
     (green) threshold of $\alpha = 5\%$ is used for the \textit{p}-values and
     $d_{\text{min}} = 1$ for the relative effect estimate.}
   \label{tab:RPCB}
-\resizebox{1\linewidth}{!}{%
+\resizebox{1.02\linewidth}{!}{%
 << "RPCB-table2", results = "asis" >>=
-## select a subset with one effect per paper
+## function to format CI
+ciFormat. <- function(lower, upper, dollar = FALSE, digits = 2) {
+    if (dollar) x <- "$" else x <- ""
+    paste0("[", x, format(round(lower, digits), nsmall = digits), x,
+           " to ", x, format(round(upper, digits), nsmall = digits), x, "]")
+}
+ciFormat <- Vectorize(FUN = ciFormat.)
+
+## function to format p-value
+pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE) {
+    if (is.na(p)) {
+        out <- NA
+    } else {
+        if (p > 0.0001) {
+            if (p < 10^(-digits+1)) {
+                out <- as.character(signif(p, digits = digits))
+            } else {
+                out <- format(round(p, digits), nsmall = digits)
+            }
+            if (phantom) out <- paste0("\\phantom{<~}", out)
+        } else {
+            out <- "< 0.0001"
+        }
+        if (dollar) {
+            out <- paste0("$", out, "$")
+        }
+    }
+    return(out)
+}
+pFormat <- Vectorize(FUN = pFormat.)
+
+## function to format (relative) effect estimate
+dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
+    if (is.na(x)) {
+        out <- NA
+    } else {
+        out <- as.character(signif(x, digits = digits))
+        if (phantom && (x >= 0)) {
+           out <- paste0("\\phantom{-}", out)
+        }
+        if (dollar) out <- paste0("$", out, "$")
+    }
+    return(out)
+}
+dFormat <- Vectorize(FUN = dFormat.)
+
+## function to color code numerical value in LaTeX table based on threshold
+tableFormat. <- function(x, outFun = pFormat, threshold = 0.05, col1 = "dark2green",
+                         col2 = "dark2orange") {
+    if (is.na(x)) {
+        out <- NA
+    } else {
+        if (x < threshold) col <- col1
+        else col <- col2
+        out <- paste0("\\textcolor{", col, "}{",
+                      outFun(x, dollar = TRUE, phantom = TRUE), "}")
+    }
+    return(out)
+}
+tableFormat <- Vectorize(FUN = tableFormat., vectorize.args = "x")
+
+## randomly select a subset with one effect per paper
 set.seed(7)
 rpcbTable <- rpcb |>
     na.omit() |>
-    ## filter(smdo < 80, smdr < 80) |>
     group_by(paper) |>
     sample_n(size = 1) |>
     ungroup() |>
     arrange(pr2) |>
+    mutate(smdoFormat = signif(smdo, 3),
+           smdrFormat = signif(smdr, 3),
+           smdmFormat = signif(smdm, 3),
+           dFormat = tableFormat(x = d, outFun = dFormat,
+                                 threshold = 1, col1 = "dark2orange",
+                                 col2 = "dark2green"),
+           cioL = smdo - za*so,
+           cioU = smdo + za*so,
+           cirL = smdr - za*sr,
+           cirU = smdr + za*sr,
+           cimL = smdm - za*sm,
+           cimU = smdm + za*sm,,
+           po2Format = tableFormat(x = po2),
+           pr2Format = tableFormat(x = pr2),
+           pm2Format = tableFormat(x = pm2),
+           ps2Format = tableFormat(x = ps2),
+           pQFormat = tableFormat(x = pQ),
+           cioFormat = ciFormat(lower = cioL, upper = cioU, dollar = TRUE),
+           cirFormat = ciFormat(lower = cirL, upper = cirU, dollar = TRUE),
+           cimFormat = ciFormat(lower = cimL, upper = cimU), dollar = TRUE) |>
     select(id,
-           smdoFormat, ## so,
-           smdrFormat, smdmFormat,
-           c, dFormat, ## sr,
+           smdoFormat, cioFormat,
+           smdrFormat, cirFormat,
+           smdmFormat, cimFormat,
+           c, dFormat,
            po2Format, pr2Format, pm2Format, pQFormat, ps2Format
            )
-
 rpcbXtable <- xtable(rpcbTable)
 colnames(rpcbXtable) <- c("(P, X, E)",
-                          "$\\that_o$ [95\\% CI]",
-                          "$\\that_r$ [95\\% CI]",
-                          "$\\that_m$ [95\\% CI]",
-                          "$c$", #"$\\sigma^2_o/\\sigma^2_r$",
-                          "$d$", #"$\\that_r/\\that_o$",
+                          "$\\that_o$", "[95\\% CI]",
+                          "$\\that_r$", "[95\\% CI]",
+                          "$\\that_m$", "[95\\% CI]",
+                          "$c$",
+                          "$d$",
                           "$p_o$",
                           "$p_r$",
                           "$p_m$",
                           "$p_Q$",
                           "$p_{\\text{S}}$"
                           )
+
 colnames(rpcbXtable) <- paste0("\\multicolumn{1}{c}{", colnames(rpcbXtable), "}")
 print(rpcbXtable, booktabs = TRUE, floating = FALSE, include.rownames = TRUE,
       sanitize.text.function = function(x){x},
+      math.style.negative = getOption("xtable.math.style.negative", TRUE),
       size = "small")
 @
 %
@@ -770,18 +777,19 @@ with mean and variance
   &\text{and}&
   &\sigma^{2}_{\text{post}} = \frac{1}{1/\sigma^{2}_{o} + 1/\tau^{2}}.&
 \end{align*}
-The associated $(1- \alpha)$ highest posterior density credible interval is
-given by
+The associated $(1- \alpha)$ highest posterior density credible interval has
+limits
 \begin{align}
-  \left[\mu_{\text{post}} \pm z_{\alpha/2} \, \sigma_{\text{post}}\right]
+  \left[\mu_{\text{post}} - z_{\alpha/2} \, \sigma_{\text{post}},
+  \mu_{\text{post}} + z_{\alpha/2} \, \sigma_{\text{post}}\right]
   \label{eq:postCI}
 \end{align}
 and if this credible interval excludes parameter values smaller/larger than zero
 (depending on the orientation of the effect size) this may be interpreted as
-evidence\footnote{For readers who do not agree with this notion of evidence, do
-  not panic. In this thesis (Paper II and IV) we extend this reverse-Bayes
-  procedure to use alternative measures of evidence, such as Bayes factors.} for
-a genuine effect found in the original study.
+evidence for a genuine effect found in the original study. There exist also
+other definitions of statistical evidence and in latter parts of this thesis
+(Paper\ref{PaperII} and Paper\ref{PaperIV}) we will extend this reverse-Bayes
+procedure to employ alternative measures of evidence, such as Bayes factors.
 
 Depending on how large the prior variance $\tau^{2}$ is chosen, the posterior
 credible interval~\eqref{eq:postCI} will either include or exclude zero.
@@ -963,7 +971,7 @@ distribution
 \end{align*}
 % He noted from the first decomposition~\eqref{eq:decomp1} that the model M may
 % only be regarded as adequate if current belief about
-He reasoned that inferences based on the left factor, the posterior distribution
+He argued that inferences based on the left factor, the posterior distribution
 $f(\theta \given \text{data}, \text{M})$, should only be trusted if the right
 factor, the prior predictive distribution
 \begin{align*}
@@ -986,10 +994,14 @@ the value of a ``checking function'' applied to the observed data) can be
 compared to its reference distribution via a \emph{prior predictive $p$-value}
 \begin{align}
   p_{\text{Box}}
-  = \Pr\left\{f(\text{data} \given \text{M}) <
-  f(\text{data} = \text{observed data} \given \text{M}) \given \text{M}\right\}.
+  % &= \Pr\left\{f(\text{data} \given \text{M}) <
+  % f(\text{data} = \text{observed data} \given \text{M}) \given \text{M}\right\} \\
+  & = \int_{\mathcal{X}} \,
+    f(\text{data} = x \given \text{M}) \, \text{d}x
   \label{eq:pppval}
 \end{align}
+with $\mathcal{X} = \{x : f(\text{data} = x \given \text{M}) <
+f(\text{data} = \text{observed data} \given \text{M})\}$.
 The $p$-value $p_{\text{Box}}$ is the probability of obtaining data with lower
 predictive density (``more surprising'' data) than the observed data, and the
 lower $p_{\text{Box}}$, the more incompatibility between the observed data and
@@ -1011,12 +1023,13 @@ could be used to judge the relative adequacy of model $\text{M}_{1}$. Again, the
 lower the prior predictive ratio $\text{PPR}_{\text{Box}}$, the less compatible
 the observed data with the model $\text{M}_{1}$. Bayesian model criticism
 approaches based on prior predictive ratios will be used in latter parts of this
-thesis.\footnote{Some readers may have noted that the prior predictive ratio is
-  also the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
-  $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
-  approach is therefore particularly useful in combination with reverse-Bayes
-  procedures based on Bayes factors, as will be demonstrated later (Paper II and
-  IV).}
+thesis (Paper~\ref{PaperII} and Paper~\ref{PaperIV}).
+% \footnote{Some readers may have noted that the prior predictive ratio is also
+% the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
+% $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
+% approach is therefore particularly useful in combination with reverse-Bayes
+% procedures based on Bayes factors, as will be demonstrated later (Paper~\ref{PaperII} and
+% IV).}
 
 % In general,
 % a distinction can be made between checking for \emph{likelihood-data conflict}
@@ -1199,14 +1212,16 @@ this thesis.
 \raggedbottom
 
 This thesis consists of six papers divided into three parts. The first part
-(Paper I, II, and III) focuses on methodology for design and analysis of
-replication studies. The second part (Paper IV and V) revolves around
-reverse-Bayes methodology with a broader scope of applications than replication
+(Paper~\ref{PaperI}, \ref{PaperII}, and \ref{PaperIII}) focuses on methodology
+for design and analysis of replication studies. The second part
+(Paper~\ref{PaperIV} and \ref{PaperV}) revolves around reverse-Bayes methodology
+with a broader scope of applications than replication
 studies. % Paper IV is a review paper about
 % reverse-Bayes methodology and Paper V is a short comment on another article
 % which proposed a reverse-Bayes method.
-The last part (Paper VI) is about integrity issues in methodological research
-with simulations studies. % The article lists and illustrates questionable
+The last part (Paper~\ref{PaperVI}) is about integrity issues in methodological
+research with simulations
+studies. % The article lists and illustrates questionable
 % research practices in simulation studies, and gives recommendations how to avoid
 % them.
 
@@ -1252,10 +1267,10 @@ is now implemented as the default option in the R package
 \texttt{ReplicationSuccess}.
 
 L. Held had the idea to apply the sceptical $p$-value method to the data from
-the four replication projects, which I collected for my master thesis. C.
-Micheloud and L. Held came up with the golden level. L. Held wrote an initial
-draft of the manuscript. C. Micheloud, L. Held, and I then iteratively worked on
-the manuscript.
+the four replication projects, which I collected for my master thesis. L. Held
+and C. Micheloud came up with the golden level. L. Held wrote an initial draft
+of the manuscript. L. Held, C. Micheloud, and I then iteratively worked on the
+manuscript.
 
 \startPaperSummary{PaperII}{%
   The sceptical Bayes factor for the assessment of replication success}{%
@@ -1335,7 +1350,7 @@ illustrating our methods, which are available in the R package
 L. Held specified in the grant application of this research project
 \citep{Heldproposal2019} that we will investigate power and sample size
 calculations for the sceptical $p$-value and the sceptical Bayes factor. In
-Paper II, I already derived the power function of the sceptical Bayes factor in
+Paper~\ref{PaperII}, I already derived the power function of the sceptical Bayes factor in
 closed-form for two types of design priors. After its completion, I generalized
 the result to any design prior in the normal-normal hierarchical model, and
 started working on this manuscript. I presented a first draft to L. Held and G.
@@ -1367,12 +1382,12 @@ a meta-analysis on the effect of corticosteroids on COVID-19 mortality.
 L. Held and M. Ott started working on this article several years ago. When I
 discovered the connection between the Analysis of Credibility and the fail-safe
 $N$ method \citep{Rosenthal1979,Rosenberg2005}, L. Held suggested that it would
-fit nicely into this manuscript, and that I should start to overhaul it. I
-rewrote and expanded his initial draft, adding also a new section on
-reverse-Bayes approaches with Bayes factors, largely based on the work from
-Paper II. We then managed to recruit R. Matthews to also contribute. From that
-point on the three of us iteratively worked on the manuscript and M. Ott gave
-high-level feedback.
+fit nicely into this manuscript, to add the COVID-19 meta-analysis example, and
+that I should start to overhaul it. I rewrote and expanded his initial draft,
+adding also a new section on reverse-Bayes approaches with Bayes factors,
+largely based on the work from Paper~\ref{PaperII}. We then managed to recruit R. Matthews
+to also contribute. From that point on the three of us iteratively worked on the
+manuscript and M. Ott gave high-level feedback.
 
 \startPaperSummary{PaperV}{%
   Comment on ``Bayesian additional evidence for decision making under small
@@ -1381,12 +1396,13 @@ sample uncertainty''}{%
   \textit{BMC Medical Research Methodology}, 2022, 22(149).
   doi:\href{https://doi.org/10.1186/s12874-022-01635-4}{10.1186/s12874-022-01635-4}.}
 
-Shortly after the acceptance of Paper III, the article by \citet{Sondhi2021}
-appeared. It proposed a novel reverse-Bayes method called \emph{Bayesian
-  Additional Evidence}, and we noted some flaws in the article. This prompted us
-to write a commentary. We show that -- contrary to the statement by
-Sondhi et al. -- there is a closed form solution for the key quantity in
-their approach termed ``Bayesian Additional Evidence tipping point''.
+Shortly after the acceptance of Paper~\ref{PaperIII}, the article by
+\citet{Sondhi2021} appeared. It proposed a novel reverse-Bayes method called
+\emph{Bayesian Additional Evidence}, and we noted some flaws in the article.
+This prompted us to write a commentary. We show that -- contrary to the
+statement by Sondhi et al. -- there is a closed form solution for the key
+quantity in their approach termed ``Bayesian Additional Evidence tipping
+point''.
 % The Bayesian Additional Evidence method provides an answer to the question
 % ``What prior do I have to choose so that that my unconvincing data become
 % convincing?''.
