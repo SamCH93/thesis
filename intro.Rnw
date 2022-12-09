@@ -282,7 +282,8 @@ computed as shown in Table~\ref{tab:meta}.
                                  (\that_{o}/\sigma_{o}^{2} + \that_{r}/\sigma^{2}_{r})\sigma^{2}_{m}$}
                                  is the  pooled effect estimate with standard error
                                  \mbox{$\sigma_{m} = (1/\sigma^{2}_{o} + 1/\sigma^{2}_{r})^{-1/2}$}.
-                                 Usually $\alpha = 5\%$. \\
+                                 There are no established conventions regarding the level $\alpha$.
+    \\
                    & \\
     Relative effect size & The effect estimate of the replication study goes in the same
                            direction as the original one and is at least $d_{\text{min}}$ times as large (\mbox{$d = \that_{r}/\that_{o} \geq d_{\text{min}}$}).
@@ -345,7 +346,12 @@ reasonable so that fixed-effect meta-analysis is used for pooling.
 Random-effects meta-analysis has primarily been used if more than one
 replication study of the same original study are conducted since replicators are
 often interested in understanding between-replication heterogeneity \citep[\eg{}
-in][]{Klein2018}.
+in][]{Klein2018}. In contrast to the ordinary significance criterion, it is less
+established which level $\alpha$ should be used for thresholding the
+meta-analytic $p$-value. Some replication projects have used the same level as
+for the significance approach \citep{Opensc2015, Camerer2016, Errington2021},
+whereas others have used a smaller level as the pooled estimate is based on both
+data sets \citep[\eg{} $\alpha = 0.5\%$ in][]{Camerer2018}.
 
 The remaining criteria in Table~\ref{tab:rsdef} put more emphasis on
 compatibility in effect size between the original and the replication study. For
@@ -584,8 +590,8 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
 ## function to format CI
 ciFormat. <- function(lower, upper, dollar = FALSE, digits = 2) {
     if (dollar) x <- "$" else x <- ""
-    paste0("[", x, format(round(lower, digits), nsmall = digits), x,
-           " to ", x, format(round(upper, digits), nsmall = digits), x, "]")
+    paste0("(", x, format(round(lower, digits), nsmall = digits), x,
+           " to ", x, format(round(upper, digits), nsmall = digits), x, ")")
 }
 ciFormat <- Vectorize(FUN = ciFormat.)
 
@@ -617,7 +623,7 @@ dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
     if (is.na(x)) {
         out <- NA
     } else {
-        out <- as.character(signif(x, digits = digits))
+        out <- format(round(x, digits), nsmall = digits)
         if (phantom && (x >= 0)) {
            out <- paste0("\\phantom{-}", out)
         }
@@ -679,9 +685,9 @@ rpcbTable <- rpcb |>
            )
 rpcbXtable <- xtable(rpcbTable)
 colnames(rpcbXtable) <- c("(P, X, E)",
-                          "$\\that_o$", "[95\\% CI]",
-                          "$\\that_r$", "[95\\% CI]",
-                          "$\\that_m$", "[95\\% CI]",
+                          "$\\that_o$", "(95\\% CI)",
+                          "$\\that_r$", "(95\\% CI)",
+                          "$\\that_m$", "(95\\% CI)",
                           "$c$",
                           "$d$",
                           "$p_o$",
@@ -772,15 +778,14 @@ with mean and variance
 The associated $(1- \alpha)$ highest posterior density credible interval has
 limits
 \begin{align}
-  \left[\mu_{\text{post}} - z_{\alpha/2} \, \sigma_{\text{post}},
-  \mu_{\text{post}} + z_{\alpha/2} \, \sigma_{\text{post}}\right]
+  \mu_{\text{post}} \pm z_{\alpha/2} \, \sigma_{\text{post}}
   \label{eq:postCI}
 \end{align}
 and if this credible interval excludes parameter values smaller/larger than zero
 (depending on the orientation of the effect size) this may be interpreted as
 evidence for a genuine effect found in the original study. There exist also
 other definitions of statistical evidence and in subsequent chapters of this
-thesis (Paper\ref{PaperII} and Paper\ref{PaperIV}) we will extend this
+thesis (Paper~\ref{PaperII} and Paper~\ref{PaperIV}) we will extend this
 reverse-Bayes procedure to employ alternative measures of evidence, such as
 Bayes factors.
 
@@ -1248,7 +1253,7 @@ with a broader scope of applications than replication
 studies. % Paper IV is a review paper about
 % reverse-Bayes methodology and Paper V is a short comment on another article
 % which proposed a reverse-Bayes method.
-The last part (Paper~\ref{PaperVI}) is on meta-scientific perspectives on
+The last part (Paper~\ref{PaperVI}) deals with meta-scientific perspectives of
 methodological research.
 % The article lists and illustrates questionable
 % research practices in simulation studies, and gives recommendations how to avoid
