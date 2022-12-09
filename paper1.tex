@@ -13,7 +13,7 @@ power for replication success can then take any desired value if the original
 study is significant and the replication sample size is large enough. Compared
 to the standard approach to require statistical significance of both the
 original and replication study, replication success at the golden level offers
-uniform gains in project power and controls the Type-I error rate if the
+uniform gains in project power and controls the Type I error rate if the
 replication sample size is not smaller than the original one. An application to
 data from four large replication projects shows that the new approach leads to
 more appropriate inferences, as it penalizes shrinkage of the replication
@@ -21,7 +21,7 @@ estimate compared to the original one, while ensuring that both effect estimates
 are sufficiently convincing on their own.
 
 \textbf{Key words}: Power, replication studies, sceptical $p$-value, shrinkage,
-two-trials rule, type-I error rate
+two-trials rule, type I error rate
 
 \section{Introduction}
 Replication studies are conducted in order to investigate whether an original
@@ -103,11 +103,11 @@ effect size (Section \ref{sec1:res}). This perspective is used in Section
 \ref{sec1:goldenthresh} and \ref{sec1:recalib} to propose a recalibration of the
 method, the \textit{golden level}, which leads to a more appropriate criterion
 for replication success compared to the two-trials rule (Section \ref{sec1:2TR}).
-In Section \ref{sec1:ER} we study power and Type-I error rates of the proposed
+In Section \ref{sec1:ER} we study power and Type I error rates of the proposed
 method and compare it to the two-trials rule. The recalibrated method ensures
 that conditional power can take any desired value if the original study has been
 significant and the replication sample size is large enough (Section
-\ref{sec1:powerrep}), controls the overall Type-I error if the replication sample
+\ref{sec1:powerrep}), controls the overall Type I error if the replication sample
 size is not smaller than the original one (Section \ref{sec1:T1E}), and offers
 uniform gains in project power compared to the two-trials rule (Section
 \ref{sec1:PP}). Section \ref{sec1:application} describes an application to data
@@ -380,7 +380,7 @@ $0.006$ will require a smaller relative effect size $d$ with the replication
 success method. This illustrates that the latter method is less stringent than
 the two-trials rule if the original study is already sufficiently convincing.
 
-\section{Power and Type-I Error Rate}\label{sec1:ER}
+\section{Power and Type I Error Rate}\label{sec1:ER}
 Although Bayesian methods do not rely on the frequentist paradigm of repeated
 testing, it is still useful to investigate their frequentist operating
 characteristics \citep{Dawid1982, Rubin1984, Grieve2016} and this also holds for
@@ -388,7 +388,7 @@ the proposed reverse-Bayes assessment of replication success. We first condition
 on the results from the original study and compare the power to achieve
 replication success with the two-trials rule in Section \ref{sec1:powerrep}. We
 then assume that none of the two studies have been conducted and investigate the
-overall Type-I error rate (Section \ref{sec1:T1E}) and the project power (Section
+overall Type I error rate (Section \ref{sec1:T1E}) and the project power (Section
 \ref{sec1:PP}) \citep{Maca2002} over both studies in combination for fixed
 relative sample size $c$.
 
@@ -479,11 +479,11 @@ power based on 20\% shrinkage towards 100\% for all $p_o < 0.025$, equation
 $\alpha=0.025$ to $\alpha'=0.033$.
 
 
-\subsection{Overall Type-I error rate}\label{sec1:T1E}
-The two studies are assumed to be independent with Type-I error rate fixed at
-$\alpha$ for each of them, so the Type-I error rate of the two-trials rule over
+\subsection{Overall Type I error rate}\label{sec1:T1E}
+The two studies are assumed to be independent with Type I error rate fixed at
+$\alpha$ for each of them, so the Type I error rate of the two-trials rule over
 the entire project is simply $\alpha^2$ for any value of the relative effect
-size $c$. In contrast, the Type-I error rate of the proposed replication success
+size $c$. In contrast, the Type I error rate of the proposed replication success
 assessment {depends on} the relative sample size $c$.
 
 For $c=1$, \citet[Section 3]{Held2020} showed that $z_S^2$ in
@@ -491,19 +491,19 @@ For $c=1$, \citet[Section 3]{Held2020} showed that $z_S^2$ in
 statistics $z_o^2$ and $z_r^2$. The connection $z_S^2 = z_H^2/4$ to the harmonic
 mean $\chi^2$-test statistic $z_H^2$ \citep{Held2020b}, which has a
 $\chi^2(1)$-distribution under the null hypothesis, makes it straightforward to
-compute the Type-I error rate at level $\alpha_S$ for $c = 1$ as
+compute the Type I error rate at level $\alpha_S$ for $c = 1$ as
 \begin{eqnarray}\label{eq1:T1E}
 \mbox{T1E} =   \left\{1-\Phi\left[2 \, \Phi^{-1}\left(1-\alpha_S \right)
  \right]\right\}/2.
 \end{eqnarray}
-For the golden level $\alpha_S =0.062$ at $\alpha = 0.025$, the Type-I error
-rate \eqref{eq1:T1E} is $0.0515$\%, slightly less than the Type-I error rate
-$\alpha^2=0.0625$\% of the two-trials rule. For comparison, the Type-I error
+For the golden level $\alpha_S =0.062$ at $\alpha = 0.025$, the Type I error
+rate \eqref{eq1:T1E} is $0.0515$\%, slightly less than the Type I error rate
+$\alpha^2=0.0625$\% of the two-trials rule. For comparison, the Type I error
 rate at the nominal level $\alpha_S=0.025$ is $0.0022$\%, much smaller than
 0.0625\%.
 
 
-For $c \neq 1$, the Type-I error rate can be calculated through numerical
+For $c \neq 1$, the Type I error rate can be calculated through numerical
 integration:
 \begin{equation}\label{eq1:T1E0}
   \mbox{T1E} = \int_{z_{\alpha_S}}^{\infty}
@@ -531,7 +531,7 @@ in \eqref{eq1:eq.z} depends on $z_o$, $c$, and $\alpha_S$.
 
 \end{knitrout}
 
-\caption{Overall Type-I error rate (left) and project power (right) for fixed
+\caption{Overall Type I error rate (left) and project power (right) for fixed
   relative sample size $c$. Results are given for replication success at the
   nominal and golden level and compared with the two-trials rule (2TR) at
   $\alpha = 0.025$. The dashed darkgrey line is the project power at the golden
@@ -541,20 +541,20 @@ in \eqref{eq1:eq.z} depends on $z_o$, $c$, and $\alpha_S$.
 \end{figure}
 
 
-The left plot in Figure \ref{fig1:fig4} displays the Type-I error rate for
+The left plot in Figure \ref{fig1:fig4} displays the Type I error rate for
 $\alpha=0.025$ as a function of the relative sample size $c$. It can be seen
-that the Type-I error of the replication success approach decreases with
+that the Type I error of the replication success approach decreases with
 increasing relative sample size $c$. This also follows from \eqref{eq1:T1E0}
 where $\P(z_r \geq \zrmin \given z_o, c, \alpha_S) = 1 - \Phi(\zrmin)$ decreases
 with increasing $c$, because $\zrmin$ increases with increasing $c$, see
 equation \eqref{eq1:eq.z}.
 
 
-The Type-I error rate of the nominal level is always below the target
-$0.0625$\%. Although the Type-I error will eventually attain $\alpha^2$ in the
+The Type I error rate of the nominal level is always below the target
+$0.0625$\%. Although the Type I error will eventually attain $\alpha^2$ in the
 limit $c \downarrow 0$ \citep[Section 3.4]{Held2020}, the nominal level seems to
-be too stringent for realistic values of $c$. The Type-I error rate of the
-golden level is smaller than $0.0625$\% for $c >0.85$. Appropriate Type-I error
+be too stringent for realistic values of $c$. The Type I error rate of the
+golden level is smaller than $0.0625$\% for $c >0.85$. Appropriate Type I error
 control is thus ensured even for replication studies where the sample size is
 slightly smaller than in the original study.
 
@@ -572,24 +572,24 @@ slightly smaller than in the original study.
 \end{knitrout}
 
 \end{center}
-\caption{Overall Type-I error rate if the replication sample size equal to the
+\caption{Overall Type I error rate if the replication sample size equal to the
   original study ($c=1$). The two-trials rule (2TR) is compared to replication
   success at the golden and nominal level for different values of $\alpha$.}
 \label{fig1:fig5}
 \end{figure}
 
-Figure \ref{fig1:fig5} compares for $c=1$ the Type-I error rate \eqref{eq1:T1E} of
+Figure \ref{fig1:fig5} compares for $c=1$ the Type I error rate \eqref{eq1:T1E} of
 replication success at the golden and at the nominal level with the two-trials
-rule for different values of $\alpha$. The Type-I error rate of the two-trials
+rule for different values of $\alpha$. The Type I error rate of the two-trials
 rule is $\alpha^2$ and the replication success approach at the nominal level
-always has a much smaller Type-I error rate than $\alpha^2$. At the golden level
-the Type-I error rate of the replication success approach is much closer to
+always has a much smaller Type I error rate than $\alpha^2$. At the golden level
+the Type I error rate of the replication success approach is much closer to
 $\alpha^2$, still slightly smaller if $\alpha < 0.058$. For $\alpha = 0.058$ the
-Type-I error rate is equal to the Type-I error rate $0.058^2 = 0.34\%$ of the
-two-trials rule and for $\alpha > 0.058$ the Type-I error rate is slightly
-larger than $\alpha^2$. The Type-I error rate for replication success decreases
+Type I error rate is equal to the Type I error rate $0.058^2 = 0.34\%$ of the
+two-trials rule and for $\alpha > 0.058$ the Type I error rate is slightly
+larger than $\alpha^2$. The Type I error rate for replication success decreases
 with increasing $c$, so as long as the replication sample size is not smaller
-than the original sample size, Type-I error control at $\alpha^2$ is guaranteed
+than the original sample size, Type I error control at $\alpha^2$ is guaranteed
 at the golden level for any one-sided level $\alpha < 0.058$.
 
 \subsection{Project power}\label{sec1:PP}
@@ -836,7 +836,7 @@ We further refined the method by proposing the golden level, a new threshold for
 replication success. It guarantees that borderline significant original studies
 can only be replicated successfully if the replication effect estimate is larger
 than the original one. Compared to the two-trials rule, the golden level offers
-uniform gains in project power and controls the Type-I error rate at any
+uniform gains in project power and controls the Type I error rate at any
 one-sided level $\alpha < 0.058$ if the replication sample size
 is not smaller than the original one. Empirical evaluation of data from four
 replication projects highlights that in most cases the methods are in agreement,

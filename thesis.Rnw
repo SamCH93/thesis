@@ -187,7 +187,7 @@ sample uncertainty''
 \addtocontents{toc}{\bigskip}
 \addtocontents{toc}{%
   \protect\vspace{2ex}
-  \textbf{\textsf{Integrity in methodological research}}\par}
+  \textbf{\textsf{Meta-scientific perspectives on methodological research}}\par}
 \addtocontents{toc}{%
   \protect\vspace{-2ex}
   \par\noindent\rule{\textwidth}{0.4pt}\par}

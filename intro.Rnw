@@ -8,17 +8,6 @@
   \hfill J.W. \citet[p. 84]{Tukey1969}
 \end{tabular}
 
-% \begin{center}
-% \begin{minipage}{12cm}
-%   { { { ``We can make judgments of initial probabilities and infer final ones,
-%         or we can equally make judgments of final ones and infer initial ones by
-%         \emph{Bayes's theorem in reverse}.'' }}}
-% \end{minipage}
-% \end{center}
-% \begin{flushright}
-%    \citet[p. 29]{Good1983}
-% \end{flushright}
-
 
 \section{Replication studies}
 
@@ -37,7 +26,7 @@
 How can we know whether we can trust a finding from a scientific study? For
 example, how can we know whether the protective effect of a vaccine found in a
 study is a genuine effect or just a spurious finding? The answer to such
-questions is of high importance to scientists, decision makers, and the general
+questions is of high importance to researchers, decision makers, and the general
 population, and one way to obtain it is through \emph{replication studies}.
 
 A replication study consists of repeating the original study as close as
@@ -96,7 +85,7 @@ in the eyes of the public the credibility of science became seriously
 threatened.
 
 \begin{figure}[!htb]
-<< "google-scholar-graph", fig.height = 3.5 >>=
+<< "replication-time-graph", fig.height = 3.5 >>=
 ## ## Data gathered on October 18 2022
 ## searchTerm <- "Replication Study"
 ## searchDate <- as.Date(x = "2022-10-18", format = "%Y-%m-%d", tz = "GMT")
@@ -301,15 +290,18 @@ computed as shown in Table~\ref{tab:meta}.
                    & \\
     Confidence interval & The replication effect estimate is contained in the
                           $(1 - \alpha)$ original confidence interval
-                          ($\that_{r} \in [\that_{o} \pm z_{\alpha/2}\sigma_{o}]$).
+                          ($\that_{r} \in [\that_{o} - z_{\alpha/2}\sigma_{o},
+                          \that_{o} + z_{\alpha/2}\sigma_{o}]$).
                           Sometimes, also defined as the original effect estimate is
                           contained in the $(1 - \alpha)$ replication confidence interval
-                          ($\that_{o} \in [\that_{r} \pm z_{\alpha/2}\sigma_{r}]$).
+                          ($\that_{o} \in [\that_{r} - z_{\alpha/2}\sigma_{r},
+                          \that_{r} + z_{\alpha/2}\sigma_{r}]$).
                           Usually $\alpha = 5\%$. \\
                    & \\
     Prediction interval ($Q$-test) & The replication effect estimate is contained in its
                                      $(1 - \alpha)$ prediction interval
-                                     ($\that_{r} \in [\that_{o} \pm z_{\alpha/2}\surd(\sigma_{o}^{2}
+                                     ($\that_{r} \in [\that_{o} - z_{\alpha/2}\surd(\sigma_{o}^{2}
+                                     + \sigma_{r}^{2}), \that_{o} + z_{\alpha/2}\surd(\sigma_{o}^{2}
                                      + \sigma_{r}^{2})]$). Usually $\alpha = 5\%$.
                                      This criterion is equivalent to $p_{Q} \geq \alpha$ where
                                      $p_{Q}$ is the $p$-value from the meta-analytic $Q$-test
@@ -505,7 +497,7 @@ level. Specifically, from the
 significant in the replication study (in the same direction).
 
 \begin{figure}[!htb]
-<< "RPCB-table1", results = "asis", fig.height = 5.5 >>=
+<< "RPCB-table1", results = "asis", fig.height = 6 >>=
 ## show number of successes
 alpha <- 0.05
 dmin <- 1
@@ -787,9 +779,10 @@ limits
 and if this credible interval excludes parameter values smaller/larger than zero
 (depending on the orientation of the effect size) this may be interpreted as
 evidence for a genuine effect found in the original study. There exist also
-other definitions of statistical evidence and in latter parts of this thesis
-(Paper\ref{PaperII} and Paper\ref{PaperIV}) we will extend this reverse-Bayes
-procedure to employ alternative measures of evidence, such as Bayes factors.
+other definitions of statistical evidence and in subsequent chapters of this
+thesis (Paper\ref{PaperII} and Paper\ref{PaperIV}) we will extend this
+reverse-Bayes procedure to employ alternative measures of evidence, such as
+Bayes factors.
 
 Depending on how large the prior variance $\tau^{2}$ is chosen, the posterior
 credible interval~\eqref{eq:postCI} will either include or exclude zero.
@@ -1022,8 +1015,8 @@ the ratio of predictive densities from the observed data under both models,
 could be used to judge the relative adequacy of model $\text{M}_{1}$. Again, the
 lower the prior predictive ratio $\text{PPR}_{\text{Box}}$, the less compatible
 the observed data with the model $\text{M}_{1}$. Bayesian model criticism
-approaches based on prior predictive ratios will be used in latter parts of this
-thesis (Paper~\ref{PaperII} and Paper~\ref{PaperIV}).
+approaches based on prior predictive ratios will be used in subsequent chapters
+of this thesis (Paper~\ref{PaperII} and Paper~\ref{PaperIV}).
 % \footnote{Some readers may have noted that the prior predictive ratio is also
 % the Bayes factor \citep{Jeffreys1961, Good1958} contrasting model
 % $\text{M}_{1}$ to $\text{M}_{2}$. The prior predictive ratio model criticism
@@ -1130,11 +1123,12 @@ To remove the dependence on the level $\alpha$, \citet{Held2020} proposed to
 determine the smallest level at which replication success can be established.
 This level is called the \emph{sceptical $p$-value} $p_{\text{S}}$, and it is
 available in closed-form
-\begin{align*}
+\begin{align}
+  \label{eq:ps}
   p_{\text{S}}
   % = \inf_{\alpha \in (0, 1)} \left\{\alpha : p_{\text{Box}} \leq \alpha \right\}.
   = 2\left\{1 - \Phi(|z_{\text{S}}|)\right\}
-\end{align*}
+\end{align}
 where
 \begin{align*}
   z_{\text{S}}^{2}
@@ -1194,13 +1188,48 @@ significance is merely achieved because the standard error was much smaller
 is therefore only $p_{\text{S}} = 0.25$, indicating hardly any evidence for
 replication success.
 
+<< "paradox-example" >>=
+smdo <- 3
+smdr <- -3
+so <- sr <- 1
+ps2 <- pSceptical(zo = smdo/so, zr = smdr/sr, c = so^2/sr^2,
+                  alternative = "two.sided", type = "nominal")
+@
+
+There is one problem with the (two-sided) sceptical $p$-value as defined
+in~\eqref{eq:ps}; It does not take the direction of the effect estimates into
+account, so replication success may be established even though the effect
+estimate from the replication goes in the opposite direction of the original one
+($\sign(\that_{o}) \neq \sign(\that_{r})$). In fact, the sceptical $p$-value
+will decrease with decreasing negative relative effect estimate
+($\ps \downarrow p_{o}$ as $d \downarrow -\infty$ for fixed $\sigma_{o}$ and
+$\sigma_{r}$) which seems contrary to intuitive understandings of replicability
+as a change in effect direction may diminish the usefulness of a scientific
+finding (\eg{} a negative treatment effect may indicate harm instead of
+benefit).
+% For example, if $\that_{o} = \Sexpr{smdo}$,
+% $\that_{r} = \Sexpr{smdr}$, and $\sigma_{o} = \sigma_{r} = 1$, this would lead
+% to $\ps = \Sexpr{pFormat(ps2)}$, and the sceptical $p$-value continues to
+% decreases with decreasing replication effect estimates.
+This ``replication
+paradox'' \citep{Ly2018} can be avoided by defining a one-sided sceptical
+$p$-value
+\begin{align*}
+  \tilde{p}_{\text{S}} =
+  \begin{cases}
+    \ps/2 & \text{if} ~\sign(\that_{o}) = \sign(\that_{r}) \\
+    1 - \ps/2 & \text{if} ~ \sign(\that_{o}) \neq \sign(\that_{r}) \\
+  \end{cases}
+\end{align*}
+similar to how ordinary one-sided $p$-values are defined. In the subsequent
+chapters only the one-sided version of the sceptical $p$-value will be used.
+
 This concludes the introduction to replication studies and reverse-Bayes methods
 for their analysis. Some additional properties (\eg{} the null distribution of
-the sceptical $p$-value) and extensions (\eg{} a one-sided version of the
-sceptical $p$-value, power and sample size calculations) can be found in the
-original article by \citet{Held2020}. The sceptical $p$-value and related
-methods are implemented in the R package \texttt{ReplicationSuccess} available
-on CRAN
+the sceptical $p$-value) and extensions (\eg{} power and sample size
+calculations) can be found in the original article by \citet{Held2020}. The
+sceptical $p$-value and related methods are implemented in the R package
+\texttt{ReplicationSuccess} available on CRAN
 (\url{https://cran.r-project.org/package=ReplicationSuccess}). % However, the
 % relevant parts of the procedure have been presented.
 In the following, I will discuss open questions and how they are addressed in
@@ -1219,9 +1248,9 @@ with a broader scope of applications than replication
 studies. % Paper IV is a review paper about
 % reverse-Bayes methodology and Paper V is a short comment on another article
 % which proposed a reverse-Bayes method.
-The last part (Paper~\ref{PaperVI}) is about integrity issues in methodological
-research with simulations
-studies. % The article lists and illustrates questionable
+The last part (Paper~\ref{PaperVI}) is on meta-scientific perspectives on
+methodological research.
+% The article lists and illustrates questionable
 % research practices in simulation studies, and gives recommendations how to avoid
 % them.
 
@@ -1235,12 +1264,19 @@ studies. % The article lists and illustrates questionable
   doi:\href{https://doi.org/10.1214/21-AOAS1502}{10.1214/21-AOAS1502}.}
 
 It is not clear how to interpret the sceptical $p$-value as it is not an
-ordinary $p$-value (which has a uniform distribution under the corresponding
-null hypothesis). Moreover, when the same level $\alpha$ as for the significance
-criterion is used for dichotomizing the sceptical $p$-value, this leads to a
-much more stringent criterion for replication studies than the significance
-criterion, and many studies which intuitively seem successful will not satisfy
-it.
+ordinary $p$-value (which has a uniform distribution under the null hypothesis
+that the underlying effect size $\theta$ is zero). Moreover, when the same level
+$\alpha$ as for the significance criterion is used for dichotomizing the
+sceptical $p$-value, this leads to a much more stringent criterion for
+replication studies than the significance criterion. Many studies which
+intuitively seem successful will not satisfy it, and frequentist properties such
+as power and type I error rate will be impacted by it (\eg{} power and type I
+error rate will be much lower compared to the significance criterion).
+
+<< "golden-level" >>=
+alpha <- 0.025
+alphaG <- levelSceptical(level = alpha, alternative = "one.sided", type = "golden")
+@
 
 In this article, we therefore look closer at the ``success region'' of the
 sceptical $p$-value in terms of the relative effect estimate
@@ -1251,20 +1287,27 @@ derivation). The golden level is defined through the property that for an
 original study which was borderline significant ($p_{o} = \alpha$), replication
 success based on $p_{\text{S}} \leq \alpha_{G}$ is only possible if the
 replication effect estimate is at least as large as the original one
-($d \geq 1$). For instance, for the significance level $\alpha = 5\%$, the
-corresponding golden level is $\alpha_{G} = 12.3\%$. The behavior of the golden
-level seems to align with common sense: for original studies which were already
-convincing (in terms of their $p$-value) the effect estimate in the replication
-study is allowed to shrink, to some extent, whereas for less convincing original
-studies (those with $p$-values around the significance level) shrinkage is more
-strongly penalized. We find that for replication studies with equal or larger
-sample size than the original study, replication success based on the golden
-level also has similar or improved frequentist properties (type-I error rate and
-project power) compared to the standard significance criterion. Case studies
-from four large-scale replication projects \citep{Opensc2015, Camerer2016,
-  Camerer2018, Cova2018} illustrate the properties of the method. This extension
-is now implemented as the default option in the R package
-\texttt{ReplicationSuccess}.
+($d \geq 1$). For instance, for the one-sided significance level
+$\alpha = \Sexpr{round(alpha*100, 1)}\%$, the corresponding two-sided golden
+level is $\alpha_{G} = \Sexpr{round(alphaG*100, 1)}\%$. The behavior of the
+golden level seems to align with common sense: for original studies which were
+already convincing (in terms of their $p$-value) the effect estimate in the
+replication study is allowed to shrink, to some extent, whereas for less
+convincing original studies (those with $p$-values around the significance
+level) shrinkage is more strongly penalized. We find that for replication
+studies with equal or larger sample size than the original study, replication
+success based on the golden level controls the type I error rate at the same
+level as the standard significance criterion. Similarly, if the original study
+was adequately powered, replication success based on the golden level has
+comparable or improved ``project power''compared to the significance criterion
+(project power is the probability of replication success conditional on a true
+effect size based on original and replication study). Case studies from four
+large-scale replication projects \citep{Opensc2015, Camerer2016, Camerer2018,
+  Cova2018} illustrate the properties of the golden level. In most cases
+conclusions agree with the significance criterion, but in the differing cases,
+the golden level seems to produce more appropriate inferences as it takes into
+account effect shrinkage. This extension is now implemented as the default
+option in the R package \texttt{ReplicationSuccess}.
 
 L. Held had the idea to apply the sceptical $p$-value method to the data from
 the four replication projects, which I collected for my master thesis. L. Held
@@ -1316,7 +1359,7 @@ original article by \citet{Held2020}. L. Held then implemented a first version
 of the procedure for the grant application of this research project
 \citep{Heldproposal2019}. I then worked out the technical and implementation
 details, including closed-form solution for the sceptical Bayes factors,
-asymptotic properties, type-I and type-II error rates, and non-normal
+asymptotic properties, type I and type II error rates, and non-normal
 extensions. I wrote the initial draft of the manuscript and the R package.
 Throughout, L. Held gave high-level feedback. I presented initial results at the
 annual meeting of the GMDS and CEN-IBS (German Association for Medical
@@ -1418,7 +1461,7 @@ an initial draft of the manuscript, which \mbox{R. Matthews} substantially
 improved by expanding it with some logical flaws of the method. The two of us
 iteratively worked on the manuscript, while L. Held gave high-level feedback.
 
-\subsection{Integrity in methodological research}
+\subsection{Meta-scientific perspectives on methodological research}
 
 \startPaperSummary{PaperVI}{%
   Pitfalls and Potentials in Simulation Studies}{%
@@ -1426,26 +1469,29 @@ iteratively worked on the manuscript, while L. Held gave high-level feedback.
   \textit{arXiv preprint}, 2022.
   doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}.}
 
-Simulation studies are frequently used for evaluating statistical methods.
-However, several studies showed that the reporting standards in simulation
-studies have remained low over the years \citep{Hoaglin1975, Burton2006,
-  Morris2019}. Moreover, some authors have recently argued that methodological
-research is suffering from reproducibility issues, publication bias, and a
-``replication crisis'' due to researchers engaging in questionable research
-practices, such as selective reporting \citep{Boulesteix2020}. In this article,
-draw attention to these issues. We summarize possible questionable research
-practices in simulation studies, and show how easy it is to make a method seem
-superior if various questionable research practices are employed. We also give
-recommendations to alleviate these issues. Most importantly, we recommend
-researchers to write and pre-register simulation protocols.
+In methodological research, simulation studies are frequently used for
+evaluating ``how well'' statistical methods perform. The results of these
+studies therefore often guide the choice in which situation which method should
+be used. However, several literature review articles identified that the design
+and reporting standards of simulation studies have remained low over the years
+\citep{Hoaglin1975, Burton2006, Morris2019}. Moreover, some authors have
+recently argued that methodological research is suffering from reproducibility
+issues, publication bias, and a ``replication crisis'' due to researchers
+engaging in questionable research practices, such as selective reporting
+\citep{Boulesteix2020}. In this article, draw attention to these issues. We
+summarize possible questionable research practices in simulation studies, and
+show how easy it is to make a method seem superior if various questionable
+research practices are employed. We also give recommendations to alleviate these
+issues. Most importantly, we recommend researchers to write and pre-register
+simulation protocols.
 
 The first authorship of this manuscript is shared with L. Kook. I had the idea
 to invent a novel method and use questionable research practices that make it
 seem superior, to draw attention to the low standards in methodological
 research. I then wrote a first draft of the manuscript and proposed the idea to
-L. Kook and K. Reeve. L. Kook and myself then came up with the novel regression
-method ``AINET'' and started writing the simulation protocol. L. Kook took lead
-in developing the R package \texttt{ainet}
+L. Kook and K. Reeve. L. Kook and myself then inented the regression method
+``AINET'' and started writing the simulation protocol. L. Kook took lead in
+developing the R package \texttt{ainet}
 (\url{https://github.com/LucasKook/ainet}) and simulation study code. Myself, L.
 Kook, and K. Reeve then designed the final simulation study and continued
 working on the manuscript together. Recently, I was invited to present the
@@ -1468,7 +1514,7 @@ programming language version \Sexpr{paste(version$major, version$minor, sep =
 \citep{Gehlenborg2019}, and \texttt{xtable} \citep{Dahl2019} were used. Code and
 data to reproduce this thesis are available at
 \url{https://github.com/SamCH93/thesis}. A snapshot of the git repository is
-archived \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
+archived at \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
 
 
 << "sessionInfo1", eval = Reproducibility, results = "asis" >>=
