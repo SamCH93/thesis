@@ -39,7 +39,7 @@ which occurred merely by chance. For this reason, ``successful'' replication is
 often a requirement, for instance, for acceptance of newly proposed scientific
 theories (\eg{} a new physical model) or the implementation of policies based on
 scientific knowledge (\eg{} market approval of a drug). The results from
-replication studies may thus have real world consequences, % , such as deciding
+replication studies may hence have real world consequences, % , such as deciding
 % whether we receive the recommendation to get vaccinated (a consequence that
 % anyone who experienced the COVID-19 pandemic is very aware of)
 and it is therefore important that methodological aspects of replication
@@ -481,8 +481,8 @@ plotB <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
     theme(panel.grid = element_blank())
 ggpubr::ggarrange(plotA, plotB, ncol = 2, align = "v")
 @
-\caption{Results for 132 effects from the Reproducibility Project: Cancer
-  Biology \citep{Errington2021} for which effect estimates and standard errors
+\caption{Results for 132 effects from the ``Reproducibility Project: Cancer
+  Biology'' \citep{Errington2021} for which effect estimates and standard errors
   are available on standardized mean difference (SMD) scale. The right plot
   shows a zoomed-in view of the dotted area in the left plot. The
   \textit{p}-values are recomputed using a normal approximation. Two study pairs
@@ -530,8 +530,8 @@ upset(rpcbUpset, sets = c("Significance", "Meta analytic \nsignificance",
                                      "Prediction \ninterval"),
                           color = "#1b9e77", active = TRUE)))
 @
-\caption{UpSet plot for data on 132 effects from the Reproducibility Project:
-  Cancer Biology \citep{Errington2021} for which effect estimates and standard
+\caption{UpSet plot for data on 132 effects from the ``Reproducibility Project:
+  Cancer Biology'' \citep{Errington2021} for which effect estimates and standard
   errors are available on the standardized mean difference scale. Shown are the
   number of replication successes according to the different criteria from
   Table~\ref{tab:rsdef} and their combinations. A threshold of
@@ -573,17 +573,18 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
 \begin{landscape}
 \begin{table}
   \centering
-  \caption{Subset of results from the Reproducibility Project: Cancer Biology
-    \citep{Errington2021}. (P, X, E) denotes effect number E from experiment
-    number X, from original paper number P. Shown are original $\that_{o}$,
-    replication $\that_{r}$, and pooled effect estimate $\that_{m}$ with 95\%
-    confidence intervals, variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$,
-    relative effect estimate $d = \that_{r}/\that_{o}$, original
-    \textit{p}-value $p_{o}$, replication \textit{p}-value $p_{r}$,
-    meta-analytic \textit{p}-value $p_{m}$, $Q$-test \textit{p}-value $p_{Q}$,
-    and sceptical \textit{p}-value $p_{\mathrm{S}}$. A replication success
-    (green) threshold of $\alpha = 5\%$ is used for the \textit{p}-values and
-    $d_{\text{min}} = 1$ for the relative effect estimate.}
+  \caption{Subset of results from the ``Reproducibility Project: Cancer
+    Biology'' \citep{Errington2021}. (P, X, E) denotes effect number E from
+    experiment number X, from original paper number P. Shown are original
+    $\that_{o}$, replication $\that_{r}$, and pooled effect estimate $\that_{m}$
+    with 95\% confidence intervals, variance ratio
+    $c = \sigma^{2}_{o}/\sigma^{2}_{r}$, relative effect estimate
+    $d = \that_{r}/\that_{o}$, original \textit{p}-value $p_{o}$, replication
+    \textit{p}-value $p_{r}$, meta-analytic \textit{p}-value $p_{m}$, $Q$-test
+    \textit{p}-value $p_{Q}$, and sceptical \textit{p}-value $p_{\mathrm{S}}$. A
+    replication success (green) threshold of $\alpha = 5\%$ is used for the
+    \textit{p}-values and $d_{\text{min}} = 1$ for the relative effect
+    estimate.}
   \label{tab:RPCB}
 \resizebox{1.02\linewidth}{!}{%
 << "RPCB-table2", results = "asis" >>=
@@ -883,7 +884,7 @@ ggplot(data = plotDF, aes(x = type, y = t)) +
 @
 \caption{Illustration of reverse-Bayes assessment of replication success using
   data from the original study (Paper 9, Experiment 2, Effect 5) and its three
-  replication studies from the Reproducibility Project: Cancer Biology
+  replication studies from the ``Reproducibility Project: Cancer Biology''
   \citep{Errington2021}. Shown are effect estimates and prior/posterior means
   with \Sexpr{100*(1-alpha)}\% confidence/credible interval. The original finding is
   challenged with a sceptical prior, sufficiently concentrated around zero so
@@ -1071,13 +1072,13 @@ pboxFormat2 <- pFormat(p = pbox2)
 
 Figure~\ref{fig:RBillustration} shows the prior predictive $p$-values
 from~\eqref{eq:pboxNorm} computed for three example replication studies from the
-Replication Project: Cancer Biology. We see that larger effect estimates show
-smaller prior predictive $p$-values $p_{\text{Box}}$, indicating more prior-data
-conflict. This is because the standard errors from all three replications are
-roughly the same size, so that the distance between zero and the replication
-effect estimate matters most. The $p$-values suggest that there is hardly any
-conflict between the sceptical prior and the first two replications (those with
-$p_{\text{Box}} = \Sexpr{pboxFormat[1]}$ and
+``Replication Project: Cancer Biology''. We see that larger effect estimates
+show smaller prior predictive $p$-values $p_{\text{Box}}$, indicating more
+prior-data conflict. This is because the standard errors from all three
+replications are roughly the same size, so that the distance between zero and
+the replication effect estimate matters most. The $p$-values suggest that there
+is hardly any conflict between the sceptical prior and the first two
+replications (those with $p_{\text{Box}} = \Sexpr{pboxFormat[1]}$ and
 $p_{\text{Box}} = \Sexpr{pboxFormat[2]}$), while the conflict is larger for the
 third one (the one with $p_{\text{Box}} = \Sexpr{pboxFormat[3]}$).
 

@@ -267,10 +267,10 @@ $(0, \infty)$ to $(-\infty, +\infty)$, consistent with the assumption of
 normality). Let $x_i = \hat \theta_i$ denote the maximum likelihood estimate
 (MLE) of the log odds ratio $\theta$ in the $i$-th study with standard error
 $\sigma_i$. The meta-analytic odds ratio estimate under the fixed-effect model
-(the pre-specified primary analysis) is $\widehat{\text{OR}} = 0.66$ [95\% CI
-$0.53$ to $0.82$], respectively $\hat \theta = -0.42$ [95\% CI $-0.63$ to
-$-0.20$] for the log odds ratio $\theta$, indicating evidence for lower
-mortality of patients treated with corticosteroids compared to patients
+(the pre-specified primary analysis) is \mbox{$\widehat{\text{OR}} = 0.66$ [95\%
+  CI $0.53$ to $0.82$]}, respectively \mbox{$\hat \theta = -0.42$ [95\% CI
+  $-0.63$ to $-0.20$]} for the log odds ratio $\theta$, indicating evidence for
+lower mortality of patients treated with corticosteroids compared to patients
 receiving usual care or placebo. The pooled effect estimate $\hat \theta$
 represents a posterior mean $\mu'$ with posterior precision $\delta'=83.8$.
 
@@ -437,14 +437,14 @@ odds) are unlikely to exceed $1 - 0.84 \approx 16 \%$.
 
 
 It is also possible to apply the approach to the meta-analytic log odds ratio
-estimate $\hat \theta = -0.42$ [95\% CI $-0.63$ to $-0.20$] from all 7 studies
-combined. Then $\SL= 0.13$, so the meta-analytic estimate can be considered as
-non-credible if external evidence suggests that mortality reductions are
-unlikely to exceed $1-\exp(-\SL)=1 - 0.88 \approx 12 \%$. This illustrates that
-the meta-analytic estimate has gained credibility compared to the result from
-the RECOVERY study alone, despite the reduction in the effect estimate
-($\widehat{\text{OR}} = \exp(\hat \theta) = 0.66$ vs.~0.59 in the RECOVERY
-study).
+estimate \mbox{$\hat \theta = -0.42$ [95\% CI $-0.63$ to $-0.20$]} from all 7
+studies combined. Then $\SL= 0.13$, so the meta-analytic estimate can be
+considered as non-credible if external evidence suggests that mortality
+reductions are unlikely to exceed $1-\exp(-\SL)=1 - 0.88 \approx 12 \%$. This
+illustrates that the meta-analytic estimate has gained credibility compared to
+the result from the \mbox{RECOVERY} study alone, despite the reduction in the
+effect estimate ($\widehat{\text{OR}} = \exp(\hat \theta) = 0.66$ vs.~0.59 in
+the RECOVERY study).
 
 \subsubsection{Challenging statistically non-significant findings}
 \label{sec4:nonSigAnCred}
@@ -507,7 +507,7 @@ limit AL as the $\alpha/2$-quantile of the advocacy prior.
   within 95\% confidence/credible intervals. The left plot illustrates how a
   sceptical prior is used to challenge the significant finding from the RECOVERY
   trial \citep{RECOVERY2020}. The right plot illustrates how an advocacy prior
-  is used to challenge a non-significant finding from the REMAP-CAP trial
+  is used to challenge a non-significant finding from the \mbox{REMAP-CAP} trial
   \citep{REMAPCAP2020}. In both scenarios the posterior is fixed to be just
   non-credible/credible.}
 \label{fig4:anCredEx}
@@ -517,17 +517,18 @@ For illustration we consider the data from the REMAP-CAP trial that supported
 the RECOVERY trial finding of decreased COVID-19 mortality from corticosteroid
 use. However, this trial involved far fewer patients, and despite the point
 estimate showing efficacy, the relatively large uncertainty rendered the overall
-finding non-significant at the 5\% level ($\hat{\theta} = -0.34$ [95\% CI
-$-0.96$ to $0.29$]). Such an outcome is frequently (and wrongly) taken to imply
-no effect. The use of AnCred leads to a more nuanced conclusion. The advocacy
-limit AL on the log odds ratio scale for REMAP-CAP is $-1.89$, \ie{} $0.15$ on the
-odds ratio scale, see also the right plot in Figure \ref{fig4:anCredEx}. Thus
-advocates of the effectiveness of corticosteroids can regard the trial as
-providing credible evidence of effectiveness despite its non-significance if
-external evidence supports mortality reductions (in terms of odds) in the range
-0\% to 85\%. So broad an advocacy range reflects the fact that this relatively
-small trial provides only modest evidential weight, and thus little constraint
-on prior beliefs about the effectiveness of corticosteroids.
+finding non-significant at the 5\% level (\mbox{$\hat{\theta} = -0.34$ [95\% CI
+  $-0.96$ to $0.29$]}). Such an outcome is frequently (and wrongly) taken to
+imply no effect. The use of AnCred leads to a more nuanced conclusion. The
+advocacy limit AL on the log odds ratio scale for REMAP-CAP is $-1.89$, \ie{}
+$0.15$ on the odds ratio scale, see also the right plot in Figure
+\ref{fig4:anCredEx}. Thus advocates of the effectiveness of corticosteroids can
+regard the trial as providing credible evidence of effectiveness despite its
+non-significance if external evidence supports mortality reductions (in terms of
+odds) in the range 0\% to 85\%. So broad an advocacy range reflects the fact
+that this relatively small trial provides only modest evidential weight, and
+thus little constraint on prior beliefs about the effectiveness of
+corticosteroids.
 
 Another way to push non-significant findings towards credibility is to use a
 prior based on data from another study or a different subgroup. For example,
@@ -641,8 +642,8 @@ under assessment, we then find
   &n = \frac{m(1 - R)}{R}.
 \end{eqnarray*}
 For example, from Figure~\ref{fig4:covid19-meta} the RECOVERY trial has an
-overall mortality rate $R=(95 + 283)/(324 + 683) = 37.54\%$ and $\SL = 0.178$ at
-the $\alpha = 5\%$ level $(z_{\alpha/2} = 1.96)$ corresponds to
+overall mortality rate \mbox{$R=(95 + 283)/(324 + 683) = 37.54\%$} and
+$\SL = 0.178$ at the $\alpha = 5\%$ level $(z_{\alpha/2} = 1.96)$ corresponds to
 $\tau^2=0.091^2$, so $m = 389$ and $n = 648$ (these are integer approximations
 of exact computations), and thus a prior study capable of challenging the
 credibility of the RECOVERY trial requires $1037$ patients and $389$ deaths in
@@ -655,15 +656,16 @@ A similar approach determines the characteristics of the hypothetical prior
 study needed to turn a ``negative'' non-significant finding into one that is
 credible to a specific $\alpha$ level. The Reverse-Bayes advocacy prior from
 \citet{Matthews2018} described in Section~\ref{sec4:nonSigAnCred} has a mean
-$\mu = \mbox{AL}/2$ and variance $\tau^{2} = \AL^2/(2z_{\alpha/2})^2$. Under the
-large study assumption and equating the latter with \eqref{eq4:SElogOR} as
-before, the corresponding number of events needed to be observed in both arms of
-the hypothetical study is $m = 2/\tau^{2} = 8 \, z_{\alpha/2}^2/\mbox{AL}^2$. To
-incorporate the non-zero mean by which this prior represents advocacy, these $m$
-events are taken to have been observed among participants allocated to the two
-study arms in the ratio $1 \colon K$ where $K = \exp(\mu) = \exp(\AL/2)$, the
-allocation being such that it increases the relative evidential weight for the
-hypothesis ``negated'' by the non-significance.
+\mbox{$\mu = \mbox{AL}/2$} and variance $\tau^{2} = \AL^2/(2z_{\alpha/2})^2$.
+Under the large study assumption and equating the latter with
+\eqref{eq4:SElogOR} as before, the corresponding number of events needed to be
+observed in both arms of the hypothetical study is
+$m = 2/\tau^{2} = 8 \, z_{\alpha/2}^2/\mbox{AL}^2$. To incorporate the non-zero
+mean by which this prior represents advocacy, these $m$ events are taken to have
+been observed among participants allocated to the two study arms in the ratio
+$1 \colon K$ where \mbox{$K = \exp(\mu) = \exp(\AL/2)$}, the allocation being
+such that it increases the relative evidential weight for the hypothesis
+``negated'' by the non-significance.
 
 
 As before, while the large study approximation may be justified in
@@ -909,7 +911,7 @@ sceptical relative prior variance is then given by
   \nonumber
 \end{align}
 where $\text{W}(\cdot)$ is the branch of the Lambert $W$ function that satisfies
-$text{W}(y) \leq -1$ for $y \in [-e^{-1}, 0)$ \citep{Corless1996}, see the
+$\text{W}(y) \leq -1$ for \mbox{$y \in [-e^{-1}, 0)$} \citep{Corless1996}, see the
 Appendix in \citep{Pawel2020b} for a proof.
 
 The sufficiently sceptical relative prior variance $g$ exists only for a cut-off
@@ -938,9 +940,10 @@ second solution for the sufficiently sceptical prior.
   plot shows the Bayes factor $\BF_{01}$ as a function of the relative mean
   $f = \mu/\hat{\theta}$ of the advocacy prior where the coefficient of
   variation from the prior is fixed to
-  $\text{CV} = \tau/\mu = 1/z(\gamma=1/3) = 0.67$, where $z(\gamma)$ is given in
-  \eqref{eq4:zgamma}. The RECOVERY and the CAPE COVID findings are challenged
-  such that $\BF_{01} = 1/3$, for the other trials such a prior does not exist.}
+  \mbox{$\text{CV} = \tau/\mu = 1/z(\gamma=1/3) = 0.67$}, where $z(\gamma)$ is
+  given in \eqref{eq4:zgamma}. The RECOVERY and the CAPE COVID findings are
+  challenged such that $\BF_{01} = 1/3$, for the other trials such a prior does
+  not exist.}
 \label{fig4:bf}
 \end{figure}
 
@@ -987,10 +990,10 @@ to the null is in mind, \citet[p. 391]{Box1980} also suggested to use a Bayes
 factor for model criticism of the null model. Following this approach,
 \citet{Pawel2020b} proposed to define a second Bayes factor contrasting the
 sufficiently sceptical prior to an optimistic prior, which they defined as
-$\theta \given H_2 \sim \Nor(\hat{\theta}, \sigma^2)$ the posterior of $\theta$
-based on the data and the reference prior $f(\theta) \propto 1$. The optimistic
-prior therefore represents the position of a proponent who takes the original
-claim at face value. This leads to the second Bayes factor being
+\mbox{$\theta \given H_2 \sim \Nor(\hat{\theta}, \sigma^2)$} the posterior of
+$\theta$ based on the data and the reference prior $f(\theta) \propto 1$. The
+optimistic prior therefore represents the position of a proponent who takes the
+original claim at face value. This leads to the second Bayes factor being
 \begin{align}
   \label{eq4:bf12}
   \BF_{12} = \sqrt{\frac{2}{1 + g}} \cdot \exp\left\{-\frac{1}{2}\cdot \frac{z^{2}}{1 + g}\right\}.
@@ -1120,7 +1123,7 @@ the prior-to-data conversion described in
 Section~\ref{sec4:prior-data-translation}, the prior can be translated to a
 trial with 69 events in both arms, but 206 non-events in the treatment and 182
 non-events in the control arm (such that the mortality rate in the control arm
-is the same as in the CAPE-COVID trial). Note that the advocacy prior may not be
+is the same as in the CAPE COVID trial). Note that the advocacy prior may not be
 unique, \eg{} for the CAPE COVID finding the prior with relative mean
 $f^\prime = 1.26$ and standard deviation $\tau^\prime = 0.67$ also renders the
 data as just compelling at $\gamma = 1/3$. We recommend to choose the prior with

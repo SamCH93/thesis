@@ -669,7 +669,7 @@ centered around the original effect estimate
 $\hat{\theta}_{o} = 0.205$ with variance
 $\sigma^{2}_{o} = 0.05^{2}$ for a
 self-replication, and with variance
-$\sigma^{2}_{o} + \tau^{2} = 0.05^{2} + 0.05^{2} \approx 0.07^{2}$
+\mbox{$\sigma^{2}_{o} + \tau^{2} = 0.05^{2} + 0.05^{2} \approx 0.07^{2}$}
 for an external-replication. Figure~\ref{fig3:dpexample} (dark-gray solid lines)
 shows the densities of the two priors.
 % Note that power
@@ -709,8 +709,8 @@ computed from them. Some methods depend on the direction of the original effect
 estimate $\that_{o}$ and throughout we will assume that it was positive
 ($\that_{o} > 0$). Functions for computing the probability of replication
 success and the required sample size are implemented in the R package
-\textbf{BayesRepDesign} (see Appendix) %~\ref{app:package})
-for all analysis methods discussed in the following.
+\texttt{BayesRepDesign} (see Appendix~\ref{app3:package}) for all analysis
+methods discussed in the following.
 
 
 \subsubsection{The two-trials rule}
@@ -722,9 +722,10 @@ and $\alpha = 2.5\%$ for one-sided tests. This procedure is known as the
 \emph{two-trials rule} in drug regulation \citep{Senn2008}.
 
 We now assume that the one-sided original $p$-value was significant at some
-level $\alpha$, \ie{} $p_{o} = 1 - \Phi(\that_{o}/\sigma_{o}) \leq \alpha$.
-Replication success at level $\alpha$ % with the two-trials
-is then achieved if the replication $p$-value is also significant, \ie{}
+level $\alpha$, \ie{}
+\mbox{$p_{o} = 1 - \Phi(\that_{o}/\sigma_{o}) \leq \alpha$}. Replication success
+at level $\alpha$ % with the two-trials
+is then achieved if the replication \mbox{$p$-value} is also significant, \ie{}
 $p_{r} = 1 - \Phi(\that_{r}/\sigma_{r}) \leq \alpha$, which implies a success
 region
 \begin{align*}
@@ -773,7 +774,7 @@ earlier. %Section~\ref{sec3:example}.
 Moreover, by assuming a standard error of the form
 $\sigma_{r} = \lambda/\sqrt{n_{r}}$ and plugging in the parameters of the
 ``conditional'' design prior %from Section~\ref{sec3:designpredictive}
-($\tau^{2} = 0$, $\mutheta = \that_{o}$, $g \downarrow 0$), we obtain the
+\mbox{($\tau^{2} = 0$, $\mutheta = \that_{o}$, $g \downarrow 0$)}, we obtain the
 well-known sample size formula \citep[ch. 3.3]{Matthews2006}
 \begin{align*}
   n_{r}^{*} = \frac{(\zalpha + \zbeta)^{2}}{(\that_{o}/\lambda)^{2}}
@@ -1465,7 +1466,7 @@ article.
 \begin{subappendices}
 \renewcommand{\thesection}{\Alph{section}}
 \section{The BayesRepDesign R package}
-\label{app:package}
+\label{app3:package}
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -1619,7 +1620,8 @@ $\sigma_{o}^{2}$. If an improper uniform prior is assigned to $\theta$
     \text{d}\tau^{2}_{*}} \\
   &= \lim_{\sigmatheta^{2} \to \infty}  \int_{0}^{+\infty} \frac{f(\tau^{2})}{f(\tau^{2}_{*})} \,
     \underbrace{\sqrt{\frac{\tau^{2}_{*} + \sigma^{2}_{o} + \sigmatheta^{2}}{\tau^{2} + \sigma^{2}_{o} +
-    \sigmatheta^{2}}}}_{\to 1} \, \exp\bigg[-\frac{1}{2}\bigg\{\underbrace{
+    \sigmatheta^{2}}}}_{\to 1} \\
+  &\phantom{= \lim_{\sigmatheta^{2} \to \infty}  \int_{0}^{+\infty}} \times \exp\bigg[-\frac{1}{2}\bigg\{\underbrace{
     \frac{(\that_{o} - \mutheta)^{2}}{\tau^{2} + \sigma^{2}_{o} + \sigmatheta^{2}}}_{\downarrow 0} -
     \underbrace{\frac{(\that_{o} - \mutheta)^{2}}{\tau^{2}_{*} + \sigma^{2}_{o} +
     \sigmatheta^{2}}}_{\downarrow 0} \bigg\}\bigg] \, \text{d}\tau^{2}_{*} \\
@@ -1698,6 +1700,7 @@ main manuscript.
 
 \subsection{The two-trials rule}
 \label{sec3sup:2TR}
+\sloppy
 The two-trials rule is the most common analysis approach for replication
 studies. Replication success is declared if both original and replication study
 achieve statistical significance at some level $\alpha$ (and both estimates go
@@ -1710,7 +1713,7 @@ testing $H_{0} \colon \theta = 0$ versus $H_{1} \colon \theta > 0$ are then
 $p_{i} = 1 - \Phi(\that_{i}/\sigma_{i})$ whereas for the alternative
 $H_{1} \colon \theta < 0$ they are $p_{i} = \Phi(\that_{i}/\sigma_{i})$. Suppose
 the original effect estimate was statistically significant at level $\alpha$,
-\ie{} $p_{o} \leq \alpha$. Replication success at level $\alpha$ is then
+\ie{} \mbox{$p_{o} \leq \alpha$}. Replication success at level $\alpha$ is then
 established if the replication effect estimate $\that_{r}$ is also statistically
 significant at level $\alpha$, \ie{} $p_{r} \leq \alpha$. By applying some
 algebraic manipulations to the success condition, one can show that this implies
@@ -1735,12 +1738,12 @@ with standard errors $\sigma_{r1}, \dots, \sigma_{rm}$. Subsequently, a weighted
 average
 $\hat{\theta}_{r*} = \{\sum_{i = 1}^{m} \hat{\theta}_{ri}/(\sigma^{2}_{ri} + \tau^{2}_{r})\}\,\sigma_{r*}^{2}$
 with standard error
-$\sigma_{r*} = 1/\surd\{\sum_{i}^{m}1/(\sigma^{2}_{ri} + \tau^{2}_{r})\}$ can be
-computed. If the between-replication heterogeneity variance $\tau^{2}_{r}$ is
-set to zero this corresponds to the fixed effects estimate of $\theta$, while
-estimating $\tau^{2}_{r}$ from the data corresponds to the random effects
-estimate. Replication success at level $\alpha$ is then established if the
-replication $p$-value is smaller than $\alpha$, \ie{}
+\mbox{$\sigma_{r*} = 1/\surd\{\sum_{i}^{m}1/(\sigma^{2}_{ri} + \tau^{2}_{r})\}$}
+can be computed. If the between-replication heterogeneity variance
+$\tau^{2}_{r}$ is set to zero this corresponds to the fixed effects estimate of
+$\theta$, while estimating $\tau^{2}_{r}$ from the data corresponds to the
+random effects estimate. Replication success at level $\alpha$ is then
+established if the replication $p$-value is smaller than $\alpha$, \ie{}
 $p_{r*} = 1 - \Phi(\that_{r*}/\sigma_{r*}) \leq \alpha$. With some algebra one
 can show that this implies a success region for the weighted average replication
 effect estimate $\that_{r*}$ given by
@@ -1819,14 +1822,15 @@ $\that_{r}$ given by
 \subsection{The replication Bayes factor}
 The replication Bayes factor approach uses the replication data $x_{r}$ to
 quantify the evidence for the null hypothesis $H_{0}\colon \theta = 0$ relative
-to the alternative hypothesis $H_{1} \colon \theta \sim f(\theta \given x_{o})$,
-which postulates that the effect size $\theta$ is distributed according to its
-posterior distribution based on the original data $x_{o}$. Assume again a normal
-model $\that_{i} \given \theta \sim \Nor(\theta, \sigma^{2}_{i})$ with
-$\that_{i}$ an estimate of the effect size $\theta$ from study $i \in \{o, r\}$
-and $\sigma_{i}$ the corresponding standard error (assumed to be know), and that
-we use the alternative $H_{1} \colon \Nor(\that_{o}, \sigma^{2}_{o})$ which
-arises from updating an initial flat prior for $\theta$ the original data
+to the alternative hypothesis
+\mbox{$H_{1} \colon \theta \sim f(\theta \given x_{o})$}, which postulates that
+the effect size $\theta$ is distributed according to its posterior distribution
+based on the original data $x_{o}$. Assume again a normal model
+$\that_{i} \given \theta \sim \Nor(\theta, \sigma^{2}_{i})$ with $\that_{i}$ an
+estimate of the effect size $\theta$ from study $i \in \{o, r\}$ and
+$\sigma_{i}$ the corresponding standard error (assumed to be know), and that we
+use the alternative $H_{1} \colon \Nor(\that_{o}, \sigma^{2}_{o})$ which arises
+from updating an initial flat prior for $\theta$ the original data
 $x_{o} = \{\that_{o}, \sigma_{o}\}$. The replication Bayes factor is then
 \begin{align}
   \label{eq3sup:bfr}
@@ -1863,8 +1867,8 @@ heterogeneity variance $\tau^{2}$ used in the design prior).
 As in the singlesite case, the replication Bayes factor quantifies the evidence
 that the data provide for the null hypothesis $H_{0}\colon \theta = 0$ relative
 to the alternative hypothesis
-$H_{1} \colon \theta \sim \Nor(\that_{o}, \sigma^{2}_{o})$. The marginal density
-of the replication data under the null hypothesis is simply
+\mbox{$H_{1} \colon \theta \sim \Nor(\that_{o}, \sigma^{2}_{o})$}. The marginal
+density of the replication data under the null hypothesis is simply
 $\bthat_{r} \given H_{0} \sim \Nor_{m}\{0 \, \bone_{m}, \diag(\bsigma^{2} + \tau^{2}_{r} \, \bone_{m}\}$,
 whereas the marginal likelihood under the alternative $H_{1}$ is obtained from
 integrating the likelihood
@@ -1880,8 +1884,8 @@ $\sigma^{2}_{r*} = 1/\left\{\sum_{i=1}^{n}1/(\sigma^{2}_{ri} + \tau^{2}_{r})\rig
 heterogeneity $\tau^{2}_{r}$ and its variance. The marginal density is then
 
 \begin{align*}
-        f(\hat{\theta}_{r} \given H_{1})
-        &= \int f(\hat{\theta}_{r} \given \theta) f(\theta \given H_{1})
+        f(\hat{\btheta}_{r} \given H_{1})
+        &= \int f(\hat{\btheta}_{r} \given \theta) f(\theta \given H_{1})
                         \, \text{d}\theta \\
               &= \int \frac{\exp\left[-\frac{1}{2} \left\{\sum_{i=1}^{n} \frac{(\hat{\theta}_{ri} - \theta)^{2}}{\sigma^{2}_{ri} + \tau^{2}_{r}} +
                   \frac{(\theta - \that_{o})^{2}}{\sigma^{2}_{o}}\right\} \right]}{
@@ -1902,8 +1906,8 @@ Dividing the marginal density of $\bthat_{r}$ under $H_{0}$ by the marginal
 density of $\bthat_{r}$ under $H_{1}$ leads to cancellation of several terms, and
 produces the replication Bayes factor
 \begin{align*}
-  \BF_{01}(\hat{\theta}_{r})
-  &= \frac{f(\hat{\theta}_{r} \given H_{0})}{f(\hat{\theta}_{r} \given H_{1})}
+  \BF_{01}(\hat{\btheta}_{r})
+  &= \frac{f(\hat{\btheta}_{r} \given H_{0})}{f(\hat{\btheta}_{r} \given H_{1})}
     = \sqrt{1 + \sigma^{2}_{o}/\sigma^{2}_{r*}}  \exp\left[-\frac{1}{2}\left\{
     \frac{\hat{\theta}_{r*}^{2}}{\sigma^{2}_{r*}} -
     \frac{(\hat{\theta}_{r*} - \hat{\theta}_{o})^{2}}{\sigma^{2}_{r*} + \sigma^{2}_{o}}\right\}\right].
@@ -2103,5 +2107,6 @@ large $p$-values receive more shrinkage.
 \end{subappendices}
 
 %% Bibliography
+\newpage
 \bibliographystyle{apalikedoiurl}
 \bibliography{bibliography}
