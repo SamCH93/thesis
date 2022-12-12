@@ -431,9 +431,9 @@ rpcb <- read.csv("data/rpcb.csv") |>
                                     "italic(p[r]) <= 0.05")))
 ## compute sceptical p-value (TODO fix problems with NA)
 ind <- !is.na(rpcb$zo) & !is.na(rpcb$zr) & !is.na(rpcb$c)
-rpcb$ps2 <- NA
-rpcb$ps2[ind] <- pSceptical(zo = rpcb$zo[ind], zr = rpcb$zr[ind], c = rpcb$c[ind],
-                            alternative = "two.sided", type = "nominal")
+rpcb$ps1 <- NA
+rpcb$ps1[ind] <- pSceptical(zo = rpcb$zo[ind], zr = rpcb$zr[ind], c = rpcb$c[ind],
+                            alternative = "one.sided", type = "nominal")
 
 zoom <- c(-2, 12)
 alphazoom <- 0.6
@@ -551,17 +551,20 @@ two replications are all criteria satisfied simultaneously (green).
 
 A detailed view for a subset of the data from the project is given in
 Table~\ref{tab:RPCB}. The subset is chosen such that from every original study
-one effect and one replication of that effect is included. For no single study
-pair in the table are all commonly used criteria satisfied simultaneously. For
-instance, the first two replications satisfy the significance criterion
-($p_{o} < 0.05$ and $p_{r} < 0.05$), meta analytic significance ($p_{m} < 0.05$)
-and the $Q$-test/prediction interval criterion ($p_{Q} > 0.05$), yet the
-replication effect estimate is smaller than the original one ($d < 1$).
-Similarly, there is no single study pair for which all criteria indicate
-replication failure. For example, the last replication (\#20) is a clear failure
-with respect to the relative effect estimate ($d < 1$) and the significance
-criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test does not indicate
-evidence for inconsistency of the two effect estimates ($p_{Q} > 0.05$).
+one effect and one replication of that effect is included. For the three
+replications at the bottom of the table (\#18, \#19, and \#20), all criteria
+indicate replication failure. For the remaining majority of the studies, the
+conclusions are more ambiguous; for no single replication study are all criteria
+satisfied simultaneously. For instance, the first three studies satisfy the
+significance criterion ($p_{o} < 0.05$ and $p_{r} < 0.05$), meta analytic
+significance ($p_{m} < 0.05$) and the $Q$-test/prediction interval criterion
+($p_{Q} > 0.05$), yet the replication effect estimate is smaller than the
+original one ($d < 1$).
+% For example, replication \#17 is a clear
+% failure with respect to the relative effect estimate ($d < 1$) and the
+% significance criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test does
+% not indicate evidence for inconsistency of the two effect estimates
+% ($p_{Q} > 0.05$).
 
 Taken together, this analysis demonstrates that conclusions based on commonly
 used replication success criteria often differ. It is not always clear-cut
@@ -581,10 +584,10 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
     $c = \sigma^{2}_{o}/\sigma^{2}_{r}$, relative effect estimate
     $d = \that_{r}/\that_{o}$, original \textit{p}-value $p_{o}$, replication
     \textit{p}-value $p_{r}$, meta-analytic \textit{p}-value $p_{m}$, $Q$-test
-    \textit{p}-value $p_{Q}$, and sceptical \textit{p}-value $p_{\mathrm{S}}$. A
-    replication success (green) threshold of $\alpha = 5\%$ is used for the
-    \textit{p}-values and $d_{\text{min}} = 1$ for the relative effect
-    estimate.}
+    \textit{p}-value $p_{Q}$, and one-sided sceptical \textit{p}-value
+    $p_{\mathrm{S}}$. A replication success (green) threshold of $\alpha = 5\%$
+    is used for two-sided \textit{p}-values, $\alpha = 2.5\%$ for one-sided
+    $p$-values, and $d_{\text{min}} = 1$ for the relative effect estimate.}
   \label{tab:RPCB}
 \resizebox{1.02\linewidth}{!}{%
 << "RPCB-table2", results = "asis" >>=
@@ -656,7 +659,7 @@ rpcbTable <- rpcb |>
     group_by(paper) |>
     sample_n(size = 1) |>
     ungroup() |>
-    arrange(pr2) |>
+    arrange(ps1) |>
     mutate(smdoFormat = signif(smdo, 3),
            smdrFormat = signif(smdr, 3),
            smdmFormat = signif(smdm, 3),
@@ -672,8 +675,9 @@ rpcbTable <- rpcb |>
            po2Format = tableFormat(x = po2),
            pr2Format = tableFormat(x = pr2),
            pm2Format = tableFormat(x = pm2),
-           ps2Format = tableFormat(x = ps2),
-           pQFormat = tableFormat(x = pQ),
+           ps1Format = tableFormat(x = ps1, threshold = 0.025),
+           pQFormat = tableFormat(x = pQ, col1 = "dark2orange",
+                                  col2 = "dark2green"),
            cioFormat = ciFormat(lower = cioL, upper = cioU, dollar = TRUE),
            cirFormat = ciFormat(lower = cirL, upper = cirU, dollar = TRUE),
            cimFormat = ciFormat(lower = cimL, upper = cimU), dollar = TRUE) |>
@@ -682,7 +686,7 @@ rpcbTable <- rpcb |>
            smdrFormat, cirFormat,
            smdmFormat, cimFormat,
            c, dFormat,
-           po2Format, pr2Format, pm2Format, pQFormat, ps2Format
+           po2Format, pr2Format, pm2Format, pQFormat, ps1Format
            )
 rpcbXtable <- xtable(rpcbTable)
 colnames(rpcbXtable) <- c("(P, X, E)",
@@ -1160,47 +1164,24 @@ have to be dichotomized in this manner, but can also be interpreted as a
 quantitative measure of replication success; the smaller $p_{\text{S}}$, the
 higher the degree of replication success.
 
-The sceptical $p$-value has several interesting properties \citep[Section
-3]{Held2020}: First, it is always larger than the maximum of the original and
-replication $p$-values ($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that
-both $p$-values have to be smaller than $\alpha$ such that replication success
-at level $\alpha$ is possible. The sceptical $p$-value hence requires
-\emph{both} studies to be sufficiently convincing on their own (in terms of
-their $p$-values), similar to the significance criterion for replication
-success. Second, if the $p$-values $p_{o}$ and $p_{r}$ remain fixed but the
-relative effect estimate $d = \that_{r}/\that_{o}$ decreases, the sceptical
-$p$-value increases, meaning that shrinkage of the replication effect estimate
-is penalized ($p_{\text{S}} \uparrow 1$ as $d \downarrow 0$ for fixed $p_{o}$
-and $p_{r}$). The sceptical $p$-value thus takes effect shrinkage into account,
+The sceptical $p$-value has several interesting
+properties \citep[Section 3]{Held2020}: First, it is always larger than the
+maximum of the original and replication $p$-values
+($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that both $p$-values have to be
+smaller than $\alpha$ such that replication success at level $\alpha$ is
+possible. The sceptical $p$-value hence requires \emph{both} studies to be
+sufficiently convincing on their own (in terms of their $p$-values), similar to
+the significance criterion for replication success. Second, if the $p$-values
+$p_{o}$ and $p_{r}$ remain fixed but the relative effect estimate
+$d = \that_{r}/\that_{o}$ decreases towards zero, the sceptical $p$-value
+increases, meaning that shrinkage of the replication effect estimate is
+penalized ($p_{\text{S}} \uparrow 1$ as $d \downarrow 0$ for fixed $p_{o}$ and
+$p_{r}$). The sceptical $p$-value thus takes effect shrinkage into account,
 unlike the significance criterion which can be achieved with any non-zero
 replication effect estimate $\that_{r}$ provided the standard error $\sigma_{r}$
 is small enough. This property is desirable in the replication setting as a
 smaller replication effect estimate $\that_{r}$ may not be practically relevant
 anymore, despite its statistical significance.
-
-The results from the ``Reproducibility Project: Cancer Biology'' in
-Table~\ref{tab:RPCB} illustrate these two properties. The third study fails to
-achieve replication success at level $\alpha = 5\%$ with the sceptical
-$p$-value, even though the replication study was highly convincing (the effect
-estimate was almost five times as large as in the original study). Yet, as the
-approach requires both studies to be convincing on their own -- and the original
-study was not significant at the 5\% level -- replication success at this level
-is impossible with the sceptical $p$-value. The second property is illustrated
-by the fifth study. Here the original study was convincing and the replication
-study also achieved significance. However, the effect estimate from the
-replication was roughly 60\% smaller than the one from the original study, and
-significance is merely achieved because the standard error was much smaller
-(\ie{} around $1/\surd c \approx 1/2.8$ times smaller). The sceptical $p$-value
-is therefore only $p_{\text{S}} = 0.25$, indicating hardly any evidence for
-replication success.
-
-<< "paradox-example" >>=
-smdo <- 3
-smdr <- -3
-so <- sr <- 1
-ps2 <- pSceptical(zo = smdo/so, zr = smdr/sr, c = so^2/sr^2,
-                  alternative = "two.sided", type = "nominal")
-@
 
 There is one problem with the (two-sided) sceptical $p$-value as defined
 in~\eqref{eq:ps}; It does not take the direction of the effect estimates into
@@ -1215,20 +1196,45 @@ finding (\eg{} a negative treatment effect may indicate harm instead of
 benefit).
 % For example, if $\that_{o} = \Sexpr{smdo}$,
 % $\that_{r} = \Sexpr{smdr}$, and $\sigma_{o} = \sigma_{r} = 1$, this would lead
-% to $\ps = \Sexpr{pFormat(ps2)}$, and the sceptical $p$-value continues to
+% to $\ps = \Sexpr{pFormat(ps1)}$, and the sceptical $p$-value continues to
 % decreases with decreasing replication effect estimates.
 This ``replication
 paradox'' \citep{Ly2018} can be avoided by defining a one-sided sceptical
 $p$-value
 \begin{align*}
-  \tilde{p}_{\text{S}} =
+  p_{\text{S}} =
   \begin{cases}
-    \ps/2 & \text{if} ~\sign(\that_{o}) = \sign(\that_{r}) \\
-    1 - \ps/2 & \text{if} ~ \sign(\that_{o}) \neq \sign(\that_{r}) \\
+   1 - \Phi(|z_{\text{S}}|) & \text{if} ~\sign(\that_{o}) = \sign(\that_{r}) \\
+   \Phi(|z_{\text{S}}|) & \text{if} ~ \sign(\that_{o}) \neq \sign(\that_{r}) \\
   \end{cases}
 \end{align*}
 similar to how ordinary one-sided $p$-values are defined. In the subsequent
 chapters only the one-sided version of the sceptical $p$-value will be used.
+
+The results from the ``Reproducibility Project: Cancer Biology'' in
+Table~\ref{tab:RPCB} illustrate the properties of the sceptical $p$-value. For
+example, study \#4 fails to achieve replication success at level
+$\alpha = 2.5\%$ with the one-sided sceptical $p$-value, even though the
+replication study was highly convincing (the effect estimate was almost five
+times as large as in the original study). Yet, as the approach requires both
+studies to be convincing on their own -- and the original study was not
+significant at the 2.5\% level (one-sided) -- replication success at this level
+is impossible with the sceptical $p$-value. The second property is illustrated
+by study \#8. Here the original study was convincing and the replication study
+also achieved significance. However, the effect estimate from the replication
+was roughly 60\% smaller than the one from the original study, and significance
+is merely achieved because the standard error was much smaller (\ie{} around
+$1/\surd c \approx 1/2.8$ times smaller). The sceptical $p$-value is therefore
+only $p_{\text{S}} = 0.12$, indicating hardly any evidence for replication
+success.
+
+<< "paradox-example" >>=
+smdo <- 3
+smdr <- -3
+so <- sr <- 1
+ps1 <- pSceptical(zo = smdo/so, zr = smdr/sr, c = so^2/sr^2,
+                  alternative = "two.sided", type = "nominal")
+@
 
 This concludes the introduction to replication studies and reverse-Bayes methods
 for their analysis. Some additional properties (\eg{} the null distribution of
