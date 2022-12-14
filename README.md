@@ -1,4 +1,4 @@
-# Reverse-Bayes Methods for Replication Studies and Beyond
+# Reverse-Bayes Methods for Replication Studies
 
 This repository contains all files for reproducing the PhD thesis from Samuel
 Pawel. A heavily modified version of the LaTeX thesis template from Sebastian

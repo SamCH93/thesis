@@ -25,9 +25,8 @@ numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
   breaklinks = {true},
   citecolor = {Blue},
   urlcolor = {Blue},
-  pdftitle = {Reverse-Bayes Methods for Replication Studies and Beyond},
+  pdftitle = {Reverse-Bayes Methods for Replication Studies},
   pdfauthor = {Samuel Pawel},
-  pdfsubject = {},
   pdfpagemode = {UseOutlines}
 }
 
@@ -200,31 +199,6 @@ sample uncertainty''
   \textit{arXiv preprint}, 2022.
   doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}
 }
-
-
-
-
-
-
-% ==============================================================================
-% APPENDIX
-% ==============================================================================
-
-% \appendix
-% \renewcommand{\chaptername}{Appendix}
-% \paperchapter{%
-% Multivariate reverse-Bayes analysis
-% \label{app:multiRB}
-% }{%
-%  Samuel Pawel
-% }{}
-
-% \paperchapter{%
-% Reverse-Bayes asssessment of multiple replications
-% \label{app:multipleRB}
-% }{%
-%  Samuel Pawel
-% }{}
 
 
 \end{document}

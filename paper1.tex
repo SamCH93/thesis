@@ -262,10 +262,10 @@ replication effect estimate does not shrink compared to the original one. We
 therefore choose a level $\alpha_S$ such that a borderline significant original
 study ($p_o = \alpha$) cannot lead to replication success if there is shrinkage
 $s > 0$ of the replication effect estimate. Mathematically, this translates to
-setting $\dinfty = 1$ and $K = z_\alpha^2/z_{\alpha_S}^2$
+setting $\dinfty = 1$ and \mbox{$K = z_\alpha^2/z_{\alpha_S}^2$}
 in~\eqref{eq1:smallestpossible} and leads to the quadratic equation $K(K-1) = 1$
-with solution $K = \varphi$ where $\varphi = (\sqrt{5}+1)/2 \approx 1.62$ is
-known as the golden ratio. Solving for $z_{\alpha_S}$ gives
+with solution $K = \varphi$ where \mbox{$\varphi = (\sqrt{5}+1)/2 \approx 1.62$}
+is known as the golden ratio. Solving for $z_{\alpha_S}$ gives
 $z_{\alpha_S} = z_\alpha / \sqrt{\varphi}$ and the corresponding \textit{golden
   level}
 \begin{eqnarray}\label{eq1:golden}
@@ -285,13 +285,13 @@ The golden level \eqref{eq1:golden} is derived from~\eqref{eq1:smallestpossible}
 with $\dinfty = 1$. However, we may also use a different value for the limiting
 relative effect size $\dinfty$, say $\dinfty=0.8$. Then replication success is
 only possible for a borderline significant result ($p_o = \alpha$) if there is
-less than $1-\dinfty$ (20\% for $\dinfty=0.8$) shrinkage of the replication
-effect estimate. This approach is equivalent to a limiting relative effect size
-of 1 if the original $p$-value $p_o$ is equal to a different level $\alpha'$,
-which can be derived as follows: First, solving \eqref{eq1:smallestpossible} for
-$\dinfty > 0$ gives
-$K = z_\alpha^2/z_{\alpha_S}^2 = 1/2+\sqrt{1/4 + 1/\dinfty^2}$. The new level
-$\alpha'$ fulfills $\varphi=z_{\alpha'}^2/z_{\alpha_S}^2$, so
+less than $1-\dinfty$ (20\% for \mbox{$\dinfty=0.8$}) shrinkage of the
+replication effect estimate. This approach is equivalent to a limiting relative
+effect size of 1 if the original $p$-value $p_o$ is equal to a different level
+$\alpha'$, which can be derived as follows: First, solving
+\eqref{eq1:smallestpossible} for $\dinfty > 0$ gives
+$K = z_\alpha^2/z_{\alpha_S}^2 = 1/2+\sqrt{1/4 + 1/\dinfty^2}$. The new
+level~$\alpha'$ fulfills $\varphi=z_{\alpha'}^2/z_{\alpha_S}^2$, so
 $z_\alpha^2/K=z_{\alpha'}^2/\varphi$ and therefore
 \begin{equation}\label{eq1:alphaPrime}
 \alpha' = 1-\Phi\left(z_{\alpha} \, \sqrt{\varphi / K} \right).
@@ -304,7 +304,7 @@ For example, for $\alpha = 0.025$ and $\dinfty = 0.8$ we obtain $\alpha'=0.033$.
 The condition $p_S \leq \alpha_S$ for replication success at the golden level is
 equivalent to $z_S \geq z_\alpha / \sqrt{\varphi}$, \ie{}
 $z_S \sqrt{\varphi} \geq z_\alpha$. In practice it may be preferable to
-recalibrate the sceptical $p$-value $p_{S} = 1 - \Phi(z_S)$ to
+recalibrate the sceptical $p$-value \mbox{$p_{S} = 1 - \Phi(z_S)$} to
 $ \tilde{p}_S = 1 - \Phi(z_S \sqrt{\varphi})$, which then needs to be compared
 to $\alpha$ (rather than $\alpha_S$) to assess replication success and can thus
 be interpreted on the same scale as an ordinary $p$-value. For example, the
@@ -546,9 +546,9 @@ The left plot in Figure \ref{fig1:fig4} displays the Type I error rate for
 $\alpha=0.025$ as a function of the relative sample size $c$. It can be seen
 that the Type I error of the replication success approach decreases with
 increasing relative sample size $c$. This also follows from \eqref{eq1:T1E0}
-where $\P(z_r \geq \zrmin \given z_o, c, \alpha_S) = 1 - \Phi(\zrmin)$ decreases
-with increasing $c$, because $\zrmin$ increases with increasing $c$, see
-equation \eqref{eq1:eq.z}.
+where \mbox{$\P(z_r \geq \zrmin \given z_o, c, \alpha_S) = 1 - \Phi(\zrmin)$}
+decreases with increasing $c$, because $\zrmin$ increases with increasing $c$,
+see equation \eqref{eq1:eq.z}.
 
 
 The Type I error rate of the nominal level is always below the target
@@ -900,17 +900,16 @@ approaches in future work.
 
 
 \section*{Data and Software}
-Code and data to reproduce our analyses are available at
+Code and data to reproduce the analyses are available at
 \url{https://github.com/SamCH93/RSgolden/}. A snapshot of the Git repository at
-the time of writing is archived at \url{https://doi.org/10.5281/zenodo.XXXXXX}.
-The data which was used is available in the R package
-\texttt{ReplicationSuccess} (available on CRAN). Further information can be
-found on the corresponding help page (with the command \texttt{?RProjects}).
+the time of writing is archived at \url{https://doi.org/10.5281/zenodo.7437689}.
+The data is available in the R package \texttt{ReplicationSuccess} (available on
+CRAN). Further information can be found on the corresponding help page (with the
+command \texttt{?RProjects}).
 
 \section*{Acknowledgments}
-Support by the Swiss National Science Foundation (Project \#~189295) is
-gratefully acknowledged. We acknowledge helpful and constructive comments by the
-editor and a referee on an earlier version of this article.
+We acknowledge helpful and constructive comments by the editor and a referee on
+an earlier version of this article.
 
 
 \bibliographystyle{apalikedoiurl}
