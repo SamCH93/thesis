@@ -11,7 +11,7 @@
 
 \section{Replication studies}
 
-\begin{wrapfigure}{r}{0.29\textwidth}
+\begin{wrapfigure}{r}{0.27\textwidth}
   \centering
   \includegraphics[height = 6.9cm]{images/xkcdCrop.png}
   \caption*{Replication studies as \mbox{illustrated} by Randall Munroe
@@ -23,39 +23,38 @@
 % is real? The answer to such questions is of high importance to scientists,
 % decision makers, and the general population. However, because any study result
 % comes with uncertainty we can never know for sure.
-How can we know whether we can trust a finding from a scientific study? For
-example, how can we know whether the protective effect of a vaccine found in a
-study is indeed existent or whether it is just a spurious finding? The answer to
-such questions is of high importance to researchers, decision makers, and the
-general population, and one way to address them scientifically is through
-\emph{replication studies}.
+The ability to trust scientific findings is essential for making evidence-based
+decisions. But how can we know whether a scientific finding is trustworthy? For
+instance, how can we know whether the protective effect of a vaccine found in a
+study is indeed existent, or whether it is just a spurious finding? One way to
+answer this question is through the use of \emph{replication studies}.
 
-A replication study consists of repeating the original study as closely as
-possible but with new subjects. Such a study may yield similar results which
-would make us more confident about the original finding, or may yield
-conflicting results which would lower our confidence. As such, replication
-studies are an essential part of the scientific method as they provide a means
-for substantiating genuine research findings and refuting research findings
-which occurred merely by chance. For this reason, ``successful'' replication is
-often a requirement, for instance, for acceptance of newly proposed scientific
-theories (\eg{} a new physical model) or the implementation of policies based on
-scientific knowledge (\eg{} market approval of a drug). The results from
-replication studies may hence have real world consequences, % , such as deciding
-% whether we receive the recommendation to get vaccinated (a consequence that
-% anyone who experienced the COVID-19 pandemic is very aware of)
-and it is therefore important that methodological aspects of replication
+A replication study (or, simply, replication) involves repeating the original
+study as closely as possible but with new subjects. If the replication yields
+similar results to the original study, this increases our confidence in the
+original finding. However, if the replication study yields conflicting results,
+this lowers our confidence in the original finding. As such, replication studies
+are an essential part of the scientific method. They provide a means for
+substantiating genuine research findings and refuting findings which occurred
+merely by chance. For this reason, ``successful'' replication is often a
+requirement for acceptance of newly proposed scientific theories (\eg{} a new
+physical model). Yet, replication studies are not only important for
+researchers, but also for decision makers and the general population, as the
+implementation of policies based on scientific findings may also depend on
+whether these findings can be replicated (\eg{} market approval of a drug). The
+results from replication studies may thus also have real-world consequences, and
+it is therefore important that the methodological aspects of replication
 studies, such as their statistical design and analysis, are well understood.
 
-
-Despite their tremendous importance, the traditional academic system has made it
+Despite their importance, the traditional academic system has made it
 unattractive for researchers to conduct replication studies; the currencies of
 science -- publications, citations, and grant money -- are typically easier to
 acquire by conducting novel research. This is because until recently, most
 scientific journals hardly published any replication studies as the emphasis was
 on ``innovation'' rather than on ``repetition'' \citep{Makel2012, Martin2017,
-  Coiera2021}. To build a successful career, researchers thus often had no other
-choice than to concentrate their efforts on producing novel and eye-catching
-research results \citep{Binswanger2014, Moher2018}.
+  Coiera2021}. As a result, researchers often had no other choice than to focus
+their efforts on producing novel and eye-catching research results in order to
+build successful careers \citep{Binswanger2014, Moher2018}.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
