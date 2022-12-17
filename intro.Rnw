@@ -9,21 +9,23 @@
 \end{tabular}
 
 
-\section{Replication studies}
 
-\begin{wrapfigure}{r}{0.27\textwidth}
+
+\begin{wrapfigure}{r}{0.29\textwidth}
   \centering
-  \includegraphics[height = 6.9cm]{images/xkcdCrop.png}
-  \caption*{Replication studies as \mbox{illustrated} by Randall Munroe
-    \mbox{(\url{https://xkcd.com/242})}.}
+  \includegraphics[width = 0.2\textwidth]{images/xkcdCrop.png}
+  \caption*{Replication studies as illustrated by Randall Munroe
+    (\url{https://xkcd.com/242}).}
 \end{wrapfigure}
+
+\section{Replication studies}
 
 % How can we know if a finding from a scientific study is really true? For
 % example, how can we know if the protective effect of a vaccine found in a study
 % is real? The answer to such questions is of high importance to scientists,
 % decision makers, and the general population. However, because any study result
 % comes with uncertainty we can never know for sure.
-The ability to trust scientific findings is essential for making evidence-based
+Being able to trust scientific findings is essential for making evidence-based
 decisions. But how can we know whether a scientific finding is trustworthy? For
 instance, how can we know whether the protective effect of a vaccine found in a
 study is indeed existent, or whether it is just a spurious finding? One way to
@@ -33,28 +35,35 @@ A replication study (or, simply, replication) involves repeating the original
 study as closely as possible but with new subjects. If the replication yields
 similar results to the original study, this increases our confidence in the
 original finding. However, if the replication study yields conflicting results,
-this lowers our confidence in the original finding. As such, replication studies
-are an essential part of the scientific method. They provide a means for
-substantiating genuine research findings and refuting findings which occurred
-merely by chance. For this reason, ``successful'' replication is often a
-requirement for acceptance of newly proposed scientific theories (\eg{} a new
-physical model). Yet, replication studies are not only important for
-researchers, but also for decision makers and the general population, as the
-implementation of policies based on scientific findings may also depend on
-whether these findings can be replicated (\eg{} market approval of a drug). The
-results from replication studies may thus also have real-world consequences, and
-it is therefore important that the methodological aspects of replication
-studies, such as their statistical design and analysis, are well understood.
+this lowers our confidence in the original finding. %  As such, replication studies
+% are an essential part of the scientific method. They provide a means for
+% substantiating genuine research findings and refuting findings which occurred
+% merely by chance.
+The concept of replicability has long been a central part of the scientific
+method. For instance, \citet[p. 13]{Fisher1935} noted ``\textit{no isolated
+  experiment, however significant in itself, can suffice for the experimental
+  demonstration of any natural phenomenon}''. For this reason, ``successful''
+replication is typically a requirement for acceptance of newly proposed
+scientific theories (\eg{} a new physical model). Yet, replication studies are
+not only important for researchers, but also for decision makers and the general
+population, as the implementation of policies based on scientific findings may
+also depend on whether these findings can be replicated. For instance, the
+United States food and drug administration requires ``\textit{at least two
+  adequate and well-controlled studies, each convincing on its own, to establish
+  effectiveness}'' \citep[p. 3]{FDA1998} for market approval of a drug. The
+results from replication studies may hence have real-world consequences. It is
+therefore important that the methodological aspects of replication studies, such
+as their statistical design and analysis, are well understood.
 
 Despite their importance, the traditional academic system has made it
-unattractive for researchers to conduct replication studies; the currencies of
-science -- publications, citations, and grant money -- are typically easier to
-acquire by conducting novel research. This is because until recently, most
-scientific journals hardly published any replication studies as the emphasis was
-on ``innovation'' rather than on ``repetition'' \citep{Makel2012, Martin2017,
-  Coiera2021}. As a result, researchers often had no other choice than to focus
-their efforts on producing novel and eye-catching research results in order to
-build successful careers \citep{Binswanger2014, Moher2018}.
+unattractive for researchers to conduct replication studies; publications,
+citations, and grant money are typically easier to acquire by conducting novel
+research. This is because until recently, most scientific journals hardly
+published any replication studies as the emphasis was on ``innovation'' rather
+than on ``repetition'' \citep{Makel2012, Martin2017, Coiera2021}. As a result,
+researchers often had no other choice than to focus their efforts on producing
+novel and eye-catching research results in order to build successful careers
+\citep{Binswanger2014, Moher2018}.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
@@ -208,9 +217,10 @@ overview about these and other methods which have been used in practice.
     distribution is denoted by $\Phi(\cdot)$, and the $1 - \alpha$ quantile of
     the standard normal distribution is denoted by
     $\Phi^{-1}(1 - \alpha) = \z{\alpha}$. Confidence intervals and
-    \textit{p}-values are based on the assumption that the effect estimate
-    $\that$ is normally distributed around the unknown effect size $\theta$ with
-    (known) variance equal to the squared standard error $\sigma^{2}$.}
+    \textit{p}-values for $H_{0}: \theta = 0$ are based on the assumption that
+    an effect estimate $\that_{k}$ is normally distributed around the unknown
+    effect size $\theta$ with (known) variance equal to the squared standard
+    error $\sigma^{2}_{k}$ for $k \in \{o, r\}$.}
   \label{tab:meta}
   \begin{tabular}{lcc}
     \toprule
@@ -218,11 +228,11 @@ overview about these and other methods which have been used in practice.
     \midrule
     effect estimate & $\that_o$ & $\that_{r}$ \\
     standard error & $\sigma_{o}$ & $\sigma_{r}$ \\
-    $(1 - \alpha)$ confidence interval &
+    $(1 - \alpha)\times100\%$ confidence interval &
     % $[\that_{o} \pm \z{\alpha/2} \sigma_{o}]$ &
     % $[\that_{r} \pm \z{\alpha/2} \sigma_{r}]$ \\
-    $[\that_{o} - \z{\alpha/2} \sigma_{o}, \that_{o} + \z{\alpha/2} \sigma_{o}]$ &
-    $[\that_{r} - \z{\alpha/2} \sigma_{r}, \that_{r} + \z{\alpha/2} \sigma_{r}]$ \\
+    $[\that_{o} - \z{\alpha/2} \sigma_{o}, \, \that_{o} + \z{\alpha/2} \sigma_{o}]$ &
+    $[\that_{r} - \z{\alpha/2} \sigma_{r}, \, \that_{r} + \z{\alpha/2} \sigma_{r}]$ \\
     $z$-value & $z_{o} = \that_{o}/\sigma_{o}$ & $z_{r} = \that_{r}/\sigma_{r}$ \\
     $p$-value (two-sided) & $p_{o} = 2\{1 - \Phi(|z_{o}|)\}$ & $p_{r} = 2\{1 - \Phi(|z_{r}|)\}$ \\
     % One-sided $p$-value & $p_{o} = 1 - \Phi(|z_{o}|)$ & $p_{r} = 2\{1 - \Phi(|z_{r}|)\}$ \\
@@ -237,26 +247,27 @@ All of these are routinely reported in research articles, and if one of them is
 missing they can typically be calculated from the others. Using summary
 statistics is also often the only possible way for conducting the replication
 success analysis as the raw data from the original study may not be available to
-the researchers conducting the replication study. The most important statistic
-is the effect estimate $\that$. It provides an estimate of the underlying effect
-size $\theta$ which quantifies the true effect or association of an
-intervention/exposure with an outcome variable. Typical effect sizes are mean
-differences and correlations (for continuous outcomes), odds ratios (for binary
-outcomes), or hazard ratios (for time-to-event outcomes). Depending on the type
-of effect size, a transformation might be required so that the assumption of
-approximately normally distributed effect estimates around the unknown effect
-size $\theta$ (for large enough sample sizes) is justified. This could be, for
-instance, the Fisher $z$-transformation for correlations or the
+the researchers conducting the replication study. The most important statistics
+are the effect estimates $\that_{o}$ and $\that_{r}$. They provide an estimate
+of the underlying effect size $\theta$ which quantifies the true effect or
+association of an intervention/exposure with an outcome variable. Typical effect
+sizes are mean differences and correlations (for continuous outcomes), odds
+ratios (for binary outcomes), or hazard ratios (for time-to-event outcomes).
+Depending on the type of effect size, a transformation might be required so that
+the assumption of approximately normally distributed effect estimates around the
+unknown effect size $\theta$ (for large enough sample sizes) is justified. This
+could be, for instance, the Fisher $z$-transformation for correlations or the
 log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
-associated standard error $\sigma$ represents the statistical uncertainty of the
-estimate. Typically, the available standard error $\sigma$ is only an estimate
-of the true standard error. However, in most parts of this thesis it will be
-assumed that $\sigma$ corresponds to the true standard error. This is the same
-assumption as in ordinary fixed-effect/random-effects meta-analysis, and
-typically reasonable if the sample size of the studies is not too small. Under
-the assumption of (asymptotic) normality, confidence intervals for $\theta$ and
-$p$-values for testing the null hypothesis $H_{0} \colon \theta = 0$ can be
-computed as shown in Table~\ref{tab:meta}.
+associated standard errors $\sigma_{o}$ and $\sigma_{r}$ represent the
+statistical uncertainty of the estimates. Typically, the available standard
+errors are only estimates of the true standard errors. However, in most parts of
+this thesis it will be assumed that $\sigma_{o}$ and $\sigma_{r}$ correspond to
+the true standard errors. This is the same assumption as in ordinary
+fixed-effect/random-effects meta-analysis, and typically reasonable if the
+sample size of the studies is not too small. Under the assumption of
+(asymptotic) normality, confidence intervals for $\theta$ and $p$-values for
+testing the null hypothesis $H_{0} \colon \theta = 0$ can be computed as shown
+in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
