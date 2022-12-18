@@ -36,7 +36,7 @@ comparative simulation studies is therefore important, and results of
 methodologically flawed studies may lead to misinformed decisions in scientific
 and medical practice.
 
-Figure~\ref{fig:diagram} shows a schematic illustration of an example
+Figure~\ref{fig6:diagram} shows a schematic illustration of an example
 comparative simulation study. We see that, just like non-simulation based
 studies, comparative simulation studies require many decisions to be made, for
 instance: How will the data be generated? How often will a simulation condition
@@ -179,9 +179,9 @@ state-of-the-art simulation study methodology.
 }
 \caption{Schematic illustration of a comparative simulation study for evaluating
   performance of methods for predicting binary outcomes, such as the example
-  study in Section~\ref{sec:study}. Questionable research practices (in gray)
+  study in Section~\ref{sec6:study}. Questionable research practices (in gray)
   can affect all aspects of the study.}
-\label{fig:diagram}
+\label{fig6:diagram}
 \end{figure}
 
 Despite wide availability of such guidelines, statistics articles often provide
@@ -196,7 +196,7 @@ be sure of the quality of evidence that a simulation study provides.
 
 Unfortunately, there are many questionable research practices (QRPs) which may
 undermine the validity of comparative simulations studies and which can easily
-go undetected under current publishing standards. Figure~\ref{fig:diagram} shows
+go undetected under current publishing standards. Figure~\ref{fig6:diagram} shows
 several QRPs that may occur in the exemplary simulation study. There is often a
 fine line between QRPs and legitimate research practices. For instance, a
 researcher may choose to selectively report the most relevant simulation
@@ -220,27 +220,27 @@ QRPs. As we will argue, it is not only up to the researchers but also other
 academic stakeholders to improve on these issues.
 
 This article is structured as follows: We first give an illustrative list of
-QRPs related to comparative simulation studies (Section \ref{sec:QRP}). With an
+QRPs related to comparative simulation studies (Section \ref{sec6:QRP}). With an
 exemplary simulation study, we then show h?ow easy it is to present a novel,
 made-up method as an improvement over others if QRPs are employed and \emph{a
-  priori} simulation plans remain undisclosed (Section \ref{sec:study}). The
+  priori} simulation plans remain undisclosed (Section \ref{sec6:study}). The
 main inspiration for this work is drawn from similar illustrative studies which
 have been conducted by \citet{Yousefi2009} and \citet{Jelizarow2010} for
 benchmarking studies, and by \citet{Simmons2011} in the context of $p$-hacking
 in psychological research. Recently, \citet{Niessl2021} and \citet{Ullmann2022}
 expanded on QRPs in benchmarking studies with the latter also including
-simulation studies. In Section~\ref{sec:recommendations}, we then provide
+simulation studies. In Section~\ref{sec6:recommendations}, we then provide
 concrete suggestions for researchers, reviewers, editors and funding bodies to
 alleviate the issues of QRPs and improve the methodological quality of
-comparative simulation studies. Section~\ref{sec:discussion} closes with
+comparative simulation studies. Section~\ref{sec6:discussion} closes with
 limitations and concluding remarks.
 
 
 \section{Questionable research practices in comparative simulation studies}
-\label{sec:QRP}
+\label{sec6:QRP}
 
 There are various QRPs which threaten the validity of comparative simulation
-studies (see Table~\ref{table:QRPs} for an overview). QRPs can be categorized
+studies (see Table~\ref{table6:QRPs} for an overview). QRPs can be categorized
 with respect to the stage of research at which they can occur and which other
 QRPs they are related to \citep{Wicherts2016}. Typically, QRPs becomes more
 problematic if they are combined with related QRPs. For example, adapting the
@@ -255,7 +255,7 @@ study, namely, design, execution and reporting.
     simulation studies at different stages of the research process. A QRP
     becomes more problematic if combined with a related QRP, especially a
     reporting QRP.}
-  \label{table:QRPs}
+  \label{table6:QRPs}
   \centering
   \begin{tabular}{p{.05\textwidth} p{.11\textwidth} p{.75\textwidth}}
     \toprule
@@ -438,10 +438,10 @@ this method's apparent superior performance.
 
 
 \section{Empirical study: The Adaptive Importance Elastic Net
-  (AINET)} \label{sec:study}
+  (AINET)} \label{sec6:study}
 
-To illustrate the application of QRPs from Table~\ref{table:QRPs} we conducted a
-simulation study. The objective of the study was to evaluate the predictive
+To illustrate the application of QRPs from Table~\ref{table6:QRPs} we conducted
+a simulation study. The objective of the study was to evaluate the predictive
 performance of a made-up regression method termed the \emph{adaptive importance
   elastic net} (\ainet). The main idea of \ainet{} is to use variable importance
 measures from a random forest for a weighted penalization of the variables in an
@@ -451,15 +451,15 @@ modeling settings where penalized regression models are frequently used.
 Superficially, \ainet{} may seem sensible, however, for the data-generating
 process considered in our simulation study no advantage over the classical
 elastic net is expected. For more details on the method, we refer the reader to
-the simulation protocol (Appendix~\ref{appendix:protocol}). We report the
-pre-registered\footnote{We use the term \emph{pre-registered} throughout to
-  refer to simulation analyses conducted as pre-specified in the protocol.}
-simulation study results in the online supplement. As expected, the performance
-of \ainet{} was virtually identical to standard elastic net regression. \ainet{}
-also did not yield any improvements over logistic regression for the
-data-generating process that we considered sensible \emph{a priori} (that is,
-specified based on typical conditions in clinical prediction modeling and
-simulation studies from other researchers).
+the simulation protocol (Appendix~\ref{app6:protocol}). We report the
+pre-registered simulation study results in the online supplement (we use the
+term \emph{pre-registered} throughout to refer to simulation analyses conducted
+as pre-specified in the protocol). As expected, the performance of \ainet{} was
+virtually identical to standard elastic net regression. \ainet{} also did not
+yield any improvements over logistic regression for the data-generating process
+that we considered sensible \emph{a priori} (that is, specified based on typical
+conditions in clinical prediction modeling and simulation studies from other
+researchers).
 
 
 \begin{figure}[!htb]
@@ -471,7 +471,7 @@ simulation studies from other researchers).
     simulation conditions (correlated covariates $\rho = 0.95$, prevalence
     $\operatorname{prev} = 0.05$, a range of sample sizes $n$ and events per
     variable (EPV), in each simulation the Brier score is computed for 10'000
-    test observations; for details see Appendix~\ref{appendix:protocol}). The
+    test observations; for details see Appendix~\ref{app6:protocol}). The
     top row depicts the pre-registered results in which \ainet{} does not
     outperform any competitor uniformly, except AEN. In the second row, we apply
     QRP E2: Altering the data-generating process by adding a non-linear effect
@@ -480,11 +480,11 @@ simulation studies from other researchers).
     EN is removed as a competitor. In the bottom row, selective reporting R2 is
     applied: Only low EPV settings are reported to give a more favorable
     impression for \ainet{}. Arrows are depicted only for non-overlapping
-    confidence intervals. } \label{fig:E1}
+    confidence intervals. } \label{fig6:E1}
 \end{figure}
 
 We now show how application of QRPs changes the above pre-registered
-conclusions. Figure~\ref{fig:E1} illustrates different types of QRPs
+conclusions. Figure~\ref{fig6:E1} illustrates different types of QRPs
 sequentially applied to simulation-based evaluation of \ainet{}. The top row
 depicts the pre-registered differences in Brier score (horizontal axis) between
 \ainet{} and competitor methods (vertical axis) for a representative subset of
@@ -504,7 +504,7 @@ process by adding different sparsity conditions and a non-linear effect. We then
 found that \ainet{} outperforms logistic regression under the following
 conditions: Only few variables being associated with the outcome (sparsity), a
 non-linear effect and a low number of events per variable (EPV).
-Figure~\ref{fig:E1} (second row) shows the changes in Brier score difference
+Figure~\ref{fig6:E1} (second row) shows the changes in Brier score difference
 between the pre-registered and the tweaked simulation. As can be seen, the
 tweaked data-generating process leads to \ainet{} being superior to competitors
 in some conditions, and at least not inferior in others.
@@ -513,7 +513,7 @@ in some conditions, and at least not inferior in others.
 Despite the adapted data-generating process, we still observed only minor (if
 any) improvements of \ainet{} over the elastic net. In order to present \ainet{}
 in a better light we could omit the comparisons with the elastic net (E3), as
-shown in Figure~\ref{fig:E1} (third row). This could be justified, for example,
+shown in Figure~\ref{fig6:E1} (third row). This could be justified, for example,
 by arguing that for neutral comparison it is sufficient to compare a less
 flexible method (logistic regression, which has no tuning parameters and
 captures linear effects), a more flexible method (random forest, which has
@@ -525,7 +525,7 @@ AINET, but differs in the way the penalization weights are chosen).
 After the removal of the competitor elastic net, there are still some simulation
 conditions under which \ainet{} is not superior to the remaining competitors. To
 make \ainet{} appear more favorable, we thus report only simulation conditions
-with low EPV, as shown in Figure~\ref{fig:E1} (fourth row). This could be
+with low EPV, as shown in Figure~\ref{fig6:E1} (fourth row). This could be
 justified by the fact that journals require authors to be concise in their
 reporting. Otherwise, further conditions with low EPV values could be simulated
 to make the results seem more exhaustive. Focusing primarily on low EPV settings
@@ -533,20 +533,20 @@ could be justified in hindsight by framing \ainet{} as a method designed for
 high-dimensional data (low sample size relative to the number of variables).
 
 \section{Recommendations}
-\label{sec:recommendations}
+\label{sec6:recommendations}
 
 The previous sections painted a rather negative picture of how
 undisclosed changes in simulation design, analysis and reporting
 may lead to overoptimistic conclusions. In the
 following, we summarize what we consider to be practical recommendations for
 improving the methodological quality of simulation studies; see
-Table~\ref{table:recommendations} for an overview. Our recommendations are
+Table~\ref{table6:recommendations} for an overview. Our recommendations are
 grouped with regards to which stakeholder they concern.
 
 \begin{table}[!htb]
   \caption{Recommendations for improving quality of comparative simulation studies
     and preventing QRPs.}
-  \label{table:recommendations}
+  \label{table6:recommendations}
   \centering
 	\begin{tabular}{p{.95\textwidth}}
 		\toprule
@@ -735,7 +735,7 @@ to the proposed methods. We believe that the above recommendations can shift the
 incentive structure towards more transparent and neutral simulation studies, and
 away from the ``one method fits all data sets'' philosophy \citep{Strobl2022}.
 
-\section{Conclusions} \label{sec:discussion}
+\section{Conclusions} \label{sec6:discussion}
 
 Simulation studies should be viewed and treated analogously to (empirical)
 experiments from other fields of science. Transparent reporting of methodology
@@ -824,13 +824,13 @@ article. The authors declare that they do not have any conflicts of interest.
 \renewcommand{\thesection}{\Alph{section}}
 
 \section{Simulation protocol}
-\label{appendix:protocol}
+\label{app6:protocol}
 
 Below, we include an excerpt of the final version of the protocol for the
 simulation-based evaluation of \ainet{}. All time-stamped versions of the
 protocol are available at \url{https://doi.org/10.5281/zenodo.6364575}.
 
-\subsection{Aims} \label{sec:aims}
+\subsection{Aims} \label{sec6:aims}
 
 The aim of this simulation study is to systematically study the predictive
 performance of \ainet{} for a binary prediction task. The simulation conditions
@@ -853,7 +853,7 @@ from the literature, namely
   \item Adaptive elastic net: a generalization of the most popular weighted
   penalized regression method (adaptive LASSO)
   \item Random forest: a popular, more flexible method. This method is related to
-        \ainet{}, see Section~\ref{sec:methods}.
+        \ainet{}, see Section~\ref{sec6:methods}.
 \end{itemize}
 These cover a wide range of established methods with varying flexibility and
 serve as a reasonable benchmark for \ainet. There are many more extensions of
@@ -862,7 +862,7 @@ by][]{Vidaurre2013}. However, most of these extensions focus on variable
 selection and estimation instead of prediction, which is why we restrict our
 focus only on the four methods above.
 
-\subsection{Data-generating process} \label{sec:dgp}
+\subsection{Data-generating process} \label{sec6:dgp}
 
 In each simulation $b = 1, \dots, B$, we generate a data set consisting of $n$
 realizations, \ie $\{(\ry_i, \rx_i)\}_{i=1}^n$. A datum $(\rY, \rX)$ consists of
@@ -925,9 +925,9 @@ diseases/adverse events.
 
 \subsection*{Test data}
 In order to test the out-of-sample predictive performance, we generate a test
-data set of $n_{\text{test}} = 10000$ data points in each simulation $b$.
+data set of \mbox{$n_{\text{test}} = 10000$} data points in each simulation $b$.
 
-\subsection{Estimands} \label{sec:estimands}
+\subsection{Estimands} \label{sec6:estimands}
 
 We will estimate different quantities to evaluate overall predictive
 performance, calibration, and discrimination, respectively. All methods will be
@@ -1005,7 +1005,7 @@ be computed from the ground truth parameters and the simulated data $\rx$,
 subsequently the oracle Brier score will be subtracted from the estimated Brier
 score.
 
-\subsection{Methods} \label{sec:methods}
+\subsection{Methods} \label{sec6:methods}
 
 \subsubsection{AINET}
 We now present the mock-method and give a superficial motivation why it could
@@ -1082,9 +1082,9 @@ outperform methods of comparable complexity.
 \end{itemize}
 
 
-\subsection{Performance measures} \label{sec:performance}
+\subsection{Performance measures} \label{sec6:performance}
 
-The distribution of all estimands from Section~\ref{sec:estimands} will be
+The distribution of all estimands from Section~\ref{sec6:estimands} will be
 assessed visually with box- and violin-plots that are stratified by method and
 simulation conditions. We will also compute mean, median, standard deviation,
 interquartile range, and 95\% confidence intervals for each of the estimands.
@@ -1131,7 +1131,7 @@ $$B = 0.2/(10000 \times 0.0001^{2}) = 2000$$
 replications are required to obtain Brier score estimates with the
 desired precision.
 
-\subsection{Handling exceptions} \label{sec:exceptions}
+\subsection{Handling exceptions} \label{sec6:exceptions}
 
 It is inevitable that convergence issues and other problems will arise in the
 simulation study. We will handle them as follows:
@@ -1172,7 +1172,7 @@ In the following, we summarize the results for each estimand.
 
 \subsection{Brier score (primary estimand)}
 
-Figure~\ref{fig:tiebrier} shows the differences in mean Brier score between
+Figure~\ref{fig6:tiebrier} shows the differences in mean Brier score between
 \ainet{} and the other methods stratified by simulation conditions. We see that
 there is hardly any difference between \ainet{} and the elastic net (EN) across
 all simulation conditions meaning that predictive performance of both methods
@@ -1203,14 +1203,14 @@ variable ($\mbox{EPV} = 20$), AEN showed predictive performance on par with
 
 \subsection{Scaled Brier score (secondary estimand)}
 
-Figure~\ref{fig:tiesbrier} shows the differences in scaled Brier score between
+Figure~\ref{fig6:tiesbrier} shows the differences in scaled Brier score between
 \ainet{} and the other methods stratified by simulation conditions. The scaled
 Brier score is useful to compare the actual values of Brier scores across
 conditions with different prevalence, but not so much to compare Brier scores of
 different methods within a simulation condition with fixed prevalence.
 
 We see that for most conditions the plots look like a flipped version of the
-original Brier scores from Figure~\ref{fig:tiebrier}. Therefore, conclusions are
+original Brier scores from Figure~\ref{fig6:tiebrier}. Therefore, conclusions are
 mostly the same. For very small sample sizes coupled with low prevalence and low
 events per variable (the topleft plots), the scaled Brier score indicates
 superiority of \ainet{} over RF and GLM, which is opposite the conclusion based
@@ -1221,7 +1221,7 @@ test data set.
 
 \subsection{Log-score (secondary estimand)}
 
-Figure~\ref{fig:tienll} shows the differences in log-score between \ainet{} and
+Figure~\ref{fig6:tienll} shows the differences in log-score between \ainet{} and
 the other methods stratified by simulation conditions. We see that in certain
 conditions, the error bars of certain methods are much larger. This is due to
 the log-score's sensitivity to extreme predictions, which often happen under the
@@ -1232,7 +1232,7 @@ methods are largely the same as under the Brier score.
 
 \subsection{Area under the curve (secondary estimand)}
 
-Figure~\ref{fig:tienll} shows the differences in area under the curve (AUC)
+Figure~\ref{fig6:tienll} shows the differences in area under the curve (AUC)
 between \ainet{} and the other methods stratified by simulation conditions. As
 with the other estimands, \ainet{} shows virtually identical performance as EN
 regression across all simulation conditions. \ainet{} seems to outperform RF
@@ -1248,7 +1248,7 @@ simulation conditions.
 
 \subsection{Calibration slope (secondary estimand)}
 
-Figure~\ref{fig:cslope} shows boxplots of calibration slopes stratified by
+Figure~\ref{fig6:cslope} shows boxplots of calibration slopes stratified by
 simulation condition and method. For each condition the percentage of
 simulations where no estimate could be obtained is indicated. This usually
 happened because of extreme (close to zero or one) predictions, or
@@ -1274,7 +1274,7 @@ value of one.
 
 \subsection{Calibration in the large (secondary estimand)}
 
-Figure~\ref{fig:clarge} shows boxplots of calibration in the large estimates
+Figure~\ref{fig6:clarge} shows boxplots of calibration in the large estimates
 stratified by simulation condition and method. For each condition also the
 percentage of simulations where no estimate could be obtained is indicated. This
 usually happened because of extreme (close to zero or one) predictions.
@@ -1296,7 +1296,7 @@ events per variables.
 \caption{Tie-fighter plot for the difference in Brier score between any method
   on the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted per
   simulation condition using the single-step method. Lower values indicate
-  better performance of \ainet{}. } \label{fig:tiebrier}
+  better performance of \ainet{}. } \label{fig6:tiebrier}
 \end{figure}
 \end{landscape}
 
@@ -1307,7 +1307,7 @@ events per variables.
 \caption{Tie-fighter plot for the difference in scaled Brier score between any
   method on the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted
   per simulation condition using the single-step method. Larger
-  values indicate better performance of \ainet{}. } \label{fig:tiesbrier}
+  values indicate better performance of \ainet{}. } \label{fig6:tiesbrier}
 \end{figure}
 \end{landscape}
 
@@ -1318,7 +1318,7 @@ events per variables.
 \caption{Tie-fighter plot for the difference in log-score between any method on
   the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted per
   simulation condition using the single-step method. Lower values indicate
-  better performance of \ainet{}. } \label{fig:tienll}
+  better performance of \ainet{}. } \label{fig6:tienll}
 \end{figure}
 \end{landscape}
 
@@ -1330,7 +1330,7 @@ events per variables.
   conditions. Mean calibration slope is indicated by a cross. A value of one
   indicates optimal calibration. Percentage of simulations where calibration
   slope could not be estimated (due to extreme predictions or complete
-  separation) are also indicated.} \label{fig:cslope}
+  separation) are also indicated.} \label{fig6:cslope}
 \end{figure}
 \end{landscape}
 
@@ -1343,7 +1343,7 @@ events per variables.
   A value of zero indicates optimal calibration in the large. Percentage of
   simulations where calibration in the large could not be estimated (due to
   extreme predictions or complete separation) are also
-  indicated.} \label{fig:clarge}
+  indicated.} \label{fig6:clarge}
 \end{figure}
 \end{landscape}
 
