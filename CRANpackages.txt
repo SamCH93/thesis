@@ -1,0 +1,8 @@
+knitr
+ggplot2
+ggpubr
+scales
+xtable
+ReplicationSuccess
+dplyr
+UpSetR

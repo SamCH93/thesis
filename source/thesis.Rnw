@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LaTeX master document for a cumulative PhD thesis
+%%%
+%%% Copyright (C) 2015-2016  Sebastian Meyer
+%%%
+%%% This template can be redistributed and/or modified under the terms
+%%% of the GNU General Public License, version 2 or later.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, pagesize, twoside, open=right, cleardoublepage=empty,
+headinclude=false, footinclude=false, % headsepline, footsepline,
+parskip=half,
+numbers=noendperiod, BCOR=10mm, DIV=18 ]{scrreprt}
+
+%% input header with specifications and custom definitions
+\input{header}
+\input{defs}
+
+%% load the hyperref package
+\usepackage{hyperref}
+\hypersetup{
+  bookmarksdepth = 2,  % otherwise same depth as TOC (only chapters)
+  colorlinks = {true},
+  linkcolor = {black},
+  breaklinks = {true},
+  citecolor = {Blue},
+  urlcolor = {Blue},
+  pdftitle = {Reverse-Bayes Methods for Replication Studies},
+  pdfauthor = {Samuel Pawel},
+  pdfpagemode = {UseOutlines}
+}
+
+\addto{\extrasUKenglish}{%
+  \renewcommand{\chapterautorefname}{\chaptername} % "Paper"
+  \renewcommand{\sectionautorefname}{Section}      % uppercase
+}
+
+%% start with roman numbers
+\pagenumbering{roman}
+
+\begin{document}
+
+% ==============================================================================
+% COVER
+% ==============================================================================
+\pdfbookmark{Title}{titlepage}
+\includepdf{cover.pdf}
+
+
+% ==============================================================================
+% FRONT MATTER
+% ==============================================================================
+\pagestyle{empty}
+\input{abstract}
+\input{outline}
+
+\cleardoublepage
+\input{preface}
+\pagestyle{scrheadings}
+
+% ==============================================================================
+% INTRODUCTION + SUMMARY
+% ==============================================================================
+\cleardoublepage
+\pagenumbering{arabic}
+
+<< "main-setup", include = FALSE, echo = FALSE, warning = FALSE, message = FALSE >>=
+## knitr options
+library(knitr)
+opts_chunk$set(fig.height = 4,
+               echo = FALSE,
+               warning = FALSE,
+               message = FALSE,
+               cache = FALSE,
+               eval = TRUE)
+
+## should sessionInfo be printed at the end?
+Reproducibility <- TRUE
+
+## Packages
+library(ggplot2) # plotting
+library(ggpubr) # combining ggplots
+library(scales) # scales for plots
+library(xtable) # table
+library(ReplicationSuccess) # replication study stuff
+library(dplyr) # data manipulation
+library(UpSetR) # upset plot
+
+## knit introduction first to tex so that by-chapter reference works (since chapter natbib requires "include" command)
+knitr::knit(input = "intro.Rnw")
+@
+
+\include{intro}
+
+\changelocaltocdepth{0}
+
+\addtocontents{toc}{\bigskip}
+\addtocontents{toc}{\bigskip}
+
+% ==============================================================================
+% PAPERS
+% ==============================================================================
+\cleardoublepage
+\cfoot[]{\chapapp $\:$ \thechapter}
+
+
+\addtocontents{toc}{%
+  \protect\vspace{2ex}
+  \textbf{\textsf{Design and analysis of replication studies}}\par}
+\addtocontents{toc}{%
+  \protect\vspace{-2ex}
+  \par\noindent\rule{\textwidth}{0.4pt}\par}
+
+
+% Paper I
+% ------------------------------------------------------------------------------
+\paperchapter{%
+ The assessment of replication success based on relative effect size
+}{%
+  Leonhard Held, Charlotte Micheloud, Samuel Pawel
+}{%
+   \textit{The Annals of Applied Statistics}, 2022, 16(2), 706--720.
+  doi:\href{https://doi.org/10.1214/21-AOAS1502}{10.1214/21-AOAS1502}}
+\include{paper1}
+
+
+% Paper II
+% ------------------------------------------------------------------------------
+\paperchapter{%
+ The sceptical Bayes factor for the assessment of replication success
+}{%
+  Samuel Pawel, Leonhard Held
+}{%
+   \textit{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}, 2022, 84(3), 879--911.
+   doi:\href{https://doi.org/10.1111/rssb.12491}{10.1111/rssb.12491}
+ }
+\include{paper2}
+
+% Paper III
+% ------------------------------------------------------------------------------
+\paperchapter{%
+  Bayesian approaches to designing replication studies}{%
+  Samuel Pawel, Guido Consonni, Leonhard Held}{%
+  \textit{arXiv preprint}, 2022.
+  doi:\href{https://doi.org/10.48550/arXiv.2211.02552}{10.48550/arXiv.2211.02552}
+}
+\include{paper3}
+
+\addtocontents{toc}{\bigskip}
+\addtocontents{toc}{\bigskip}
+\addtocontents{toc}{%
+  \protect\vspace{2ex}
+  \textbf{\textsf{Reverse-Bayes methodology}}\par}
+\addtocontents{toc}{%
+  \protect\vspace{-2ex}
+  \par\noindent\rule{\textwidth}{0.4pt}\par}
+
+% Paper IV
+% ------------------------------------------------------------------------------
+\paperchapter{%
+ Reverse-Bayes methods for evidence assessment and research synthesis
+}{%
+  Leonhard Held, Robert Matthews, Manuela Ott, Samuel Pawel
+}{%
+  \textit{Research Synthesis Methods}, 2022, 13(3), 295--314.
+  doi:\href{https://doi.org/10.1002/jrsm.1538}{10.1002/jrsm.1538}
+}
+\include{paper4}
+
+\addtocontents{toc}{\protect\newpage}
+
+% Paper V
+% ------------------------------------------------------------------------------
+\paperchapter{%
+ Comment on ``Bayesian additional evidence for decision making under small
+sample uncertainty''
+}{%
+  Samuel Pawel, Leonhard Held, Robert Matthews
+}{%
+  \textit{BMC Medical Research Methodology}, 2022, 22(149).
+  doi:\href{https://doi.org/10.1186/s12874-022-01635-4}{10.1186/s12874-022-01635-4}
+}
+\include{paper5}
+
+\addtocontents{toc}{\bigskip}
+\addtocontents{toc}{\bigskip}
+\addtocontents{toc}{%
+  \protect\vspace{2ex}
+  \textbf{\textsf{Meta-scientific perspectives on methodological research}}\par}
+\addtocontents{toc}{%
+  \protect\vspace{-2ex}
+  \par\noindent\rule{\textwidth}{0.4pt}\par}
+
+% Paper VI
+% ------------------------------------------------------------------------------
+\paperchapter{%
+  Pitfalls and Potentials in Simulation Studies }{%
+  Samuel Pawel, Lucas Kook, Kelly Reeve }{%
+  \textit{arXiv preprint}, 2022.
+  doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}
+}
+\include{paper6}
+
+
+\end{document}

@@ -1,0 +1,163 @@
+% % Aus der Promotionsverordnung MNF §11 (4):
+% % "Dem wissenschaftlichen Teil der Dissertation ist eine allgemein
+% % verständliche kurze Zusammenfassung voranzustellen."
+
+% \cleardoublepage
+% \pdfbookmark{Zusammenfassung}{abstract_DE}
+
+% { % need this extra grouping to avoid carry-over effects
+% \begin{otherlanguage}{ngerman}
+% \enlargethispage{4\baselineskip}
+% \begin{center}\abstractnamefont
+%   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+%   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+%   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+%   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+%   eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+%   in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor
+%   sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+%   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+%   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+%   aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+%   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+%   culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+%   amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+%   et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+%   ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+%   in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+%   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+%   officia deserunt mollit anim id est laborum.
+
+% \end{center}
+% \end{otherlanguage}
+% }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\pdfbookmark{Abstract}{abstract_EN}
+
+\enlargethispage{4\baselineskip}
+\begin{center}\abstractnamefont
+  \textbf{Abstract}
+\end{center}
+
+% The credibility of a scientific finding is based on the fact that it can be
+% replicated when the same study is repeated with new subjects.
+% An important aspect of the credibility of a scientific finding is that the
+% finding can be replicated when the same study is repeated with new subjects.
+% An important aspect of the credibility of a scientific finding is its
+% replicability -- the ability to produce similar results when the same study is
+% repeated with new subjects.
+An important aspect of the credibility of scientific findings is their
+replicability -- the ability that a similar finding can be obtained when the
+same study is repeated with new subjects. However, various failures to replicate
+major scientific findings in the social and life sciences indicate that
+replicability is often lower than expected. This ``replication crisis'' has led
+to several methodological reforms in the past decade, an increased conduct of
+replication studies being one of them. Despite this increase in replication
+studies, there is no consensus on a fundamental question: How should replication
+success be defined statistically?
+% Various methods already exist and various new ones have been proposed in
+% response to the crisis. This thesis centres around a proposal based on the
+% reverse-Bayes approach. The key idea is to reverse the traditional ``forward''
+% use of Bayes' theorem (``prior + likelihood $\rightarrow$ posterior''),
+% starting instead with a pre-specified posterior and deducing the corresponding
+% prior (``posterior + likelihood $\rightarrow$
+% prior''). % As such, the reverse-Bayes approach naturally fits to the replication
+% % setting as it enables the mathematical formalization of scepticism regarding the
+% % finding from the original study.
+% This allows us to challenge the original finding by determining a sceptical
+% prior for the underlying effect size such that the resulting posterior is no
+% longer convincing. This prior then represents the position of a sceptic who
+% remains unconvinced by the original study. Whether or not the sceptics'
+% position is justified can then be assessed in light of the new data from the
+% replication study. The larger the conflict between the replication data and
+% the sceptic, the larger the degree of replication success. This procedure can
+% be summarized in a single quantitative measure of replication success, termed
+% the sceptical $p$-value.
+
+Possible answers to this question are given in the first and largest part of
+this thesis. It consists of three extensions to a recently proposed
+reverse-Bayes method for quantifying replication success. The key idea of the
+method is to challenge the data from the original study with a sceptical prior
+distribution so that the resulting posterior distribution no longer indicates
+evidence for an effect. The goal of the replication study is then to show that
+the sceptical prior is unrealistic, and replication success is achieved if there
+is sufficient conflict between the prior and the replication data. The procedure
+can be summarized in a single quantitative measure, termed the sceptical
+$p$-value.
+% extension 1
+The first extension recalibrates the sceptical $p$-value so that replication
+success takes effect size more appropriately into account. Specifically, the
+recalibration is chosen such that for original studies which were borderline
+significant, replication success can only be achieved if the effect estimate
+from the replication study is larger than the effect estimate from the original
+study. We find that the recalibrated sceptical $p$-value also has good
+frequentist properties comparable to the standard method used in practice.
+% extension 2
+The second extension replaces tail probabilities with Bayes factors as measures
+of evidence. The procedure can again be summarized in a single measure called
+the sceptical Bayes factor.
+% The sceptical prior is now determined such that the original finding is no
+% longer convincing in terms of a Bayes factor. In contrast to tail
+% probabilities,
+% We find that the extended method combines two notions of replicability: It
+% requires that original and replication study independently provide evidence for
+% an effect and ensures that their effect estimates are compatible.
+The sceptical Bayes factor has similar properties as the sceptical $p$-value but
+it avoids a statistical paradox which the sceptical $p$-value suffers from -- in
+some situations the sceptical $p$-value may indicate replication success even
+though the effect estimate from the replication is arbitrarily smaller than the
+effect estimate from the original study. % , which cannot happen with the sceptical
+% Bayes factor.
+% Bayes factors have a more
+% natural interpretation and allow for direct quantification of evidence for one
+% hypothesis versus another. As with the sceptical $p$-value, the procedure leads
+% to a single measure quantifying the degree of replication success called the
+% sceptical Bayes factor.
+The third extension provides a framework for Bayesian design of replication
+studies which allows for combining data from the original study with external
+knowledge. This approach can lead to potentially more efficient designs compared
+to classical approaches, and it can be used for replication design based on both
+the sceptical $p$-value and the sceptical Bayes factor.
+% External knowledge, such as data from other studies, is ubiquitous in the
+% replication setting and taking it into account can lead to potentially more
+% efficient designs compared to classical approaches.
+
+The second part of this thesis also deals with reverse-Bayes methods, but with a
+broader scope of applications than replication studies. The reverse-Bayes idea
+was first proposed in the 1950s, but it has mostly been forgotten. To increase
+awareness and show potential use cases, reverse-Bayes history and methods are
+summarized in a comprehensive review. The review includes also some new results
+on connections between reverse-Bayes methods and meta-analysis. % Finally, a
+% commentary paper on a recently proposed reverse-Bayes method draws connections
+% to other reverse-Bayes methods.
+
+The last part of this thesis takes a meta-scientific perspective on
+methodological research. Questionable research practices, such as selective
+reporting of results, are often seen as main cause for replicability issues in
+the medical and social sciences. These practices can similarly harm
+methodological research, but are often not recognized. To raise awareness, an
+illustrative simulation study is conducted in which it is shown how a novel
+method can easily be presented as superior over established competitor methods
+if questionable research practices are employed. Finally, several
+recommendations are given to alleviate these issues.
+
+
+\textbf{Key words}: Bayesian inference, meta-science, replication studies
+
+
+\newpage ~
+
+\newpage
+
+
+
+\begin{center}
+  \vspace*{5cm}
+
+  \textit{Dedicated to my mother Christa. \\
+    You are deeply missed.}
+\end{center}

@@ -1,12 +1,13 @@
 # Reverse-Bayes Methods for Replication Studies
 
 This repository contains all files for reproducing the PhD thesis from Samuel
-Pawel. A heavily modified version of the LaTeX thesis template from Sebastian
-Meyer (GPL2 license) is used. My template contains some ugly hacks, so use at
-your own risk!
+Pawel. The thesis is based on a heavily modified version of the LaTeX thesis
+template from Sebastian Meyer (GPL2 license). My template contains some ugly
+hacks, use it at your own risk!
 
 
 ## 1. Reproducing the thesis locally
+
 Make sure that LaTeX (e.g., texlive-full on Ubuntu), R, and the following R
 packages are installed
 
@@ -16,14 +17,20 @@ pkgs <- c("knitr", "ggplot2", "xtable", "ReplicationSuccess", "dplyr", "UpSetR",
 install.packages(pkgs)
 ```
 
-Then run
+Then run 
 
 ```sh
-make
+make local
 ```
 
-this should produce `thesis.pdf`. The following R and R package versions were
-used when last compiled
+this should produce `thesis.pdf`. 
+
+
+Although the analyses depend on only few dependencies, this approach may lead to
+different results (or not even compile successfully) in the future if R or the
+packages change. The R and R package versions which were used when the thesis
+was successfully compiled the last time are visible in the following sessionInfo
+output
 
 ```r
 sessionInfo()
@@ -69,10 +76,23 @@ sessionInfo()
 
 ## 2. Reproducing the thesis within a Docker container
 
-TODO: implement Docker support
+TODO: this doesn't work yet....
 
+Make sure that Docker with root rights is installed. Then run
+
+```sh
+make docker
+```
+
+This may take some time as TinyTeX needs to install several LaTeX packages. The
+Docker approach reruns the analyses in a Docker container which encapsulates the
+computational environment (R and R package versions) that was used in the
+original analysis. The only way this approach could become irreproducible is
+when the rocker/verse base image becomes unavailable and/or the MRAN snapshot of
+CRAN becomes unavailable.
 
 ## Reproducing the individual papers
+
 The thesis contains six papers, `.tex` and figure output files for each of them
 are already included in the repository. Code and data to reproduce them
 individually can be found at
