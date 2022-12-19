@@ -76,9 +76,9 @@ and the life sciences \citep{Chalmers2014, Freedman2015, Glasziou2018}.
 Similarly, reports of fraud \citep{Wicherts2011} and questionable research
 practices \citep{Wagenmakers2011, Simmons2011, John2012} sparked intense
 discussion about the need for better research standards in psychology and the
-social sciences. These discussions eventually culminated in large-scale
-replication projects conducted by huge researcher consortia in fields such as
-psychology \citep{Opensc2015, Klein2014, Klein2018, Protzko2020}, economics
+social sciences. These discussions eventually led to large-scale replication
+projects conducted by huge researcher consortia in fields such as psychology
+\citep{Opensc2015, Klein2014, Klein2018, Protzko2020}, economics
 \citep{Camerer2016}, the social sciences \citep{Camerer2018}, experimental
 philosophy \citep{Cova2018}, and cancer biology \citep{Errington2021}.
 

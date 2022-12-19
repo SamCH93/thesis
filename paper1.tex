@@ -21,7 +21,7 @@ estimate compared to the original one, while ensuring that both effect estimates
 are sufficiently convincing on their own.
 
 \textbf{Key words}: Power, replication studies, sceptical $p$-value, shrinkage,
-two-trials rule, type I error rate
+two-trials rule, Type I error rate
 
 \section{Introduction}
 Replication studies are conducted in order to investigate whether an original
@@ -66,8 +66,8 @@ $p_o=1-\Phi(z_o)$ and $p_r=1-\Phi(z_r)$, respectively, where $\Phi(\cdot)$
 denotes the standard normal cumulative distribution function. Let
 $c = \sigma_o^2/\sigma_r^2$ denote the variance ratio of the squared standard
 errors of the original and replication effect estimates. The squared standard
-errors are usually inversely proportional to the sample size of each study, \ie{}
-$\sigma_o^2 = \kappa^2/n_o$ and $\sigma_r^2 = \kappa^2/n_r$ for some unit
+errors are usually inversely proportional to the sample size of each study,
+\ie{} $\sigma_o^2 = \kappa^2/n_o$ and $\sigma_r^2 = \kappa^2/n_r$ for some unit
 variance $\kappa^2$. The variance ratio $c$ can then be identified as the
 relative sample size $c=n_r/n_o$. The relative effect size
 \begin{equation}\label{eq1:d}
@@ -121,21 +121,19 @@ discussion.
 \begin{center}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-
 {\centering \includegraphics[width=\maxwidth]{images/paper1/fig1-1}
-
 }
-
 \end{knitrout}
 \caption{Example of the assessment of replication success. The original study
   from \citet{Pyc2010} has effect estimate $\hat \theta_o= 0.4$ on Fisher's $z$
-  scale (95\% CI from $0.05$ to $0.74$) and one-sided $p$-value $p_o = 0.011$.
-  The left part of the figure illustrates the reverse-Bayes derivation of the
-  sufficiently sceptical prior based on the original study result and the
-  posterior with lower credible limit fixed at zero. The comparison of the
-  sufficiently sceptical prior with the replication study result
-  ($\hat \theta_r = 0.15$, 95\% CI from 0.04 to 0.26, $p_r = 0.004$) in the
-  right part of the figure is used to assess potential prior-data conflict.}
+  scale (95\% CI from $0.05$ to $0.74$) and one-sided $p$-value
+  \mbox{$p_o = 0.011$}. The left part of the figure illustrates the
+  reverse-Bayes derivation of the sufficiently sceptical prior based on the
+  original study result and the posterior with lower credible limit fixed at
+  zero. The comparison of the sufficiently sceptical prior with the replication
+  study result ($\hat \theta_r = 0.15$, 95\% CI from 0.04 to 0.26,
+  $p_r = 0.004$) in the right part of the figure is used to assess potential
+  prior-data conflict.}
   \label{fig1:fig1}
 \end{center}
 \end{figure}
@@ -145,88 +143,89 @@ discussion.
 
 Hereinafter we focus on the one-sided assessment of replication success to
 ensure that replication success can only occur if the original and replication
-effect estimates go in the same direction. Figure \ref{fig1:fig1} illustrates the
-\citet{Held2020} approach based on a replication study from the \textit{Social
-  Sciences Replication Project} \citep{Camerer2018}: the significant original
-finding by \citet{Pyc2010} at one-sided level $\alpha=0.025$ is challenged with
-a sceptical prior, sufficiently concentrated around zero to make the original
-study result no longer convincing \citep{Matthews2001a,Matthews2001b}.
-Replication success is then defined as conflict between the sceptical prior and
-the result from the replication study in order to disprove the sceptic. Conflict
-is quantified by a prior-predictive tail probability $p_{\mbox{\scriptsize
-    Box}}$ \citep{Box1980} where a small value $p_{\mbox{\scriptsize
-    Box}} \leq \alpha$ defines replication success. In Figure \ref{fig1:fig1} the
-original finding is only borderline significant, so the sufficiently sceptical
-prior is fairly wide. Furthermore, there is substantial shrinkage
-($d = 0.15/0.4 = 0.38$) of the replication effect estimate and therefore hardly
-any conflict with the sufficiently sceptical prior (one-sided
-$p_{\mbox{\scriptsize Box}}=0.31$). We are thus not able to declare replication
-success at level $2.5$\%.
+effect estimates go in the same direction. Figure \ref{fig1:fig1} illustrates
+the \citet{Held2020} approach based on a replication study from the
+\textit{Social Sciences Replication Project} \citep{Camerer2018}: the
+significant original finding by \citet{Pyc2010} at one-sided level
+$\alpha=0.025$ is challenged with a sceptical prior, sufficiently concentrated
+around zero to make the original study result no longer convincing
+\citep{Matthews2001a,Matthews2001b}. Replication success is then defined as
+conflict between the sceptical prior and the result from the replication study
+in order to disprove the sceptic. Conflict is quantified by a prior-predictive
+tail probability $p_{\mbox{\scriptsize Box}}$ \citep{Box1980} where a small
+value $p_{\mbox{\scriptsize Box}} \leq \alpha$ defines replication success. In
+Figure \ref{fig1:fig1} the original finding is only borderline significant, so
+the sufficiently sceptical prior is fairly wide. Furthermore, there is
+substantial shrinkage ($d = 0.15/0.4 = 0.38$) of the replication effect estimate
+and therefore hardly any conflict with the sufficiently sceptical prior
+(one-sided $p_{\mbox{\scriptsize Box}}=0.31$). We are thus not able to declare
+replication success at level $2.5$\%.
 
 The actual value of $p_{\mbox{\scriptsize Box}}$ is difficult to interpret as it
 depends on the level $\alpha$ and does not even exist if the original $p$-value
 $p_o$ exceeds $\alpha$. However, \citet{Held2020} showed that if both
 $\sign(z_o)=\sign(z_r)$ and
 \begin{equation}\label{eq1:extrinsic.p}
-\left({z_o^2}/{z_{{\alpha_S}}^2}-1 \right) \left({z_r^2}/{z_{{\alpha_S}}^2}
+\left({z_o^2}/{z_{{\alpha_{\mathrm{S}}}}^2}-1 \right) \left({z_r^2}/{z_{{\alpha_{\mathrm{S}}}}^2}
 - 1 \right) \geq c
 \end{equation}
-hold, replication success at level ${\alpha_S}$ is achieved, where
-$z_{{\alpha_S}} = \Phi^{-1}(1-{\alpha_S})$. The requirement
-\eqref{eq1:extrinsic.p} can be assessed for any value of
-${{\alpha_S}} > \max\{p_o, p_r\}$ and of particular interest is the smallest
-possible value of $\alpha_S$ where \eqref{eq1:extrinsic.p} holds, the so-called
-\textit{sceptical $p$-value} $p_S$. We are thus interested in the value $z_S^2$
-that fulfills
+hold, replication success at level ${\alpha_{\mathrm{S}}}$ is achieved, where
+$z_{{\alpha_{\mathrm{S}}}} = \Phi^{-1}(1-{\alpha_{\mathrm{S}}})$. The
+requirement \eqref{eq1:extrinsic.p} can be assessed for any value of
+${{\alpha_{\mathrm{S}}}} > \max\{p_o, p_r\}$ and of particular interest is the
+smallest possible value of $\alpha_{\mathrm{S}}$ where \eqref{eq1:extrinsic.p}
+holds, the so-called \textit{sceptical $p$-value} $\ps$. We are thus interested
+in the value $z_{\mathrm{S}}^2$ that fulfills
 \begin{equation}\label{eq1:extrinsic.p2}
-\left({z_o^2}/{z_{S}^2}-1 \right) \left({z_r^2}/{z_{S}^2}
+\left({z_o^2}/{z_{\mathrm{S}}^2}-1 \right) \left({z_r^2}/{z_{\mathrm{S}}^2}
 - 1 \right) = c.
 \end{equation}
 There is a unique solution of \eqref{eq1:extrinsic.p2} which defines the
-one-sided {sceptical $p$-value} $p_S= 1-\Phi\left({z_S}\right)$ where
-$z_{S} \coloneqq + \surd z_{S}^2$, provided $\sign(z_o)=\sign(z_r)$ holds.
-Replication success at level $\alpha_S$ is then achieved if $p_S \leq \alpha_S$.
-In the introductory example based on the original study by \citet{Pyc2010}, the
-sceptical $p$-value turns out to be $p_S=0.11$.
+one-sided {sceptical $p$-value} $\ps= 1-\Phi\left({z_{\mathrm{S}}}\right)$ where
+$z_{\mathrm{S}} \coloneqq + \surd z_{\mathrm{S}}^2$, provided
+$\sign(z_o)=\sign(z_r)$ holds. Replication success at level
+$\alpha_{\mathrm{S}}$ is then achieved if $\ps \leq \alpha_{\mathrm{S}}$. In the
+introductory example based on the original study by \citet{Pyc2010}, the
+sceptical $p$-value turns out to be $\ps=0.11$.
 
 The sceptical $p$-value has a number of interesting properties, see
 \citet[Section 3.1]{Held2020} for details. In particular,
-$p_S > \max\{p_o, p_r\}$ always holds with $p_S \downarrow \max\{p_o, p_r\}$ for
+$\ps > \max\{p_o, p_r\}$ always holds with $\ps \downarrow \max\{p_o, p_r\}$ for
 $c \downarrow 0$. Furthermore, if the $p$-values $p_o$ and $p_r$ are fixed, the
-sceptical $p$-value $p_S$ increases with decreasing relative effect size $d$.
+sceptical $p$-value $\ps$ increases with decreasing relative effect size $d$.
 The first property ensures that both the original and the replication study have
 to be sufficiently convincing on their own to achieve replication success. The
 second property guarantees that shrinkage of the replication effect estimate is
 penalized.
 
-The level for replication success $\alpha_S$ has to be distinguished from the
-significance level $\alpha$ associated with the ordinary $p$-value.
+The level for replication success $\alpha_{\mathrm{S}}$ has to be distinguished
+from the significance level $\alpha$ associated with the ordinary $p$-value.
 \citet{Held2020} has used the \textit{nominal level} for replication success
-($\alpha_S=\alpha$) for convenience, but in the following we will propose a
-recalibration of the procedure along with a new value for $\alpha_S$, the
-\textit{golden level} (Section~\ref{sec1:goldenthresh}). The derivation is based
-on a property of the required relative effect size for replication success, if
-the relative sample size is very large (Section~\ref{sec1:res}). In a nutshell,
-the golden level ensures that for original studies which were only borderline
-significant ($p_o=\alpha$), replication success is only possible if the
-replication
+($\alpha_{\mathrm{S}}=\alpha$) for convenience, but in the following we will
+propose a recalibration of the procedure along with a new value for
+$\alpha_{\mathrm{S}}$, the \textit{golden level}
+(Section~\ref{sec1:goldenthresh}). The derivation is based on a property of the
+required relative effect size for replication success, if the relative sample
+size is very large (Section~\ref{sec1:res}). In a nutshell, the golden level
+ensures that for original studies which were only borderline significant
+($p_o=\alpha$), replication success is only possible if the replication
 effect estimate is larger than the original one ($d > 1$).\\
 
 
 \subsection{Relative effect size}\label{sec1:res}
 Without loss of generality we now assume that $\hat \theta_o > 0$ and that
-$p_o < {\alpha_S}$ has been observed in the original study, otherwise it would
-be impossible to achieve replication success at level $\alpha_S$ because $p_S$
-is always larger than $p_o$. The condition \eqref{eq1:extrinsic.p} for
-replication success can then be re-written as
+$p_o < {\alpha_{\mathrm{S}}}$ has been observed in the original study, otherwise
+it would be impossible to achieve replication success at level
+$\alpha_{\mathrm{S}}$ because $\ps$ is always larger than $p_o$. The condition
+\eqref{eq1:extrinsic.p} for replication success can then be re-written as
 \begin{equation}\label{eq1:eq.z}
-  z_r \geq   z_{{\alpha_S}} \sqrt{1+c/(K-1)} \eqqcolon  \zrmin,
+  z_r \geq   z_{{\alpha_{\mathrm{S}}}} \sqrt{1+c/(K-1)} \eqqcolon  \zrmin,
 \end{equation}
-where $K=z_o^2/z_{{\alpha_S}}^2>1$. The right hand-side of \eqref{eq1:eq.z} is
-the minimum replication $z$-value $\zrmin$ required to achieve replication
-success. Note that $\zrmin$ increases with increasing $c$, so increasing the
-replication sample size leads to a more stringent success requirement $z_r$ and
-the corresponding replication $p$-value $p_r$.
+where $K=z_o^2/z_{{\alpha_{\mathrm{S}}}}^2>1$. The right hand-side of
+\eqref{eq1:eq.z} is the minimum replication $z$-value $\zrmin$ required to
+achieve replication success. Note that $\zrmin$ increases with increasing $c$,
+so increasing the replication sample size leads to a more stringent success
+requirement $z_r$ and the corresponding replication $p$-value $p_r$.
 
 Equation \eqref{eq1:eq.z} can be further transformed to a
 condition on the relative effect size \eqref{eq1:d}:
@@ -234,9 +233,9 @@ condition on the relative effect size \eqref{eq1:d}:
   d \geq  \frac{\sqrt{1+c/(K-1)}}{ \sqrt{c K}} \eqqcolon \dmin .
 \end{equation}
 To achieve replication success, the relative effect size must be at least as
-large as the right hand-side of \eqref{eq1:res}, the minimum relative effect size
-$\dmin$, a function of $K$ and the relative sample size $c$. If the relative
-sample size becomes very large, \ie{} $c \rightarrow \infty$, we have
+large as the right hand-side of \eqref{eq1:res}, the minimum relative effect
+size $\dmin$, a function of $K$ and the relative sample size $c$. If the
+relative sample size becomes very large, \ie{} $c \rightarrow \infty$, we have
 $\dmin \downarrow \dinfty$ where
 \begin{equation}\label{eq1:smallestpossible}
   \dinfty = 1/\sqrt{K (K-1)}
@@ -254,29 +253,30 @@ large.
 \subsection{The golden level}\label{sec1:goldenthresh}
 Significance of both the original and the replication study at level $\alpha$ is
 a necessary but not sufficient requirement for replication success at the
-nominal level ($\alpha_S = \alpha$). The nominal level may therefore be too
-stringent. It is more reasonable to calibrate the procedure in such a way that
-to establish replication success, original and replication study do not both
-necessarily need to be significant at level $\alpha$, provided that the
+nominal level ($\alpha_{\mathrm{S}} = \alpha$). The nominal level may therefore
+be too stringent. It is more reasonable to calibrate the procedure in such a way
+that to establish replication success, original and replication study do not
+both necessarily need to be significant at level $\alpha$, provided that the
 replication effect estimate does not shrink compared to the original one. We
-therefore choose a level $\alpha_S$ such that a borderline significant original
-study ($p_o = \alpha$) cannot lead to replication success if there is shrinkage
-$s > 0$ of the replication effect estimate. Mathematically, this translates to
-setting $\dinfty = 1$ and \mbox{$K = z_\alpha^2/z_{\alpha_S}^2$}
+therefore choose a level $\alpha_{\mathrm{S}}$ such that a borderline
+significant original study ($p_o = \alpha$) cannot lead to replication success
+if there is shrinkage $s > 0$ of the replication effect estimate.
+Mathematically, this translates to setting $\dinfty = 1$ and
+\mbox{$K = z_\alpha^2/z_{\alpha_{\mathrm{S}}}^2$}
 in~\eqref{eq1:smallestpossible} and leads to the quadratic equation $K(K-1) = 1$
 with solution $K = \varphi$ where \mbox{$\varphi = (\sqrt{5}+1)/2 \approx 1.62$}
-is known as the golden ratio. Solving for $z_{\alpha_S}$ gives
-$z_{\alpha_S} = z_\alpha / \sqrt{\varphi}$ and the corresponding \textit{golden
-  level}
+is known as the golden ratio. Solving for $z_{\alpha_{\mathrm{S}}}$ gives
+$z_{\alpha_{\mathrm{S}}} = z_\alpha / \sqrt{\varphi}$ and the corresponding
+\textit{golden level}
 \begin{eqnarray}\label{eq1:golden}
-\alpha_S & = & 1 -  \Phi(z_\alpha / \sqrt{\varphi} )
+\alpha_{\mathrm{S}} & = & 1 -  \Phi(z_\alpha / \sqrt{\varphi} )
 \end{eqnarray}
 for replication success. This is our recommended default choice to assess
 replication success and we will study its properties in the following in more
 detail. For $z_\alpha = 1.96$ (one-sided $\alpha = 0.025$), the golden level is
-$\alpha_S =0.062$. In the introductory example shown in Figure \ref{fig1:fig1},
-the sceptical $p$-value is $p_S=0.11 > 0.062$, so the replication of the
-\citet{Pyc2010} study was not successful.
+$\alpha_{\mathrm{S}} =0.062$. In the introductory example shown in Figure
+\ref{fig1:fig1}, the sceptical $p$-value is $\ps=0.11 > 0.062$, so the
+replication of the \citet{Pyc2010} study was not successful.
 
 
 
@@ -290,9 +290,9 @@ replication effect estimate. This approach is equivalent to a limiting relative
 effect size of 1 if the original $p$-value $p_o$ is equal to a different level
 $\alpha'$, which can be derived as follows: First, solving
 \eqref{eq1:smallestpossible} for $\dinfty > 0$ gives
-$K = z_\alpha^2/z_{\alpha_S}^2 = 1/2+\sqrt{1/4 + 1/\dinfty^2}$. The new
-level~$\alpha'$ fulfills $\varphi=z_{\alpha'}^2/z_{\alpha_S}^2$, so
-$z_\alpha^2/K=z_{\alpha'}^2/\varphi$ and therefore
+$K = z_\alpha^2/z_{\alpha_{\mathrm{S}}}^2 = 1/2+\sqrt{1/4 + 1/\dinfty^2}$. The
+new level~$\alpha'$ fulfills $\varphi=z_{\alpha'}^2/z_{\alpha_{\mathrm{S}}}^2$,
+so $z_\alpha^2/K=z_{\alpha'}^2/\varphi$ and therefore
 \begin{equation}\label{eq1:alphaPrime}
 \alpha' = 1-\Phi\left(z_{\alpha} \, \sqrt{\varphi / K} \right).
 \end{equation}
@@ -301,16 +301,18 @@ For example, for $\alpha = 0.025$ and $\dinfty = 0.8$ we obtain $\alpha'=0.033$.
 
 \subsection{Recalibration of the sceptical \textit{p}-value}\label{sec1:recalib}
 
-The condition $p_S \leq \alpha_S$ for replication success at the golden level is
-equivalent to $z_S \geq z_\alpha / \sqrt{\varphi}$, \ie{}
-$z_S \sqrt{\varphi} \geq z_\alpha$. In practice it may be preferable to
-recalibrate the sceptical $p$-value \mbox{$p_{S} = 1 - \Phi(z_S)$} to
-$ \tilde{p}_S = 1 - \Phi(z_S \sqrt{\varphi})$, which then needs to be compared
-to $\alpha$ (rather than $\alpha_S$) to assess replication success and can thus
-be interpreted on the same scale as an ordinary $p$-value. For example, the
-recalibrated sceptical $p$-value for the replication of \citet{Pyc2010} turns
-out to be $\tilde{p}_S=0.061$ and does not lead to replication success at any
-level $\alpha<0.061$, including the standard $0.025$ level.
+\sloppy The condition $\ps \leq \alpha_{\mathrm{S}}$ for replication success at the
+golden level is equivalent to
+\mbox{$z_{\mathrm{S}} \geq z_\alpha / \sqrt{\varphi}$}, \ie{}
+$z_{\mathrm{S}} \sqrt{\varphi} \geq z_\alpha$. In practice it may be preferable
+to recalibrate the sceptical $p$-value \mbox{$\ps = 1 - \Phi(z_{\mathrm{S}})$}
+to $ \tilde{p}_{\mathrm{S}} = 1 - \Phi(z_{\mathrm{S}} \sqrt{\varphi})$, which
+then needs to be compared to $\alpha$ (rather than $\alpha_{\mathrm{S}}$) to
+assess replication success and can thus be interpreted on the same scale as an
+ordinary $p$-value. For example, the recalibrated sceptical $p$-value for the
+replication of \citet{Pyc2010} turns out to be $\tilde{p}_{\mathrm{S}}=0.061$
+and does not lead to replication success at any level $\alpha<0.061$, including
+the standard $0.025$ level.
 
 
 \subsection{Comparison with the two-trials rule}\label{sec1:2TR}
@@ -325,34 +327,29 @@ one-sided level $\alpha=0.025$. {It is worth noting that in practice the two
 
 
 
-The main difference between the replication success and the two-trials
-rule approach concerns how shrinkage of the replication effect
-estimate is handled. Figure~\ref{fig1:fig2} illustrates that
-shrinkage is penalized in the assessment of replication success, \ie{}
-the original $p$-value needs to be quite small to achieve replication
-success for a relative effect size $d<1$. In contrast, significance of
-the replication study can be achieved even if there is substantial
-shrinkage, provided the replication sample size is large enough.
+The main difference between the replication success and the two-trials rule
+approach concerns how shrinkage of the replication effect estimate is handled.
+Figure~\ref{fig1:fig2} illustrates that shrinkage is penalized in the assessment
+of replication success, \ie{} the original $p$-value needs to be quite small to
+achieve replication success for a relative effect size $d<1$. In contrast,
+significance of the replication study can be achieved even if there is
+substantial shrinkage, provided the replication sample size is large enough.
 
 
 \begin{figure}[!h]
 \centering
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-
 {\centering \includegraphics[width=\maxwidth]{images/paper1/fig2-1}
-
 }
-
-
 \end{knitrout}
 \caption{Comparison of replication success at the golden level
-  ($p_S \leq \alpha_S = 0.062$) and the two-trials rule ($p_o \leq 0.025$ and
-  $p_r \leq 0.025$). The dotted areas indicate that success is impossible for
-  original $p$-value $p_o$ and relative effect size $d$. In the white areas
-  success is possible and depends on the relative sample size $c$ as indicated
-  by the grey lines. The dashed black line in the left plot indicates the
-  limiting relative effect size $\dinfty$. }
+  ($\ps \leq \alpha_{\mathrm{S}} = 0.062$) and the two-trials rule
+  (\mbox{$p_o \leq 0.025$} and $p_r \leq 0.025$). The dotted areas indicate that
+  success is impossible for original \mbox{$p$-value $p_o$} and relative effect
+  size $d$. In the white areas success is possible and depends on the relative
+  sample size $c$ as indicated by the grey lines. The dashed black line in the
+  left plot indicates the limiting relative effect size $\dinfty$. }
 \label{fig1:fig2}
 \end{figure}
 
@@ -487,37 +484,38 @@ the entire project is simply $\alpha^2$ for any value of the relative effect
 size $c$. In contrast, the Type I error rate of the proposed replication success
 assessment {depends on} the relative sample size $c$.
 
-For $c=1$, \citet[Section 3]{Held2020} showed that $z_S^2$ in
-\eqref{eq1:extrinsic.p2} simplifies to half the harmonic mean of the squared test
-statistics $z_o^2$ and $z_r^2$. The connection $z_S^2 = z_H^2/4$ to the harmonic
-mean $\chi^2$-test statistic $z_H^2$ \citep{Held2020b}, which has a
+For $c=1$, \citet[Section 3]{Held2020} showed that $z_{\mathrm{S}}^2$ in
+\eqref{eq1:extrinsic.p2} simplifies to half the harmonic mean of the squared
+test statistics $z_o^2$ and $z_r^2$. The connection
+$z_{\mathrm{S}}^2 = z_{\mathrm{H}}^2/4$ to the harmonic mean $\chi^2$-test
+statistic $z_{\mathrm{H}}^2$ \citep{Held2020b}, which has a
 $\chi^2(1)$-distribution under the null hypothesis, makes it straightforward to
-compute the Type I error rate at level $\alpha_S$ for $c = 1$ as
+compute the Type I error rate at level $\alpha_{\mathrm{S}}$ for $c = 1$ as
 \begin{eqnarray}\label{eq1:T1E}
-\mbox{T1E} =   \left\{1-\Phi\left[2 \, \Phi^{-1}\left(1-\alpha_S \right)
+\mbox{T1E} =   \left\{1-\Phi\left[2 \, \Phi^{-1}\left(1-\alpha_{\mathrm{S}} \right)
  \right]\right\}/2.
 \end{eqnarray}
-For the golden level $\alpha_S =0.062$ at $\alpha = 0.025$, the Type I error
+For the golden level $\alpha_{\mathrm{S}} =0.062$ at $\alpha = 0.025$, the Type I error
 rate \eqref{eq1:T1E} is $0.0515$\%, slightly less than the Type I error rate
 $\alpha^2=0.0625$\% of the two-trials rule. For comparison, the Type I error
-rate at the nominal level $\alpha_S=0.025$ is $0.0022$\%, much smaller than
+rate at the nominal level $\alpha_{\mathrm{S}}=0.025$ is $0.0022$\%, much smaller than
 0.0625\%.
 
 
 For $c \neq 1$, the Type I error rate can be calculated through numerical
 integration:
 \begin{equation}\label{eq1:T1E0}
-  \mbox{T1E} = \int_{z_{\alpha_S}}^{\infty}
-\P(z_r \geq \zrmin \given z_o, c, \alpha_S) \,
+  \mbox{T1E} = \int_{z_{\alpha_{\mathrm{S}}}}^{\infty}
+\P(z_r \geq \zrmin \given z_o, c, \alpha_{\mathrm{S}}) \,
   \phi(z_o) \, dz_o,
 \end{equation}
 where $\phi(\cdot)$ denotes the standard normal density function. The first term
 in the integral of \eqref{eq1:T1E0} is the probability of replication success at
-level $\alpha_S$ conditional on a fixed original test statistic $z_o$ and a
+level $\alpha_{\mathrm{S}}$ conditional on a fixed original test statistic $z_o$ and a
 relative sample size $c$. Now $z_r \sim \Nor(0,1)$ under the null hypothesis, so
 this term simplifies to
-$\P(z_r \geq \zrmin \given z_o, c, \alpha_S) = 1 - \Phi(\zrmin)$ where $\zrmin$
-in \eqref{eq1:eq.z} depends on $z_o$, $c$, and $\alpha_S$.
+$\P(z_r \geq \zrmin \given z_o, c, \alpha_{\mathrm{S}}) = 1 - \Phi(\zrmin)$ where $\zrmin$
+in \eqref{eq1:eq.z} depends on $z_o$, $c$, and $\alpha_{\mathrm{S}}$.
 
 
 \begin{figure}[!h]
@@ -546,7 +544,7 @@ The left plot in Figure \ref{fig1:fig4} displays the Type I error rate for
 $\alpha=0.025$ as a function of the relative sample size $c$. It can be seen
 that the Type I error of the replication success approach decreases with
 increasing relative sample size $c$. This also follows from \eqref{eq1:T1E0}
-where \mbox{$\P(z_r \geq \zrmin \given z_o, c, \alpha_S) = 1 - \Phi(\zrmin)$}
+where \mbox{$\P(z_r \geq \zrmin \given z_o, c, \alpha_{\mathrm{S}}) = 1 - \Phi(\zrmin)$}
 decreases with increasing $c$, because $\zrmin$ increases with increasing $c$,
 see equation \eqref{eq1:eq.z}.
 
@@ -612,8 +610,8 @@ increases with increasing $c$.
 
 The project power for replication success is computed as
 \begin{equation*}
-  \mbox{PP} = \int_{z_{\alpha_S}}^{\infty}
-\P(z_r \geq \zrmin \given z_o, c, \alpha_S) \,
+  \mbox{PP} = \int_{z_{\alpha_{\mathrm{S}}}}^{\infty}
+\P(z_r \geq \zrmin \given z_o, c, \alpha_{\mathrm{S}}) \,
   \phi(z_o - \mu) \, dz_o
 \end{equation*}
 and shown in the right plot of Figure \ref{fig1:fig4} as a function of $c$. For
@@ -740,14 +738,14 @@ summarised in Table~\ref{tbl:discrep}.
     (at the golden level) and the two-trials rule disagree (at one-sided
     $\alpha = 0.025$). Shown are relative sample size $c$, relative effect size
     $d$, original, replication and recalibrated sceptical $p$-value $p_o$, $p_r$
-    and $\tilde{p}_S$.}
+    and $\tilde{p}_{\mathrm{S}}$.}
   \label{tbl:discrep}
 \resizebox{\textwidth}{!} {
 % latex table generated in R 4.0.5 by xtable 1.8-4 package
 % Fri Nov 25 12:12:30 2022
 \begin{tabular}{lllllll}
   \toprule
-Study & Project & $c$ & $d$ & $p_o$ & $p_r$ & $\tilde{p}_S$ \\
+Study & Project & $c$ & $d$ & $p_o$ & $p_r$ & $\tilde{p}_{\mathrm{S}}$ \\
   \midrule
 \citet{Schmidt2008} & Psychology & 2.58 & 1.28 & \textbf{0.028} & \textcolor{black}{< 0.0001} & \textcolor{black}{0.024} \\
   \citet{Oberauer2008} & Psychology & 0.60 & 0.67 & \textcolor{black}{0.0003} & \textbf{0.035} & \textcolor{black}{0.017} \\
