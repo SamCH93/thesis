@@ -57,7 +57,16 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,shapes,fit,arrows}
  % set default tikz font to sans serif
-\tikzset{every picture/.style={/utils/exec={\sffamily}}}
+\tikzset{every picture/.style={/utils/exec={\sffamily}},
+  % Define standard arrow tip
+  % >=stealth',
+  % % Define arrow style
+  % pil/.style={
+  %   ->,
+  %   thick,
+  %   shorten <=2pt,
+  %   shorten >=2pt}
+}
 
 %%% Typesetting
 \usepackage{ellipsis} % correct white space around \dots
