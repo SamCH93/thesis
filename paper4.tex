@@ -285,9 +285,10 @@ represents a posterior mean $\mu'$ with posterior precision $\delta'=83.8$.
   trials investigating association between corticosteroids and mortality in
   hospitalized patients with COVID-19 \citep{REACT2020}. Shown are number of
   deaths among total number of patients for treatment/control group, log odds
-  ratio effect estimates with 95\% confidence interval, two-sided $p$-values
-  $p$, and prior-predictive tail probabilities $p_{\text{Box}}$ with a
-  meta-analytic estimate based on the remaining studies serving as the prior.}
+  ratio effect estimates with 95\% confidence interval, two-sided
+  \textit{p}-values $p$, and prior-predictive tail probabilities
+  $p_{\text{Box}}$ with a meta-analytic estimate based on the remaining studies
+  serving as the prior.}
 \label{fig4:covid19-meta}
 \end{figure}
 
@@ -347,8 +348,8 @@ the NHST concepts of statistical significance and non-significance
 \citep{Wasserstein2016}. First investigated 20 years ago by
 \citet{Matthews2001a, Matthews2001b}, Reverse-Bayes methods for assessing both
 statistically significant and non-significant findings have been termed the
-Analysis of Credibility \citep{Matthews2018} (or AnCred), whose principles and
-practice we now briefly review.
+Analysis of Credibility, or in short AnCred \citep{Matthews2018}, whose
+principles and practice we now briefly review.
 
 \subsection{The Analysis of Credibility}
 \label{sec4:AnCred}
@@ -540,7 +541,7 @@ data in the adolescent subgroup with a mixture prior based on a weak and an
 informative component. The weak component is a minimally informative normal
 prior with mean zero and large variance. The variance is chosen such that the
 information content of the prior is equivalent to that provided by a single
-subject or event (\emph{unit-information prior}) \citep{Kass1995b}. The other
+subject or event \citep[\emph{unit-information prior},][]{Kass1995b}. The other
 component is an informative prior based on the (significant) results from the
 adolescent subgroup. A Reverse-Bayes approach is used to determine how much
 prior weight one needs to assign to the informative component to obtain a
@@ -778,9 +779,9 @@ of $\hat{\theta}$ under the prior-predictive distribution is smaller than
 $\alpha$. It turns out that the $p$-value associated with $\theta$ needs to be
 at least as small as 0.0056 to obtain intrinsic credibility at level
 $\alpha=0.05$, providing another principled argument for the recent proposition
-to lower the $p$-value threshold for the claims of new discoveries to 0.005
-\citep{Benjamin2017}. A simple check for intrinsic credibility is based on the
-\emph{credibility ratio}, the ratio of the upper to the lower limit (or vice
+to lower the \mbox{$p$-value} threshold for the claims of new discoveries to
+0.005 \citep{Benjamin2017}. A simple check for intrinsic credibility is based on
+the \emph{credibility ratio}, the ratio of the upper to the lower limit (or vice
 versa) of a confidence interval for a significant effect size estimate. If the
 credibility ratio is smaller than 5.8 then the result is intrinsically credible
 \citep{Held2019a}. This holds for confidence intervals at all possible values of
@@ -906,13 +907,13 @@ sceptical relative prior variance is then given by
     \text{undefined} & ~~ \text{else}
   \end{cases} \\
   \text{where} ~ q &=
-  \text{W} \left(-\frac{z^2}{\gamma^2} \cdot
+  \mathrm{W} \left(-\frac{z^2}{\gamma^2} \cdot
   \exp\left\{-z^2\right\}\right)
   \nonumber
 \end{align}
-where $\text{W}(\cdot)$ is the branch of the Lambert $W$ function that satisfies
-$\text{W}(y) \leq -1$ for \mbox{$y \in [-e^{-1}, 0)$} \citep{Corless1996}, see the
-Appendix in \citep{Pawel2020b} for a proof.
+where $\mathrm{W}(\cdot)$ is the branch of the Lambert W function that satisfies
+$\mathrm{W}(y) \leq -1$ for \mbox{$y \in [-e^{-1}, 0)$} \citep{Corless1996}, see
+the Appendix in \citep{Pawel2020b} for a proof.
 
 The sufficiently sceptical relative prior variance $g$ exists only for a cut-off
 $\gamma$ if $\text{minBF}_{01} \leq \gamma$, similar to standard AnCred where it
@@ -1443,8 +1444,9 @@ by
     & \text{if} ~ \abs{z} < \sqrt{\log 2}
   \end{cases}
 \end{align}
-with $k = W(-z^{2} \exp\{-z^{2}/2\}/\sqrt{2})$ and $W(\cdot)$ the branch of the
-Lambert $W$ function that satisfies $W(y) \leq -1$ for $y \in [-e^{-1}, 0).$ If
+with $k = \mathrm{W}(-z^{2} \exp\{-z^{2}/2\}/\sqrt{2})$ and $\mathrm{W}(\cdot)$
+the branch of the Lambert W function that satisfies $\mathrm{W}(y) \leq -1$ for
+$y \in [-e^{-1}, 0).$ If
 $\abs{z} \geq \sqrt{-2 W(-e^{-1}/\sqrt2)} \approx 2.04$, $\BFIC$ is located at
 the intersection between $\BF_{12}$ and $\BF_{01}$ in the relative prior
 variance $g$, so equation (7) from \citet{Pawel2020b} can be used. For
