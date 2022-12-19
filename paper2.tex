@@ -360,9 +360,9 @@ $\BFcol{0}{\mathrm{S}}(\hat{\theta}_o; \gy) = \gamma$. It can be shown (Appendix
   \exp\left\{-z_o^2\right\}\right)
   \nonumber
 \end{align}
-with $\lw{-1}(\cdot)$ the branch of the Lambert $W$ function \citep{Corless1996}
-that satisfies \mbox{$W(y) \leq -1$} for $y \in [-e^{-1}, 0)$, see Appendix
-\ref{appendix:lambertW} for details about the Lambert $W$ function. The
+with $\lw{-1}(\cdot)$ the branch of the Lambert W function \citep{Corless1996}
+that satisfies \mbox{$\mathrm{W}(y) \leq -1$} for $y \in [-e^{-1}, 0)$, see
+Appendix \ref{appendix:lambertW} for details about the Lambert W function. The
 sufficiently sceptical prior is then given by
 $\theta \given \HS \sim \Nor(0, \gy \cdot \sigma^2_o)$ and it can be interpreted
 as the view of a sceptic who argues that given their prior belief about the
@@ -397,7 +397,7 @@ manifestation of the Jeffreys-Lindley paradox, since it determines sceptical
 priors only from the class of priors that become increasingly concentrated for
 increasing evidence (\ie{} priors with $\gy \leq \gminBFo$). In principle, the
 solution $\gy^\prime > \gminBFo $ could also be computed by replacing the
-$\lw{-1}$ branch of the Lambert $W$ function in \eqref{ggamma} with the $\lw{0}$
+$\lw{-1}$ branch of the Lambert W function in \eqref{ggamma} with the $\lw{0}$
 branch, but this will not be of interest to us.
 
 
@@ -989,9 +989,9 @@ simply $\text{T1E} = 2\{1 - \Phi(z_{\gamma})\}^{2}$.
   and $\minBF_{r} \leq \gamma$), the replication Bayes factor
   ($\BFr \leq \gamma$), the sceptical Bayes factor ($\BFs \leq \gamma$), and the
   recalibrated sceptical $p$-value
-  ($\tilde{p}_{\mathrm{S}} \leq 1 - \Phi\{z_{\gamma}\}$) as a function of the
-  relative variance $c = \sigma^{2}_{o}/\sigma^{2}_{r}$ for different levels of
-  replication success $\gamma$.}
+  (\mbox{$\tilde{p}_{\mathrm{S}} \leq 1 - \Phi\{z_{\gamma}\}$}) as a function of
+  the relative variance $c = \sigma^{2}_{o}/\sigma^{2}_{r}$ for different levels
+  of replication success $\gamma$.}
 \label{fig2:t1ec}
 \end{figure}
 
@@ -1038,16 +1038,14 @@ simply lower the power curves of all methods.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{images/paper2/power-plots-1}
 \end{knitrout}
-\caption{Power of the two-trials rule (2TR: $\minBF_{o} \leq
-1/3$ and $\minBF_{r} \leq
-1/3$), the replication Bayes factor ($\BFr
-\leq 1/3$), the sceptical Bayes factor ($\BFs
-\leq
-1/3$), and the recalibrated sceptical $p$-value ($\tilde{p}_{\mathrm{S}}
-\leq 1 - \Phi\{z_{\gamma}\}$ with $\gamma =
-1/3$) as a function of the relative variance $c
-= \sigma^2_o/\sigma^2_r$ for different original $z$-values $z_o =
-\that_o/\sigma_o$ (respectively corresponding minimum Bayes factor $\minBF_o$).}
+\caption{Power of the two-trials rule (2TR: $\minBF_{o} \leq 1/3$ and
+  $\minBF_{r} \leq 1/3$), the replication Bayes factor ($\BFr \leq 1/3$), the
+  sceptical Bayes factor ($\BFs \leq 1/3$), and the recalibrated sceptical
+  $p$-value (\mbox{$\tilde{p}_{\mathrm{S}} \leq 1 - \Phi\{z_{\gamma}\}$} with
+  $\gamma = 1/3$) as a function of the relative variance
+  $c = \sigma^2_o/\sigma^2_r$ for different original $z$-values
+  $z_o = \that_o/\sigma_o$ (respectively corresponding minimum Bayes factor
+  $\minBF_o$).}
 \label{fig2:condpower}
 \end{figure}
 
@@ -1113,7 +1111,7 @@ decreasing variances the estimates will converge to the true effect size
 Since $c = 1$, the sceptical Bayes factor is given by
 equation~\eqref{eq2:BFsc1}. Moreover, we are allowed to use of the approximation
 \mbox{$\lw{-1}(x) \approx \log(-x) - \log(-\log(-x))$} as the argument of the
-Lambert function is close to zero due to $\abs{z_{o}} \to \infty$ \citep[p.
+Lambert W function is close to zero due to $\abs{z_{o}} \to \infty$ \citep[p.
 350]{Corless1996}. Taken together, we have
 \begin{align}
   \label{eq2:BFsc1lim2}
@@ -1521,7 +1519,7 @@ All analyses were performed in the R programming language version
 4.2.2 \citep{R}. The code to
 reproduce this manuscript is available at
 \url{https://gitlab.uzh.ch/samuel.pawel/BFScode}. We used the implementation of
-the Lambert $W$ function from the package \texttt{lamW} \citep{Adler2015},
+the Lambert W function from the package \texttt{lamW} \citep{Adler2015},
 graphics were created with the \texttt{ggplot2} package \citep{Wickham2016}, the
 sceptical $p$-value and related calculations were conducted using the package
 \texttt{ReplicationSuccess} available on the Comprehensive R Archive Network
@@ -1593,15 +1591,15 @@ with
     \text{undefined} & ~~ \text{else}
   \end{cases}
 \end{align}
-where $\lw{-1}(\cdot)$ is the branch of the Lambert $W$ function that satisfies
-$W(y) \leq -1$ for \mbox{$y \in [-e^{-1}, 0)$}, ensuring that
+where $\lw{-1}(\cdot)$ is the branch of the Lambert W function that satisfies
+$\mathrm{W}(y) \leq -1$ for \mbox{$y \in [-e^{-1}, 0)$}, ensuring that
 $\gy \leq \gminBFo$. See Appendix~\ref{appendix:lambertW} for details about the
-Lambert $W$ function. For some $z_o$, equation \eqref{sspv2} can also be
-satisfied for negative $\gy$, which is why we need to add the condition
-$-z_o^2/q \geq 1$ in equation \eqref{eq2:solutionvss}, such that $\gy$ is a
-valid relative variance.
+Lambert W function. For some $z_o$, equation \eqref{sspv2} can also be satisfied
+for negative $\gy$, which is why we need to add the condition $-z_o^2/q \geq 1$
+in equation \eqref{eq2:solutionvss}, such that $\gy$ is a valid relative
+variance.
 
-As $z_{o}^{2}$ becomes larger, the argument to the Lambert function
+As $z_{o}^{2}$ becomes larger, the argument to the Lambert W function
 $x = -z_{o}^{2}\exp(-z_{o}^{2})/\gamma^{2}$ will approach zero, so the
 approximation $\lw{-1}(x) \approx \log(-x) - \log(-\log(-x))$ can be applied
 \citep[p. 350]{Corless1996}. This leads to
@@ -1614,23 +1612,23 @@ $z_{o}^{2} \to \infty$, which means that the sufficiently sceptical relative
 prior variance converges to zero for increasingly compelling evidence from the
 original study.
 
-\section{The Lambert \textit{W} function}
+\section{The Lambert W function}
 \label{appendix:lambertW}
-The Lambert $W$ function \citep{Corless1996} is defined as the function
-$W(\cdot)$ satisfying
-$$W(y) \cdot \exp\{W(y)\} = y$$
+The Lambert W function \citep{Corless1996} is defined as the function
+$\mathrm{W}(\cdot)$ satisfying
+$$\mathrm{W}(y) \cdot \exp\{\mathrm{W}(y)\} = y$$
 and it is also known as ``product logarithm`` since it returns the number which
 plugged in the exponential function and then multiplied by itself produces $y$.
-For real $y$, $W(y)$ is only defined for $y \geq - e^{-1}$ and for
+For real $y$, $\mathrm{W}(y)$ is only defined for $y \geq - e^{-1}$ and for
 $y \in [-e^{-1}, 0)$ the function has two branches that are commonly denoted by
-$\lw{0}(\cdot)$, the branch with $W(y) \geq -1$, and $\lw{-1}(\cdot)$, the
-branch with $W(y) \leq -1$ (see Figure \ref{fig2:lambertW} for an illustration).
+$\lw{0}(\cdot)$, the branch with $\mathrm{W}(y) \geq -1$, and $\lw{-1}(\cdot)$, the
+branch with $\mathrm{W}(y) \leq -1$ (see Figure \ref{fig2:lambertW} for an illustration).
 \begin{figure}[!htb]
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{images/paper2/plot-Lambert-1}
 \end{knitrout}
-\caption{Lambert $W$ function for real argument $y$.}
+\caption{Lambert W function for real argument $y$.}
 \label{fig2:lambertW}
 \end{figure}
 
@@ -1692,7 +1690,7 @@ compute it. However, when $c = 1$, equation~\eqref{eq2:bfsroot} simplifies
   1 + \frac{(1 - d)^{2}}{2}\right)\right\}.
 \end{align}
 Multiplying~\eqref{eq2:bfsroot2} by $-z_{o}^{2}(1 + d^{2})/2$ and applying the
-Lambert $W$ function leads to
+Lambert W function leads to
 \begin{align}
   \label{eq2:gintersect}
   % q &= W\left(-\frac{z_A^2}{\sqrt{2}} \cdot
@@ -1714,18 +1712,18 @@ Lambert $W$ function leads to
 \end{align}
 with the condition that $-z_o^2(1 + d^{2})/(2k) \geq 1$ such that $g_*$ is a
 valid relative variance, as the equation may otherwise be satisfied for negative
-$g_*$. Since the argument to $W(\cdot)$ is real and negative (if $z_{o}\neq 0$),
-the branches $\lw{-1}(\cdot)$ and $\lw{0}(\cdot)$ both provide solutions that
-can fulfil the equation (assuming the argument is not smaller than $-e^{-1}$
-which would mean that there are no intersections). It must also hold that
-$g_{*} \leq g_{\minBF_{o}} = \max\{z_{o}^{2} - 1, 0\}$ for $g_{*}$ to be a valid
-sufficiently sceptical prior variance. Hence, when $|d| \leq 1$, the $g_{*}$
-from~\eqref{eq2:gintersect} can only be computed with the $\lw{-1}(\cdot)$
-branch, whereas for $|d| > 1$ and when $-k \geq (1 + d^{2})/2$ the solution
-$g_{*}$ is computed from the $\lw{0}(\cdot)$ branch. Plugging the relative prior
-variance $g_{*}$ from~\eqref{eq2:gintersect} into the Bayes factor
-from~\eqref{eq2:BFo}, we obtain the expression for the sceptical Bayes factor
-in~\eqref{eq2:BFsc1}.
+$g_*$. Since the argument to $\mathrm{W}(\cdot)$ is real and negative (if
+$z_{o}\neq 0$), the branches $\lw{-1}(\cdot)$ and $\lw{0}(\cdot)$ both provide
+solutions that can fulfil the equation (assuming the argument is not smaller
+than $-e^{-1}$ which would mean that there are no intersections). It must also
+hold that $g_{*} \leq g_{\minBF_{o}} = \max\{z_{o}^{2} - 1, 0\}$ for $g_{*}$ to
+be a valid sufficiently sceptical prior variance. Hence, when $|d| \leq 1$, the
+$g_{*}$ from~\eqref{eq2:gintersect} can only be computed with the
+$\lw{-1}(\cdot)$ branch, whereas for $|d| > 1$ and when $-k \geq (1 + d^{2})/2$
+the solution $g_{*}$ is computed from the $\lw{0}(\cdot)$ branch. Plugging the
+relative prior variance $g_{*}$ from~\eqref{eq2:gintersect} into the Bayes
+factor from~\eqref{eq2:BFo}, we obtain the expression for the sceptical Bayes
+factor in~\eqref{eq2:BFsc1}.
 
 
 \section{Bayes factor with truncated advocacy prior}
