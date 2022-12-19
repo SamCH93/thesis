@@ -11,7 +11,7 @@
 
 
 
-\begin{wrapfigure}{r}{0.29\textwidth}
+\begin{wrapfigure}{r}{0.285\textwidth}
   \centering
   \includegraphics[width = 0.2\textwidth]{images/xkcdCrop.png}
   \caption*{Replication studies as illustrated by Randall Munroe
@@ -28,10 +28,10 @@
 Being able to trust scientific findings is essential for making evidence-based
 decisions. But how can we know whether a scientific finding is trustworthy? For
 instance, how can we know whether the protective effect of a vaccine found in a
-study is indeed existent, or whether it is just a spurious finding? One way to
-answer this question is through the use of \emph{replication studies}.
+study is indeed existent? One way to answer this question is through the use of
+\emph{replication studies}.
 
-A replication study (or, simply, replication) involves repeating the original
+A replication study (or simply replication) involves repeating the original
 study as closely as possible but with new subjects. If the replication yields
 similar results to the original study, this increases our confidence in the
 original finding. However, if the replication study yields conflicting results,
@@ -47,23 +47,24 @@ replication is typically a requirement for acceptance of newly proposed
 scientific theories (\eg{} a new physical model). Yet, replication studies are
 not only important for researchers, but also for decision makers and the general
 population, as the implementation of policies based on scientific findings may
-also depend on whether these findings can be replicated. For instance, the
-United States food and drug administration requires ``\textit{at least two
-  adequate and well-controlled studies, each convincing on its own, to establish
-  effectiveness}'' \citep[p. 3]{FDA1998} for market approval of a drug. The
-results from replication studies may hence have real-world consequences. It is
-therefore important that the methodological aspects of replication studies, such
-as their statistical design and analysis, are well understood.
+also depend on whether these findings can be replicated. For instance, for a
+drug to be approved to the market, the United States food and drug
+administration requires ``\textit{at least two adequate and well-controlled
+  studies, each convincing on its own, to establish effectiveness}'' \citep[p.
+3]{FDA1998}. The results from replication studies may hence have real-world
+consequences. It is therefore important that the methodological aspects of
+replication studies, such as their statistical design and analysis, are well
+understood.
 
 Despite their importance, the traditional academic system has made it
-unattractive for researchers to conduct replication studies; publications,
+unattractive for researchers to conduct replication studies as publications,
 citations, and grant money are typically easier to acquire by conducting novel
 research. This is because until recently, most scientific journals hardly
-published any replication studies as the emphasis was on ``innovation'' rather
-than on ``repetition'' \citep{Makel2012, Martin2017, Coiera2021}. As a result,
-researchers often had no other choice than to focus their efforts on producing
-novel and eye-catching research results in order to build successful careers
-\citep{Binswanger2014, Moher2018}.
+published any replication studies since the emphasis was on ``innovation''
+rather than on ``repetition'' \citep{Makel2012, Martin2017, Coiera2021}. As a
+result, researchers often had no other choice than to focus their efforts on
+producing novel and eye-catching research results in order to build successful
+careers \citep{Binswanger2014, Moher2018}.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
@@ -174,28 +175,25 @@ ggarrange(plotA, plotB, ncol = 2)
 \label{fig:scholar}
 \end{figure}
 
-In the midst of this crisis, % , particularly from the hard-hit
-% field of psychology,
-various reforms were implemented to prevent an escalation of the situation % and
-% save the reputation of science
-\citep[for an overview see \eg{}][]{Munafo2017}. For instance, some journals
-adopted the ``registered report'' format \citep{Chambers2021} in which a study
-proposal is peer reviewed \emph{before} the study is conducted, and which, if
-accepted, gives provisional publication acceptance regardless of the study
-outcome. Similarly, digital infrastructure platforms, such as Zenodo
-(\url{https://zenodo.org}) or the Open Science Framework (\url{https://osf.io}),
-were created to facilitate preregistration, preprints, code and data sharing,
-all of which have substantially increased over the last decade
-\citep{Kidwell2016, Nosek2018, Rawlinson2019}. The practice of conducting
-replication studies has also gained popularity. Several academic journals and
-funders are now explicitly promoting replication research \citep{NWO2016,
-  NSL2018, Nature2022}. Figure~\ref{fig:scholar} (left) illustrates this trend
-by the yearly number of results for the search term ``replication study''
-obtained from the search engine Web of Science. The numbers have been rapidly
-growing, especially since the mid-2000s. This trend could possibly be explained
-by the fact that more research results are published each year but also when the
-numbers are normalized by the number of results for the search term ``study'',
-the increasing trend is still visible.
+In the midst of this crisis, various reforms were implemented to prevent an
+escalation of the situation \citep[for an overview see \eg{}][]{Munafo2017}. For
+instance, some journals adopted the ``registered report'' format
+\citep{Chambers2021} in which a study proposal is peer reviewed \emph{before}
+the study is conducted, and which, if accepted, gives provisional publication
+acceptance regardless of the study outcome. Similarly, digital infrastructure
+platforms, such as Zenodo (\url{https://zenodo.org}) or the Open Science
+Framework (\url{https://osf.io}), were created to facilitate pre-registration,
+preprints, code and data sharing, all of which have substantially increased over
+the last decade \citep{Kidwell2016, Nosek2018, Rawlinson2019}. The practice of
+conducting replication studies has also gained popularity. Several academic
+journals and funders are now explicitly promoting replication research
+\citep{NWO2016, NSL2018, Nature2022}. Figure~\ref{fig:scholar} (left)
+illustrates this trend by the yearly number of results for the search term
+``replication study'' obtained from the search engine Web of Science. The
+numbers have been rapidly growing, especially since the mid-2000s. This trend
+could possibly be explained by the fact that more research results are published
+each year but also when the numbers are normalized by the number of results for
+the search term ``study'', the increasing trend is still visible.
 
 
 \subsection{Statistical aspects of replication studies}
@@ -241,20 +239,19 @@ overview about these and other methods which have been used in practice.
 \end{table}
 
 Most methods for analyzing replication studies can be formulated in terms of
-study-level summary statistics as shown in Table~\ref{tab:meta}. % Effect
-% estimates, standard error, confidence intervals, and $p$-values
-All of these are routinely reported in research articles, and if one of them is
-missing they can typically be calculated from the others. Using summary
-statistics is also often the only possible way for conducting the replication
-success analysis as the raw data from the original study may not be available to
-the researchers conducting the replication study. The most important statistics
-are the effect estimates $\that_{o}$ and $\that_{r}$. They provide an estimate
-of the underlying effect size $\theta$ which quantifies the true effect or
-association of an intervention/exposure with an outcome variable. Typical effect
-sizes are mean differences and correlations (for continuous outcomes), odds
-ratios (for binary outcomes), or hazard ratios (for time-to-event outcomes).
-Depending on the type of effect size, a transformation might be required so that
-the assumption of approximately normally distributed effect estimates around the
+study-level summary statistics as shown in Table~\ref{tab:meta}. All of these
+are routinely reported in research articles, and if one of them is missing they
+can typically be calculated from the others. Using summary statistics is also
+often the only possible way for conducting the replication success analysis as
+the raw data from the original study may not be available to the researchers
+conducting the replication study. The most important statistics are the effect
+estimates $\that_{o}$ and $\that_{r}$. They provide an estimate of the
+underlying effect size $\theta$ which quantifies the true effect or association
+of an intervention/exposure with an outcome variable. Typical effect sizes are
+mean differences and correlations (for continuous outcomes), odds ratios (for
+binary outcomes), or hazard ratios (for time-to-event outcomes). Depending on
+the type of effect size, a transformation might be required so that the
+assumption of approximately normally distributed effect estimates around the
 unknown effect size $\theta$ (for large enough sample sizes) is justified. This
 could be, for instance, the Fisher $z$-transformation for correlations or the
 log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
@@ -280,7 +277,7 @@ in Table~\ref{tab:meta}.
     \toprule
     Criterion type & Description \\
     \midrule
-    Significance & The original and replication $p$-values are smaller than
+    Significance & \sloppy The original and replication $p$-values are smaller than
                    a threshold $\alpha$ and their effect estimates show
                    the same direction
                    (\mbox{$p_{o} < \alpha$}, \mbox{$p_{r} < \alpha$}, and
@@ -300,21 +297,22 @@ in Table~\ref{tab:meta}.
                            direction as the original one and is at least $d_{\text{min}}$ times as large (\mbox{$d = \that_{r}/\that_{o} \geq d_{\text{min}}$}).
                            Usually $d_{\text{min}} = 1$. \\
                    & \\
-    Confidence interval & The replication effect estimate is contained in the
-                          $(1 - \alpha)$ original confidence interval
+    Confidence interval & \sloppy The replication effect estimate is contained in the
+                          \mbox{$(1 - \alpha)\times100\%$} original confidence interval
                           ($\that_{r} \in [\that_{o} - z_{\alpha/2}\sigma_{o},
                           \that_{o} + z_{\alpha/2}\sigma_{o}]$).
                           Sometimes, also defined as the original effect estimate is
-                          contained in the $(1 - \alpha)$ replication confidence interval
-                          ($\that_{o} \in [\that_{r} - z_{\alpha/2}\sigma_{r},
-                          \that_{r} + z_{\alpha/2}\sigma_{r}]$).
+                          contained in the \mbox{$(1 - \alpha)\times100\%$} replication
+                          confidence interval
+                          (\mbox{$\that_{o} \in [\that_{r} - z_{\alpha/2}\sigma_{r},
+                          \that_{r} + z_{\alpha/2}\sigma_{r}]$}).
                           Usually $\alpha = 5\%$. \\
                    & \\
     Prediction interval ($Q$-test) & The replication effect estimate is contained in its
-                                     $(1 - \alpha)$ prediction interval
-                                     ($\that_{r} \in [\that_{o} - z_{\alpha/2}\surd(\sigma_{o}^{2}
+                                     $(1 - \alpha)\times100\%$ prediction interval
+                                     \mbox{($\that_{r} \in [\that_{o} - z_{\alpha/2}\surd(\sigma_{o}^{2}
                                      + \sigma_{r}^{2}), \that_{o} + z_{\alpha/2}\surd(\sigma_{o}^{2}
-                                     + \sigma_{r}^{2})]$). Usually $\alpha = 5\%$.
+                                     + \sigma_{r}^{2})]$)}. Usually $\alpha = 5\%$.
                                      This criterion is equivalent to $p_{Q} \geq \alpha$ where
                                      $p_{Q}$ is the $p$-value from the meta-analytic $Q$-test
                                      $p_{Q} = 2\{1 - \Phi(\surd Q)\}$ with $Q$-statistic
@@ -379,13 +377,11 @@ criterion based on the replication confidence interval ignores the uncertainty
 from the original study. The prediction interval criterion takes into account
 both sources of uncertainty \citep{Patil2016}. Yet, declaring ``replication
 success'' based on the prediction interval may be logically questionable due to
-its connection to the meta-analytic $Q$-test.
-% as it may also be seen as an instance of the ``absence of evidence fallacy''
-% \citep{Altman1995};
-That is, if the $p$-value from the $Q$-test is larger than $\alpha$ this is
-equivalent to the replication effect estimate $\that_{r}$ being contained in its
-$(1- \alpha)$ prediction interval. The null hypothesis of this test is defined
-that the underlying effect sizes of original and replication study are the same
+its connection to the meta-analytic \mbox{$Q$-test}. That is, if the $p$-value
+from the $Q$-test is larger than $\alpha$ this is equivalent to the replication
+effect estimate $\that_{r}$ being contained in its $(1- \alpha)\times 100\%$
+prediction interval. The null hypothesis of this test is defined that the
+underlying effect sizes of original and replication study are the same
 ($H_{0} \colon \theta_{o} = \theta_{r}$), so a rejection of this null hypothesis
 corresponds to demonstrating replication failure and not replication success.
 Interpreting a failure to reject the null hypothesis as evidence for it is again
@@ -422,7 +418,7 @@ mean difference effect estimates along with standard errors, and only they will
 be used in the subsequent analyses.
 
 \begin{figure}[!htb]
-<< "RPCB-graph", fig.height = 3.5 >>=
+<< "RPCB-graph", fig.height = 3.75 >>=
 za <- qnorm(p = 0.975)
 rpcb <- read.csv("data/rpcb.csv") |>
     mutate(id = paste0("(", paper, ", ", experiment, ", ", effect, ")"),
@@ -450,6 +446,8 @@ zoom <- c(-2, 12)
 alphazoom <- 0.6
 ltyzoom <- 3
 rpcbWithoutNA <- na.omit(rpcb)
+cols <- c("#1A1A1A80", "#1B9E77")
+names(cols) <- levels(rpcbWithoutNA$rsig)
 plotA <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
     annotate(geom = "segment", x = zoom[1], xend = zoom[2],
              y = zoom[1], yend = zoom[1], alpha = alphazoom,
@@ -466,13 +464,14 @@ plotA <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
     geom_abline(intercept = 0, slope = 1, alpha = 0.3) +
     geom_hline(yintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
     geom_vline(xintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
-    geom_point(aes(fill = rsig), shape = 21, alpha = 0.8) +
+    geom_point(aes(fill = rsig), shape = 21, alpha = 0.9) +
     geom_rug(aes(color = rsig), size = 0.3, show.legend = FALSE) +
     labs(x = "Original effect estimate (SMD)",
          y = "Replication effect estimate (SMD)",
          fill = "") +
     coord_fixed(xlim = c(-5, 30), ylim = c(-5, 30)) +
-    scale_fill_discrete(labels = scales::parse_format()) +
+    scale_fill_manual(values = cols, labels = scales::parse_format()) +
+    scale_color_manual(values = cols) +
     theme_bw() +
     theme(panel.grid = element_blank(),
           legend.position = c(0.5, 0.835))
@@ -481,13 +480,15 @@ plotB <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
     geom_abline(intercept = 0, slope = 1, alpha = 0.3) +
     geom_hline(yintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
     geom_vline(xintercept = 0, lty = 2, alpha = 0.9, size = 0.4) +
-    geom_point(aes(fill = rsig), shape = 21, alpha = 0.8,
+    geom_point(aes(fill = rsig), shape = 21, alpha = 0.9,
                show.legend = FALSE) +
     geom_rug(aes(color = rsig), size = 0.3, show.legend = FALSE) +
     labs(x = "Original effect estimate (SMD)",
          y = "Replication effect estimate (SMD)",
          fill = "") +
     coord_fixed(xlim = zoom, ylim = zoom) +
+    scale_fill_manual(values = cols, labels = scales::parse_format()) +
+    scale_color_manual(values = cols) +
     theme_bw() +
     theme(panel.grid = element_blank())
 ggpubr::ggarrange(plotA, plotB, ncol = 2, align = "v")
@@ -514,7 +515,7 @@ level. Specifically, from the
 significant in the replication study (in the same direction).
 
 \begin{figure}[!htb]
-<< "RPCB-table1", results = "asis", fig.height = 6 >>=
+<< "RPCB-table1", results = "asis", fig.height = 6.5 >>=
 ## show number of successes
 alpha <- 0.05
 dmin <- 1
@@ -599,7 +600,7 @@ retested'' in][]{Carey2015}, is a simplification of the matter.
     $d = \that_{r}/\that_{o}$, original \textit{p}-value $p_{o}$, replication
     \textit{p}-value $p_{r}$, meta-analytic \textit{p}-value $p_{m}$, $Q$-test
     \textit{p}-value $p_{Q}$, and one-sided sceptical \textit{p}-value
-    $p_{\mathrm{S}}$. A replication success (green) threshold of $\alpha = 5\%$
+    $p_{\mathrm{S}}$. A replication success (green-bold) threshold of $\alpha = 5\%$
     is used for two-sided \textit{p}-values, $\alpha = 2.5\%$ for one-sided
     $p$-values, and $d_{\text{min}} = 1$ for the relative effect estimate.}
   \label{tab:RPCB}
@@ -614,7 +615,7 @@ ciFormat. <- function(lower, upper, dollar = FALSE, digits = 2) {
 ciFormat <- Vectorize(FUN = ciFormat.)
 
 ## function to format p-value
-pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE) {
+pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE, font = "mathrm") {
     if (is.na(p)) {
         out <- NA
     } else {
@@ -629,7 +630,7 @@ pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE) {
             out <- "< 0.0001"
         }
         if (dollar) {
-            out <- paste0("$", out, "$")
+            out <- paste0("$\\", font, "{", out, "}$")
         }
     }
     return(out)
@@ -637,7 +638,7 @@ pFormat. <- function(p, digits = 2, dollar = FALSE, phantom = FALSE) {
 pFormat <- Vectorize(FUN = pFormat.)
 
 ## function to format (relative) effect estimate
-dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
+dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE, font = "mathrm") {
     if (is.na(x)) {
         out <- NA
     } else {
@@ -645,7 +646,9 @@ dFormat. <- function(x, digits = 2, phantom = FALSE, dollar = FALSE) {
         if (phantom && (x >= 0)) {
            out <- paste0("\\phantom{-}", out)
         }
-        if (dollar) out <- paste0("$", out, "$")
+        if (dollar) {
+            out <- paste0("$\\", font, "{", out, "}$")
+            }
     }
     return(out)
 }
@@ -653,14 +656,20 @@ dFormat <- Vectorize(FUN = dFormat.)
 
 ## function to color code numerical value in LaTeX table based on threshold
 tableFormat. <- function(x, outFun = pFormat, threshold = 0.05, col1 = "dark2green",
-                         col2 = "dark2orange") {
+                         col2 = "dark2orange", font1 = "mathbf", font2 = "mathrm") {
     if (is.na(x)) {
         out <- NA
     } else {
-        if (x < threshold) col <- col1
-        else col <- col2
+        if (x < threshold) {
+            col <- col1
+            font <- font1
+        } else {
+            col <- col2
+            font <- font2
+        }
         out <- paste0("\\textcolor{", col, "}{",
-                      outFun(x, dollar = TRUE, phantom = TRUE), "}")
+                      outFun(x, dollar = TRUE, phantom = TRUE, font = font),
+                      "}")
     }
     return(out)
 }
@@ -678,8 +687,8 @@ rpcbTable <- rpcb |>
            smdrFormat = signif(smdr, 3),
            smdmFormat = signif(smdm, 3),
            dFormat = tableFormat(x = d, outFun = dFormat,
-                                 threshold = 1, col1 = "dark2orange",
-                                 col2 = "dark2green"),
+                                 threshold = 1, col1 = "dark2orange", font1 = "mathrm",
+                                  col2 = "dark2green", font2 = "mathbf"),
            cioL = smdo - za*so,
            cioU = smdo + za*so,
            cirL = smdr - za*sr,
@@ -690,8 +699,8 @@ rpcbTable <- rpcb |>
            pr2Format = tableFormat(x = pr2),
            pm2Format = tableFormat(x = pm2),
            ps1Format = tableFormat(x = ps1, threshold = 0.025),
-           pQFormat = tableFormat(x = pQ, col1 = "dark2orange",
-                                  col2 = "dark2green"),
+           pQFormat = tableFormat(x = pQ, col1 = "dark2orange", font1 = "mathrm",
+                                  col2 = "dark2green", font2 = "mathbf"),
            cioFormat = ciFormat(lower = cioL, upper = cioU, dollar = TRUE),
            cirFormat = ciFormat(lower = cirL, upper = cirU, dollar = TRUE),
            cimFormat = ciFormat(lower = cimL, upper = cimU), dollar = TRUE) |>
@@ -735,8 +744,8 @@ methods have been proposed \citep[among others]{Verhagen2014, Simonsohn2015,
   Hedges2019, Mathur2020, Held2020, Pawel2020, Bonett2020}. The focus of this
 thesis is to refine and extend the proposal from \citet{Held2020} which combines
 \emph{reverse-Bayes inference} and \emph{Bayesian model criticism} in a method
-for assessing replication success. In the following, I will summarize the
-methods and its technical underpinnings.
+for assessing replication success. In the following, I will summarize the method
+and its technical underpinnings.
 
 \subsubsection{Reverse-Bayes inference}
 
@@ -794,8 +803,8 @@ with mean and variance
   &\text{and}&
   &\sigma^{2}_{\text{post}} = \frac{1}{1/\sigma^{2}_{o} + 1/\tau^{2}}.&
 \end{align*}
-The associated $(1- \alpha)$ highest posterior density credible interval has
-limits
+The associated $(1- \alpha)\times 100\%$ highest posterior density credible
+interval has limits
 \begin{align}
   \mu_{\text{post}} \pm z_{\alpha/2} \, \sigma_{\text{post}}
   \label{eq:postCI}
@@ -815,7 +824,7 @@ choose different prior variances $\tau^{2}$. As a default choice,
 \citet{Held2020} proposed to use the reverse-Bayes approach from
 \citet{Matthews2001b}, that is, to determine the \emph{sufficiently sceptical
   prior variance} $\tau^{2}_{\alpha}$ so that the appropriate limit of the
-$(1 - \alpha)$ credible interval is just fixed to zero. The resulting prior then
+$(1 - \alpha)\times 100\%$ credible interval is just fixed to zero. The resulting prior then
 represents the beliefs of a sceptic who is just stubborn enough to not find the
 original study convincing at level $\alpha$.
 
@@ -985,8 +994,9 @@ $f(\theta \given \text{M})$.
 
 Based on these observations, Box proposed two general approaches for conducting
 Bayesian model criticism. First, the predictive density of the observed data (or
-the value of a ``checking function'' applied to the observed data) can be
-compared to its reference distribution via a \emph{prior predictive $p$-value}
+the predictive density of a ``checking function'' applied to the observed data)
+can be compared to its reference distribution via a \emph{prior predictive
+  $p$-value}
 \begin{align}
   p_{\text{Box}}
   % &= \Pr\left\{f(\text{data} \given \text{M}) <
@@ -1148,24 +1158,23 @@ have to be dichotomized in this manner, but can also be interpreted as a
 quantitative measure of replication success; the smaller $p_{\text{S}}$, the
 higher the degree of replication success.
 
-The sceptical $p$-value has several interesting
-properties \citep[Section 3]{Held2020}: First, it is always larger than the
-maximum of the original and replication $p$-values
-($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that both $p$-values have to be
-smaller than $\alpha$ such that replication success at level $\alpha$ is
-possible. The sceptical $p$-value hence requires \emph{both} studies to be
-sufficiently convincing on their own (in terms of their $p$-values), similar to
-the significance criterion for replication success. Second, if the $p$-values
-$p_{o}$ and $p_{r}$ remain fixed but the relative effect estimate
-$d = \that_{r}/\that_{o}$ decreases towards zero, the sceptical $p$-value
-increases, meaning that shrinkage of the replication effect estimate is
-penalized ($p_{\text{S}} \uparrow 1$ as $d \downarrow 0$ for fixed $p_{o}$ and
-$p_{r}$). The sceptical $p$-value thus takes effect shrinkage into account,
-unlike the significance criterion which can be achieved with any non-zero
-replication effect estimate $\that_{r}$ provided the standard error $\sigma_{r}$
-is small enough. This property is desirable in the replication setting as a
-smaller replication effect estimate $\that_{r}$ may not be practically relevant
-anymore, despite its statistical significance.
+The sceptical $p$-value has several interesting properties \citep[Section
+3]{Held2020}: First, it is always larger than the maximum of the original and
+replication $p$-values ($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that
+both $p$-values have to be smaller than $\alpha$ such that replication success
+at level $\alpha$ is possible. The sceptical $p$-value hence requires
+\emph{both} studies to be sufficiently convincing on their own (in terms of
+their $p$-values), similar to the significance criterion for replication
+success. Second, if the $p$-values $p_{o}$ and $p_{r}$ remain fixed but the
+relative effect estimate \mbox{$d = \that_{r}/\that_{o}$} decreases towards
+zero, the sceptical $p$-value increases, meaning that shrinkage of the
+replication effect estimate is penalized ($p_{\text{S}} \uparrow 1$ as
+$d \downarrow 0$ for fixed $p_{o}$ and $p_{r}$). The sceptical $p$-value thus
+takes effect shrinkage into account, unlike the significance criterion which can
+be achieved with any non-zero replication effect estimate $\that_{r}$ provided
+the standard error $\sigma_{r}$ is small enough. This property is desirable in
+the replication setting as a smaller replication effect estimate $\that_{r}$ may
+not be practically relevant anymore, despite its statistical significance.
 
 There is one problem with the (two-sided) sceptical $p$-value as defined
 in~\eqref{eq:ps}; It does not take the direction of the effect estimates into
@@ -1269,7 +1278,7 @@ ordinary $p$-value (which has a uniform distribution under the null hypothesis
 that the underlying effect size $\theta$ is zero). Moreover, when the same level
 $\alpha$ as for the significance criterion is used for dichotomizing the
 sceptical $p$-value, this leads to a much more stringent criterion for
-replication studies than the significance criterion. Many studies which
+replication success than the significance criterion. Many studies which
 intuitively seem successful will not satisfy it, and frequentist properties such
 as power and type I error rate will be impacted by it (\eg{} power and type I
 error rate will be much lower compared to the significance criterion).
