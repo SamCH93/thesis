@@ -46,6 +46,8 @@ old/
 cache/
 figure/
 misc/
+submission/
+comments/
 
 # output tex file
 thesis.tex
