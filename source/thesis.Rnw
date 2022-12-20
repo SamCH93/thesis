@@ -75,7 +75,7 @@ opts_chunk$set(fig.height = 4,
                eval = TRUE)
 
 ## should sessionInfo be printed at the end?
-Reproducibility <- TRUE
+Reproducibility <- FALSE
 
 ## Packages
 library(ggplot2) # plotting

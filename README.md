@@ -54,25 +54,22 @@ sessionInfo()
 #> 
 #> other attached packages:
 #> [1] UpSetR_1.4.0           dplyr_1.0.10           ReplicationSuccess_1.2
-#> [4] xtable_1.8-4           scales_1.2.1           ggpubr_0.4.0          
+#> [4] xtable_1.8-4           scales_1.2.1           gridExtra_2.3         
 #> [7] ggplot2_3.4.0          knitr_1.40            
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] Rcpp_1.0.9       highr_0.9        plyr_1.8.7       pillar_1.8.1    
-#>  [5] compiler_4.2.2   tools_4.2.2      evaluate_0.18    lifecycle_1.0.3 
+#>  [1] Rcpp_1.0.9       pillar_1.8.1     compiler_4.2.2   plyr_1.8.7      
+#>  [5] highr_0.9        tools_4.2.2      evaluate_0.18    lifecycle_1.0.3 
 #>  [9] tibble_3.1.8     gtable_0.3.1     pkgconfig_2.0.3  rlang_1.0.6     
-#> [13] DBI_1.1.3        cli_3.4.1        xfun_0.34        gridExtra_2.3   
-#> [17] stringr_1.4.1    withr_2.5.0      generics_0.1.3   vctrs_0.5.0     
-#> [21] cowplot_1.1.1    grid_4.2.2       tidyselect_1.2.0 glue_1.6.2      
-#> [25] R6_2.5.1         rstatix_0.7.1    fansi_1.0.3      carData_3.0-5   
-#> [29] farver_2.1.1     purrr_0.3.5      tidyr_1.2.1      car_3.1-1       
-#> [33] magrittr_2.0.3   backports_1.4.1  assertthat_0.2.1 abind_1.4-5     
-#> [37] colorspace_2.0-3 ggsignif_0.6.4   labeling_0.4.2   utf8_1.2.2      
-#> [41] stringi_1.7.8    munsell_0.5.0    broom_1.0.1 
+#> [13] DBI_1.1.3        cli_3.4.1        xfun_0.34        withr_2.5.0     
+#> [17] stringr_1.4.1    generics_0.1.3   vctrs_0.5.0      grid_4.2.2      
+#> [21] tidyselect_1.2.0 glue_1.6.2       R6_2.5.1         fansi_1.0.3     
+#> [25] farver_2.1.1     magrittr_2.0.3   assertthat_0.2.1 colorspace_2.0-3
+#> [29] labeling_0.4.2   utf8_1.2.2       stringi_1.7.8    munsell_0.5.0
 
 cat(paste(Sys.time(), Sys.timezone(), "\n"))
 
-#> 2022-12-20 10:38:35 Europe/Zurich
+#> 2022-12-20 16:18:45 Europe/Zurich
 ```
 
 
