@@ -3,7 +3,7 @@ all: cover pdf clean
 cover: cover.tex
 	pdflatex cover
 
-tex: cover abstract.tex header.tex intro.Rnw outline.tex preface.tex thesis.Rnw bibliography.bib apalikedoiurl.bst
+tex: cover.pdf abstract.tex header.tex intro.Rnw outline.tex preface.tex thesis.Rnw bibliography.bib apalikedoiurl.bst
 	R -e "knitr::knit('thesis.Rnw')" --vanilla
 
 pdf: tex
@@ -33,5 +33,6 @@ pdf2:
 	pdflatex thesis
 
 clean:  
-	rm *.aux *.log *.bbl *.out *.brf *.synctex.gz *.toc *.blg
-	rm -r .auctex-auto/
+	-rm intro.tex thesis.tex *.aux *.log *.bbl *.out *.brf *.synctex.gz *.toc *.blg
+	-rm -r .auctex-auto/
+	-rm -r figure/

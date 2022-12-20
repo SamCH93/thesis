@@ -1533,6 +1533,7 @@ archived at \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
 cat("\\newpage \\section*{Computational details}")
 @
 << "sessionInfo2", echo = Reproducibility, results = Reproducibility >>=
+cat(paste(Sys.time(), Sys.timezone(), "\n"))
 sessionInfo()
 @
 

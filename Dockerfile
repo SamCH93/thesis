@@ -27,14 +27,17 @@ CMD if [ "$pdfdocker" = "false" ] ; then \
     echo "compiling PDF outside Docker" \
     ## knit Rnw to tex and compile tex outside docker to PDF
     && make tex \
-    && mv "$FILE".tex /output \
+    && mv thesis.tex intro.tex /output \
     && mkdir -p /output/figure \
     && mv figure/* /output/figure/ ; \
     else \
     echo "compiling PDF inside Docker" \
-    ## knit Rnw to tex and compile tex inside docker to PDF
-    && Rscript -e "knitr::knit2pdf('"$FILE".Rnw')" --vanilla \
-    && mv "$FILE".pdf  /output/ ; \
+    ## run knitr to install all LaTeX packages
+    && Rscript -e "knitr::knit2pdf('thesis.Rnw')" --vanilla \
+    ## now run make command because the compiling requires custom pdflatex
+    ## commands which knitr doesn't know
+    && make pdf \
+    && mv thesis.pdf /output ; \
     fi \
     ## change file permission of output files
     && chmod -R 777 /output/

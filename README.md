@@ -71,12 +71,14 @@ sessionInfo()
 #> [33] magrittr_2.0.3   backports_1.4.1  assertthat_0.2.1 abind_1.4-5     
 #> [37] colorspace_2.0-3 ggsignif_0.6.4   labeling_0.4.2   utf8_1.2.2      
 #> [41] stringi_1.7.8    munsell_0.5.0    broom_1.0.1 
+
+cat(paste(Sys.time(), Sys.timezone(), "\n"))
+
+#> 2022-12-20 10:38:35 Europe/Zurich
 ```
 
 
 ## 2. Reproducing the thesis within a Docker container
-
-TODO: this doesn't work yet....
 
 Make sure that Docker with root rights is installed. Then run
 
@@ -84,12 +86,14 @@ Make sure that Docker with root rights is installed. Then run
 make docker
 ```
 
-This may take some time as TinyTeX needs to install several LaTeX packages. The
-Docker approach reruns the analyses in a Docker container which encapsulates the
-computational environment (R and R package versions) that was used in the
-original analysis. The only way this approach could become irreproducible is
-when the rocker/verse base image becomes unavailable and/or the MRAN snapshot of
-CRAN becomes unavailable.
+This may take some time as TinyTeX needs to install several LaTeX packages (run
+`make docker2` to compile only R code within the container but run LaTeX
+locally). The Docker approach reruns the analyses in a Docker container which
+encapsulates the computational environment (R and R package versions) that was
+used in the original analysis. The only way this approach could become
+non-reproducible is when the
+[rocker/verse](https://hub.docker.com/r/rocker/verse/tags) base image becomes
+unavailable and/or the MRAN snapshot of CRAN becomes unavailable.
 
 ## Reproducing the individual papers
 
