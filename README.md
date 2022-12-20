@@ -105,10 +105,12 @@ individually can be found at
 <https://github.com/SamCH93/RSgolden/>
 
 2) The sceptical Bayes factor for the assessment of replication success:
-<https://gitlab.uzh.ch/samuel.pawel/BFScode>
+<https://gitlab.uzh.ch/samuel.pawel/BFScode> and
+<https://gitlab.uzh.ch/samuel.pawel/BayesRep>
 
-3) Bayesian approaches to designing replication studies: 
-<https://github.com/SamCH93/BAtDRS> 
+3) Bayesian approaches to designing replication studies:
+<https://github.com/SamCH93/BAtDRS> and
+<https://github.com/SamCH93/BayesRepDesign>
 
 4) Reverse-Bayes methods for evidence assessment and research synthesis
 <https://gitlab.uzh.ch/samuel.pawel/Reverse-Bayes-Code>
@@ -117,4 +119,6 @@ individually can be found at
 sample uncertainty": <https://github.com/SamCH93/BAEcomment>
 
 6) Pitfalls and Potentials in Simulation Studies:
-<https://github.com/SamCH93/SimPaper>
+<https://github.com/SamCH93/SimPaper> and <https://github.com/LucasKook/ainet>
+
+Archives of the git repositories are also provided in `source/paper-source`.
