@@ -1,4 +1,4 @@
-all: dbuild drun
+all: docker
 
 # specify same name as in source/Makefile
 FILE=thesis

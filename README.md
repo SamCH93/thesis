@@ -8,13 +8,12 @@ hacks, use it at your own risk!
 
 ## 1. Reproducing the thesis locally
 
-Make sure that LaTeX (e.g., texlive-full on Ubuntu), R, and the following R
-packages are installed
+Make sure that LaTeX (e.g., texlive-full on Ubuntu), R, and the R packages in
+`CRANpackages.txt` are installed
 
-```r
-pkgs <- c("knitr", "ggplot2", "xtable", "ReplicationSuccess", "dplyr", "UpSetR",
-          "ggpubr", "scales")
-install.packages(pkgs)
+```sh
+## install packages from CRAN by running from a shell
+R -e 'install.packages(read.delim("CRANpackages.txt", header = FALSE)[,1])'
 ```
 
 Then run 
@@ -29,8 +28,7 @@ this should produce `thesis.pdf`.
 Although the analyses depend on only few dependencies, this approach may lead to
 different results (or not even compile successfully) in the future if R or the
 packages change. The R and R package versions which were used when the thesis
-was successfully compiled the last time are visible in the following sessionInfo
-output
+was successfully compiled the last time are visible in the following output
 
 ```r
 sessionInfo()

@@ -79,7 +79,7 @@ Reproducibility <- TRUE
 
 ## Packages
 library(ggplot2) # plotting
-library(ggpubr) # combining ggplots
+library(gridExtra) # combining ggplots
 library(scales) # scales for plots
 library(xtable) # table
 library(ReplicationSuccess) # replication study stuff

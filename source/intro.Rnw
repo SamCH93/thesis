@@ -39,7 +39,7 @@ this lowers our confidence in the original finding. %  As such, replication stud
 % are an essential part of the scientific method. They provide a means for
 % substantiating genuine research findings and refuting findings which occurred
 % merely by chance.
-The concept of replicability has long been a central part of the scientific
+The concept of replicability has long been a cornerstone of the scientific
 method. For instance, \citet[p. 13]{Fisher1935} noted ``\textit{no isolated
   experiment, however significant in itself, can suffice for the experimental
   demonstration of any natural phenomenon}''. For this reason, ``successful''
@@ -166,7 +166,7 @@ plotB <- ggplot(data = WebofScienceDF, aes(x = year, y = proportion)) +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major.x = element_blank())
 
-ggarrange(plotA, plotB, ncol = 2)
+grid.arrange(plotA, plotB, ncol = 2)
 @
 \caption{Yearly number of results for search term ``replication study'' on Web
   of Science (left), and number of results normalized by the number of results
@@ -490,7 +490,7 @@ plotB <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
     scale_color_manual(values = cols) +
     theme_bw() +
     theme(panel.grid = element_blank())
-ggpubr::ggarrange(plotA, plotB, ncol = 2, align = "v")
+grid.arrange(plotA, plotB, ncol = 2)
 @
 \caption{Results for 132 effects from the ``Reproducibility Project: Cancer
   Biology'' \citep{Errington2021} for which effect estimates and standard errors
@@ -779,8 +779,8 @@ it with the data, and end up with a posterior, the reverse-Bayes approach starts
 with the posterior and ends up with the prior. For example, the posterior may be
 specified to indicate evidence for/against a particular hypothesis under
 investigation. Reverse-Bayes inference then revolves around the question of
-whether the resulting prior is plausible in light of external knowledge, and if
-so, this indicates support for the specified posterior.
+whether the resulting prior is plausible in light of external data/knowledge,
+and if so, this indicates support for the specified posterior.
 
 To illustrate reverse-Bayes inference, let us return to the replication setting.
 Assume we want to conduct inference about the unknown effect size $\theta$ based
@@ -1145,9 +1145,9 @@ where
 \end{align*}
 with arithmetic mean $z_{\text{A}}^{2} = (z^{2}_{o} + z^{2}_{r})/2$ and harmonic
 mean $z_{\text{H}}^{2} = 2/(1/z^{2}_{o} + 1/z^{2}_{r})$ of the squared
-$z$-statistics, and variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$.
-Replication success at level $\alpha$ is then equivalent to
-$p_{\text{S}} \leq \alpha$. For instance, the sceptical $p$-values of the three
+$z$-statistics, and variance ratio $c = \sigma^{2}_{o}/\sigma^{2}_{r}$. A
+sceptical $p$-value $\ps \leq \alpha$ is then equivalent to replication success
+at level $\alpha$. For instance, the sceptical $p$-values of the three
 replication studies in Figure~\ref{fig:RBillustration} are
 $p_{\text{S}} = \Sexpr{psFormat[1]}$, $p_{\text{S}} = \Sexpr{psFormat[2]}$, and
 $p_{\text{S}} = \Sexpr{psFormat[3]}$ (from left to right), so we can see that
@@ -1162,18 +1162,18 @@ The sceptical $p$-value has several interesting properties \citep[Section
 replication $p$-values ($p_{\text{S}} > \max\{p_{o}, p_{r}\}$), meaning that
 both $p$-values have to be smaller than $\alpha$ such that replication success
 at level $\alpha$ is possible. The sceptical $p$-value hence requires
-\emph{both} studies to be sufficiently convincing on their own (in terms of
-their $p$-values), similar to the significance criterion for replication
-success. Second, if the $p$-values $p_{o}$ and $p_{r}$ remain fixed but the
-relative effect estimate \mbox{$d = \that_{r}/\that_{o}$} decreases towards
-zero, the sceptical $p$-value increases, meaning that shrinkage of the
-replication effect estimate is penalized ($p_{\text{S}} \uparrow 1$ as
-$d \downarrow 0$ for fixed $p_{o}$ and $p_{r}$). The sceptical $p$-value thus
-takes effect shrinkage into account, unlike the significance criterion which can
-be achieved with any non-zero replication effect estimate $\that_{r}$ provided
-the standard error $\sigma_{r}$ is small enough. This property is desirable in
-the replication setting as a smaller replication effect estimate $\that_{r}$ may
-not be practically relevant anymore, despite its statistical significance.
+\emph{both} studies to be sufficiently convincing (in terms of their
+$p$-values), similar to the significance criterion for replication success.
+Second, if the $p$-values $p_{o}$ and $p_{r}$ remain fixed but the relative
+effect estimate \mbox{$d = \that_{r}/\that_{o}$} decreases towards zero, the
+sceptical $p$-value increases, meaning that shrinkage of the replication effect
+estimate is penalized ($p_{\text{S}} \uparrow 1$ as $d \downarrow 0$ for fixed
+$p_{o}$ and $p_{r}$). The sceptical $p$-value thus takes effect shrinkage into
+account, unlike the significance criterion which can be achieved with any
+non-zero replication effect estimate $\that_{r}$ provided the standard error
+$\sigma_{r}$ is small enough. This property is desirable in the replication
+setting as a smaller replication effect estimate $\that_{r}$ may not be
+practically relevant anymore, despite its statistical significance.
 
 There is one problem with the (two-sided) sceptical $p$-value as defined
 in~\eqref{eq:ps}; It does not take the direction of the effect estimates into
@@ -1295,7 +1295,7 @@ default level for thresholding the sceptical $p$-value called the \emph{golden
 derivation). The golden level is defined through the property that for an
 original study which was borderline significant ($p_{o} = \alpha$), replication
 success based on $p_{\text{S}} \leq \alpha_{G}$ is only possible if the
-replication effect estimate is at least as large as the original one
+replication effect estimate does not shrink compared to the original one
 ($d \geq 1$). For instance, for the one-sided significance level
 $\alpha = \Sexpr{round(alpha*100, 1)}\%$, the corresponding two-sided golden
 level is $\alpha_{G} = \Sexpr{round(alphaG*100, 1)}\%$. The behavior of the
@@ -1339,24 +1339,20 @@ been a matter of long debates which is the most appropriate \citep[see
 \eg{}][]{Berger1987, Casella1987, Royall1997, Berger2003, Benjamin2017,
   Lakens2018, Amrhein2019b}. In this paper, we extend the reverse-Bayes
 assessment of replication studies to use Bayes factors \citep{Good1958,
-  Jeffreys1961} for quantifying evidence and prior-data
-conflict. % Bayes factors are also
-% used for prior-data conflict assessment as suggested by \citep{Box1980}.
-Similar to the sceptical $p$-value, the procedure leads to a single measure for
-quantifying replication success, \emph{the sceptical Bayes factor}. Systematic
-comparisons show that the sceptical Bayes factor has similar properties as the
-sceptical $p$-value %due to the reverse-Bayes approach underlying both methods
-(\eg{} it penalizes shrinkage of the replication effect estimate and requires
-compelling evidence from both studies in terms of $p$-values and Bayes factors,
-respectively). However, it is also shown that the sceptical $p$-value suffers
-from a certain type of ``shrinkage paradox'', which is avoided by the sceptical
-Bayes factor; when the $p$-value from the original study goes to zero,
-replication success based on the sceptical $p$-value can be achieved with any
-arbitrarily small replication effect estimate, whereas replication success based
-on the sceptical Bayes factor poses a finite limit on how much shrinkage is
-allowed. Technically, the procedure is more involved and closed-form solutions
-for the sceptical Bayes factor are only available in special
-situations. % and in terms of the
+  Jeffreys1961} for quantifying evidence and prior-data conflict. Similar to the
+sceptical $p$-value, the procedure leads to a single measure for quantifying
+replication success, \emph{the sceptical Bayes factor}. Systematic comparisons
+show that the sceptical Bayes factor has similar properties as the sceptical
+$p$-value -- it penalizes shrinkage of the replication effect estimate and
+requires compelling evidence from both studies (in terms Bayes factors).
+However, it is also shown that the sceptical $p$-value suffers from a certain
+type of ``shrinkage paradox'', which is avoided by the sceptical Bayes factor;
+when the $p$-value from the original study goes to zero, replication success
+based on the sceptical $p$-value can be achieved with any arbitrarily small
+replication effect estimate, whereas replication success based on the sceptical
+Bayes factor poses a finite limit on how much shrinkage is allowed. Technically,
+the procedure is more involved and closed-form solutions for the sceptical Bayes
+factor are only available in special situations. % and in terms of the
 % ``Lambert W function'' \citep{Corless1996}.
 The method is illustrated on data from the ``Social Sciences Replication
 Project'' \citep{Camerer2018}, and implemented in the R package
@@ -1451,10 +1447,9 @@ sample uncertainty''}{%
 Shortly after the acceptance of Paper~\ref{PaperIV}, the article by
 \citet{Sondhi2021} appeared. It proposed a novel reverse-Bayes method called
 \emph{Bayesian Additional Evidence}, and we noted some flaws in the article.
-This prompted us to write a commentary. We show that -- contrary to the
-statement by Sondhi et al. -- there is a closed form solution for the key
-quantity in their approach termed ``Bayesian Additional Evidence tipping
-point''.
+This prompted us to write a commentary. We show that -- contrary to the claim by
+Sondhi et al. -- there is a closed form solution for the key quantity in their
+approach termed ``Bayesian Additional Evidence tipping point''.
 % The Bayesian Additional Evidence method provides an answer to the question
 % ``What prior do I have to choose so that that my unconvincing data become
 % convincing?''.
@@ -1519,12 +1514,12 @@ extracted from the file ``\texttt{RP\_CB Final Analysis - Effect level
   data.csv}''. All analyses from this chapter were conducted in the R
 programming language version \Sexpr{paste(version$major, version$minor, sep =
   ".")} \citep{R}. The packages \texttt{dplyr} \citep{Wickham2022},
-\texttt{ggplot2} \citep{Wickham2016}, \texttt{knitr} \citep{Xie2022},
-\texttt{ReplicationSuccess} \citep{Held2020}, \texttt{UpSetR}
-\citep{Gehlenborg2019}, and \texttt{xtable} \citep{Dahl2019} were used. Code and
-data to reproduce this thesis are available at
-\url{https://github.com/SamCH93/thesis}. A snapshot of the git repository is
-archived at \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
+\texttt{ggplot2} \citep{Wickham2016}, \texttt{gridExtra} \citep{Auguie2017},
+\texttt{knitr} \citep{Xie2022}, \texttt{ReplicationSuccess} \citep{Held2020},
+\texttt{scales} \citep{Wickham2022b}, \texttt{UpSetR} \citep{Gehlenborg2019},
+and \texttt{xtable} \citep{Dahl2019} were used. Code and data to reproduce this
+thesis are available at \url{https://github.com/SamCH93/thesis}. A snapshot of
+the git repository is archived at \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
 
 
 << "sessionInfo1", eval = Reproducibility, results = "asis" >>=
