@@ -19,7 +19,7 @@ install.packages(pkgs)
 
 Then run 
 
-```sh
+```
 make local
 ```
 
@@ -82,7 +82,7 @@ cat(paste(Sys.time(), Sys.timezone(), "\n"))
 
 Make sure that Docker with root rights is installed. Then run
 
-```sh
+```
 make docker
 ```
 
