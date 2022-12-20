@@ -201,8 +201,8 @@ that involve unknown parameters $\theta$. The likelihood ratio
 $\Pr(\data \given H_{1})/\Pr(\data \given H_{0})$ is then called a Bayes factor
 \citep{Jeffreys1961, Kass1995} where
 \begin{equation*}
-  \Pr(\data \given H_{i}) = \int \Pr(\data \given \theta, H_{i}) \p(\theta \given H_{i}) d
-  \theta
+  \Pr(\data \given H_{i}) = \int \Pr(\data \given \theta, H_{i})\,
+  \p(\theta \given H_{i}) \,\mathrm{d} \theta
 \end{equation*}
 is the marginal likelihood under hypothesis $H_i$, $i=0,1$, obtained be
 integration of the ordinary likelihood with respect to the prior distribution

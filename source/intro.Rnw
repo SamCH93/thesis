@@ -57,14 +57,13 @@ replication studies, such as their statistical design and analysis, are well
 understood.
 
 Despite their importance, the traditional academic system has made it
-unattractive for researchers to conduct replication studies as publications,
-citations, and grant money are typically easier to acquire by conducting novel
-research. This is because until recently, most scientific journals hardly
-published any replication studies since the emphasis was on ``innovation''
-rather than on ``repetition'' \citep{Makel2012, Martin2017, Coiera2021}. As a
-result, researchers often had no other choice than to focus their efforts on
-producing novel and eye-catching research results in order to build successful
-careers \citep{Binswanger2014, Moher2018}.
+unattractive for researchers to conduct replication studies. This is because
+until recently, most scientific journals hardly published any replication
+studies as the emphasis was on ``innovation'' rather than on ``repetition''
+\citep{Makel2012, Martin2017, Coiera2021}. As a result, researchers often had no
+other choice than to focus their efforts on producing novel and eye-catching
+research results in order to build successful careers \citep{Binswanger2014,
+  Moher2018}.
 
 The perceived value of replication studies has changed over the past decade.
 Earlier criticisms of low research standards \citep{Altman1994, Ioannidis2005}
@@ -244,27 +243,26 @@ are routinely reported in research articles, and if one of them is missing they
 can typically be calculated from the others. Using summary statistics is also
 often the only possible way for conducting the replication success analysis as
 the raw data from the original study may not be available to the researchers
-conducting the replication study. The most important statistics are the effect
-estimates $\that_{o}$ and $\that_{r}$. They provide an estimate of the
-underlying effect size $\theta$ which quantifies the true effect or association
-of an intervention/exposure with an outcome variable. Typical effect sizes are
-mean differences and correlations (for continuous outcomes), odds ratios (for
-binary outcomes), or hazard ratios (for time-to-event outcomes). Depending on
-the type of effect size, a transformation might be required so that the
-assumption of approximately normally distributed effect estimates around the
-unknown effect size $\theta$ (for large enough sample sizes) is justified. This
-could be, for instance, the Fisher $z$-transformation for correlations or the
-log-transformation for odds/hazard ratios \citep[chapter 11]{Cooper2019}. The
-associated standard errors $\sigma_{o}$ and $\sigma_{r}$ represent the
-statistical uncertainty of the estimates. Typically, the available standard
-errors are only estimates of the true standard errors. However, in most parts of
-this thesis it will be assumed that $\sigma_{o}$ and $\sigma_{r}$ correspond to
-the true standard errors. This is the same assumption as in ordinary
-fixed-effect/random-effects meta-analysis, and typically reasonable if the
-sample size of the studies is not too small. Under the assumption of
-(asymptotic) normality, confidence intervals for $\theta$ and $p$-values for
-testing the null hypothesis $H_{0} \colon \theta = 0$ can be computed as shown
-in Table~\ref{tab:meta}.
+conducting the replication study. The effect estimates $\that_{o}$ and
+$\that_{r}$ provide an estimate of the underlying effect size $\theta$ which
+quantifies the true effect or association of an intervention/exposure with an
+outcome variable. Typical effect sizes are mean differences and correlations
+(for continuous outcomes), odds ratios (for binary outcomes), or hazard ratios
+(for time-to-event outcomes). Depending on the type of effect size, a
+transformation might be required so that the assumption of approximately
+normally distributed effect estimates around the unknown effect size $\theta$
+(for large enough sample sizes) is justified. This could be, for instance, the
+Fisher $z$-transformation for correlations or the log-transformation for
+odds/hazard ratios \citep[chapter 11]{Cooper2019}. The associated standard
+errors $\sigma_{o}$ and $\sigma_{r}$ represent the statistical uncertainty of
+the estimates. Typically, the available standard errors are only estimates of
+the true standard errors. However, in most parts of this thesis it will be
+assumed that $\sigma_{o}$ and $\sigma_{r}$ correspond to the true standard
+errors. This is the same assumption as in ordinary fixed-effect/random-effects
+meta-analysis, and typically reasonable if the sample size of the studies is not
+too small. Under the assumption of (asymptotic) normality, confidence intervals
+for $\theta$ and $p$-values for testing the null hypothesis
+$H_{0} \colon \theta = 0$ can be computed as shown in Table~\ref{tab:meta}.
 
 
 \begin{table}[!htb]
@@ -339,9 +337,10 @@ replication study with very few samples so that the $p$-values are large. The
 approach is also logically questionable as it could be seen as an instance of
 the ``absence of evidence fallacy'' \citep{Altman1995} meaning the failure to
 find evidence against the null hypothesis is erroneously interpreted as evidence
-for the null hypothesis. Meta-analytic extensions of the significance approach
-define replication success by significance of a combined effect
-estimate.
+for the null hypothesis.
+
+Meta-analytic extensions of the significance approach define replication success
+by significance of a combined effect estimate.
 % \footnote{The meta-analytic approach can also be given a Bayesian
 % interpretation: A flat prior distribution for the underlying effect size
 % $\theta$ is updated by the data from original and replication study.
