@@ -221,7 +221,7 @@ academic stakeholders to improve on these issues.
 
 This article is structured as follows: We first give an illustrative list of
 QRPs related to comparative simulation studies (Section \ref{sec6:QRP}). With an
-exemplary simulation study, we then show h?ow easy it is to present a novel,
+exemplary simulation study, we then show how easy it is to present a novel,
 made-up method as an improvement over others if QRPs are employed and \emph{a
   priori} simulation plans remain undisclosed (Section \ref{sec6:study}). The
 main inspiration for this work is drawn from similar illustrative studies which
@@ -257,7 +257,7 @@ study, namely, design, execution and reporting.
     reporting QRP.}
   \label{table6:QRPs}
   \centering
-  \begin{tabular}{p{.05\textwidth} p{.11\textwidth} p{.75\textwidth}}
+  \begin{tabular}{p{.05\textwidth} p{.115\textwidth} p{.75\textwidth}}
     \toprule
     \textbf{Tag} & \textbf{Related} & \textbf{Type of QRP} \\
     \midrule
@@ -972,18 +972,15 @@ evaluated on independently generated test data.
         is more sensitive to extreme predicted probabilities compared to the
         Brier score \citep{Gneiting2007}.
 
-  \item \textbf{AUC.} The AUC is given by
-  $$\text{AUC} = \max\{\text{PI}, 1 - \text{PI}\}$$
-        with $$\text{PI} = \widehat\Prob(Y_i \geq Y_j \given \rx_i, \rx_j), \; i,j = 1, \dots, n_{\text{test}},$$
-        where $Y_i$ and $Y_j$ denote case and non-case, respectively. The AUC is
-        related to the area under the receiver-operating-characteristic (ROC)
-        curve \citep{Steyerberg2019}. It will be used as a measure of
-        discrimination and values closer to one indicate better discriminative
-        ability. Discrimination describes the ability of a prediction model to
-        discriminate between cases and non-cases. Other discrimination measures,
-        such as accuracy, sensitivity, specificity, etc., are not considered
-        because we want to evaluate predictive performance in terms of
-        probabilistic predictions instead of point predictions/classification.
+  \item \textbf{AUC.} The AUC is the area under the
+        receiver-operating-characteristic (ROC) curve \citep{Steyerberg2019}. It
+        will be used as a measure of discrimination and values closer to one
+        indicate better discriminative ability. Discrimination describes the
+        ability of a prediction model to discriminate between cases and
+        non-cases. Other discrimination measures, such as accuracy, sensitivity,
+        specificity, etc., are not considered because we want to evaluate
+        predictive performance in terms of probabilistic predictions instead of
+        point predictions/classification.
 
   \item \textbf{Calibration slope $\hat b$.} The calibration slope $\hat b$ is
         obtained by regressing the test data outcomes $y_{\text{test}}$ on the
@@ -1027,7 +1024,7 @@ where
 $$\ell(\beta_0, \shiftparm; \ry, \rx) =
 \ry \log\left(\expit\left\{\beta_0 + \linpred\right\}\right) + (1 - \ry) \log\left(1 - \expit\left\{\beta_0 + \linpred\right\}\right)$$
 denotes the log-likelihood of a binomial GLM and $\wvec$ is derived from a
-random forest variable importance measure $\IMP$ as
+random forest variable importance measure $\widetile{IMP}$ as
 $$w_j = 1 - \left(\frac{\IMP_j}{\sum_{k=1}^p \IMP_k}\right)^\gamma,$$
 where we transform $\IMP$ to be non-negative via
 $$\IMP_j = \max\{0, \widetilde\IMP_j\}$$
@@ -1232,7 +1229,7 @@ methods are largely the same as under the Brier score.
 
 \subsection{Area under the curve (secondary estimand)}
 
-Figure~\ref{fig6:tienll} shows the differences in area under the curve (AUC)
+Figure~\ref{fig6:tieAUC} shows the differences in area under the curve (AUC)
 between \ainet{} and the other methods stratified by simulation conditions. As
 with the other estimands, \ainet{} shows virtually identical performance as EN
 regression across all simulation conditions. \ainet{} seems to outperform RF
@@ -1292,7 +1289,7 @@ events per variables.
 \begin{landscape}
 \begin{figure}[!ht]
 \center
-\includegraphics[width=0.9\linewidth]{images/paper6/tie-fighter_brier_sparsity0.pdf}
+\includegraphics[width=0.9\linewidth]{images/paper6/figureS1.pdf}
 \caption{Tie-fighter plot for the difference in Brier score between any method
   on the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted per
   simulation condition using the single-step method. Lower values indicate
@@ -1303,7 +1300,7 @@ events per variables.
 \begin{landscape}
 \begin{figure}[!ht]
 \center
-\includegraphics[width=0.9\linewidth]{images/paper6/tie-fighter_scaledBrier_sparsity0.pdf}
+\includegraphics[width=0.9\linewidth]{images/paper6/figureS2.pdf}
 \caption{Tie-fighter plot for the difference in scaled Brier score between any
   method on the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted
   per simulation condition using the single-step method. Larger
@@ -1314,7 +1311,7 @@ events per variables.
 \begin{landscape}
 \begin{figure}[!ht]
 \center
-\includegraphics[width=0.9\linewidth]{images/paper6/tie-fighter_nll_sparsity0.pdf}
+\includegraphics[width=0.9\linewidth]{images/paper6/figureS3.pdf}
 \caption{Tie-fighter plot for the difference in log-score between any method on
   the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted per
   simulation condition using the single-step method. Lower values indicate
@@ -1325,7 +1322,18 @@ events per variables.
 \begin{landscape}
 \begin{figure}[!ht]
 \center
-\includegraphics[width=0.9\linewidth]{images/paper6/calibration-cslope_sparsity0.pdf}
+\includegraphics[width=0.9\linewidth]{images/paper6/figureS4.pdf}
+\caption{Tie-fighter plot for the difference in AUC between any method on
+  the $y$-axis and \ainet{}. The 95\% confidence intervals are adjusted per
+  simulation condition using the single-step method. Larger values indicate
+  better performance of \ainet{}. } \label{fig6:tieAUC}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[!ht]
+\center
+\includegraphics[width=0.9\linewidth]{images/paper6/figureS5.pdf}
 \caption{Boxplots of calibration slopes stratified by method and simulation
   conditions. Mean calibration slope is indicated by a cross. A value of one
   indicates optimal calibration. Percentage of simulations where calibration
@@ -1337,7 +1345,7 @@ events per variables.
 \begin{landscape}
 \begin{figure}[!ht]
 \center
-\includegraphics[width=0.9\linewidth]{images/paper6/calibration-clarge_sparsity0.pdf}
+\includegraphics[width=0.9\linewidth]{images/paper6/figureS6.pdf}
 \caption{Boxplots of calibration in the large stratified by method and
   simulation conditions. Mean calibration in the large is indicated by a cross.
   A value of zero indicates optimal calibration in the large. Percentage of

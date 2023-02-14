@@ -1470,8 +1470,8 @@ the manuscript, while L. Held gave high-level feedback.
 \startPaperSummary{PaperVI}{%
   Pitfalls and Potentials in Simulation Studies}{%
   Samuel Pawel, Lucas Kook, Kelly Reeve \\
-  \textit{arXiv preprint}, 2022.
-  doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}.}
+  \textit{Biometrical Journal}, 2023.
+  doi:\href{https://doi.org/10.1002/bimj.202200091}{10.1002/bimj.202200091}.}
 
 In methodological research, simulation studies are frequently used for
 evaluating ``how well'' statistical methods perform. The conclusions from these
@@ -1518,7 +1518,7 @@ programming language version \Sexpr{paste(version$major, version$minor, sep =
 \texttt{scales} \citep{Wickham2022b}, \texttt{UpSetR} \citep{Gehlenborg2019},
 and \texttt{xtable} \citep{Dahl2019} were used. Code and data to reproduce this
 thesis are available at \url{https://github.com/SamCH93/thesis}. A snapshot of
-the git repository is archived at \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
+the git repository is archived at \url{https://doi.org/10.5281/zenodo.7464296}.
 
 
 << "sessionInfo1", eval = Reproducibility, results = "asis" >>=

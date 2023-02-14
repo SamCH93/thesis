@@ -48,6 +48,7 @@ figure/
 misc/
 submission/
 comments/
+defense/
 
 # output tex file
 thesis.tex

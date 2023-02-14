@@ -196,8 +196,8 @@ sample uncertainty''
 \paperchapter{%
   Pitfalls and Potentials in Simulation Studies }{%
   Samuel Pawel, Lucas Kook, Kelly Reeve }{%
-  \textit{arXiv preprint}, 2022.
-  doi:\href{https://doi.org/10.48550/arXiv.2203.13076}{10.48550/arXiv.2203.13076}
+  \textit{Biometrical Journal}, 2023.
+  doi:\href{https://doi.org/10.1002/bimj.202200091}{10.1002/bimj.202200091}
 }
 \include{paper6}
 
