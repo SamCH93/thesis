@@ -1437,9 +1437,9 @@ by
   \BFIC =
   \begin{cases}
     \sqrt{-z^{2}/k}\cdot \exp\left\{-(z^{2} + k)/2\right\}
-    & \text{if} \abs{z} \geq \surd\big\{-2 W\big(-e^{-1}/\sqrt2\big)\big\}\\
+    & \text{if} \abs{z} \geq \surd\big\{-2 \mathrm{W}\big(-e^{-1}/\sqrt2\big)\big\}\\
     \mbox{minBF}_{01} \
-    & \text{if} ~ \sqrt{\log 2} \leq \abs{z} < \surd\big\{-2 W\big(-e^{-1}/\sqrt2\big)\big\} \\
+    & \text{if} ~ \sqrt{\log 2} \leq \abs{z} < \surd\big\{-2 \mathrm{W}\big(-e^{-1}/\sqrt2\big)\big\} \\
     \text{undefined}
     & \text{if} ~ \abs{z} < \sqrt{\log 2}
   \end{cases}
@@ -1447,9 +1447,9 @@ by
 with $k = \mathrm{W}(-z^{2} \exp\{-z^{2}/2\}/\sqrt{2})$ and $\mathrm{W}(\cdot)$
 the branch of the Lambert W function that satisfies $\mathrm{W}(y) \leq -1$ for
 $y \in [-e^{-1}, 0).$ If
-$\abs{z} \geq \sqrt{-2 W(-e^{-1}/\sqrt2)} \approx 2.04$, $\BFIC$ is located at
-the intersection between $\BF_{12}$ and $\BF_{01}$ in the relative prior
-variance $g$, so equation (7) from \citet{Pawel2020b} can be used. For
+$\abs{z} \geq \sqrt{-2 \mathrm{W}(-e^{-1}/\sqrt2)} \approx 2.04$, $\BFIC$ is
+located at the intersection between $\BF_{12}$ and $\BF_{01}$ in the relative
+prior variance $g$, so equation (7) from \citet{Pawel2020b} can be used. For
 $\abs{z} \geq \sqrt{\log 2} \approx 0.83$, $\BF_{12}$ remains below $\BF_{01}$
 for all $g$ and hence $\BFIC$ is given by $\mbox{minBF}_{01}$, the minimum of
 $\BF_{01}$ from \eqref{eq4:minBFnorm}. Finally, when $\abs{z} < \sqrt{\log 2}$,

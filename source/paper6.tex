@@ -1024,7 +1024,7 @@ where
 $$\ell(\beta_0, \shiftparm; \ry, \rx) =
 \ry \log\left(\expit\left\{\beta_0 + \linpred\right\}\right) + (1 - \ry) \log\left(1 - \expit\left\{\beta_0 + \linpred\right\}\right)$$
 denotes the log-likelihood of a binomial GLM and $\wvec$ is derived from a
-random forest variable importance measure $\widetile{IMP}$ as
+random forest variable importance measure $\widetilde{\IMP}$ as
 $$w_j = 1 - \left(\frac{\IMP_j}{\sum_{k=1}^p \IMP_k}\right)^\gamma,$$
 where we transform $\IMP$ to be non-negative via
 $$\IMP_j = \max\{0, \widetilde\IMP_j\}$$
