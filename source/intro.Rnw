@@ -1470,7 +1470,7 @@ the manuscript, while L. Held gave high-level feedback.
 \startPaperSummary{PaperVI}{%
   Pitfalls and Potentials in Simulation Studies}{%
   Samuel Pawel, Lucas Kook, Kelly Reeve \\
-  \textit{Biometrical Journal}, 2023.
+  \textit{Biometrical Journal}, 2023, e2200091.
   doi:\href{https://doi.org/10.1002/bimj.202200091}{10.1002/bimj.202200091}.}
 
 In methodological research, simulation studies are frequently used for
