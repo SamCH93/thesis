@@ -401,25 +401,8 @@ larger standard errors.
 % confidence interval criterion does only take into account the statistical
 % variability of one of the two studies. As a result,
 
-\subsubsection{Example ``Reproducibility Project: Cancer Biology''}
-I will now illustrate the assessment of replication success on data from the
-``Reproducibility Project: Cancer Biology'' \citep{Errington2021}. This
-large-scale project attempted to replicate 53 landmark studies from the field of
-cancer biology \citep[and would perhaps better be named ``Replication Project'',
-see][for the distinction between ``replicabality'' and
-``reproducibility'']{Goodman2016}. In the end, only 23 of the 53 studies could
-be repeated due to various difficulties, such as, missing information from the
-original studies or problems in conducting the experiments.
-\citet{Errington2021} report that these experiments led to data on 158
-quantitative effects. However, from the data which they provide only 132
-quantitative effects are provided with original and replication standardized
-mean difference effect estimates along with standard errors, and only they will
-be used in the subsequent analyses.
-
-\begin{figure}[!htb]
-<< "RPCB-graph", fig.height = 3.75 >>=
-za <- qnorm(p = 0.975)
-rpcb <- read.csv("data/rpcb.csv") |>
+<< "RPCB-data" >>=
+rpcb <- read.csv("data/rpcb-outcome-level.csv") |>
     mutate(id = paste0("(", paper, ", ", experiment, ", ", effect, ")"),
            zo = smdo/so,
            zr = smdr/sr,
@@ -434,17 +417,42 @@ rpcb <- read.csv("data/rpcb.csv") |>
            pQ = pchisq(q = Q, df = 1, lower.tail = FALSE),
            rsig = factor(pr2 <= 0.05, levels = c(FALSE, TRUE),
                          labels = c("italic(p[r]) > 0.05",
-                                    "italic(p[r]) <= 0.05")))
+                                    "italic(p[r]) <= 0.05"))## ,
+           ## rsig = factor(pr <= 0.05, levels = c(FALSE, TRUE),
+           ##               labels = c("italic(p[r]) > 0.05",
+           ##                          "italic(p[r]) <= 0.05"))
+           ## ## uncomment for the same significance assessment as in RPCB paper
+           ## ## (differs in some cases due to normal approximation)
+           )
 ## compute sceptical p-value (TODO fix problems with NA)
 ind <- !is.na(rpcb$zo) & !is.na(rpcb$zr) & !is.na(rpcb$c)
 rpcb$ps1 <- NA
 rpcb$ps1[ind] <- pSceptical(zo = rpcb$zo[ind], zr = rpcb$zr[ind], c = rpcb$c[ind],
                             alternative = "one.sided", type = "nominal")
+rpcbWithoutNA <- na.omit(rpcb)
+@
 
-zoom <- c(-2, 12)
+\subsubsection{Example ``Reproducibility Project: Cancer Biology''}
+I will now illustrate the assessment of replication success on data from the
+``Reproducibility Project: Cancer Biology'' \citep{Errington2021}. This
+large-scale project attempted to replicate 53 landmark studies from the field of
+cancer biology \citep[and would perhaps better be named ``Replication Project'',
+see][for the distinction between ``replicability'' and
+``reproducibility'']{Goodman2016}. In the end, only 23 of the 53 studies could
+be repeated due to various difficulties, such as, missing information from the
+original studies or problems in conducting the experiments.
+\citet{Errington2021} report that these experiments led to data on 158
+quantitative effects. However, from the data which they provide only
+\Sexpr{nrow(rpcb)} quantitative effects are provided with original and
+replication standardized mean difference effect estimates along with standard
+errors, and only they will be used in the subsequent analyses.
+
+\begin{figure}[!htb]
+<< "RPCB-graph", fig.height = 3.75 >>=
+za <- qnorm(p = 0.975)
+zoom <- c(-2, 12) # c(-2.5, 5) # in original plot
 alphazoom <- 0.6
 ltyzoom <- 3
-rpcbWithoutNA <- na.omit(rpcb)
 cols <- adjustcolor(col = c("grey70", "grey5"), alpha.f = 0.8)
 names(cols) <- levels(rpcbWithoutNA$rsig)
 plotA <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
@@ -469,8 +477,9 @@ plotA <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
          y = "Replication effect estimate (SMD)",
          fill = "") +
     coord_fixed(xlim = c(-5, 30), ylim = c(-5, 30)) +
-    scale_fill_manual(values = cols, labels = scales::parse_format()) +
-    scale_color_manual(values = cols) +
+    scale_fill_discrete(labels = scales::parse_format()) +
+    ## scale_fill_manual(values = cols, labels = scales::parse_format()) +
+    ## scale_color_manual(values = cols) +
     theme_bw() +
     theme(panel.grid = element_blank(),
           legend.position = c(0.5, 0.835))
@@ -485,18 +494,21 @@ plotB <- ggplot(data = rpcbWithoutNA, aes(x = smdo, y = smdr)) +
          y = "Replication effect estimate (SMD)",
          fill = "") +
     coord_fixed(xlim = zoom, ylim = zoom) +
-    scale_fill_manual(values = cols, labels = scales::parse_format()) +
-    scale_color_manual(values = cols) +
+    ## scale_fill_manual(values = cols, labels = scales::parse_format()) +
+    ## scale_color_manual(values = cols) +
     theme_bw() +
     theme(panel.grid = element_blank())
 grid.arrange(plotA, plotB, ncol = 2)
+## cf Figure 2—figure supplement 1
+## https://iiif.elifesciences.org/lax/71601%2Felife-71601-fig2-figsupp1-v3.tif/full/1500,/0/default.jpg
 @
-\caption{Results for 132 effects from the ``Reproducibility Project: Cancer
-  Biology'' \citep{Errington2021} for which effect estimates and standard errors
-  are available on standardized mean difference (SMD) scale. The right plot
-  shows a zoomed-in view of the dotted area in the left plot. The
-  \textit{p}-values are recomputed using a normal approximation. Two study pairs
-  with original effect estimate larger than 80 are not shown.}
+\caption{Results from \Sexpr{nrow(rpcb)} replication studies from the
+  ``Reproducibility Project: Cancer Biology'' \citep{Errington2021} for which
+  effect estimates and standard errors are available on standardized mean
+  difference (SMD) scale. The right plot shows a zoomed-in view of the dotted
+  area in the left plot. The \textit{p}-values are recomputed using a normal
+  approximation. Two study pairs with original effect estimate larger than 80
+  are not shown.}
 \label{fig:rpcb}
 \end{figure}
 
@@ -508,7 +520,8 @@ smaller effect estimates compared to their original counterparts (mean relative
 effect estimate $\bar{d} = \Sexpr{round(mean(rpcbWithoutNA[,"d"]), 2)}$). Many
 of the replications also fail to achieve statistical significance at the 5\%
 level. Specifically, from the
-\Sexpr{sum(rpcbWithoutNA$po2 < 0.05)} effects which were significant in the original study only \Sexpr{ sum(rpcbWithoutNA$po2
+\Sexpr{sum(rpcbWithoutNA$po2 < 0.05)} effects which were significant in the
+original study only \Sexpr{ sum(rpcbWithoutNA$po2
   < 0.05 & rpcbWithoutNA$pr2 < 0.05 & rpcbWithoutNA$d > 0)} were also
 significant in the replication study (in the same direction).
 
@@ -553,31 +566,28 @@ upset(rpcbUpset, sets = c("Significance", "Meta analytic \nsignificance",
 Figure~\ref{fig:upset} shows how many of the replications are successful
 according to the criteria from Table~\ref{tab:rsdef} (except the confidence
 interval criteria since they do not take into account the uncertainty from both
-studies). For the total 132 replications, most successes occur for the
-meta-analytic significance (\Sexpr{nma}) and the prediction interval criteria
-(\Sexpr{npi}), followed by significance (\Sexpr{nsig}), and relative effect size
-(\Sexpr{nres}). However, looking at the combinations of the criteria, only in
-two replications are all criteria satisfied simultaneously (green).
+studies). For the total \Sexpr{nrow(rpcb)} replications, most successes occur
+for the meta-analytic significance (\Sexpr{nma}) and the prediction interval
+criteria (\Sexpr{npi}), followed by significance (\Sexpr{nsig}), and relative
+effect size (\Sexpr{nres}). However, looking at the combinations of the
+criteria, only in two replications are all criteria satisfied simultaneously
+(green).
 
-A detailed view for a subset of the data from the project is given in
-Table~\ref{tab:RPCB}. The subset is randomly chosen such that from every
-original study one effect and one replication of that effect is included. For
-the three replications at the bottom of the table (\#18, \#19, and \#20), all
-criteria indicate replication failure. For the other replications, the
-conclusions are more ambiguous as in no single case are all criteria met
-simultaneously. For instance, the first three replications satisfy the
-significance criterion ($p_{o} < 0.05$ and $p_{r} < 0.05$), the meta analytic
-significance criterion ($p_{m} < 0.05$) and the $Q$-test/prediction interval
-criterion ($p_{Q} > 0.05$), yet the replication effect estimate is smaller than
-the original one so does not satisfy the relative effect size criterion
-($d < 1$). The fourth replication, on the other hand, satisfies the relative
-effect size criterion ($d \geq 1$) but fails to satisfy the significance
-criterion as the original study was not significant ($p_{o} > 0.05$).
-% For example, replication \#17 is a clear
-% failure with respect to the relative effect estimate ($d < 1$) and the
-% significance criteria ($p_{o} > 0.05$ and $p_{r} > 0.05$), yet the $Q$-test does
-% not indicate evidence for inconsistency of the two effect estimates
-% ($p_{Q} > 0.05$).
+A detailed view for an illustrative subset of the data from the project is given
+in Table~\ref{tab:RPCB}. The subset is chosen such that from every original
+study one effect and one replication of that effect is included. For two
+replications at the bottom of the table (\#18 and \#20), all criteria indicate
+replication failure. For the other replications, the conclusions are more
+ambiguous as in no single case are all criteria met simultaneously. For
+instance, the first three replications satisfy the significance criterion
+($p_{o} < 0.05$ and $p_{r} < 0.05$), the meta analytic significance criterion
+($p_{m} < 0.05$) and the $Q$-test/prediction interval criterion
+($p_{Q} > 0.05$), yet the replication effect estimate is smaller than the
+original one so does not satisfy the relative effect size criterion ($d < 1$).
+The fourth replication, on the other hand, satisfies the relative effect size
+criterion ($d \geq 1$) but fails to satisfy the significance criterion for the
+original study ($p_{o} > 0.05$) and the $Q$-test/prediction interval criterion
+($p_{Q} \leq 5\%$).
 
 Taken together, this analysis demonstrates that conclusions based on commonly
 used replication success criteria often differ. It is not always clear-cut
@@ -675,7 +685,7 @@ tableFormat <- Vectorize(FUN = tableFormat., vectorize.args = "x")
 
 ## randomly select a subset with one effect per paper
 set.seed(7)
-rpcbTable <- rpcb |>
+rpcbTable1 <- rpcb |>
     na.omit() |>
     group_by(paper) |>
     sample_n(size = 1) |>
@@ -701,7 +711,8 @@ rpcbTable <- rpcb |>
                                   col2 = "dark2green", font2 = "mathbf"),
            cioFormat = ciFormat(lower = cioL, upper = cioU, dollar = TRUE),
            cirFormat = ciFormat(lower = cirL, upper = cirU, dollar = TRUE),
-           cimFormat = ciFormat(lower = cimL, upper = cimU), dollar = TRUE) |>
+           cimFormat = ciFormat(lower = cimL, upper = cimU), dollar = TRUE)
+rpcbTable <- rpcbTable1 |>
     select(id,
            smdoFormat, cioFormat,
            smdrFormat, cirFormat,
@@ -911,11 +922,11 @@ ggplot(data = plotDF, aes(x = type, y = t)) +
   data from the original study (Paper 9, Experiment 2, Effect 5) and its three
   replication studies from the ``Reproducibility Project: Cancer Biology''
   \citep{Errington2021}. Shown are effect estimates and prior/posterior means
-  with \Sexpr{100*(1-alpha)}\% confidence/credible interval. The original finding is
-  challenged with a sceptical prior, sufficiently concentrated around zero so
-  that the resulting posterior is no longer convincing at level
-  $\alpha = \Sexpr{100*(alpha)}\%$. Prior predictive \textit{p}-values $p_{\text{Box}}$ are
-  computed for quantifying prior-data conflict.}
+  with \Sexpr{100*(1-alpha)}\% confidence/credible interval. The original
+  finding is challenged with a sceptical prior, sufficiently concentrated around
+  zero so that the resulting posterior is no longer convincing at level
+  $\alpha = \Sexpr{100*(alpha)}\%$. Prior predictive \textit{p}-values
+  $p_{\text{Box}}$ are computed for quantifying prior-data conflict.}
 \label{fig:RBillustration}
 \end{figure}
 
@@ -1120,6 +1131,7 @@ c <- so^2/sr^2
 ps <- pSceptical(zo = zo, zr = zr, c = c, alternative = "two.sided", type = "nominal")
 psFormat <- pFormat(p = ps)
 @
+
 \subsubsection{The sceptical \textit{p}-value}
 To remove the dependence on the level $\alpha$, \citet{Held2020} proposed to
 determine the smallest level at which replication success can be established.
@@ -1206,6 +1218,10 @@ studies, and it penalizes shrinkage of the replication effect estimate. In the
 subsequent chapters only the one-sided version of the sceptical $p$-value will
 be used.
 
+<< "examples-sceptical-p" >>=
+ex2 <- rpcbTable1[5,]
+@
+
 The last column of Table~\ref{tab:RPCB} shows the one-sided sceptical $p$-value
 for the subset of replications from the ``Reproducibility Project: Cancer
 Biology''. The results illustrate the previously discussed properties to require
@@ -1216,13 +1232,16 @@ highly convincing (the effect estimate was almost five times as large as in the
 original study). Yet, as the approach requires both studies to be convincing on
 their own -- and the original study was not significant at the 2.5\% level
 (one-sided) -- replication success at this level is impossible with the
-sceptical $p$-value. The second property is illustrated by replication \#8. Here
+sceptical $p$-value. The second property is illustrated by replication \#5. Here
 both the original and replication studies were significance. However, the effect
-estimate from the replication was roughly 60\% smaller than the one from the
+estimate from the replication was roughly \Sexpr{round(100*(1 - ex2$d), 0)}\%
+smaller than the one from the
 original study, and significance is merely achieved because the standard error
-was much smaller (\ie{} around $1/\surd c \approx 1/2.8$ times smaller). The
-sceptical $p$-value is therefore only $p_{\text{S}} = 0.12$, indicating less
-evidence for replication success.
+was much smaller (\ie{} around
+$1/\surd c \approx 1/\Sexpr{round(sqrt(ex2$c), 2)}$ times smaller). The
+sceptical $p$-value is therefore only
+$p_{\text{S}} = \Sexpr{pFormat(ex2[,"ps1"])}$, indicating less evidence for
+replication success.
 
 << "paradox-example" >>=
 smdo <- 3
@@ -1508,9 +1527,10 @@ in Basel.
 \section*{Data and software}
 The CC-By 4.0 licensed data from the ``Reproducibility Project: Cancer Biology''
 \citep{Errington2021} were downloaded from
-\url{https://doi.org/10.17605/osf.io/e5nvr}. The relevant variables were then
-extracted from the file ``\texttt{RP\_CB Final Analysis - Effect level
-  data.csv}''. All analyses from this chapter were conducted in the R
+\url{https://github.com/mayamathur/rpcb} (commit a1e0c63). The R script
+\texttt{preprocess-rpcb-data.R} available on the git repository accompanying
+this thesis shows all preproccessing steps that were performed for extracting
+the relevant variables. All analyses from this chapter were conducted in the R
 programming language version \Sexpr{paste(version$major, version$minor, sep =
   ".")} \citep{R}. The packages \texttt{dplyr} \citep{Wickham2022},
 \texttt{ggplot2} \citep{Wickham2016}, \texttt{gridExtra} \citep{Auguie2017},

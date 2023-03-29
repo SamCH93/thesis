@@ -32,7 +32,11 @@ CMD if [ "$pdfdocker" = "false" ] ; then \
     && mv figure/* /output/figure/ ; \
     else \
     echo "compiling PDF inside Docker" \
+    ## fix tinytex version
+    ## && Rscript -e "install.packages('tinytex')" --vanilla \
+    ## && Rscript -e "tinytex::install_tinytex(force = TRUE, bundle = 'TinyTeX', version = '2023.03.21', extra_packages = c('doi', 'koma-script'))" --vanilla \
     ## run knitr to install all LaTeX packages
+    && Rscript -e "tinytex::install_tinytex()" --vanilla \
     && Rscript -e "knitr::knit2pdf('thesis.Rnw')" --vanilla \
     ## now run make command because the compiling requires custom pdflatex
     ## commands which knitr doesn't know
